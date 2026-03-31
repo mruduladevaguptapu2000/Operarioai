@@ -3816,7 +3816,7 @@ export function LlmConfigScreen() {
       {modal}
       <ActivityDock notices={notices} activeLabels={activeLabels} onDismiss={dismissNotice} />
       <div className="space-y-8">
-        <div className="gobii-card-base space-y-2 px-6 py-6">
+        <div className="operario-card-base space-y-2 px-6 py-6">
           <h1 className="text-2xl font-semibold text-slate-900/90">LLM configuration</h1>
           <p className="text-sm text-slate-600">Review providers, endpoints, and token tiers powering orchestrator, browser-use, and embedding flows.</p>
         </div>
@@ -3833,7 +3833,7 @@ export function LlmConfigScreen() {
         </div>
 
         {/* Routing Profile Selector */}
-        <div className="gobii-card-base px-6 py-5">
+        <div className="operario-card-base px-6 py-5">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div className="flex items-center gap-3">
               <div className="rounded-xl bg-indigo-100 p-2.5">

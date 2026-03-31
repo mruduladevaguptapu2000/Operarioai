@@ -309,7 +309,7 @@ jobs:
 
       # Satisfy config.settings import before test settings override DB to SQLite
       DJANGO_SECRET_KEY: test-secret
-      GOBII_ENCRYPTION_KEY: dummy-encryption-key-for-testing
+      OPERARIO_ENCRYPTION_KEY: dummy-encryption-key-for-testing
       POSTGRES_DB: test
       POSTGRES_USER: test
       POSTGRES_PASSWORD: test
@@ -422,9 +422,9 @@ jobs:
     permissions:
       contents: read
     env:
-      STATIC_BUCKET: gobii-platform-static
-      STATIC_ASSET_BASE_URL: https://static.gobii.ai/frontend/releases
-      VITE_BUILD_BASE_URL: https://static.gobii.ai/frontend/releases/${{ github.sha }}/
+      STATIC_BUCKET: operario-platform-static
+      STATIC_ASSET_BASE_URL: https://static.operario.ai/frontend/releases
+      VITE_BUILD_BASE_URL: https://static.operario.ai/frontend/releases/${{ github.sha }}/
       AWS_ACCESS_KEY_ID: ${{ secrets.CLOUDFLARE_R2_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.CLOUDFLARE_R2_SECRET_ACCESS_KEY }}
       AWS_DEFAULT_REGION: auto
@@ -507,13 +507,13 @@ jobs:
           app_id: ${{ secrets.GH_APP_ID }}
           private_key: ${{ secrets.GH_APP_PRIVATE_KEY }}
           installation_retrieval_mode: repository
-          installation_retrieval_payload: gobii-ai/gobii
+          installation_retrieval_payload: operario-ai/operario
 
       - name: Notify infra repo
         uses: peter-evans/repository-dispatch@v3
         with:
           token: ${{ steps.app-token.outputs.token }}
-          repository: gobii-ai/gobii
+          repository: operario-ai/operario
           event-type: preview-ready
           client-payload: |
             {
@@ -541,13 +541,13 @@ jobs:
           app_id: ${{ secrets.GH_APP_ID }}
           private_key: ${{ secrets.GH_APP_PRIVATE_KEY }}
           installation_retrieval_mode: repository
-          installation_retrieval_payload: gobii-ai/gobii
+          installation_retrieval_payload: operario-ai/operario
 
       - name: Notify infra repo
         uses: peter-evans/repository-dispatch@v3
         with:
           token: ${{ steps.app-token.outputs.token }}
-          repository: gobii-ai/gobii
+          repository: operario-ai/operario
           event-type: staging-ready
           client-payload: |
             {

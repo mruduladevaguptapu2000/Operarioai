@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 {% load static %}
 {% load waffle_tags %}
-{% block title %}Pricing - Gobii{% endblock %}
+{% block title %}Pricing - Operario AI{% endblock %}
 {% block head_extras %}
   {{ block.super }}
-  <meta name="description" content="Compare Gobii's Pro, Scale, and Enterprise plans to scale always-on pretrained workers with transparent pricing.">
-  {% if environment.is_production and settings.GOBII_PROPRIETARY_MODE %}
+  <meta name="description" content="Compare Operario AI's Pro, Scale, and Enterprise plans to scale always-on pretrained workers with transparent pricing.">
+  {% if environment.is_production and settings.OPERARIO_PROPRIETARY_MODE %}
   <script>
     (function () {
       const payload = {

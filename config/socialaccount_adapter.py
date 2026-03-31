@@ -48,8 +48,8 @@ OAUTH_ATTRIBUTION_SESSION_KEYS = (
 )
 
 # Cookie name for stashing charter data during OAuth
-OAUTH_CHARTER_COOKIE = "gobii_oauth_charter"
-OAUTH_ATTRIBUTION_COOKIE = "gobii_oauth_attribution"
+OAUTH_CHARTER_COOKIE = "operario_oauth_charter"
+OAUTH_ATTRIBUTION_COOKIE = "operario_oauth_attribution"
 OAUTH_CHARTER_SERVER_SIDE_TOKEN_KEY = "server_side_token"
 OAUTH_CHARTER_STASH_CACHE_KEY_PREFIX = "oauth_charter_stash"
 OAUTH_STASH_TTL_SECONDS = 7200
@@ -172,7 +172,7 @@ def restore_oauth_session_state(
     return charter_restored or attribution_restored
 
 
-class GobiiSocialAccountAdapter(DefaultSocialAccountAdapter):
+class Operario AISocialAccountAdapter(DefaultSocialAccountAdapter):
     """Tighten the social login flow for existing email/password users."""
 
     def is_open_for_signup(self, request: HttpRequest, sociallogin: SocialLogin) -> bool:

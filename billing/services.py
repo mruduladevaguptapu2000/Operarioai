@@ -6,7 +6,7 @@ import logging
 from opentelemetry import trace
 
 logger = logging.getLogger(__name__)
-tracer = trace.get_tracer('gobii.utils')
+tracer = trace.get_tracer('operario.utils')
 
 class BillingService:
     """

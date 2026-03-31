@@ -26,14 +26,14 @@ class SecretsEncryption:
     @staticmethod
     def get_encryption_key():
         """Get the master encryption key from environment."""
-        key = os.environ.get('GOBII_ENCRYPTION_KEY')
+        key = os.environ.get('OPERARIO_ENCRYPTION_KEY')
         if not key:
-            raise ValueError("GOBII_ENCRYPTION_KEY not configured")
+            raise ValueError("OPERARIO_ENCRYPTION_KEY not configured")
         # Derive a proper 256-bit key from the env var
         kdf = PBKDF2HMAC(
             algorithm=hashes.SHA256(),
             length=32,
-            salt=b'gobii-secrets-v1',  # Static salt OK for this use case
+            salt=b'operario-secrets-v1',  # Static salt OK for this use case
             iterations=100000,
             backend=default_backend()
         )

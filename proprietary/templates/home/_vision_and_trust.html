@@ -27,7 +27,7 @@
 
     <span class="inline-flex items-center text-xs font-bold tracking-[0.25em] uppercase text-indigo-500">The vision</span>
     <h2 class="mt-3 text-2xl sm:text-3xl font-light text-slate-900 tracking-tight">The team of the&nbsp;future</h2>
-    <p class="mt-4 text-base text-slate-500 max-w-xl mx-auto leading-relaxed">Humans and AI agents, working together &mdash; each doing what they do best. Gobii is the platform that makes that&nbsp;real.</p>
+    <p class="mt-4 text-base text-slate-500 max-w-xl mx-auto leading-relaxed">Humans and AI agents, working together &mdash; each doing what they do best. Operario AI is the platform that makes that&nbsp;real.</p>
     <div class="mt-8">
       {% if user.is_authenticated and account.usage.agents_unlimited is not True and account.usage.agents_available <= 0 %}
       <a href="{% url 'proprietary:startup_checkout' %}" class="inline-flex items-center justify-center gap-x-2 bg-gradient-to-r from-violet-600 to-purple-500 hover:from-violet-700 hover:to-purple-600 border border-transparent text-white text-sm font-semibold rounded-xl focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2 py-3 px-6 shadow-lg hover:shadow-xl transition-all duration-300">

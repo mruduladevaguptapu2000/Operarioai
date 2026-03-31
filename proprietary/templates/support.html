@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %}Gobii – Support{% endblock %}
+{% block title %}Operario AI – Support{% endblock %}
 {% block head_extras %}
   {{ block.super }}
-  <meta name="description" content="Connect with Gobii's support team via Discord, email, or our help form to keep your pretrained workers running smoothly.">
+  <meta name="description" content="Connect with Operario AI's support team via Discord, email, or our help form to keep your pretrained workers running smoothly.">
 {% endblock %}
 {% block content %}
 
@@ -16,7 +16,7 @@
   <div class="mb-10">
     <div class="grid md:grid-cols-2 gap-6">
       <!-- Discord Card -->
-      <div class="gobii-card-base">
+      <div class="operario-card-base">
         <div class="p-6">
           <div class="flex items-center">
             <div class="flex-shrink-0">
@@ -26,7 +26,7 @@
             </div>
             <div class="ml-4">
               <p class="text-lg font-medium text-gray-900">Discord Community</p>
-              <p class="text-gray-600">Join our Discord community where you'll find Gobii staff ready to help.</p>
+              <p class="text-gray-600">Join our Discord community where you'll find Operario AI staff ready to help.</p>
             </div>
           </div>
           {% if settings.PUBLIC_DISCORD_URL %}
@@ -38,7 +38,7 @@
       </div>
 
       <!-- Email/Form Card -->
-      <div class="gobii-card-base">
+      <div class="operario-card-base">
         <div class="p-6">
           <h3 class="text-lg font-medium text-gray-900 mb-4">Send us a message</h3>
           <form class="space-y-4" hx-post="{% url 'proprietary:support' %}" hx-swap="innerHTML" hx-target="#form-response">
@@ -76,14 +76,14 @@
     </div>
   </div>
 
-  <div class="gobii-card-base">
+  <div class="operario-card-base">
     <div class="p-6">
       <h2 class="text-2xl font-semibold text-gray-800 mb-4 text-center">Frequently Asked Questions</h2>
 
       <div class="hs-accordion-group">
         <div class="hs-accordion border-b border-gray-200 py-3" id="faq-1">
           <button class="hs-accordion-toggle group inline-flex items-center justify-between gap-x-3 w-full text-left text-gray-800 transition hover:text-gray-500">
-            <span class="font-medium">How do I get started with Gobii?</span>
+            <span class="font-medium">How do I get started with Operario AI?</span>
             <svg class="hs-accordion-active:hidden block w-4 h-4 text-gray-600 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
             <svg class="hs-accordion-active:block hidden w-4 h-4 text-gray-600 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
           </button>

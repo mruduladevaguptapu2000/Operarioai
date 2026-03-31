@@ -93,13 +93,13 @@ class SandboxSystemSettingsTests(SimpleTestCase):
         with patch.object(
             system_settings,
             "_load_db_values",
-            return_value={"SANDBOX_COMPUTE_POD_IMAGE": "  ghcr.io/gobii-ai/gobii-sandbox-compute:0.2.0  "},
+            return_value={"SANDBOX_COMPUTE_POD_IMAGE": "  ghcr.io/operario-ai/operario-sandbox-compute:0.2.0  "},
         ):
             payload = system_settings.serialize_setting(definition)
 
         self.assertEqual(payload["source"], "database")
-        self.assertEqual(payload["effective_value"], "ghcr.io/gobii-ai/gobii-sandbox-compute:0.2.0")
-        self.assertEqual(payload["db_value"], "ghcr.io/gobii-ai/gobii-sandbox-compute:0.2.0")
+        self.assertEqual(payload["effective_value"], "ghcr.io/operario-ai/operario-sandbox-compute:0.2.0")
+        self.assertEqual(payload["db_value"], "ghcr.io/operario-ai/operario-sandbox-compute:0.2.0")
 
     def test_string_image_setting_rejects_blank_value(self) -> None:
         definition = system_settings.get_setting_definition("SANDBOX_COMPUTE_POD_IMAGE")
@@ -124,19 +124,19 @@ class SandboxSystemSettingsTests(SimpleTestCase):
             return_value={
                 "SANDBOX_COMPUTE_ENABLED": "false",
                 "SANDBOX_COMPUTE_REQUIRE_PROXY": "true",
-                "SANDBOX_COMPUTE_POD_IMAGE": "ghcr.io/gobii-ai/gobii-sandbox-compute:0.2.0",
-                "SANDBOX_EGRESS_PROXY_POD_IMAGE": "ghcr.io/gobii-ai/gobii-sandbox-egress-proxy:main",
+                "SANDBOX_COMPUTE_POD_IMAGE": "ghcr.io/operario-ai/operario-sandbox-compute:0.2.0",
+                "SANDBOX_EGRESS_PROXY_POD_IMAGE": "ghcr.io/operario-ai/operario-sandbox-egress-proxy:main",
             },
         ):
             self.assertFalse(system_settings.get_sandbox_compute_enabled())
             self.assertTrue(system_settings.get_sandbox_compute_require_proxy())
             self.assertEqual(
                 system_settings.get_sandbox_compute_pod_image(),
-                "ghcr.io/gobii-ai/gobii-sandbox-compute:0.2.0",
+                "ghcr.io/operario-ai/operario-sandbox-compute:0.2.0",
             )
             self.assertEqual(
                 system_settings.get_sandbox_egress_proxy_pod_image(),
-                "ghcr.io/gobii-ai/gobii-sandbox-egress-proxy:main",
+                "ghcr.io/operario-ai/operario-sandbox-egress-proxy:main",
             )
 
 

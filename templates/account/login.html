@@ -121,7 +121,7 @@
               class="w-full rounded-lg bg-blue-600 py-3 text-sm font-medium text-white
                      shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2
                      focus:ring-blue-500 focus:ring-offset-2">Sign in</button>
-      {% if settings.GOBII_PROPRIETARY_MODE %}
+      {% if settings.OPERARIO_PROPRIETARY_MODE %}
       <p class="mt-4 text-xs text-gray-500 text-center">
         By signing in, you agree to our
         <a href="{% url 'proprietary:tos' %}" class="text-blue-600 hover:underline">Terms of Service</a>
@@ -139,7 +139,7 @@
   </div>
 </div>
 
-{% if settings.GOBII_PROPRIETARY_MODE and settings.FINGERPRINT_JS_ENABLED and settings.FINGERPRINT_JS_URL and settings.FINGERPRINT_JS_API_KEY %}
+{% if settings.OPERARIO_PROPRIETARY_MODE and settings.FINGERPRINT_JS_ENABLED and settings.FINGERPRINT_JS_URL and settings.FINGERPRINT_JS_API_KEY %}
 {% include "account/_identity_signal_helpers.html" %}
 <script>
   (() => {
@@ -150,7 +150,7 @@
 
     const cookieMaxAge = 60 * 60 * 2;
     const measurementId = '{{ settings.GA_MEASUREMENT_ID|escapejs }}';
-    const identitySignals = window.GobiiIdentitySignals;
+    const identitySignals = window.Operario AIIdentitySignals;
     const fpjsLoaderUrl = '{{ settings.FINGERPRINT_JS_URL|escapejs }}?apiKey={{ settings.FINGERPRINT_JS_API_KEY|escapejs }}';
     const behaviorUrl = '{{ settings.FINGERPRINT_JS_BEHAVIOR_URL|escapejs }}';
     const fpjsTimeoutMs = 3000;
@@ -160,7 +160,7 @@
     const gaClientIdPromise = identitySignals.createGaClientIdPromise({
       measurementId,
       onResolved: (normalizedGaClientId) => {
-        identitySignals.writeCookie('gobii_signup_ga_client_id', normalizedGaClientId, cookieMaxAge);
+        identitySignals.writeCookie('operario_signup_ga_client_id', normalizedGaClientId, cookieMaxAge);
       },
     });
 
@@ -174,8 +174,8 @@
         behaviorUrl,
         timeoutMs: fpjsTimeoutMs,
         onResolved: (result) => {
-          identitySignals.writeCookie('gobii_signup_fpjs_visitor_id', result.visitorId, cookieMaxAge);
-          identitySignals.writeCookie('gobii_signup_fpjs_request_id', result.requestId, cookieMaxAge);
+          identitySignals.writeCookie('operario_signup_fpjs_visitor_id', result.visitorId, cookieMaxAge);
+          identitySignals.writeCookie('operario_signup_fpjs_request_id', result.requestId, cookieMaxAge);
         },
       });
       return fpjsPromise;

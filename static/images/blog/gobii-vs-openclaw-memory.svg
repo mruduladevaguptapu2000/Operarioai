@@ -1,10 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 800" width="1400" height="800" role="img" aria-label="Memory architecture comparison between OpenClaw and Gobii">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 800" width="1400" height="800" role="img" aria-label="Memory architecture comparison between OpenClaw and Operario AI">
   <defs>
     <linearGradient id="clawPanel" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#fff7ed"/>
       <stop offset="100%" stop-color="#ffedd5"/>
     </linearGradient>
-    <linearGradient id="gobiiPanel" x1="0" y1="0" x2="0" y2="1">
+    <linearGradient id="operarioPanel" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#ecfeff"/>
       <stop offset="100%" stop-color="#cffafe"/>
     </linearGradient>
@@ -12,7 +12,7 @@
       <stop offset="0%" stop-color="#ffffff"/>
       <stop offset="100%" stop-color="#fff5eb"/>
     </linearGradient>
-    <linearGradient id="gobiiCard" x1="0" y1="0" x2="1" y2="1">
+    <linearGradient id="operarioCard" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#ffffff"/>
       <stop offset="100%" stop-color="#ecfeff"/>
     </linearGradient>
@@ -56,22 +56,22 @@
   <rect x="180" y="686" width="390" height="54" rx="14" ry="14" fill="#ffedd5" stroke="#ea580c" stroke-width="2"/>
   <text class="tag" x="375" y="721" text-anchor="middle">Retrieval readability emphasized</text>
 
-  <rect class="lane" x="720" y="92" width="610" height="668" fill="url(#gobiiPanel)" stroke="#0891b2"/>
-  <text class="laneTitle" x="1025" y="138" text-anchor="middle">Gobii: SQLite Runtime-First</text>
+  <rect class="lane" x="720" y="92" width="610" height="668" fill="url(#operarioPanel)" stroke="#0891b2"/>
+  <text class="laneTitle" x="1025" y="138" text-anchor="middle">Operario AI: SQLite Runtime-First</text>
 
-  <rect class="card" x="795" y="160" width="460" height="76" fill="url(#gobiiCard)" stroke="#0891b2"/>
+  <rect class="card" x="795" y="160" width="460" height="76" fill="url(#operarioCard)" stroke="#0891b2"/>
   <text class="cardText" x="1025" y="208" text-anchor="middle">per-agent SQLite runtime DB</text>
 
-  <rect class="card" x="795" y="274" width="460" height="76" fill="url(#gobiiCard)" stroke="#0891b2"/>
+  <rect class="card" x="795" y="274" width="460" height="76" fill="url(#operarioCard)" stroke="#0891b2"/>
   <text class="cardText" x="1025" y="322" text-anchor="middle">__agent_config / __messages / __files</text>
 
-  <rect class="card" x="795" y="388" width="460" height="76" fill="url(#gobiiCard)" stroke="#0891b2"/>
+  <rect class="card" x="795" y="388" width="460" height="76" fill="url(#operarioCard)" stroke="#0891b2"/>
   <text class="cardText" x="1025" y="436" text-anchor="middle">tool execution mutates structured state</text>
 
-  <rect class="card" x="795" y="502" width="460" height="76" fill="url(#gobiiCard)" stroke="#0891b2"/>
+  <rect class="card" x="795" y="502" width="460" height="76" fill="url(#operarioCard)" stroke="#0891b2"/>
   <text class="cardText" x="1025" y="550" text-anchor="middle">charter + schedule sync tooling</text>
 
-  <rect class="card" x="795" y="616" width="460" height="76" fill="url(#gobiiCard)" stroke="#0891b2"/>
+  <rect class="card" x="795" y="616" width="460" height="76" fill="url(#operarioCard)" stroke="#0891b2"/>
   <text class="cardText" x="1025" y="664" text-anchor="middle">zstd archive to object storage</text>
 
   <path class="connector" d="M1025 236 L1025 274"/>

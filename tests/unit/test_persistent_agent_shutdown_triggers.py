@@ -21,7 +21,7 @@ class PersistentAgentShutdownTriggersTests(TestCase):
     def tearDown(self):
         self._sync_patch.stop()
 
-    @override_settings(GOBII_RELEASE_ENV="test")
+    @override_settings(OPERARIO_RELEASE_ENV="test")
     def test_shutdown_transitions_enqueue_service(self):
         User = get_user_model()
         user = User.objects.create_user(username="triggers@example.com")
@@ -72,7 +72,7 @@ class PersistentAgentShutdownTriggersTests(TestCase):
                     agent.save(update_fields=["life_state"])
                 self.assertIn((str(agent.id), "SOFT_EXPIRE"), calls)
 
-    @override_settings(GOBII_RELEASE_ENV="test")
+    @override_settings(OPERARIO_RELEASE_ENV="test")
     def test_pause_transition_clears_processing_work_state(self):
         User = get_user_model()
         user = User.objects.create_user(username="pause-clears@example.com")

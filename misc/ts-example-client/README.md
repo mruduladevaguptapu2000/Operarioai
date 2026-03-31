@@ -1,12 +1,12 @@
-# Gobii TypeScript Example API Client
+# Operario AI TypeScript Example API Client
 
-This directory contains an example command-line client written in TypeScript to demonstrate interaction with the Gobii API using the auto-generated `@gobii-ai/client` package.
+This directory contains an example command-line client written in TypeScript to demonstrate interaction with the Operario AI API using the auto-generated `@operario-ai/client` package.
 
 ## Prerequisites
 
 - Node.js (v18 or later recommended)
 - npm (usually included with Node.js)
-- A valid Gobii API Key
+- A valid Operario AI API Key
 
 ## Setup
 
@@ -16,12 +16,12 @@ This directory contains an example command-line client written in TypeScript to 
     npm install
     ```
 
-    This will install the `@gobii-ai/client`, `commander`, `dotenv`, `uuid`, and necessary development dependencies.
+    This will install the `@operario-ai/client`, `commander`, `dotenv`, `uuid`, and necessary development dependencies.
 
 2.  **Configure API Key:** Create a file named `.env` in this directory (`ts-example-client/.env`) and add your API key:
 
     ```dotenv
-    GOBII_API_KEY=your_actual_api_key_here
+    OPERARIO_API_KEY=your_actual_api_key_here
     ```
 
 3.  **Build the Client:** Compile the TypeScript code:
@@ -36,7 +36,7 @@ You can run the client using `npm start -- [command] [options/arguments]` or dir
 
 **Global Options:**
 
-*   `-k, --api-key <key>`: Gobii API Key (defaults to value in `.env`)
+*   `-k, --api-key <key>`: Operario AI API Key (defaults to value in `.env`)
 *   `-b, --base-url <url>`: API Base URL (defaults to `http://127.0.0.1:8000/api/v1`)
 
 **Available Commands:**
@@ -75,14 +75,14 @@ npm run dev -- --list-agents
 
 ## Client Generation
 
-This client uses a TypeScript API client generated from the Gobii API OpenAPI schema. To regenerate the client, use the provided script:
+This client uses a TypeScript API client generated from the Operario AI API OpenAPI schema. To regenerate the client, use the provided script:
 
 ```bash
 ./generate-client.sh
 ```
 
 This will:
-1. Call the main generation script in `gobii_platform/scripts/generate-ts-client.sh`
+1. Call the main generation script in `operario_platform/scripts/generate-ts-client.sh`
 2. Generate the latest OpenAPI schema from the Django backend
 3. Use OpenAPI Generator to create the TypeScript client in `src/generated`
 
@@ -95,7 +95,7 @@ After regenerating, rebuild the client with `npm run build`.
 *   The TypeScript client provides full type safety and autocompletion.
 *   All methods return Promises and should be used with async/await or .then().
 *   Error handling should be implemented for production use.
-*   The client resolves a base URL from `API_BASE_URL`, `GOBII_API_BASE_URL`, or `PUBLIC_SITE_URL`. If none are set it falls back to `https://gobii.ai/api/v1` when `GOBII_PROPRIETARY_MODE=true`, otherwise `http://localhost:8000/api/v1`.
+*   The client resolves a base URL from `API_BASE_URL`, `OPERARIO_API_BASE_URL`, or `PUBLIC_SITE_URL`. If none are set it falls back to `https://operario.ai/api/v1` when `OPERARIO_PROPRIETARY_MODE=true`, otherwise `http://localhost:8000/api/v1`.
 
 ## API Structure
 

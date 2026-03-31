@@ -170,12 +170,12 @@
       const data = event.data || {};
 
       // Handle close request from iframe
-      if (data.type === 'gobii-immersive-close') {
+      if (data.type === 'operario-immersive-close') {
         closeOverlay(false);
         return;
       }
 
-      if (data.type !== 'gobii-immersive-path' || typeof data.path !== 'string') {
+      if (data.type !== 'operario-immersive-path' || typeof data.path !== 'string') {
         return;
       }
       window.history.replaceState({ immersive: true }, '', data.path);
@@ -253,7 +253,7 @@
       openOverlay({ returnTo });
     });
 
-    window.GobiiImmersiveOverlay = {
+    window.Operario AIImmersiveOverlay = {
       open: openOverlay,
       close: () => closeOverlay(false),
       isOpen: () => isOpen,

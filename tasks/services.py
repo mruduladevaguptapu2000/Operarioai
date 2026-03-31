@@ -44,7 +44,7 @@ import os
 
 import logging
 logger = logging.getLogger(__name__)
-tracer = trace.get_tracer("gobii.utils")
+tracer = trace.get_tracer("operario.utils")
 
 
 # Constants for task credit thresholds
@@ -111,8 +111,8 @@ class TaskCreditService:
     def _is_community_unlimited() -> bool:
         """Return True when running Community Edition with unlimited credits enabled.
 
-        Community Edition is the default (GOBII_PROPRIETARY_MODE=False). When
-        GOBII_ENABLE_COMMUNITY_UNLIMITED is True (default in config/settings.py),
+        Community Edition is the default (OPERARIO_PROPRIETARY_MODE=False). When
+        OPERARIO_ENABLE_COMMUNITY_UNLIMITED is True (default in config/settings.py),
         all task‑credit checks should behave as unlimited to avoid low‑credit
         warnings or gating.
         """
@@ -120,8 +120,8 @@ class TaskCreditService:
             # Never enable unlimited mode during test runs
             if 'test_settings' in os.environ.get('DJANGO_SETTINGS_MODULE', ''):
                 return False
-            return (not getattr(settings, "GOBII_PROPRIETARY_MODE", False)) and bool(
-                getattr(settings, "GOBII_ENABLE_COMMUNITY_UNLIMITED", False)
+            return (not getattr(settings, "OPERARIO_PROPRIETARY_MODE", False)) and bool(
+                getattr(settings, "OPERARIO_ENABLE_COMMUNITY_UNLIMITED", False)
             )
         except Exception:
             return False

@@ -4,7 +4,7 @@ order: 35
 icon: stopwatch
 ---
 
-Waiting for short-running jobs right inside the HTTP call can simplify your workflow—no polling loop, no extra queues.  Gobii lets you do that with the **`wait`** parameter.
+Waiting for short-running jobs right inside the HTTP call can simplify your workflow—no polling loop, no extra queues.  Operario AI lets you do that with the **`wait`** parameter.
 
 ## Why wait?
 
@@ -28,8 +28,8 @@ Waiting for short-running jobs right inside the HTTP call can simplify your work
 ```bash
 curl --no-buffer \
   -X POST \
-  https://gobii.ai/api/v1/tasks/browser-use/ \
-  -H "X-Api-Key: $GOBII_API_KEY" \
+  https://operario.ai/api/v1/tasks/browser-use/ \
+  -H "X-Api-Key: $OPERARIO_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
         "prompt": "Search for the latest AI news on HackerNews and return the top 3 headlines",

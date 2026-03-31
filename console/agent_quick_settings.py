@@ -23,7 +23,7 @@ def build_agent_quick_settings_payload(agent, owner=None) -> dict:
     plan_name = plan_payload.get("name") if plan_payload else ""
     is_free_plan = plan_id == PlanNamesChoices.FREE.value
 
-    if is_free_plan and settings.GOBII_PROPRIETARY_MODE:
+    if is_free_plan and settings.OPERARIO_PROPRIETARY_MODE:
         try:
             upgrade_url = reverse("proprietary:pricing")
         except NoReverseMatch:

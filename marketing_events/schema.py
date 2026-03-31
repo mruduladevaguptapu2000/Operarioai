@@ -20,7 +20,7 @@ CANONICAL_EVENT_MAP = {
     "InboundMessage": "InboundMessage",
     "IntegrationAdded": "IntegrationAdded",
     "SecretAdded": "SecretAdded",
-    "CloneGobii": "CloneGobii",
+    "CloneOperario AI": "CloneOperario AI",
     "TemplateLaunched": "TemplateLaunched",
 }
 

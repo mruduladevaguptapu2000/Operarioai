@@ -134,7 +134,7 @@ class DailyCreditSettingsTests(TestCase):
         self.assertEqual(settings.offpeak_burn_rate_threshold_per_hour, Decimal("7.5"))
 
     def test_default_daily_credit_limit_scales_with_intelligence_tier(self):
-        with patch("config.settings.GOBII_PROPRIETARY_MODE", True), patch(
+        with patch("config.settings.OPERARIO_PROPRIETARY_MODE", True), patch(
             "config.settings.DEFAULT_AGENT_DAILY_CREDIT_TARGET", 5
         ), patch("config.settings.PAID_AGENT_DAILY_CREDIT_TARGET", 10):
             self.user.billing.subscription = PlanNames.STARTUP

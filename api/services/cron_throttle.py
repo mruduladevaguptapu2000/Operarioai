@@ -229,7 +229,7 @@ def select_cron_throttle_footer(
         else None
     )
 
-    if not getattr(settings, "GOBII_PROPRIETARY_MODE", False):
+    if not getattr(settings, "OPERARIO_PROPRIETARY_MODE", False):
         interval_line = (
             f"<p>Current interval: about <strong>{interval_text}</strong>.</p>"
             if interval_text
@@ -299,7 +299,7 @@ def select_cron_throttle_sms_suffix(
         else None
     )
 
-    if not getattr(settings, "GOBII_PROPRIETARY_MODE", False):
+    if not getattr(settings, "OPERARIO_PROPRIETARY_MODE", False):
         suffix = f"Heads up: {agent_name} scheduled runs may be delayed to manage resources"
         if interval_text:
             suffix = f"{suffix} (about every {interval_text})"

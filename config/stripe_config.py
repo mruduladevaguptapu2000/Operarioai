@@ -111,7 +111,7 @@ def _first_price_id(values: tuple[str, ...] | list[str] | None) -> str:
 
 def _env_defaults() -> StripeSettings:
     return StripeSettings(
-        release_env=getattr(settings, "GOBII_RELEASE_ENV", "local"),
+        release_env=getattr(settings, "OPERARIO_RELEASE_ENV", "local"),
         live_mode=getattr(settings, "STRIPE_LIVE_MODE", False),
         live_secret_key=getattr(settings, "STRIPE_LIVE_SECRET_KEY", None),
         test_secret_key=getattr(settings, "STRIPE_TEST_SECRET_KEY", None),
@@ -234,7 +234,7 @@ def _load_from_database() -> Optional[StripeSettings]:
     except (LookupError, ImproperlyConfigured):
         return None
 
-    release_env = getattr(settings, "GOBII_RELEASE_ENV", "local")
+    release_env = getattr(settings, "OPERARIO_RELEASE_ENV", "local")
 
     try:
         config = StripeConfig.objects.prefetch_related("entries").get(release_env=release_env)

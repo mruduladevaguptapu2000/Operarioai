@@ -168,8 +168,8 @@ def environment_info(request):
     """
     release_env = getattr(
         django_settings,
-        "GOBII_RELEASE_ENV",
-        getattr(settings, "GOBII_RELEASE_ENV", "local"),
+        "OPERARIO_RELEASE_ENV",
+        getattr(settings, "OPERARIO_RELEASE_ENV", "local"),
     )
     return {
         'environment': {

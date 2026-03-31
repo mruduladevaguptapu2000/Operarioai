@@ -37,7 +37,7 @@ User = get_user_model()
 
 
 @tag("batch_llm_intelligence")
-@override_settings(GOBII_PROPRIETARY_MODE=True)
+@override_settings(OPERARIO_PROPRIETARY_MODE=True)
 class AgentTierPreferenceTests(TestCase):
     def setUp(self):
         self.user = User.objects.create_user(
@@ -123,7 +123,7 @@ class AgentTierPreferenceTests(TestCase):
 
 
 @tag("batch_llm_intelligence")
-@override_settings(GOBII_PROPRIETARY_MODE=True)
+@override_settings(OPERARIO_PROPRIETARY_MODE=True)
 class SystemDefaultTierTests(TestCase):
     def setUp(self):
         cache.clear()

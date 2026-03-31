@@ -69,7 +69,7 @@ def get_send_chat_tool() -> Dict[str, Any]:
         "function": {
             "name": "send_chat_message",
             "description": (
-                "Send a response to the user via Gobii's in-console web chat. "
+                "Send a response to the user via Operario AI's in-console web chat. "
                 "Use this for quick updates, follow-up questions, or sharing results in real time."
             ),
             "parameters": {

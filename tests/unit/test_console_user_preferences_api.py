@@ -244,7 +244,7 @@ class ConsoleUserPreferencesApiTests(TestCase):
     def test_console_api_infers_timezone_when_preference_blank(self):
         response = self.client.get(
             self.url,
-            HTTP_X_GOBII_TIMEZONE="America/Los_Angeles",
+            HTTP_X_OPERARIO_TIMEZONE="America/Los_Angeles",
         )
         self.assertEqual(response.status_code, 200)
         preferences = response.json().get("preferences", {})
@@ -261,7 +261,7 @@ class ConsoleUserPreferencesApiTests(TestCase):
 
         response = self.client.get(
             self.url,
-            HTTP_X_GOBII_TIMEZONE="America/Los_Angeles",
+            HTTP_X_OPERARIO_TIMEZONE="America/Los_Angeles",
         )
         self.assertEqual(response.status_code, 200)
         preferences = response.json().get("preferences", {})
@@ -273,7 +273,7 @@ class ConsoleUserPreferencesApiTests(TestCase):
     def test_console_api_inference_works_for_login_required_console_views(self):
         response = self.client.get(
             reverse("console_session"),
-            HTTP_X_GOBII_TIMEZONE="America/Denver",
+            HTTP_X_OPERARIO_TIMEZONE="America/Denver",
         )
         self.assertEqual(response.status_code, 200)
 
@@ -286,7 +286,7 @@ class ConsoleUserPreferencesApiTests(TestCase):
     def test_console_api_ignores_invalid_timezone_header(self):
         response = self.client.get(
             reverse("console_session"),
-            HTTP_X_GOBII_TIMEZONE="Not/A_Real_Zone",
+            HTTP_X_OPERARIO_TIMEZONE="Not/A_Real_Zone",
         )
         self.assertEqual(response.status_code, 200)
 

@@ -301,7 +301,7 @@ def _dispatch_marketing_event(payload: dict):
     max_retries=6,
 )
 def enqueue_marketing_event(self, payload: dict):
-    if not settings.GOBII_PROPRIETARY_MODE:
+    if not settings.OPERARIO_PROPRIETARY_MODE:
         return
     _dispatch_marketing_event(payload)
 
@@ -314,7 +314,7 @@ def enqueue_marketing_event(self, payload: dict):
     max_retries=6,
 )
 def enqueue_start_trial_marketing_event(self, payload: dict):
-    if not settings.GOBII_PROPRIETARY_MODE:
+    if not settings.OPERARIO_PROPRIETARY_MODE:
         return
     should_send, decision_source = _should_send_subscription_guarded_event(payload)
     if not should_send:
@@ -335,7 +335,7 @@ def enqueue_start_trial_marketing_event(self, payload: dict):
     max_retries=6,
 )
 def enqueue_delayed_subscription_guarded_marketing_event(self, payload: dict):
-    if not settings.GOBII_PROPRIETARY_MODE:
+    if not settings.OPERARIO_PROPRIETARY_MODE:
         return
     should_send, decision_source = _should_send_subscription_guarded_event(payload)
     if not should_send:

@@ -310,8 +310,8 @@ class TrialAbuseServiceTests(TestCase):
             },
         )
         request.COOKIES = {
-            "gobii_signup_fpjs_visitor_id": "visitor-stale",
-            "gobii_signup_fpjs_request_id": "request-stale",
+            "operario_signup_fpjs_visitor_id": "visitor-stale",
+            "operario_signup_fpjs_request_id": "request-stale",
         }
 
         extracted = extract_request_identity_signal_values(request, include_fpjs=True)
@@ -323,8 +323,8 @@ class TrialAbuseServiceTests(TestCase):
     def test_non_post_signup_flow_can_use_staged_fpjs_cookies(self):
         request = self.factory.get("/accounts/google/login/callback/")
         request.COOKIES = {
-            "gobii_signup_fpjs_visitor_id": "visitor-current",
-            "gobii_signup_fpjs_request_id": "request-current",
+            "operario_signup_fpjs_visitor_id": "visitor-current",
+            "operario_signup_fpjs_request_id": "request-current",
         }
 
         extracted = extract_request_identity_signal_values(request, include_fpjs=True)

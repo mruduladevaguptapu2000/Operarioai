@@ -40,7 +40,7 @@ from ..core.processing_flags import (
     set_processing_queued_flag,
 )
 
-tracer = trace.get_tracer("gobii.utils")
+tracer = trace.get_tracer("operario.utils")
 logger = logging.getLogger(__name__)
 
 

@@ -9,7 +9,7 @@ from opentelemetry import trace
 from util.integrations import twilio_status
 
 logger = logging.getLogger(__name__)
-tracer = trace.get_tracer("gobii.utils")
+tracer = trace.get_tracer("operario.utils")
 
 
 @shared_task

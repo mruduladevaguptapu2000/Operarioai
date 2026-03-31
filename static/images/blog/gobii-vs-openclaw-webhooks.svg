@@ -1,10 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 780" width="1400" height="780" role="img" aria-label="Webhook architecture comparison between OpenClaw and Gobii">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 780" width="1400" height="780" role="img" aria-label="Webhook architecture comparison between OpenClaw and Operario AI">
   <defs>
     <linearGradient id="clawPanel" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#fff7ed"/>
       <stop offset="100%" stop-color="#ffedd5"/>
     </linearGradient>
-    <linearGradient id="gobiiPanel" x1="0" y1="0" x2="0" y2="1">
+    <linearGradient id="operarioPanel" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#ecfeff"/>
       <stop offset="100%" stop-color="#cffafe"/>
     </linearGradient>
@@ -12,7 +12,7 @@
       <stop offset="0%" stop-color="#ffffff"/>
       <stop offset="100%" stop-color="#fff5eb"/>
     </linearGradient>
-    <linearGradient id="gobiiCard" x1="0" y1="0" x2="1" y2="1">
+    <linearGradient id="operarioCard" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#ffffff"/>
       <stop offset="100%" stop-color="#ecfeff"/>
     </linearGradient>
@@ -52,29 +52,29 @@
   <path class="connector" d="M375 394 L375 444"/>
   <path class="connector" d="M375 528 L375 578"/>
 
-  <rect class="lane" x="720" y="92" width="610" height="648" fill="url(#gobiiPanel)" stroke="#0891b2"/>
-  <text class="laneTitle" x="1025" y="138" text-anchor="middle">Gobii: Inbound + Outbound Webhooks</text>
+  <rect class="lane" x="720" y="92" width="610" height="648" fill="url(#operarioPanel)" stroke="#0891b2"/>
+  <text class="laneTitle" x="1025" y="138" text-anchor="middle">Operario AI: Inbound + Outbound Webhooks</text>
 
-  <rect class="card" x="835" y="176" width="380" height="84" fill="url(#gobiiCard)" stroke="#0891b2"/>
+  <rect class="card" x="835" y="176" width="380" height="84" fill="url(#operarioCard)" stroke="#0891b2"/>
   <text class="cardText" x="1025" y="228" text-anchor="middle">Webhook Integration Surface</text>
 
-  <rect class="card" x="756" y="306" width="250" height="78" fill="url(#gobiiCard)" stroke="#0891b2"/>
+  <rect class="card" x="756" y="306" width="250" height="78" fill="url(#operarioCard)" stroke="#0891b2"/>
   <text class="cardText" x="881" y="355" text-anchor="middle">provider webhooks</text>
 
-  <rect class="card" x="756" y="430" width="250" height="78" fill="url(#gobiiCard)" stroke="#0891b2"/>
+  <rect class="card" x="756" y="430" width="250" height="78" fill="url(#operarioCard)" stroke="#0891b2"/>
   <text class="cardText" x="881" y="479" text-anchor="middle">token validation</text>
 
-  <rect class="card" x="756" y="554" width="250" height="78" fill="url(#gobiiCard)" stroke="#0891b2"/>
+  <rect class="card" x="756" y="554" width="250" height="78" fill="url(#operarioCard)" stroke="#0891b2"/>
   <text class="cardText" x="881" y="596" text-anchor="middle">ingest_inbound</text>
   <text class="cardText" x="881" y="622" text-anchor="middle">message</text>
 
-  <rect class="card" x="1044" y="306" width="250" height="78" fill="url(#gobiiCard)" stroke="#0891b2"/>
+  <rect class="card" x="1044" y="306" width="250" height="78" fill="url(#operarioCard)" stroke="#0891b2"/>
   <text class="cardText" x="1169" y="355" text-anchor="middle">Webhook model</text>
 
-  <rect class="card" x="1044" y="430" width="250" height="78" fill="url(#gobiiCard)" stroke="#0891b2"/>
+  <rect class="card" x="1044" y="430" width="250" height="78" fill="url(#operarioCard)" stroke="#0891b2"/>
   <text class="cardText" x="1169" y="479" text-anchor="middle">send_webhook_event</text>
 
-  <rect class="card" x="1044" y="554" width="250" height="78" fill="url(#gobiiCard)" stroke="#0891b2"/>
+  <rect class="card" x="1044" y="554" width="250" height="78" fill="url(#operarioCard)" stroke="#0891b2"/>
   <text class="cardText" x="1169" y="603" text-anchor="middle">external systems</text>
 
   <path class="connector" d="M1025 260 L881 306"/>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>{{ title|default:"Connection Error" }} – Gobii</title>
+  <title>{{ title|default:"Connection Error" }} – Operario AI</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     :root {
@@ -153,7 +153,7 @@
     </div>
     {% if show_support|default:True %}
     <div class="support-text">
-      {% if settings.GOBII_PROPRIETARY_MODE %}
+      {% if settings.OPERARIO_PROPRIETARY_MODE %}
       Still having trouble? <a href="{% url 'proprietary:support' %}">Contact support</a>
       {% else %}
       Still having trouble? <a href="mailto:{{ settings.PUBLIC_SUPPORT_EMAIL }}">Contact support</a>

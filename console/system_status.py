@@ -62,7 +62,7 @@ def build_system_status_payload():
 
     return {
         "meta": {
-            "environment": getattr(settings, "GOBII_RELEASE_ENV", "local"),
+            "environment": getattr(settings, "OPERARIO_RELEASE_ENV", "local"),
             "refreshedAt": now.isoformat(),
             "pollIntervalSeconds": SYSTEM_STATUS_POLL_INTERVAL_SECONDS,
         },
@@ -176,7 +176,7 @@ def _collect_agent_processing_section(*, now):
             "rows": [],
         }
 
-    current_env = getattr(settings, "GOBII_RELEASE_ENV", "local")
+    current_env = getattr(settings, "OPERARIO_RELEASE_ENV", "local")
     agent_ids = [UUID(agent_id) for agent_id in agent_state_map.keys()]
     agents = {
         str(agent.id): agent
@@ -238,7 +238,7 @@ def _collect_agent_processing_section(*, now):
 
 def _collect_web_session_section(*, now):
     ttl_seconds = WEB_SESSION_TTL_SECONDS
-    current_env = getattr(settings, "GOBII_RELEASE_ENV", "local")
+    current_env = getattr(settings, "OPERARIO_RELEASE_ENV", "local")
     sessions = list(
         get_live_web_sessions_for_environment(
             current_env,
@@ -272,7 +272,7 @@ def _collect_web_session_section(*, now):
 
 
 def _collect_compute_section(*, now):
-    current_env = getattr(settings, "GOBII_RELEASE_ENV", "local")
+    current_env = getattr(settings, "OPERARIO_RELEASE_ENV", "local")
     sessions = list(
         AgentComputeSession.objects.filter(
             agent__execution_environment=current_env,
@@ -406,7 +406,7 @@ def _collect_proxy_section(*, now):
 
 
 def _collect_browser_task_section(*, now):
-    current_env = getattr(settings, "GOBII_RELEASE_ENV", "local")
+    current_env = getattr(settings, "OPERARIO_RELEASE_ENV", "local")
     task_queryset = (
         BrowserUseAgentTask.objects.alive()
         .filter(

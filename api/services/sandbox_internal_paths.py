@@ -1,6 +1,6 @@
 from typing import Any
 
-CUSTOM_TOOL_SQLITE_FILESPACE_PATH = "/.gobii/internal/custom_tool_agent_state.sqlite3"
+CUSTOM_TOOL_SQLITE_FILESPACE_PATH = "/.operario/internal/custom_tool_agent_state.sqlite3"
 CUSTOM_TOOL_SQLITE_WORKSPACE_PATH = f"/workspace{CUSTOM_TOOL_SQLITE_FILESPACE_PATH}"
 
 _SANDBOX_INTERNAL_FILESPACE_PATHS = {

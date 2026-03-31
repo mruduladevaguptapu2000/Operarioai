@@ -10,9 +10,9 @@ in Django’s `BaseCommand` framework so it can be invoked via the standard
 
 Example usages
 --------------
-# Dry‑run – preview five US numbers ending in GOBII without purchasing
+# Dry‑run – preview five US numbers ending in OPERARIO without purchasing
 $ python manage.py buy_numbers --count 5 --country US \
-                         --vanity GOBII \
+                         --vanity OPERARIO \
                          --dry-run
 
 # Buy ten Virginia (571) numbers and add them to a Messaging Service
@@ -76,7 +76,7 @@ class Command(BaseCommand):
         parser.add_argument(
             "--vanity",
             help=(
-                "Vanity word/digits the number *must end with* – e.g. GOBII. "
+                "Vanity word/digits the number *must end with* – e.g. OPERARIO. "
                 "Case‑insensitive."
             ),
         )

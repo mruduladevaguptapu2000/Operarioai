@@ -4,7 +4,7 @@
   {% if current_context.type == 'organization' %}
     {% with overview=org_billing_overview %}
     <div class="space-y-6">
-      <div class="gobii-card-base p-6">
+      <div class="operario-card-base p-6">
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div>
             <h1 class="text-2xl font-semibold text-slate-900">{{ organization.name }} Billing</h1>
@@ -60,7 +60,7 @@
         </div>
       {% endif %}
 
-      <div class="gobii-card-base p-6">
+      <div class="operario-card-base p-6">
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div>
             <h2 class="text-lg font-semibold text-slate-900">Seat Management</h2>
@@ -186,7 +186,7 @@
 
       {% include "console/partials/addons_block.html" with addon_context=addon_context addons_disabled=org_addons_disabled heading="Add-ons" subheading="Adjust task, contact, and browser task packs for this billing period." %}
 
-      <div class="gobii-card-base p-6">
+      <div class="operario-card-base p-6">
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
           <div>
             <h2 class="text-lg font-semibold text-slate-900">Dedicated IPs</h2>
@@ -216,8 +216,8 @@
           {% endif %}
         {% else %}
           <div class="mt-4 rounded-md border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
-            {% if settings.GOBII_PROPRIETARY_MODE %}
-              Upgrade to a <a href="{% url "proprietary:pricing" %}" title="Gobii Pro Plan" class="underline">Pro</a> or <a href="{% url "proprietary:pricing" %}" title="Gobii Scale Plan" class="underline">Scale</a> plan to enable dedicated IPs.
+            {% if settings.OPERARIO_PROPRIETARY_MODE %}
+              Upgrade to a <a href="{% url "proprietary:pricing" %}" title="Operario AI Pro Plan" class="underline">Pro</a> or <a href="{% url "proprietary:pricing" %}" title="Operario AI Scale Plan" class="underline">Scale</a> plan to enable dedicated IPs.
             {% else %}
               Dedicated IPs are not available in this deployment.
             {% endif %}
@@ -270,7 +270,7 @@
       </div>
 
       {% if account.paid == True %}
-      <div class="gobii-card-base p-6"
+      <div class="operario-card-base p-6"
            x-data="billingSettings({ enabled: {{ org_auto_purchase_state.enabled|yesno:'true,false' }}, infinite: {{ org_auto_purchase_state.infinite|yesno:'true,false' }}, maxTasks: {{ org_auto_purchase_state.max_tasks }}, canModify: {{ org_can_manage_billing|yesno:'true,false' }} })"
            x-init="loadSettings()">
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
@@ -326,7 +326,7 @@
     {% endwith %}
   {% else %}
     <div x-data="billingSettings()" x-init="loadSettings()">
-      <div class="hs-accordion-group gobii-card-base">
+      <div class="hs-accordion-group operario-card-base">
         <div class="px-6 py-3 border-gray-200/70 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
             <h1 class="text-2xl font-semibold text-gray-800">Billing</h1>
@@ -348,7 +348,7 @@
             <div class="flex flex-col">
               <span class="text-sm font-medium text-gray-500">Subscription Plan</span>
               <span class="text-lg font-semibold text-gray-800">{{ subscription_plan.name }}</span>
-              {% if settings.GOBII_PROPRIETARY_MODE %}
+              {% if settings.OPERARIO_PROPRIETARY_MODE %}
               {% if not account.paid or account.plan == "startup" %}
               <span class="text-xs text-gray-400 mt-1">
                 <a href="{% url 'proprietary:pricing' %}" class="underline" title="Upgrade for additional features, tasks, contacts, and more.">Upgrade</a>
@@ -389,8 +389,8 @@
               </form>
             {% else %}
               <div class="mt-3 rounded-md border border-yellow-200 bg-yellow-50 px-4 py-3 text-sm text-yellow-800">
-                {% if settings.GOBII_PROPRIETARY_MODE %}
-                  Upgrade to a <a href="{% url "proprietary:pricing" %}" title="Gobii Pro Plan" class="underline">Pro</a> or <a href="{% url "proprietary:pricing" %}" title="Gobii Scale Plan" class="underline">Scale</a> plan to enable dedicated IPs.
+                {% if settings.OPERARIO_PROPRIETARY_MODE %}
+                  Upgrade to a <a href="{% url "proprietary:pricing" %}" title="Operario AI Pro Plan" class="underline">Pro</a> or <a href="{% url "proprietary:pricing" %}" title="Operario AI Scale Plan" class="underline">Scale</a> plan to enable dedicated IPs.
                 {% else %}
                   Dedicated IPs are not available in this deployment.
                 {% endif %}

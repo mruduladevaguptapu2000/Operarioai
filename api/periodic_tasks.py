@@ -25,21 +25,21 @@ def add_dynamic_schedules():
     """Add nightly tasks for IP sync and proxy health checks."""
     # Add single nightly sync job that will iterate all blocks
     beat_schedule["decodo-ip-sync-daily"] = {
-        "task": "gobii_platform.api.tasks.sync_all_ip_blocks",
+        "task": "operario_platform.api.tasks.sync_all_ip_blocks",
         "schedule": crontab(hour=2, minute=0),  # 02:00 UTC daily
         "args": [],
     }
     
     # Add nightly proxy health check
     beat_schedule["proxy-health-check-nightly"] = {
-        "task": "gobii_platform.api.tasks.proxy_health_check_nightly",
+        "task": "operario_platform.api.tasks.proxy_health_check_nightly",
         "schedule": crontab(hour=3, minute=30),  # 03:30 UTC daily (after IP sync)
         "args": [],
     }
 
     # Daily Decodo inventory reminder (only sends when under threshold)
     beat_schedule["decodo-low-inventory-daily"] = {
-        "task": "gobii_platform.api.tasks.decodo_low_inventory_reminder",
+        "task": "operario_platform.api.tasks.decodo_low_inventory_reminder",
         "schedule": crontab(hour=4, minute=0),  # 04:00 UTC daily
         "args": [],
     }
@@ -53,7 +53,7 @@ def add_dynamic_schedules():
 
     # Hourly soft-expiration sweep for inactive free-plan agents
     beat_schedule["agent-soft-expire-hourly"] = {
-        "task": "gobii_platform.api.tasks.soft_expire_inactive_agents_task",
+        "task": "operario_platform.api.tasks.soft_expire_inactive_agents_task",
         "schedule": crontab(minute=0),  # Top of every hour UTC
         "args": [],
     }
@@ -67,7 +67,7 @@ def add_dynamic_schedules():
 
     # Hourly rollup of fractional task usage into Stripe meter events
     beat_schedule["meter-usage-rollup-daily"] = {
-        "task": "gobii_platform.api.tasks.rollup_and_meter_usage",
+        "task": "operario_platform.api.tasks.rollup_and_meter_usage",
         "schedule": crontab(hour="*", minute=11),  # 11 minutes after every hour
         "args": [],
     }

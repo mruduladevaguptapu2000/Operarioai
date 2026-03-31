@@ -1,12 +1,12 @@
 ---
-title: Why Gobii API?
+title: Why Operario AI API?
 order: 5
 icon: guide
 ---
 
-**Gobii** is a platform for launching fully managed `browser-use` agents in the cloud. Our API makes the full power of the Gobii platform accessible to developers and power users who want to build on top of our browser automation capabilities.
+**Operario AI** is a platform for launching fully managed `browser-use` agents in the cloud. Our API makes the full power of the Operario AI platform accessible to developers and power users who want to build on top of our browser automation capabilities.
 
-## Why use the Gobii API?
+## Why use the Operario AI API?
 
 - **Simplified Browser Automation**: Focus on what you want to accomplish, not the technical details of web scraping
 - **Scalable Infrastructure**: Run hundreds of browser automation tasks in parallel
@@ -31,7 +31,7 @@ icon: guide
 
 ## Getting Started
 
-To begin using Gobii, you'll need to:
+To begin using Operario AI, you'll need to:
 
 1. [Sign up for an account](/accounts/signup/)
 2. Get your API key from the Console

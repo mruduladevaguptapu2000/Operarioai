@@ -47,10 +47,10 @@ function deriveCookieDomain(hostname) {
 
 const COOKIE_DOMAIN = deriveCookieDomain(window.location.hostname);
 
-// Smoke check helper (manual): run `window.__gobiiAnalyticsCookieDomainFor('app.example.co.uk')`
+// Smoke check helper (manual): run `window.__operarioAnalyticsCookieDomainFor('app.example.co.uk')`
 // in the browser console to verify how we derive the cookie scope for a hostname.
 if (typeof window !== 'undefined') {
-  window.__gobiiAnalyticsCookieDomainFor = deriveCookieDomain;
+  window.__operarioAnalyticsCookieDomainFor = deriveCookieDomain;
 }
 
 const UTM_PARAMS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];

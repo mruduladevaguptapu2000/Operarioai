@@ -49,7 +49,7 @@ def is_disposable_domain(domain: str) -> bool:
     return bool(checker_fn(f"u@{domain}"))
 
 
-class GobiiAccountAdapter(DefaultAccountAdapter):
+class Operario AIAccountAdapter(DefaultAccountAdapter):
     """Signup and login policy hooks for django-allauth."""
 
     GENERIC_EMAIL_BLOCK_ERROR = "We are unable to create an account with this email address. Please use a different one."
@@ -65,7 +65,7 @@ class GobiiAccountAdapter(DefaultAccountAdapter):
             cleaned_email = email
 
         domain = self._extract_domain(cleaned_email)
-        allowlist = self._normalize_domains(settings.GOBII_EMAIL_DOMAIN_ALLOWLIST)
+        allowlist = self._normalize_domains(settings.OPERARIO_EMAIL_DOMAIN_ALLOWLIST)
 
         if self._matches_domain_rule(domain, allowlist):
             return cleaned_email
@@ -75,7 +75,7 @@ class GobiiAccountAdapter(DefaultAccountAdapter):
             self._log_email_block(reason="blocklist", domain=domain, email=cleaned_email)
             raise ValidationError(self.GENERIC_EMAIL_BLOCK_ERROR)
 
-        if settings.GOBII_EMAIL_BLOCK_DISPOSABLE and is_disposable_domain(domain):
+        if settings.OPERARIO_EMAIL_BLOCK_DISPOSABLE and is_disposable_domain(domain):
             self._log_email_block(reason="disposable", domain=domain, email=cleaned_email)
             raise ValidationError(self.GENERIC_EMAIL_BLOCK_ERROR)
 
@@ -158,7 +158,7 @@ class GobiiAccountAdapter(DefaultAccountAdapter):
     def _effective_blocklist_domains(cls) -> set[str]:
         # Keep legacy SIGNUP_BLOCKED_EMAIL_DOMAINS additive so existing overrides
         # continue to block domains while projects migrate to the new setting name.
-        return cls._normalize_domains(settings.GOBII_EMAIL_DOMAIN_BLOCKLIST) | cls._normalize_domains(
+        return cls._normalize_domains(settings.OPERARIO_EMAIL_DOMAIN_BLOCKLIST) | cls._normalize_domains(
             settings.SIGNUP_BLOCKED_EMAIL_DOMAINS
         )
 

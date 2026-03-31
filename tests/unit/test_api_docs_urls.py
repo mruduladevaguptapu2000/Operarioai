@@ -8,9 +8,9 @@ class ApiDocsUrlTests(TestCase):
         "/api/schema/redoc/",
         "/api/docs/",
     )
-    _docs_redirect_url = "https://docs.gobii.ai/api-reference"
+    _docs_redirect_url = "https://docs.operario.ai/api-reference"
 
-    @override_settings(GOBII_PROPRIETARY_MODE=True)
+    @override_settings(OPERARIO_PROPRIETARY_MODE=True)
     def test_docs_urls_redirect_to_external_docs_in_proprietary_mode(self):
         for docs_path in self._docs_paths:
             with self.subTest(docs_path=docs_path):
@@ -18,7 +18,7 @@ class ApiDocsUrlTests(TestCase):
                 self.assertEqual(response.status_code, 302)
                 self.assertEqual(response["Location"], self._docs_redirect_url)
 
-    @override_settings(GOBII_PROPRIETARY_MODE=False)
+    @override_settings(OPERARIO_PROPRIETARY_MODE=False)
     def test_docs_urls_use_local_views_in_community_mode(self):
         for docs_path in self._docs_paths:
             with self.subTest(docs_path=docs_path):
@@ -32,9 +32,9 @@ class SiteDocsUrlTests(TestCase):
         "/docs/",
         "/docs/nonexistent-doc-page/",
     )
-    _docs_redirect_url = "https://docs.gobii.ai/"
+    _docs_redirect_url = "https://docs.operario.ai/"
 
-    @override_settings(GOBII_PROPRIETARY_MODE=True)
+    @override_settings(OPERARIO_PROPRIETARY_MODE=True)
     def test_site_docs_urls_redirect_to_external_docs_in_proprietary_mode(self):
         for docs_path in self._docs_paths:
             with self.subTest(docs_path=docs_path):
@@ -42,13 +42,13 @@ class SiteDocsUrlTests(TestCase):
                 self.assertEqual(response.status_code, 302)
                 self.assertEqual(response["Location"], self._docs_redirect_url)
 
-    @override_settings(GOBII_PROPRIETARY_MODE=False)
+    @override_settings(OPERARIO_PROPRIETARY_MODE=False)
     def test_docs_index_uses_existing_local_redirect_in_community_mode(self):
         response = self.client.get("/docs/")
         self.assertEqual(response.status_code, 302)
         self.assertTrue(response["Location"].startswith("/docs/"))
 
-    @override_settings(GOBII_PROPRIETARY_MODE=False)
+    @override_settings(OPERARIO_PROPRIETARY_MODE=False)
     def test_docs_slug_uses_existing_local_markdown_view_in_community_mode(self):
         response = self.client.get("/docs/nonexistent-doc-page/")
         self.assertEqual(response.status_code, 404)

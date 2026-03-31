@@ -8,7 +8,7 @@ from marketing_events.constants import AD_CAPI_PROVIDER_TARGETS
 from marketing_events.context import build_marketing_context_from_user
 from util.subscription_helper import get_active_subscription, get_owner_plan
 from util.user_behavior import (
-    count_messages_sent_to_gobii,
+    count_messages_sent_to_operario,
     get_custom_capi_event_delay_seconds,
     is_fast_cancel_owner,
     is_owner_currently_in_trial,
@@ -20,7 +20,7 @@ class ConfiguredCustomEvent(StrEnum):
     INBOUND_MESSAGE = "InboundMessage"
     INTEGRATION_ADDED = "IntegrationAdded"
     SECRET_ADDED = "SecretAdded"
-    CLONE_GOBII = "CloneGobii"
+    CLONE_OPERARIO = "CloneOperario AI"
     TEMPLATE_LAUNCHED = "TemplateLaunched"
 
 
@@ -82,7 +82,7 @@ def _resolve_inbound_message_count(user, properties: dict) -> int | None:
     if isinstance(message_count, int):
         return message_count
 
-    message_count = count_messages_sent_to_gobii(user)
+    message_count = count_messages_sent_to_operario(user)
     properties["message_count"] = message_count
     return message_count
 

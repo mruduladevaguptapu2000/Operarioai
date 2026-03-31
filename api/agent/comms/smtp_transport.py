@@ -12,7 +12,7 @@ from django.conf import settings
 from api.models import AgentEmailAccount
 from api.agent.comms.email_oauth import build_xoauth2_string, resolve_oauth_identity_and_token
 
-tracer = trace.get_tracer("gobii.utils")
+tracer = trace.get_tracer("operario.utils")
 logger = logging.getLogger(__name__)
 
 
@@ -63,7 +63,7 @@ class SmtpTransport:
         if to_addrs and len(to_addrs) > 1:
             msg["Cc"] = ", ".join(list(to_addrs)[1:])
         msg["Message-ID"] = message_id or make_msgid()
-        msg["X-Gobii-Message-ID"] = str(attempt_id)
+        msg["X-Operario AI-Message-ID"] = str(attempt_id)
         if in_reply_to:
             msg["In-Reply-To"] = in_reply_to
         if references:

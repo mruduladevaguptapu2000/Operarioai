@@ -1,10 +1,10 @@
 ---
-title: "How to Get 20–60x More Work Per Dollar — Securely — With Gobii and DeepSeek V3.2"
+title: "How to Get 20–60x More Work Per Dollar — Securely — With Operario AI and DeepSeek V3.2"
 date: 2025-12-09
 description: "What changes when intelligence becomes a commodity—and how to build on it without betting the company"
-author: "Andrew I. Christianson, Founder of Gobii"
-seo_title: "How to Get 20–60x More Work Per Dollar — Securely — With Gobii and DeepSeek V3.2"
-seo_description: "How Gobii turns DeepSeek V3.2 into real work at 20-60x lower cost, while keeping your data secure and your workflows portable."
+author: "Andrew I. Christianson, Founder of Operario AI"
+seo_title: "How to Get 20–60x More Work Per Dollar — Securely — With Operario AI and DeepSeek V3.2"
+seo_description: "How Operario AI turns DeepSeek V3.2 into real work at 20-60x lower cost, while keeping your data secure and your workflows portable."
 tags:
   - deepseek
   - open source
@@ -25,7 +25,7 @@ Anyone running a budget eventually adds a second one:
 
 DeepSeek V3.2 is the first time in a while the leaderboard and the spreadsheet point at the same model.
 
-This post is how Gobii thinks about DeepSeek, open weights, and why so many teams now run their DeepSeek workloads *through* Gobii instead of pointing raw APIs at their problems.
+This post is how Operario AI thinks about DeepSeek, open weights, and why so many teams now run their DeepSeek workloads *through* Operario AI instead of pointing raw APIs at their problems.
 
 ---
 
@@ -105,17 +105,17 @@ It does **not** give you:
 - Guardrails, logging, and routing
 - A way to move between models without re-wiring everything
 
-That's the gap Gobii exists to fill.
+That's the gap Operario AI exists to fill.
 
 ---
 
-## 3. What Gobii Adds on Top of DeepSeek
+## 3. What Operario AI Adds on Top of DeepSeek
 
-Gobii is an open-core AI workforce platform. The job is simple:
+Operario AI is an open-core AI workforce platform. The job is simple:
 
 > Turn models—especially cheap, strong ones like DeepSeek V3.2—into **reliable browser workers** that do real jobs.
 
-Concretely, Gobii gives you:
+Concretely, Operario AI gives you:
 
 ### Browser-native workers
 
@@ -152,9 +152,9 @@ You change the policy, not the worker's job description.
 
 ### Open-core, self-hostable architecture
 
-Gobii can run:
+Operario AI can run:
 
-- On Gobii's managed cloud
+- On Operario AI's managed cloud
 - In your VPC
 - In fully air-gapped environments
 
@@ -162,27 +162,27 @@ The core stack is open-core and inspectable. If you need to harden, fork, or ext
 
 ### What usage data is telling us
 
-When DeepSeek V3.2 went live on OpenRouter, Gobii integrated it immediately.
+When DeepSeek V3.2 went live on OpenRouter, Operario AI integrated it immediately.
 
-Within days, OpenRouter's own stats showed **Gobii as the #1 application by usage for DeepSeek V3.2**, by tokens, across apps that opted into tracking. (See [our earlier announcement](/blog/gobii-number-one-on-deepseek) for the full story.)
+Within days, OpenRouter's own stats showed **Operario AI as the #1 application by usage for DeepSeek V3.2**, by tokens, across apps that opted into tracking. (See [our earlier announcement](/blog/operario-number-one-on-deepseek) for the full story.)
 
 You could treat that as a vanity metric. We treat it as revealed preference:
 
 - Users had access to DeepSeek V3.2 directly, via API, and through many other apps
-- A disproportionate share of real workloads ended up routed through Gobii instead
+- A disproportionate share of real workloads ended up routed through Operario AI instead
 
-If your goal is "maximum work per DeepSeek token," the pattern is clear: **teams keep choosing to run DeepSeek through Gobii workers.**
+If your goal is "maximum work per DeepSeek token," the pattern is clear: **teams keep choosing to run DeepSeek through Operario AI workers.**
 
 <figure>
-  <img src="/static/images/blog/gobii-openrouter-deepseek-v3.2-leaderboard.png" alt="OpenRouter Apps leaderboard showing Gobii at #1 for DeepSeek V3.2 usage with 18.9B tokens" style="max-width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-  <figcaption style="font-size: 0.85em; color: #666; margin-top: 0.5em; text-align: center;">Gobii leads OpenRouter's DeepSeek V3.2 usage at 18.9B tokens—nearly 3× the next application.</figcaption>
+  <img src="/static/images/blog/operario-openrouter-deepseek-v3.2-leaderboard.png" alt="OpenRouter Apps leaderboard showing Operario AI at #1 for DeepSeek V3.2 usage with 18.9B tokens" style="max-width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+  <figcaption style="font-size: 0.85em; color: #666; margin-top: 0.5em; text-align: center;">Operario AI leads OpenRouter's DeepSeek V3.2 usage at 18.9B tokens—nearly 3× the next application.</figcaption>
 </figure>
 
 ---
 
 ## 4. Open Source as a Control Surface
 
-Gobii's founder, Andrew I. Christianson, has been building and shipping open-source infrastructure for years: Apache NiFi, RA.Aid, and now Gobii.
+Operario AI's founder, Andrew I. Christianson, has been building and shipping open-source infrastructure for years: Apache NiFi, RA.Aid, and now Operario AI.
 
 Internally, we don't treat open source as a slogan. We treat it as a **control surface**:
 
@@ -192,20 +192,20 @@ Internally, we don't treat open source as a slogan. We treat it as a **control s
 
 DeepSeek leaned into this at the model layer: open weights, MIT licensing, permissive distillation.
 
-Gobii mirrors it at the workforce layer:
+Operario AI mirrors it at the workforce layer:
 
 - The core browser/agent stack is open-core and self-hostable
-- You can run the same workers on Gobii's cloud, your infrastructure, or both
+- You can run the same workers on Operario AI's cloud, your infrastructure, or both
 - If you need to fork or customize for a particular environment, you aren't blocked
 
-Gobii is backed by [Open Core Ventures](https://opencoreventures.com), the firm led by Sid Sijbrandij (founder of GitLab). OCV's portfolio is built around the thesis that open-core infrastructure wins in the long run—and that thesis extends across the AI stack. More on that in a moment.
+Operario AI is backed by [Open Core Ventures](https://opencoreventures.com), the firm led by Sid Sijbrandij (founder of GitLab). OCV's portfolio is built around the thesis that open-core infrastructure wins in the long run—and that thesis extends across the AI stack. More on that in a moment.
 
 Put simply:
 
 - **DeepSeek gives you cheap, movable brains**
-- **Gobii gives those brains cheap, movable bodies**
+- **Operario AI gives those brains cheap, movable bodies**
 
-You decide where the brains live (DeepSeek cloud, OpenRouter, self-hosted) and where the bodies live (Gobii cloud, your VPC, air-gapped).
+You decide where the brains live (DeepSeek cloud, OpenRouter, self-hosted) and where the bodies live (Operario AI cloud, your VPC, air-gapped).
 
 ---
 
@@ -241,7 +241,7 @@ So there are really three classes of workload:
    - Internal but non-sensitive data
    - Situations where jurisdiction and governance matter, but risk is manageable
 
-Our stance at Gobii:
+Our stance at Operario AI:
 
 - Treat DeepSeek as **one model in a portfolio**, not a single point of failure
 - Use **hosted DeepSeek V3.2** where the economics are compelling and the data is non-sensitive
@@ -262,16 +262,16 @@ This is where [Garak](https://github.com/NVIDIA/garak) comes in. Garak is an ope
 - Harmful output generation
 - Unexpected behavior under adversarial inputs
 
-Like Gobii, Garak is backed by [Open Core Ventures](https://www.opencoreventures.com/blog/https-for-ai-garak-launches-end-to-end-llm-security-platform). The two projects sit at different layers of the stack but share the same premise: if you're going to run AI in production, you need open, inspectable tooling to verify it's doing what you think it's doing.
+Like Operario AI, Garak is backed by [Open Core Ventures](https://www.opencoreventures.com/blog/https-for-ai-garak-launches-end-to-end-llm-security-platform). The two projects sit at different layers of the stack but share the same premise: if you're going to run AI in production, you need open, inspectable tooling to verify it's doing what you think it's doing.
 
 The combination looks like this:
 
 - **Garak** verifies that your open-weights model (DeepSeek, Llama, Mistral, etc.) behaves correctly before you deploy it
-- **Gobii** turns that verified model into browser workers that do real jobs, with logging, guardrails, and audit trails
+- **Operario AI** turns that verified model into browser workers that do real jobs, with logging, guardrails, and audit trails
 
 If you're self-hosting DeepSeek to avoid the China question, you should also be testing it before you trust it. Garak is how.
 
-This is where Gobii's architecture matters:
+This is where Operario AI's architecture matters:
 
 - Workers are defined at the workflow level, not at the model level
 - You can change the model policy without changing the workflow definition
@@ -285,12 +285,12 @@ No drama, no absolutism. Just: use the cheapest safe thing by default, and move 
 
 The public conversation treats "GPT vs Claude vs DeepSeek" like a winner-take-all contest.
 
-From Gobii's perspective:
+From Operario AI's perspective:
 
 - Models are **commodities with different strengths and failure modes**
 - Workflows are **the asset you actually own**
 
-In Gobii, a worker is defined by:
+In Operario AI, a worker is defined by:
 
 - The sites and tools it interacts with
 - The steps it takes and tools it calls
@@ -314,7 +314,7 @@ That's the real leverage:
 
 - DeepSeek and similar models pull the marginal cost of "smart" down by 20–60× for many workloads
 - Open weights and open-core design let you move that "smart" wherever it needs to run
-- Gobii makes "which model?" an implementation detail of "which worker, doing which job?"
+- Operario AI makes "which model?" an implementation detail of "which worker, doing which job?"
 
 When the next cheap, capable model appears (and it will), you shouldn't have to re-platform. You should:
 
@@ -340,15 +340,15 @@ If you're actually trying to ship and scale, the environment now looks like this
 In that world, teams that care about output per dollar tend to converge on the same shape:
 
 - **Default to the cheapest strong model** (today, that's often DeepSeek V3.2) for everything it can safely handle
-- **Wrap it in a workforce layer** (Gobii) that lives in the browser, is open-core, and cleanly separates workflows from model choice
+- **Wrap it in a workforce layer** (Operario AI) that lives in the browser, is open-core, and cleanly separates workflows from model choice
 - **Escalate** to GPT-, Claude-, or fully self-hosted options where they earn the premium
 - Make configuration—not rewrites—the main lever
 
 The usage data lines up with that:
 
 - DeepSeek drives down the cost of "smart"
-- Gobii has become the top OpenRouter application for DeepSeek V3.2 by usage
-- Teams that want maximum work per token are already acting as if "DeepSeek through Gobii" is the default path
+- Operario AI has become the top OpenRouter application for DeepSeek V3.2 by usage
+- Teams that want maximum work per token are already acting as if "DeepSeek through Operario AI" is the default path
 
 We're comfortable with that implication.
 
@@ -358,12 +358,12 @@ We're comfortable with that implication.
 
 Two straightforward ways to try this:
 
-- **Run Gobii yourself**
+- **Run Operario AI yourself**
   - Open-core, self-hostable platform
-  - GitHub: [https://github.com/gobii-ai/gobii-platform](https://github.com/gobii-ai/gobii-platform)
+  - GitHub: [https://github.com/operario-ai/operario-platform](https://github.com/operario-ai/operario-platform)
 
-- **Use Gobii as a managed service**
+- **Use Operario AI as a managed service**
   - Spin up workers in minutes
-  - Dashboard and docs: [https://gobii.ai](https://gobii.ai)
+  - Dashboard and docs: [https://operario.ai](https://operario.ai)
 
 Either way, the architecture is the same: treat intelligence as the cheap part, and put the real design work into the layer that turns it into actual, repeatable work.

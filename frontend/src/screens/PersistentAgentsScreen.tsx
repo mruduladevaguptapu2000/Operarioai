@@ -330,7 +330,7 @@ function AgentCard({ agent, onContactClick, onLeaveCollaboration }: AgentCardPro
     : 'Increase the daily limit on the agent detail page if you want them to keep working today.'
 
   return (
-    <div className="gobii-card-hoverable group relative flex h-full flex-col">
+    <div className="operario-card-hoverable group relative flex h-full flex-col">
       <div className="relative flex h-44 flex-col items-center justify-center overflow-hidden" style={agent.gradientStyle}>
         <div
           className="absolute inset-0 opacity-20"

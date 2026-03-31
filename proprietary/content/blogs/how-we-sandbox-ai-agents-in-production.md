@@ -22,13 +22,13 @@ tags:
 Running AI agents in production means untrusted code, real files, and real network access. We built a sandboxed compute system with per-agent isolation, NetworkPolicy-enforced egress, deterministic filespace sync, strict timeouts, and full audit trails. This post walks through the threat model, the architecture, and the mechanics of how we keep powerful agent capabilities safe in production. If you want to see the real implementation, the OSS code is here:
 
 ```
-https://github.com/gobii-ai/gobii-platform
+https://github.com/operario-ai/operario-platform
 ```
 
 We also publish the minimal sandbox compute supervisor used inside the pods:
 
 ```
-https://github.com/gobii-ai/sandbox-compute-server
+https://github.com/operario-ai/sandbox-compute-server
 ```
 
 ## 1) What “agents in prod” actually means
@@ -291,4 +291,4 @@ We accept those tradeoffs intentionally, because the alternative is an unbounded
 10. Open Core Ventures (background reference):  
     https://www.opencoreventures.com/
 11. Minimal sandbox compute server (pod supervisor):  
-    https://github.com/gobii-ai/sandbox-compute-server
+    https://github.com/operario-ai/sandbox-compute-server

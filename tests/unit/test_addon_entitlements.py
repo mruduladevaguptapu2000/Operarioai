@@ -267,7 +267,7 @@ class AddonEntitlementSyncTests(TestCase):
 
 
 @tag("batch_billing")
-@override_settings(GOBII_PROPRIETARY_MODE=True)
+@override_settings(OPERARIO_PROPRIETARY_MODE=True)
 class AddonContactCapTests(TestCase):
     def setUp(self):
         User = get_user_model()

@@ -131,8 +131,8 @@ class ConsoleContextTests(TestCase):
     def test_switch_context_invalid_org_override_format_returns_403(self):
         resp = self.client.get(
             reverse("switch_context"),
-            HTTP_X_GOBII_CONTEXT_TYPE="organization",
-            HTTP_X_GOBII_CONTEXT_ID="not-a-uuid",
+            HTTP_X_OPERARIO_CONTEXT_TYPE="organization",
+            HTTP_X_OPERARIO_CONTEXT_ID="not-a-uuid",
         )
         self.assertEqual(resp.status_code, 403)
         self.assertEqual(resp.json().get("error"), "Invalid context override.")
@@ -159,8 +159,8 @@ class ConsoleContextTests(TestCase):
         resp = self.client.get(
             reverse("switch_context"),
             {"for_agent": str(self.org_agent.id)},
-            HTTP_X_GOBII_CONTEXT_TYPE="personal",
-            HTTP_X_GOBII_CONTEXT_ID=str(self.owner.id),
+            HTTP_X_OPERARIO_CONTEXT_TYPE="personal",
+            HTTP_X_OPERARIO_CONTEXT_ID=str(self.owner.id),
         )
         self.assertEqual(resp.status_code, 200)
         payload = resp.json()

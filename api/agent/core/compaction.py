@@ -39,7 +39,7 @@ RAW_MSG_LIMIT: int = getattr(settings, "PA_RAW_MSG_LIMIT", 20)
 COMMS_COMPACTION_TAIL: int = max(0, getattr(settings, "PA_COMMS_COMPACTION_TAIL", 5))
 
 # Tracer shared across backend codebase
-tracer = trace.get_tracer("gobii.utils")
+tracer = trace.get_tracer("operario.utils")
 logger = logging.getLogger(__name__)
 
 __all__ = [

@@ -2653,7 +2653,7 @@ class SystemMessageForm(forms.Form):
         label="System message",
         widget=forms.Textarea(attrs={"rows": 5, "cols": 80}),
         max_length=2000,
-        help_text="This text will be injected into the agent's system prompt as a Gobii system directive.",
+        help_text="This text will be injected into the agent's system prompt as a Operario AI system directive.",
         strip=True,
     )
 

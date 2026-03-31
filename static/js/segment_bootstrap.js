@@ -90,7 +90,7 @@
   }
 
   function installDefaultMiddleware(defaultProperties) {
-    if (!defaultProperties || window.__gobiiSegmentDefaultMiddlewareInstalled) {
+    if (!defaultProperties || window.__operarioSegmentDefaultMiddlewareInstalled) {
       return;
     }
 
@@ -116,7 +116,7 @@
       next(payload);
     });
 
-    window.__gobiiSegmentDefaultMiddlewareInstalled = true;
+    window.__operarioSegmentDefaultMiddlewareInstalled = true;
   }
 
   function init(config) {
@@ -129,16 +129,16 @@
     }
 
     var analytics = bootstrapSnippet();
-    if (!window.__gobiiSegmentLoadedKey) {
+    if (!window.__operarioSegmentLoadedKey) {
       analytics.load(config.writeKey);
-      window.__gobiiSegmentLoadedKey = config.writeKey;
+      window.__operarioSegmentLoadedKey = config.writeKey;
     }
 
     installDefaultMiddleware(config.defaultProperties || null);
     return true;
   }
 
-  window.GobiiSegmentBootstrap = {
+  window.Operario AISegmentBootstrap = {
     init: init,
     ensureStub: ensureStub
   };

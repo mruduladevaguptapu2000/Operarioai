@@ -117,7 +117,7 @@ class PersistentAgentCreditGateTests(TestCase):
 
     def test_proprietary_mode_out_of_credits_exits_early(self):
         # Force the credit check to report 0 available
-        with patch("config.settings.GOBII_PROPRIETARY_MODE", True), patch(
+        with patch("config.settings.OPERARIO_PROPRIETARY_MODE", True), patch(
             "api.agent.core.event_processing.TaskCreditService.calculate_available_tasks_for_owner",
             return_value=0,
         ):
@@ -210,7 +210,7 @@ class PersistentAgentCreditGateTests(TestCase):
         # Give at least one available credit
         self._grant_credits(credits=1, used=0)
 
-        with patch("config.settings.GOBII_PROPRIETARY_MODE", True), \
+        with patch("config.settings.OPERARIO_PROPRIETARY_MODE", True), \
              patch("api.agent.core.event_processing._run_agent_loop") as loop_mock:
             # Return empty dict for token usage
             loop_mock.return_value = {}
@@ -240,7 +240,7 @@ class PersistentAgentCreditGateTests(TestCase):
         # Even with no available credits, in non-proprietary mode we proceed
         self._grant_credits(credits=100, used=100)
 
-        with patch("config.settings.GOBII_PROPRIETARY_MODE", False), \
+        with patch("config.settings.OPERARIO_PROPRIETARY_MODE", False), \
              patch("api.agent.core.event_processing._run_agent_loop") as loop_mock:
             # Return empty dict for token usage
             loop_mock.return_value = {}
@@ -311,8 +311,8 @@ class PersistentAgentCreditGateTests(TestCase):
             "next_reset": timezone.now(),
         }
 
-        with override_settings(GOBII_PROPRIETARY_MODE=True), \
-             patch("config.settings.GOBII_PROPRIETARY_MODE", True), \
+        with override_settings(OPERARIO_PROPRIETARY_MODE=True), \
+             patch("config.settings.OPERARIO_PROPRIETARY_MODE", True), \
              patch("api.agent.core.event_processing.get_agent_daily_credit_state", return_value=fake_state), \
              patch("api.agent.core.event_processing._run_agent_loop") as loop_mock:
             _process_agent_events_locked(self.agent.id, _DummySpan())
@@ -328,7 +328,7 @@ class PersistentAgentCreditGateTests(TestCase):
 
     def test_proprietary_mode_unlimited_allows_processing(self):
         # In proprietary mode, if availability is unlimited (-1), we should proceed
-        with patch("config.settings.GOBII_PROPRIETARY_MODE", True), \
+        with patch("config.settings.OPERARIO_PROPRIETARY_MODE", True), \
              patch("api.agent.core.event_processing.TaskCreditService.calculate_available_tasks_for_owner", return_value=TASKS_UNLIMITED), \
              patch("api.agent.core.event_processing._run_agent_loop") as loop_mock:
             # Return empty dict for token usage
@@ -359,7 +359,7 @@ class PersistentAgentCreditGateTests(TestCase):
             "provider": None,
         }
 
-        with patch("config.settings.GOBII_PROPRIETARY_MODE", True), \
+        with patch("config.settings.OPERARIO_PROPRIETARY_MODE", True), \
              patch("api.agent.core.event_processing._run_agent_loop", return_value=zero_usage):
             from api.agent.core.event_processing import _process_agent_events_locked
 
@@ -396,7 +396,7 @@ class PersistentAgentToolCreditTests(TestCase):
         PersistentAgentStep.objects.filter(agent=self.agent).delete()
         PersistentAgentSystemStep.objects.filter(step__agent=self.agent).delete()
 
-    @patch("api.agent.core.event_processing.settings.GOBII_PROPRIETARY_MODE", True)
+    @patch("api.agent.core.event_processing.settings.OPERARIO_PROPRIETARY_MODE", True)
     @patch("api.agent.core.event_processing.TaskCreditService.check_and_consume_credit_for_owner")
     @patch("api.agent.core.event_processing.TaskCreditService.calculate_available_tasks_for_owner")
     @patch("api.agent.core.event_processing.get_tool_credit_cost", return_value=Decimal("0.8"))
@@ -426,7 +426,7 @@ class PersistentAgentToolCreditTests(TestCase):
         span.add_event.assert_any_call("Tool skipped - insufficient credits mid-loop")
         span.set_attribute.assert_any_call("credit_check.tool_cost", 0.8)
 
-    @patch("api.agent.core.event_processing.settings.GOBII_PROPRIETARY_MODE", True)
+    @patch("api.agent.core.event_processing.settings.OPERARIO_PROPRIETARY_MODE", True)
     @patch("api.agent.core.event_processing.TaskCreditService.check_and_consume_credit_for_owner")
     @patch("api.agent.core.event_processing.TaskCreditService.calculate_available_tasks_for_owner", return_value=Decimal("1.2"))
     @patch("api.agent.core.event_processing.get_tool_credit_cost", return_value=Decimal("0.8"))
@@ -455,7 +455,7 @@ class PersistentAgentToolCreditTests(TestCase):
         span.add_event.assert_any_call("Tool skipped - insufficient credits during processing")
         span.set_attribute.assert_any_call("credit_check.error", "db down")
 
-    @patch("api.agent.core.event_processing.settings.GOBII_PROPRIETARY_MODE", True)
+    @patch("api.agent.core.event_processing.settings.OPERARIO_PROPRIETARY_MODE", True)
     @patch(
         "api.agent.core.event_processing.TaskCreditService.check_and_consume_credit_for_owner",
         return_value={"success": True, "credit": None},
@@ -490,7 +490,7 @@ class PersistentAgentToolCreditTests(TestCase):
         )
 
     @patch("api.agent.core.event_processing.Analytics.track_event")
-    @patch("api.agent.core.event_processing.settings.GOBII_PROPRIETARY_MODE", True)
+    @patch("api.agent.core.event_processing.settings.OPERARIO_PROPRIETARY_MODE", True)
     @patch(
         "api.agent.core.event_processing.TaskCreditService.check_and_consume_credit_for_owner",
         return_value={"success": True, "credit": None},
@@ -525,7 +525,7 @@ class PersistentAgentToolCreditTests(TestCase):
         self.assertEqual(kwargs["source"], AnalyticsSource.AGENT)
         self.assertEqual(kwargs["properties"].get("agent_id"), str(self.agent.id))
 
-    @patch("api.agent.core.event_processing.settings.GOBII_PROPRIETARY_MODE", True)
+    @patch("api.agent.core.event_processing.settings.OPERARIO_PROPRIETARY_MODE", True)
     @patch("api.agent.core.event_processing.TaskCreditService.check_and_consume_credit_for_owner")
     @patch("api.agent.core.event_processing.TaskCreditService.calculate_available_tasks_for_owner", return_value=TASKS_UNLIMITED)
     @patch("api.agent.core.event_processing.get_tool_credit_cost", return_value=Decimal("0.8"))
@@ -546,7 +546,7 @@ class PersistentAgentToolCreditTests(TestCase):
         mock_consume.assert_called_once()
         span.set_attribute.assert_any_call("credit_check.consumed_in_loop", True)
 
-    @patch("api.agent.core.event_processing.settings.GOBII_PROPRIETARY_MODE", True)
+    @patch("api.agent.core.event_processing.settings.OPERARIO_PROPRIETARY_MODE", True)
     @patch("api.agent.core.event_processing.TaskCreditService.check_and_consume_credit_for_owner")
     @patch("api.agent.core.event_processing.TaskCreditService.calculate_available_tasks_for_owner", return_value=Decimal("5"))
     @patch("api.agent.core.event_processing.get_tool_credit_cost", return_value=Decimal("0.5"))
@@ -582,7 +582,7 @@ class PersistentAgentToolCreditTests(TestCase):
         span.add_event.assert_any_call("Tool skipped - daily credit limit reached")
 
     @patch("api.agent.core.event_processing.Analytics.track_event")
-    @patch("api.agent.core.event_processing.settings.GOBII_PROPRIETARY_MODE", True)
+    @patch("api.agent.core.event_processing.settings.OPERARIO_PROPRIETARY_MODE", True)
     @patch("api.agent.core.event_processing.TaskCreditService.check_and_consume_credit_for_owner")
     @patch("api.agent.core.event_processing.TaskCreditService.calculate_available_tasks_for_owner", return_value=Decimal("5"))
     @patch("api.agent.core.event_processing.get_tool_credit_cost", return_value=Decimal("0.5"))
@@ -1174,7 +1174,7 @@ class PersistentAgentToolCreditTests(TestCase):
         }
 
         try:
-            with override_settings(GOBII_PROPRIETARY_MODE=True), \
+            with override_settings(OPERARIO_PROPRIETARY_MODE=True), \
                  patch("api.agent.core.llm_config.get_owner_plan", return_value={"id": "pro"}), \
                  patch("api.agent.core.burn_control.has_recent_user_message", return_value=True), \
                  patch("api.agent.core.burn_control.Analytics.track_event") as track_event_mock:
@@ -1216,7 +1216,7 @@ class PersistentAgentToolCreditTests(TestCase):
         self.agent.save(update_fields=["preferred_llm_tier"])
 
         try:
-            with override_settings(GOBII_PROPRIETARY_MODE=True), \
+            with override_settings(OPERARIO_PROPRIETARY_MODE=True), \
                  patch("api.agent.core.llm_config.get_owner_plan", return_value={"id": "pro"}), \
                  patch(
                      "api.agent.core.prompt_context.get_daily_credit_settings_for_owner",
@@ -1275,7 +1275,7 @@ class PersistentAgentToolCreditTests(TestCase):
             observed["runtime_multiplier"] = get_credit_multiplier_for_tier(observed["routing_tier"])
             return [{}]
 
-        with override_settings(GOBII_PROPRIETARY_MODE=True), \
+        with override_settings(OPERARIO_PROPRIETARY_MODE=True), \
              patch("api.agent.core.llm_config.get_owner_plan", return_value={"id": "pro"}), \
              patch("api.agent.core.burn_control.has_recent_user_message", return_value=True), \
              patch.object(ep, "MAX_AGENT_LOOP_ITERATIONS", 1), \

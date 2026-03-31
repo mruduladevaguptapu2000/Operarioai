@@ -95,7 +95,7 @@ class AgentWebhookToolTests(TestCase):
 
             called_kwargs = mock_post.call_args.kwargs
             self.assertEqual(called_kwargs["json"], payload)
-            self.assertEqual(called_kwargs["headers"]["User-Agent"], "Gobii-AgentWebhook/1.0")
+            self.assertEqual(called_kwargs["headers"]["User-Agent"], "Operario AI-AgentWebhook/1.0")
             self.assertEqual(
                 called_kwargs["proxies"],
                 {"http": self.proxy.proxy_url, "https": self.proxy.proxy_url},

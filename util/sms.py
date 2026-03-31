@@ -18,14 +18,14 @@ except Exception:  # pragma: no cover - dependency optional in tests
 
 logger = logging.getLogger(__name__)
 
-tracer = trace.get_tracer("gobii.utils")
+tracer = trace.get_tracer("operario.utils")
 
 # ── Vanity helpers ────────────────────────────────────────────────────────────
 _T9 = str.maketrans("ABCDEFGHIJKLMNOPQRSTUVWXYZ",
                     "22233344455566677778889999")  # A→2, B→2, …, Z→9
 
 def vanity_to_digits(text: str) -> str:
-    """Convert vanity word to its numeric keypad representation (GOBII → 46244)."""
+    """Convert vanity word to its numeric keypad representation (OPERARIO → 46244)."""
     return text.upper().translate(_T9)
 
 def ends_with_vanity(phone_number: str, vanity: str) -> bool:

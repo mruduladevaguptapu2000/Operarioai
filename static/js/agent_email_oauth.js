@@ -92,7 +92,7 @@ if (panel && panel.dataset.accountId) {
   const statusUrl = panel.dataset.oauthStatusUrl || "";
   const revokeUrl = panel.dataset.oauthRevokeUrl || "";
   const returnUrl = panel.dataset.returnUrl || window.location.pathname;
-  const completionKey = accountId ? `gobii:email_oauth_complete:${accountId}` : "gobii:email_oauth_complete";
+  const completionKey = accountId ? `operario:email_oauth_complete:${accountId}` : "operario:email_oauth_complete";
 
   const defaultScopes = {
     gmail: "https://mail.google.com/",
@@ -362,7 +362,7 @@ if (panel && panel.dataset.accountId) {
           provider,
           scope,
           token_endpoint: tokenEndpoint,
-          use_gobii_app: useManaged,
+          use_operario_app: useManaged,
           client_id: useManaged ? "" : clientId,
           client_secret: useManaged ? "" : (clientSecret || undefined),
           redirect_uri: callbackUrl,
@@ -392,7 +392,7 @@ if (panel && panel.dataset.accountId) {
       }
 
       localStorage.setItem(
-        `gobii:email_oauth_state:${stateKey}`,
+        `operario:email_oauth_state:${stateKey}`,
         JSON.stringify({
           sessionId: payload.session_id,
           accountId,

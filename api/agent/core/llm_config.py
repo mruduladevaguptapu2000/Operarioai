@@ -188,7 +188,7 @@ def resolve_preferred_tier_for_owner(owner: Any | None, tier_key: str | None) ->
     resolved = requested or get_system_default_tier()
     if owner is None:
         return resolved
-    if not getattr(settings, "GOBII_PROPRIETARY_MODE", False):
+    if not getattr(settings, "OPERARIO_PROPRIETARY_MODE", False):
         return resolved
 
     plan = None
@@ -315,7 +315,7 @@ def default_preferred_tier_for_owner(owner: Any | None) -> AgentLLMTier:
 
     # In proprietary mode, paid plans should prefer premium-or-better tiers by default
     # unless the system default is already higher (or the user explicitly chose otherwise).
-    if owner is None or not getattr(settings, "GOBII_PROPRIETARY_MODE", False):
+    if owner is None or not getattr(settings, "OPERARIO_PROPRIETARY_MODE", False):
         return resolved
 
     try:
@@ -583,7 +583,7 @@ def _is_trial_discount_eligible(agent: Any | None) -> bool:
         return False
     if getattr(agent, "organization_id", None):
         return False
-    if not getattr(settings, "GOBII_PROPRIETARY_MODE", False):
+    if not getattr(settings, "OPERARIO_PROPRIETARY_MODE", False):
         return False
     owner = getattr(agent, "organization", None) or getattr(agent, "user", None)
     if owner is None:
@@ -599,7 +599,7 @@ def _is_trial_discount_eligible(agent: Any | None) -> bool:
 def get_agent_baseline_llm_tier(agent: Any, *, is_first_loop: bool | None = None) -> AgentLLMTier:
     """Return the saved effective tier without any runtime override applied."""
 
-    if not getattr(settings, "GOBII_PROPRIETARY_MODE", False):
+    if not getattr(settings, "OPERARIO_PROPRIETARY_MODE", False):
         return AgentLLMTier.STANDARD
     if agent is None:
         return AgentLLMTier.STANDARD
@@ -1224,7 +1224,7 @@ def _get_failover_configs_from_profile(
         # Determine agent tier
         agent_instance = agent
         agent_tier = AgentLLMTier.STANDARD
-        if getattr(settings, "GOBII_PROPRIETARY_MODE", False):
+        if getattr(settings, "OPERARIO_PROPRIETARY_MODE", False):
             if agent_instance is None and agent_id:
                 try:
                     PersistentAgent = apps.get_model('api', 'PersistentAgent')
@@ -1310,7 +1310,7 @@ def _get_failover_configs_from_legacy(
 
     agent_instance = agent
     agent_tier = AgentLLMTier.STANDARD
-    if getattr(settings, "GOBII_PROPRIETARY_MODE", False):
+    if getattr(settings, "OPERARIO_PROPRIETARY_MODE", False):
         if agent_instance is None and agent_id:
             try:
                 PersistentAgent = apps.get_model('api', 'PersistentAgent')

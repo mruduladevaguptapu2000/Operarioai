@@ -67,7 +67,7 @@ class AgentCapabilitiesPromptTests(TestCase):
         email_settings = sections.get("agent_email_settings", "")
 
         self.assertIn("plan/subscription info", capabilities_note)
-        self.assertIn("Gobii account", capabilities_note)
+        self.assertIn("Operario AI account", capabilities_note)
         self.assertIn("agent settings available to the user", capabilities_note)
         self.assertIn("Plan: Pro", plan_info)
         self.assertIn("Available plans", plan_info)

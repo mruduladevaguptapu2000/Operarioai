@@ -24,16 +24,16 @@ class SecretsEncryptionTest(TestCase):
     
     def setUp(self):
         # Save original encryption key if it exists
-        self.original_encryption_key = os.environ.get('GOBII_ENCRYPTION_KEY')
+        self.original_encryption_key = os.environ.get('OPERARIO_ENCRYPTION_KEY')
         # Set a test encryption key
-        os.environ['GOBII_ENCRYPTION_KEY'] = 'test-key-for-encryption-testing-123'
+        os.environ['OPERARIO_ENCRYPTION_KEY'] = 'test-key-for-encryption-testing-123'
     
     def tearDown(self):
         # Restore original environment variable state
         if self.original_encryption_key is not None:
-            os.environ['GOBII_ENCRYPTION_KEY'] = self.original_encryption_key
-        elif 'GOBII_ENCRYPTION_KEY' in os.environ:
-            del os.environ['GOBII_ENCRYPTION_KEY']
+            os.environ['OPERARIO_ENCRYPTION_KEY'] = self.original_encryption_key
+        elif 'OPERARIO_ENCRYPTION_KEY' in os.environ:
+            del os.environ['OPERARIO_ENCRYPTION_KEY']
     
     @tag("batch_secrets")
     def test_encrypt_decrypt_roundtrip(self):
@@ -73,12 +73,12 @@ class SecretsEncryptionTest(TestCase):
     @tag("batch_secrets")
     def test_missing_encryption_key_raises_error(self):
         """Test that missing encryption key raises ValueError."""
-        del os.environ['GOBII_ENCRYPTION_KEY']
+        del os.environ['OPERARIO_ENCRYPTION_KEY']
         
         with self.assertRaises(ValueError) as cm:
             SecretsEncryption.encrypt_secrets({'https://example.com': {'test': 'value'}})
         
-        self.assertIn('GOBII_ENCRYPTION_KEY not configured', str(cm.exception))
+        self.assertIn('OPERARIO_ENCRYPTION_KEY not configured', str(cm.exception))
     
     def test_legacy_format_rejected_by_default(self):
         """Test that legacy flat format is rejected when allow_legacy=False (default)."""
@@ -117,16 +117,16 @@ class SecretsEncryptionTest(TestCase):
         self.assertEqual(decrypted, expected)
 
 
-@override_settings(GOBII_ENCRYPTION_KEY='test-key-for-api-testing-456')
+@override_settings(OPERARIO_ENCRYPTION_KEY='test-key-for-api-testing-456')
 @tag("batch_secrets")
 class SecretsAPITest(APITestCase):
     """Test the API endpoints with secrets."""
     
     def setUp(self):
         # Save original encryption key if it exists
-        self.original_encryption_key = os.environ.get('GOBII_ENCRYPTION_KEY')
+        self.original_encryption_key = os.environ.get('OPERARIO_ENCRYPTION_KEY')
         # Set encryption key in environment for the encryption module
-        os.environ['GOBII_ENCRYPTION_KEY'] = 'test-key-for-api-testing-456'
+        os.environ['OPERARIO_ENCRYPTION_KEY'] = 'test-key-for-api-testing-456'
         
         # Create test user and API key
         self.user = User.objects.create_user(
@@ -154,9 +154,9 @@ class SecretsAPITest(APITestCase):
     def tearDown(self):
         # Restore original environment variable state
         if self.original_encryption_key is not None:
-            os.environ['GOBII_ENCRYPTION_KEY'] = self.original_encryption_key
-        elif 'GOBII_ENCRYPTION_KEY' in os.environ:
-            del os.environ['GOBII_ENCRYPTION_KEY']
+            os.environ['OPERARIO_ENCRYPTION_KEY'] = self.original_encryption_key
+        elif 'OPERARIO_ENCRYPTION_KEY' in os.environ:
+            del os.environ['OPERARIO_ENCRYPTION_KEY']
     
     @tag("batch_secrets")
     def test_create_task_with_secrets(self):

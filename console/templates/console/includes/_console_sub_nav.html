@@ -2,7 +2,7 @@
 {% load waffle_tags %}
 
 <!-- Console Sub-Navigation Panel - Visible on medium and large screens -->
-<aside class="gobii-card-base hidden md:block {% if pin_console_nav %}md:sticky md:top-20{% else %}md:relative{% endif %} self-start min-w-64 w-64 flex-shrink-0 p-4 mx-4 my-4 {% if pin_console_nav %}md:max-h-[calc(100vh-5rem)] overflow-y-auto{% else %}overflow-y-auto{% endif %}">
+<aside class="operario-card-base hidden md:block {% if pin_console_nav %}md:sticky md:top-20{% else %}md:relative{% endif %} self-start min-w-64 w-64 flex-shrink-0 p-4 mx-4 my-4 {% if pin_console_nav %}md:max-h-[calc(100vh-5rem)] overflow-y-auto{% else %}overflow-y-auto{% endif %}">
   <!-- Context Switcher -->
   {% flag "organizations" %}
   <div class="mb-4">

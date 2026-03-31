@@ -1178,7 +1178,7 @@ def _compute_next_scheduled_run(agent: PersistentAgent, *, now: datetime | None 
     if not agent.is_active or agent.life_state != PersistentAgent.LifeState.ACTIVE:
         return None
 
-    current_env = getattr(settings, "GOBII_RELEASE_ENV", "local")
+    current_env = getattr(settings, "OPERARIO_RELEASE_ENV", "local")
     if (agent.execution_environment or "local") != current_env:
         return None
 

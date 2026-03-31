@@ -9,7 +9,7 @@ type StatCardProps = {
 
 export function StatCard({ label, value, icon, hint }: StatCardProps) {
   return (
-    <div className="gobii-card-base flex items-start gap-3 border border-slate-100/80 px-5 py-4">
+    <div className="operario-card-base flex items-start gap-3 border border-slate-100/80 px-5 py-4">
       {icon ? <div className="rounded-2xl bg-slate-50 p-3 text-slate-600">{icon}</div> : null}
       <div>
         <p className="text-xs font-medium uppercase tracking-wide text-slate-500">{label}</p>

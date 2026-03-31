@@ -107,7 +107,7 @@ export function SubscriptionUpgradePlans({
     if (typeof window === 'undefined') {
       return
     }
-    window.gobiiTrackCta?.({
+    window.operarioTrackCta?.({
       cta_id: 'pricing_modal_view_comparison',
       destination: '/pricing/',
       

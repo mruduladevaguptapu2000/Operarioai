@@ -72,7 +72,7 @@ class TaskWebhookServiceTests(TestCase):
                 "result": {'foo': 'bar'},
             },
         )
-        self.assertEqual(called_kwargs["headers"]["User-Agent"], "Gobii-AgentWebhook/1.0")
+        self.assertEqual(called_kwargs["headers"]["User-Agent"], "Operario AI-AgentWebhook/1.0")
         self.assertEqual(called_kwargs["headers"]["Content-Type"], "application/json")
         self.assertEqual(
             called_kwargs["proxies"],

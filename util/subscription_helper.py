@@ -47,10 +47,10 @@ except Exception:  # pragma: no cover - optional dependency
     DJSTRIPE_AVAILABLE = False
 
 logger = logging.getLogger(__name__)
-tracer = trace.get_tracer("gobii.utils")
+tracer = trace.get_tracer("operario.utils")
 
 BillingOwnerType = Literal["user", "organization"]
-_OWNER_PLAN_CACHE_ATTR = "_gobii_owner_plan_cache"
+_OWNER_PLAN_CACHE_ATTR = "_operario_owner_plan_cache"
 _MISSING = object()
 
 
@@ -1754,8 +1754,8 @@ def is_community_unlimited_mode() -> bool:
     try:
         if 'test_settings' in os.environ.get('DJANGO_SETTINGS_MODULE', ''):
             return False
-        return (not getattr(settings, "GOBII_PROPRIETARY_MODE", False)) and bool(
-            getattr(settings, "GOBII_ENABLE_COMMUNITY_UNLIMITED", False)
+        return (not getattr(settings, "OPERARIO_PROPRIETARY_MODE", False)) and bool(
+            getattr(settings, "OPERARIO_ENABLE_COMMUNITY_UNLIMITED", False)
         )
     except Exception:
         return False
@@ -1802,7 +1802,7 @@ def get_user_max_contacts_per_agent(user, organization=None) -> int:
     2) Otherwise, if ``UserQuota.max_agent_contacts`` is set (>0), use that legacy override.
     3) When neither is set, fall back to the user's plan ``max_contacts_per_agent`` (defaulting to the free plan).
     """
-    if not getattr(settings, "GOBII_PROPRIETARY_MODE", False):
+    if not getattr(settings, "OPERARIO_PROPRIETARY_MODE", False):
         return 0
 
     default_limit = PLAN_CONFIG[PlanNames.FREE].get("max_contacts_per_agent", 3)

@@ -31,7 +31,7 @@ def capi_start_trial(user, properties=None, request=None, context=None, provider
     """
     Specialized StartTrial entrypoint that delays delivery and preserves original event_time.
     """
-    if not settings.GOBII_PROPRIETARY_MODE:
+    if not settings.OPERARIO_PROPRIETARY_MODE:
         return
 
     payload = _build_payload(
@@ -65,7 +65,7 @@ def capi_delay_subscription_guarded(
     provider_targets=None,
 ):
     """Delay delivery while preserving the original event time and subscription guard."""
-    if not settings.GOBII_PROPRIETARY_MODE:
+    if not settings.OPERARIO_PROPRIETARY_MODE:
         return
 
     payload = _build_payload(
@@ -90,7 +90,7 @@ def capi(user, event_name, properties=None, request=None, context=None, provider
     """
     Public entrypoint. Call from views/services to emit a marketing event.
     """
-    if not settings.GOBII_PROPRIETARY_MODE:
+    if not settings.OPERARIO_PROPRIETARY_MODE:
         return
     if event_name == "StartTrial":
         capi_start_trial(

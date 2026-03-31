@@ -47,7 +47,7 @@ def _format_segment_snippet() -> str:
     write_key_json = json.dumps(write_key)
     return f"""<script>
     (function() {{
-      var segmentEnabled = window.GobiiSegmentBootstrap && window.GobiiSegmentBootstrap.init({{
+      var segmentEnabled = window.Operario AISegmentBootstrap && window.Operario AISegmentBootstrap.init({{
         enabled: {enabled_js},
         writeKey: {write_key_json},
         defaultProperties: {{
@@ -73,16 +73,16 @@ def _format_signup_tracking_snippet() -> str:
     if settings.DEBUG:
         return "<!-- Signup tracking disabled in debug mode -->"
 
-    proprietary = getattr(settings, "GOBII_PROPRIETARY_MODE", False)
+    proprietary = getattr(settings, "OPERARIO_PROPRIETARY_MODE", False)
     if not proprietary:
         return "<!-- Signup tracking disabled (non-proprietary mode) -->"
 
     return """<script>
   (function() {
-    if (!window.GobiiSignupTracking || typeof window.GobiiSignupTracking.fetchAndFire !== 'function') {
+    if (!window.Operario AISignupTracking || typeof window.Operario AISignupTracking.fetchAndFire !== 'function') {
       return;
     }
-    window.GobiiSignupTracking.fetchAndFire({
+    window.Operario AISignupTracking.fetchAndFire({
       endpoint: '/clear_signup_tracking',
       source: 'app_shell'
     });
@@ -95,7 +95,7 @@ def _format_pixel_loaders() -> str:
     if settings.DEBUG:
         return "<!-- Pixel loaders disabled in debug mode -->"
 
-    proprietary = getattr(settings, "GOBII_PROPRIETARY_MODE", False)
+    proprietary = getattr(settings, "OPERARIO_PROPRIETARY_MODE", False)
     snippets = []
 
     # Google Analytics
@@ -167,9 +167,9 @@ def _build_shell_html(*, fish_collateral_enabled: bool) -> str:
     pixel_loaders = _format_pixel_loaders()
     signup_tracking = _format_signup_tracking_snippet()
     segment_bootstrap_js = static("js/segment_bootstrap.js")
-    analytics_js = static("js/gobii_analytics.js")
+    analytics_js = static("js/operario_analytics.js")
     signup_tracking_js = static("js/signup_tracking.js")
-    icon_url = static("images/gobii_fish.png") if fish_collateral_enabled else static("images/noBgBlue.png")
+    icon_url = static("images/operario_fish.png") if fish_collateral_enabled else static("images/noBgBlue.png")
     fish_collateral_data_attr = "true" if fish_collateral_enabled else "false"
     fonts_css = static("css/custom_fonts.css")
     pygments_css = static("css/pygments.css")
@@ -187,7 +187,7 @@ def _build_shell_html(*, fish_collateral_enabled: bool) -> str:
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content">
   <meta name="csrf-cookie-name" content="{csrf_cookie_name}">
-  <title>Gobii App</title>
+  <title>Operario AI App</title>
   <link rel="icon" type="image/png" href="{icon_url}" />
   <link rel="preload" as="image" href="{icon_url}" />
   <script src="https://cdn.tailwindcss.com?plugins=typography,forms,aspect-ratio,container-queries"></script>
@@ -203,7 +203,7 @@ def _build_shell_html(*, fish_collateral_enabled: bool) -> str:
   {vite_tags}
 </head>
 <body class="min-h-screen bg-white">
-  <div id="gobii-frontend-root" data-app="immersive-app" data-fish-collateral-enabled="{fish_collateral_data_attr}"{max_chat_upload_size_attr}></div>
+  <div id="operario-frontend-root" data-app="immersive-app" data-fish-collateral-enabled="{fish_collateral_data_attr}"{max_chat_upload_size_attr}></div>
 </body>
 </html>"""
 

@@ -208,8 +208,8 @@ class AgentChatAPITests(TestCase):
             "/console/api/agents/create/",
             data=json.dumps({"message": "Create from immersive app"}),
             content_type="application/json",
-            HTTP_X_GOBII_CONTEXT_TYPE="organization",
-            HTTP_X_GOBII_CONTEXT_ID="not-a-uuid",
+            HTTP_X_OPERARIO_CONTEXT_TYPE="organization",
+            HTTP_X_OPERARIO_CONTEXT_ID="not-a-uuid",
         )
         self.assertEqual(response.status_code, 403)
         self.assertEqual(response.json().get("error"), "Invalid context override.")
@@ -472,7 +472,7 @@ class AgentChatAPITests(TestCase):
     @tag("batch_agent_chat")
     def test_processing_snapshot_includes_next_scheduled_at_when_idle(self):
         self.agent.schedule = "@hourly"
-        self.agent.execution_environment = getattr(settings, "GOBII_RELEASE_ENV", "local")
+        self.agent.execution_environment = getattr(settings, "OPERARIO_RELEASE_ENV", "local")
         self.agent.is_active = True
         self.agent.life_state = PersistentAgent.LifeState.ACTIVE
         self.agent.save(update_fields=["schedule", "execution_environment", "is_active", "life_state"])
@@ -1273,7 +1273,7 @@ class AgentChatAPITests(TestCase):
     @tag("batch_agent_chat")
     def test_processing_status_endpoint_includes_next_scheduled_at(self):
         self.agent.schedule = "@hourly"
-        self.agent.execution_environment = getattr(settings, "GOBII_RELEASE_ENV", "local")
+        self.agent.execution_environment = getattr(settings, "OPERARIO_RELEASE_ENV", "local")
         self.agent.is_active = True
         self.agent.life_state = PersistentAgent.LifeState.ACTIVE
         self.agent.save(update_fields=["schedule", "execution_environment", "is_active", "life_state"])

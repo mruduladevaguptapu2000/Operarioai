@@ -248,7 +248,7 @@ export function UsageToolChart({ effectiveRange, fallbackRange, agentIds, timezo
   const totalCredits = toolData?.total_credits ?? processedSegments.reduce((acc, segment) => acc + segment.value, 0)
 
   return (
-    <section className="gobii-card-base flex flex-col gap-4 p-6">
+    <section className="operario-card-base flex flex-col gap-4 p-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
           <h2 className="text-lg font-semibold text-slate-900">Tool credit breakdown</h2>

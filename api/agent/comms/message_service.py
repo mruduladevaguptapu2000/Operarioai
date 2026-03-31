@@ -76,7 +76,7 @@ from util.urls import (
     build_daily_limit_action_token,
 )
 
-tracer = trace.get_tracer("gobii.utils")
+tracer = trace.get_tracer("operario.utils")
 
 @dataclass
 class InboundMessageInfo:
@@ -644,12 +644,12 @@ def send_owner_daily_credit_hard_limit_notice(agent: PersistentAgent) -> bool:
         is_free_plan = plan_id == PlanNamesChoices.FREE.value
         upgrade_url = None
         task_pack_url = None
-        if is_free_plan and settings.GOBII_PROPRIETARY_MODE:
+        if is_free_plan and settings.OPERARIO_PROPRIETARY_MODE:
             try:
                 upgrade_url = _build_site_url(reverse("proprietary:pricing"))
             except NoReverseMatch:
                 upgrade_url = None
-        elif settings.GOBII_PROPRIETARY_MODE:
+        elif settings.OPERARIO_PROPRIETARY_MODE:
             try:
                 billing_url = _build_site_url(reverse("billing"))
             except NoReverseMatch:
@@ -691,7 +691,7 @@ def send_owner_daily_credit_hard_limit_notice(agent: PersistentAgent) -> bool:
                 unlimited_limit_url = append_context_query(unlimited_limit_url, agent.organization_id)
 
         try:
-            logo_url = _build_site_url(static("images/gobii_fish_with_text_purple.png"))
+            logo_url = _build_site_url(static("images/operario_fish_with_text_purple.png"))
         except (Site.DoesNotExist, MultipleObjectsReturned, DatabaseError, ValueError) as exc:
             logging.warning("Failed to build logo URL for daily credit email: %s", exc)
             logo_url = ""
@@ -1039,7 +1039,7 @@ def ingest_inbound_message(
                                     "owner": agent_obj.user,
                                     "sender": parsed.sender,
                                     "subject": parsed.subject or "",
-                                    "is_proprietary_mode": settings.GOBII_PROPRIETARY_MODE,
+                                    "is_proprietary_mode": settings.OPERARIO_PROPRIETARY_MODE,
                                     "billing_url": billing_url,
                                 }
                                 subject = render_to_string(

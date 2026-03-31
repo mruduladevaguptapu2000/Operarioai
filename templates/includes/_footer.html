@@ -4,17 +4,17 @@
     <div>
       <h3 class="font-semibold mb-4">Product</h3>
       <ul class="space-y-2">
-        {% if settings.GOBII_PROPRIETARY_MODE %}
+        {% if settings.OPERARIO_PROPRIETARY_MODE %}
           <li><a href="{% url 'proprietary:pricing' %}" class="text-slate-700 hover:text-blue-600">Pricing</a></li>
         {% endif %}
         <li><a href="{% url 'agents' %}" class="text-slate-700 hover:text-blue-600">My Agents</a></li>
-        <li><a href="https://github.com/gobii-ai/gobii-platform" class="text-slate-700 hover:text-blue-600" title="Self-Host Gobii">Self-Host</a></li>
-        {% if settings.GOBII_PROPRIETARY_MODE and settings.REWARDFUL_AFFILIATE_LINK %}
-          <li><a href="{{ settings.REWARDFUL_AFFILIATE_LINK }}" class="text-slate-700 hover:text-blue-600" title="Gobii Affiliate Program" target="_blank" rel="noopener">Affiliate Program</a></li>
+        <li><a href="https://github.com/operario-ai/operario-platform" class="text-slate-700 hover:text-blue-600" title="Self-Host Operario AI">Self-Host</a></li>
+        {% if settings.OPERARIO_PROPRIETARY_MODE and settings.REWARDFUL_AFFILIATE_LINK %}
+          <li><a href="{{ settings.REWARDFUL_AFFILIATE_LINK }}" class="text-slate-700 hover:text-blue-600" title="Operario AI Affiliate Program" target="_blank" rel="noopener">Affiliate Program</a></li>
         {% endif %}
       </ul>
     </div>
-    {% if settings.GOBII_PROPRIETARY_MODE %}
+    {% if settings.OPERARIO_PROPRIETARY_MODE %}
     <div>
       <h3 class="font-semibold mb-4">Company</h3>
       <ul class="space-y-2">
@@ -29,8 +29,8 @@
     <div>
       <h3 class="font-semibold mb-4">Resources</h3>
       <ul class="space-y-2">
-        <li><a href="https://docs.gobii.ai/getting-started/introduction" class="text-slate-700 hover:text-blue-600">Documentation</a></li>
-        <li><a href="https://docs.gobii.ai/api-reference" class="text-slate-700 hover:text-blue-600" target="_blank" rel="noopener">API Reference</a></li>
+        <li><a href="https://docs.operario.ai/getting-started/introduction" class="text-slate-700 hover:text-blue-600">Documentation</a></li>
+        <li><a href="https://docs.operario.ai/api-reference" class="text-slate-700 hover:text-blue-600" target="_blank" rel="noopener">API Reference</a></li>
         {% if settings.PUBLIC_GITHUB_URL %}
           <li><a href="{{ settings.PUBLIC_GITHUB_URL }}" class="text-slate-700 hover:text-blue-600" target="_blank" rel="noopener">GitHub</a></li>
         {% endif %}
@@ -39,7 +39,7 @@
     <div>
       <h3 class="font-semibold mb-4">Support</h3>
       <ul class="space-y-2">
-        {% if settings.GOBII_PROPRIETARY_MODE %}
+        {% if settings.OPERARIO_PROPRIETARY_MODE %}
           <li><a href="{% url 'proprietary:support' %}" class="text-slate-700 hover:text-blue-600">Email</a></li>
         {% elif settings.PUBLIC_SUPPORT_EMAIL %}
           <li><a href="mailto:{{ settings.PUBLIC_SUPPORT_EMAIL }}" class="text-slate-700 hover:text-blue-600">Email</a></li>
@@ -74,7 +74,7 @@
   
   <div class="py-6 text-center text-xs text-slate-500 space-x-2">
     <span>&copy; {% now "Y" %} {{ settings.PUBLIC_BRAND_NAME }}. All rights reserved.</span>
-    {% if settings.GOBII_PROPRIETARY_MODE %}
+    {% if settings.OPERARIO_PROPRIETARY_MODE %}
     <span>&bull;</span>
     <a href="{% url 'proprietary:tos' %}" class="hover:text-blue-600 underline">Terms&nbsp;of&nbsp;Service</a>
     <span>&bull;</span>

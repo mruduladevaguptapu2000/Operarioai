@@ -212,7 +212,7 @@ class UserSignedUpSignalTests(TestCase):
             assessment_source=SIGNAL_SOURCE_SIGNUP,
         )
 
-    @override_settings(GOBII_PROPRIETARY_MODE=True, CAPI_REGISTRATION_VALUE=12.5)
+    @override_settings(OPERARIO_PROPRIETARY_MODE=True, CAPI_REGISTRATION_VALUE=12.5)
     @patch("pages.signals.capi")
     @patch("pages.signals.Analytics.track")
     @patch("pages.signals.Analytics.identify")
@@ -232,7 +232,7 @@ class UserSignedUpSignalTests(TestCase):
         self.assertEqual(props["value"], 12.5)
         self.assertEqual(props["currency"], "USD")
 
-    @override_settings(GOBII_PROPRIETARY_MODE=True)
+    @override_settings(OPERARIO_PROPRIETARY_MODE=True)
     @patch("pages.signals.record_fbc_synthesized")
     @patch("pages.signals.capi")
     @patch("pages.signals.Analytics.track")
@@ -286,7 +286,7 @@ class UserSignedUpSignalTests(TestCase):
             source="pages.signals.handle_user_signed_up"
         )
 
-    @override_settings(GOBII_PROPRIETARY_MODE=True)
+    @override_settings(OPERARIO_PROPRIETARY_MODE=True)
     @patch("pages.signals.record_fbc_synthesized")
     @patch("pages.signals.capi")
     @patch("pages.signals.Analytics.track")
@@ -651,7 +651,7 @@ class SubscriptionSignalTests(TestCase):
         sub.stripe_data['billing_reason'] = "subscription_create"
         sub.billing_reason = "subscription_create"
         event_id = "sub-evt-123"
-        sub.stripe_data['metadata'] = {"gobii_event_id": event_id}
+        sub.stripe_data['metadata'] = {"operario_event_id": event_id}
 
         with patch("pages.signals.PaymentsHelper.get_stripe_key"), \
             patch("pages.signals.Subscription.sync_from_stripe_data", return_value=sub), \
@@ -2408,7 +2408,7 @@ class PaymentFailedSignalTests(TestCase):
                     "status": "past_due",
                     "trial_end": str(trial_end),
                     "current_period_start": str(trial_end),
-                    "metadata": {"checkout_source_url": "https://gobii.ai/pricing"},
+                    "metadata": {"checkout_source_url": "https://operario.ai/pricing"},
                 },
             ),
             number=payload["number"],
@@ -2430,7 +2430,7 @@ class PaymentFailedSignalTests(TestCase):
         capi_kwargs = mock_capi.call_args.kwargs
         self.assertEqual(capi_kwargs["event_name"], "TrialConversionPaymentFailedFinal")
         self.assertEqual(capi_kwargs["provider_targets"], ["meta", "reddit", "tiktok"])
-        self.assertEqual(capi_kwargs["context"]["page"]["url"], "https://gobii.ai/pricing")
+        self.assertEqual(capi_kwargs["context"]["page"]["url"], "https://operario.ai/pricing")
         props = capi_kwargs["properties"]
         self.assertEqual(props["plan"], PlanNamesChoices.STARTUP.value)
         self.assertEqual(props["subscription_id"], "sub_user")
@@ -3008,7 +3008,7 @@ class PaymentSucceededSignalTests(TestCase):
         invoice_obj = SimpleNamespace(
             id=payload["id"],
             customer=SimpleNamespace(id="cus_user_succeeded", subscriber=self.user),
-            subscription=SimpleNamespace(id="sub_user_succeeded", stripe_data={"metadata": {"gobii_event_id": "evt-123"}}),
+            subscription=SimpleNamespace(id="sub_user_succeeded", stripe_data={"metadata": {"operario_event_id": "evt-123"}}),
             number=payload["number"],
         )
 
@@ -3054,8 +3054,8 @@ class PaymentSucceededSignalTests(TestCase):
                 id="sub_user_succeeded",
                 stripe_data={
                     "metadata": {
-                        "gobii_event_id": "evt-renew",
-                        "checkout_source_url": "https://app.gobii.ai/billing/checkout?src=ads",
+                        "operario_event_id": "evt-renew",
+                        "checkout_source_url": "https://app.operario.ai/billing/checkout?src=ads",
                     }
                 },
             ),
@@ -3190,8 +3190,8 @@ class PaymentSucceededSignalTests(TestCase):
                     "trial_end": str(trial_end),
                     "current_period_start": str(trial_end),
                     "metadata": {
-                        "gobii_event_id": "evt-trial-conversion",
-                        "checkout_source_url": "https://app.gobii.ai/billing/checkout?src=ads",
+                        "operario_event_id": "evt-trial-conversion",
+                        "checkout_source_url": "https://app.operario.ai/billing/checkout?src=ads",
                     },
                 },
             ),
@@ -3225,7 +3225,7 @@ class PaymentSucceededSignalTests(TestCase):
         self.assertEqual(context["utm"]["utm_source"], "retargeting-campaign")
         self.assertEqual(context["client_ip"], "203.0.113.5")
         self.assertEqual(context["user_agent"], "pytest-renewal-agent")
-        self.assertEqual(context["page"]["url"], "https://app.gobii.ai/billing/checkout?src=ads")
+        self.assertEqual(context["page"]["url"], "https://app.operario.ai/billing/checkout?src=ads")
 
         events = [call.kwargs.get("event") for call in mock_track_event.call_args_list]
         self.assertIn(AnalyticsEvent.BILLING_PAYMENT_SUCCEEDED, events)

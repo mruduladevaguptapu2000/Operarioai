@@ -54,7 +54,7 @@ from ..services.referral_service import ReferralService
 from ..openrouter import DEFAULT_API_BASE, get_attribution_headers
 from util import EphemeralXvfb, should_use_ephemeral_xvfb
 
-tracer = trace.get_tracer('gobii.utils')
+tracer = trace.get_tracer('operario.utils')
 
 _COST_PRECISION = Decimal("0.000001")
 _VALID_VISION_DETAIL_LEVELS = {"auto", "low", "high"}
@@ -2177,7 +2177,7 @@ def _process_browser_use_task_core(
                     )
 
 
-@shared_task(bind=True, name="gobii_platform.api.tasks.process_browser_use_task")
+@shared_task(bind=True, name="operario_platform.api.tasks.process_browser_use_task")
 def process_browser_use_task(
     self,
     browser_use_agent_task_id: str,

@@ -1,9 +1,9 @@
 #!/bin/bash
 # Helper script to run Django and Celery with secrets support
 
-export GOBII_ENCRYPTION_KEY="test-encryption-key-for-local-dev"
+export OPERARIO_ENCRYPTION_KEY="test-encryption-key-for-local-dev"
 
-echo "Starting with GOBII_ENCRYPTION_KEY set..."
+echo "Starting with OPERARIO_ENCRYPTION_KEY set..."
 
 if [ "$1" = "django" ]; then
     echo "Starting Django server..."

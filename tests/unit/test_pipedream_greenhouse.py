@@ -171,7 +171,7 @@ class PipedreamGreenhouseDiscoveryTests(TestCase):
     def setUp(self):
         Site.objects.update_or_create(id=1, defaults={"domain": "example.com", "name": "example"})
 
-    @override_settings(GOBII_PROPRIETARY_MODE=False)
+    @override_settings(OPERARIO_PROPRIETARY_MODE=False)
     @patch('api.agent.tools.mcp_manager.select_proxy', return_value=None)
     @patch('api.agent.tools.mcp_manager.MCPToolManager._ensure_event_loop')
     @patch('api.agent.tools.mcp_manager.Client')
@@ -236,7 +236,7 @@ class PipedreamGreenhouseDiscoveryTests(TestCase):
         self.assertIn('httpx_client_factory', kwargs)
         self.assertTrue(callable(kwargs['httpx_client_factory']))
 
-    @override_settings(GOBII_PROPRIETARY_MODE=False)
+    @override_settings(OPERARIO_PROPRIETARY_MODE=False)
     @patch('api.agent.tools.mcp_manager.select_proxy', side_effect=RuntimeError("No proxies"))
     @patch('api.agent.tools.mcp_manager.MCPToolManager._ensure_event_loop')
     @patch('api.agent.tools.mcp_manager.Client')
@@ -277,7 +277,7 @@ class PipedreamGreenhouseDiscoveryTests(TestCase):
 
         self.assertTrue(any("falling back to direct connection" in message for message in logs.output))
 
-    @override_settings(GOBII_PROPRIETARY_MODE=True)
+    @override_settings(OPERARIO_PROPRIETARY_MODE=True)
     @patch('api.agent.tools.mcp_manager.select_proxy', return_value=None)
     @patch('api.agent.tools.mcp_manager.MCPToolManager._ensure_event_loop')
     @patch('api.agent.tools.mcp_manager.Client')

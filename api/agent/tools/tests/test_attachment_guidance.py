@@ -85,7 +85,7 @@ class AttachmentGuidanceTests(SimpleTestCase):
         result = execute_create_csv(
             agent,
             {
-                "csv_text": "name\nGobii\n",
+                "csv_text": "name\nOperario AI\n",
                 "file_path": "/exports/report.csv",
             },
         )

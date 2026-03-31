@@ -5,7 +5,7 @@ import os
 
 # Set environment variables before importing settings
 os.environ.setdefault("DJANGO_SECRET_KEY", "test-secret-key")
-os.environ.setdefault("GOBII_ENCRYPTION_KEY", "dummy-encryption-key-for-testing")
+os.environ.setdefault("OPERARIO_ENCRYPTION_KEY", "dummy-encryption-key-for-testing")
 os.environ.setdefault("POSTGRES_DB", "test")
 os.environ.setdefault("POSTGRES_USER", "test")
 os.environ.setdefault("POSTGRES_PASSWORD", "test")
@@ -15,9 +15,9 @@ os.environ.setdefault("REDIS_URL", "redis://localhost:6379/0")
 os.environ.setdefault("SEGMENT_WRITE_KEY", "")
 # Keep proprietary mode off by default in tests; specific tests can override
 # Disable the community unlimited override so plan limits behave predictably in tests
-os.environ.setdefault("GOBII_ENABLE_COMMUNITY_UNLIMITED", "0")
+os.environ.setdefault("OPERARIO_ENABLE_COMMUNITY_UNLIMITED", "0")
 os.environ.setdefault("ANTHROPIC_API_KEY", "test-anthropic-key")
-os.environ.setdefault("GOBII_ENABLE_TRACING", "0")
+os.environ.setdefault("OPERARIO_ENABLE_TRACING", "0")
 os.environ["STRIPE_ENABLED"] = "1"
 os.environ["STRIPE_TEST_SECRET_KEY"] = os.environ.get("STRIPE_TEST_SECRET_KEY") or "sk_test_dummy"
 
@@ -39,7 +39,7 @@ DATABASES = {
     }
 }
 
-# Tests can toggle GOBII_PROPRIETARY_MODE with override_settings after Django
+# Tests can toggle OPERARIO_PROPRIETARY_MODE with override_settings after Django
 # has already loaded template app directories. Keep proprietary templates in
 # test-only DIRS so proprietary views can still render in those cases.
 _proprietary_template_dir = BASE_DIR / "proprietary" / "templates"

@@ -65,7 +65,7 @@ def _eligible_idle_accounts_queryset():
         .filter(
             is_inbound_enabled=True,
             imap_idle_enabled=True,
-            endpoint__owner_agent__execution_environment=settings.GOBII_RELEASE_ENV,
+            endpoint__owner_agent__execution_environment=settings.OPERARIO_RELEASE_ENV,
         )
         .order_by("-updated_at")
     )

@@ -157,7 +157,7 @@ class PersistentAgentProvisioningService:
             persistent_agent.save()
 
             # Apply plan-specific default daily credit limits
-            if settings.GOBII_PROPRIETARY_MODE:
+            if settings.OPERARIO_PROPRIETARY_MODE:
                 owner = organization or user
                 plan_value = getattr(getattr(owner, "billing", None), "subscription", PlanNamesChoices.FREE)
 

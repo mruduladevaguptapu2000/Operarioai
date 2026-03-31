@@ -32,7 +32,7 @@ class EmailEndpointRoutingTests(TestCase):
             charter="route email",
             browser_use_agent=browser_agent,
         )
-        domain = (settings.DEFAULT_AGENT_EMAIL_DOMAIN or "my.gobii.ai").strip().lower()
+        domain = (settings.DEFAULT_AGENT_EMAIL_DOMAIN or "my.operario.ai").strip().lower()
         self.default_alias = PersistentAgentCommsEndpoint.objects.create(
             owner_agent=self.agent,
             channel=CommsChannel.EMAIL,

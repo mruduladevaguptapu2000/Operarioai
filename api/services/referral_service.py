@@ -759,11 +759,11 @@ class ReferralService:
 
         Args:
             user: The user who wants to share their referral link
-            base_url: Base URL (e.g., "https://gobii.ai")
+            base_url: Base URL (e.g., "https://operario.ai")
             track: Whether to track this as an analytics event (default True)
 
         Returns:
-            Full referral URL (e.g., "https://gobii.ai/?ref=ABC123")
+            Full referral URL (e.g., "https://operario.ai/?ref=ABC123")
         """
         code = cls.get_or_create_referral_code(user)
         link = f"{base_url}/?ref={code}"

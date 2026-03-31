@@ -98,7 +98,7 @@ class PersistentAgentEmailFooterTests(TestCase):
         self.assertNotIn("Plain footer text", text)
 
     @tag("batch_email_footer")
-    @override_settings(GOBII_PROPRIETARY_MODE=True)
+    @override_settings(OPERARIO_PROPRIETARY_MODE=True)
     @patch("api.agent.comms.email_footer_service.switch_is_active", return_value=True)
     @patch("api.agent.comms.email_footer_service.get_redis_client")
     def test_throttle_footer_replaces_default_footer_once(self, mock_get_redis, _mock_switch):

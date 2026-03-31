@@ -166,7 +166,7 @@ class ConsoleBillingUpdateApiTests(TestCase):
         self.assertEqual(resp.status_code, 400)
         payload = resp.json()
         self.assertEqual(payload.get("error"), "no_active_subscription")
-        self.assertIn("support@gobii.ai", payload.get("detail", ""))
+        self.assertIn("support@operario.ai", payload.get("detail", ""))
 
     @patch("console.billing_update_service.stripe_status")
     def test_org_addons_rejected_without_seats(self, mock_stripe_status):

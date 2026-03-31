@@ -1078,7 +1078,7 @@ def execute_enabled_tool(
     # Block sqlite execution for ineligible agents (even if previously enabled)
     if resolved_name == SQLITE_TOOL_NAME and not is_sqlite_enabled_for_agent(agent):
         message = "Database tool is not available for this deployment."
-        if getattr(settings, "GOBII_PROPRIETARY_MODE", False):
+        if getattr(settings, "OPERARIO_PROPRIETARY_MODE", False):
             message = (
                 "Database tool is not available on your current plan. "
                 "Upgrade to a paid plan with max intelligence to access this feature."

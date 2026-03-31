@@ -39,7 +39,7 @@ interface SegmentAnalytics {
 type GtagParams = Record<string, string | number | boolean | undefined>
 type GtagCommand = 'config' | 'event' | 'js' | 'set' | 'consent'
 type Gtag = (command: GtagCommand, targetOrValue: string | Date, params?: GtagParams) => void
-type GobiiTrackCtaPayload = {
+type Operario AITrackCtaPayload = {
   cta_id: string
   intent?: string
   destination?: string
@@ -49,13 +49,13 @@ type GobiiTrackCtaPayload = {
   placement?: string
   cta_type?: string
 }
-type GobiiTrackCta = (payload: GobiiTrackCtaPayload) => void
+type Operario AITrackCta = (payload: Operario AITrackCtaPayload) => void
 
 declare global {
   interface Window {
     analytics?: SegmentAnalytics
     gtag?: Gtag
-    gobiiTrackCta?: GobiiTrackCta
+    operarioTrackCta?: Operario AITrackCta
   }
 }
 

@@ -161,7 +161,7 @@ export function LibraryScreen({ listUrl, likeUrl, canLike }: LibraryScreenProps)
 
   if (libraryQuery.isPending) {
     return (
-      <div className="gobii-card-base flex min-h-[50vh] items-center justify-center px-6 py-10">
+      <div className="operario-card-base flex min-h-[50vh] items-center justify-center px-6 py-10">
         <div className="inline-flex items-center gap-3 rounded-full border border-indigo-100 bg-indigo-50 px-4 py-2 text-indigo-700">
           <Loader2 className="size-5 animate-spin" aria-hidden="true" />
           <span className="text-sm font-semibold">Loading shared agents...</span>
@@ -173,7 +173,7 @@ export function LibraryScreen({ listUrl, likeUrl, canLike }: LibraryScreenProps)
   if (libraryQuery.isError) {
     const errorMessage = libraryQuery.error instanceof Error ? libraryQuery.error.message : 'Unable to load the library right now.'
     return (
-      <div className="gobii-card-base border border-red-200 p-6">
+      <div className="operario-card-base border border-red-200 p-6">
         <div className="flex items-start gap-3 text-red-700">
           <AlertTriangle className="mt-0.5 size-5 shrink-0" aria-hidden="true" />
           <div>
@@ -200,13 +200,13 @@ export function LibraryScreen({ listUrl, likeUrl, canLike }: LibraryScreenProps)
 
   return (
     <div className="space-y-6 pb-10">
-      <section className="gobii-card-base px-6 py-6 sm:px-8">
+      <section className="operario-card-base px-6 py-6 sm:px-8">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="space-y-2">
             <p className="text-xs font-semibold uppercase tracking-[0.14em] text-indigo-700">Discover</p>
-            <h1 className="text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">Most popular shared Gobii agents</h1>
+            <h1 className="text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">Most popular shared Operario AI agents</h1>
             <p className="max-w-3xl text-sm text-slate-600 sm:text-base">
-              Browse publicly shared agents from across Gobii.
+              Browse publicly shared agents from across Operario AI.
             </p>
             {!canLike ? (
               <p className="text-sm font-medium text-indigo-700">Sign in to like templates.</p>
@@ -266,7 +266,7 @@ export function LibraryScreen({ listUrl, likeUrl, canLike }: LibraryScreenProps)
 
       <section className="grid gap-6 md:grid-cols-[16rem_minmax(0,1fr)]">
         <aside className="hidden md:block">
-          <div className="gobii-card-base sticky top-24 space-y-4 p-4">
+          <div className="operario-card-base sticky top-24 space-y-4 p-4">
             <div>
               <p className="mb-2 text-xs font-semibold uppercase tracking-[0.12em] text-indigo-700">Search</p>
               <SearchInput
@@ -316,7 +316,7 @@ export function LibraryScreen({ listUrl, likeUrl, canLike }: LibraryScreenProps)
 
         <div className="space-y-4">
           {agents.length === 0 ? (
-            <div className="gobii-card-base p-8 text-center">
+            <div className="operario-card-base p-8 text-center">
               <p className="text-sm font-semibold text-slate-800">{emptyHeading}</p>
               <p className="mt-1 text-sm text-slate-600">{emptyDescription}</p>
             </div>
@@ -326,7 +326,7 @@ export function LibraryScreen({ listUrl, likeUrl, canLike }: LibraryScreenProps)
                 {agents.map((agent) => {
                   const isLikePending = likeMutation.isPending && likeMutation.variables === agent.id
                   return (
-                    <article key={agent.id} className="gobii-card-hoverable group flex h-full flex-col p-5">
+                    <article key={agent.id} className="operario-card-hoverable group flex h-full flex-col p-5">
                       <div className="mb-3 flex items-start justify-between gap-2">
                         <span className="inline-flex items-center gap-2 text-sm font-medium text-indigo-600">
                           <span className="size-2 rounded-full bg-indigo-400" />

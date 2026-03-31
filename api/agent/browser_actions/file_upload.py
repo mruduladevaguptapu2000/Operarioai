@@ -34,7 +34,7 @@ from api.services.system_settings import get_max_file_size
 from ..files.filespace_service import get_or_create_default_filespace
 from ...models import AgentFsNode, AgentFileSpaceAccess, PersistentAgent
 
-tracer = trace.get_tracer("gobii.utils")
+tracer = trace.get_tracer("operario.utils")
 logger = logging.getLogger(__name__)
 
 

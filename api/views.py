@@ -68,7 +68,7 @@ from pages.account_info_cache import invalidate_account_info_cache
 from drf_spectacular.utils import extend_schema, extend_schema_view, inline_serializer
 
 logger = logging.getLogger(__name__)
-tracer = trace.get_tracer('gobii.utils')
+tracer = trace.get_tracer('operario.utils')
 
 
 def _enforce_personal_api_access_or_raise(user, *, organization=None):
@@ -534,7 +534,7 @@ class BrowserUseAgentTaskViewSet(mixins.CreateModelMixin,
         available = TaskCreditService.calculate_available_tasks(request.user)
         if available <= 0 and available != TASKS_UNLIMITED:
             message = "User does not have enough task credits to create a new task."
-            if settings.GOBII_PROPRIETARY_MODE:
+            if settings.OPERARIO_PROPRIETARY_MODE:
                 message = (
                     "User does not have enough task credits to create a new task. "
                     "Please upgrade your plan or enable extra task purchases."
@@ -1079,7 +1079,7 @@ class PipedreamConnectRedirectView(View):
                     'title': 'Integration Not Available',
                     'heading': 'Integration not available',
                     'icon_type': 'info',
-                    'message': 'Third-party integrations are not configured on this Gobii instance.',
+                    'message': 'Third-party integrations are not configured on this Operario AI instance.',
                     'message_secondary': 'If you are self-hosting, please configure the Pipedream environment variables (PIPEDREAM_CLIENT_ID, PIPEDREAM_CLIENT_SECRET, PIPEDREAM_PROJECT_ID).',
                     'show_retry': False,
                     'show_support': False,

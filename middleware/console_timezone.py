@@ -5,7 +5,7 @@ from django.http import HttpRequest, HttpResponse
 from api.services.user_timezone import maybe_infer_user_timezone
 
 
-TIMEZONE_HEADER = "X-Gobii-Timezone"
+TIMEZONE_HEADER = "X-Operario AI-Timezone"
 CONSOLE_API_PREFIX = "/console/api/"
 
 

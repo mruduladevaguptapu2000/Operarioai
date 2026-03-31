@@ -4,7 +4,7 @@ set -e
 # Get the directory where this script is located
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
-PLATFORM_DIR="$PROJECT_ROOT/gobii_platform"  # This is the Django project directory
+PLATFORM_DIR="$PROJECT_ROOT/operario_platform"  # This is the Django project directory
 SCHEMA_PATH="$PROJECT_ROOT/schema.yaml"
 TEMPLATES_DIR="$PROJECT_ROOT/typescript-fetch-templates"  # Path to custom templates
 
@@ -59,7 +59,7 @@ npx @openapitools/openapi-generator-cli generate \
   -g typescript-fetch \
   -o "$FINAL_OUTPUT_DIR" \
   -t "$TEMPLATES_DIR" \
-  --additional-properties=npmName=@gobii-ai/client,\
+  --additional-properties=npmName=@operario-ai/client,\
 npmVersion=$VERSION,\
 useSingleRequestParameter=false,\
 typescriptThreePlus=true,\

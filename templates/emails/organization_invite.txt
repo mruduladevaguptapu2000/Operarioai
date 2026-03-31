@@ -1,4 +1,4 @@
-You're invited to join {{ org.name }} on Gobii
+You're invited to join {{ org.name }} on Operario AI
 
 {{ invited_by.get_full_name|default:invited_by.email }} has invited you to join the organization {{ org.name }} with the role {{ invite.get_role_display }}.
 

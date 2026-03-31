@@ -35,7 +35,7 @@ uv run python manage.py migrate
 uv run python manage.py createsuperuser
 ```
 
-> Tip: `docker-compose.dev.yaml` binds services to `127.0.0.1` using the `postgres/postgres` defaults that `config/settings.py` applies when `GOBII_RELEASE_ENV=local` (the default outside containers).
+> Tip: `docker-compose.dev.yaml` binds services to `127.0.0.1` using the `postgres/postgres` defaults that `config/settings.py` applies when `OPERARIO_RELEASE_ENV=local` (the default outside containers).
 
 ---
 

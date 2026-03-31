@@ -23,7 +23,7 @@ def execute_enable_database(agent: PersistentAgent, params: Dict[str, Any]) -> D
     # Check eligibility before enabling
     if not is_sqlite_enabled_for_agent(agent):
         message = "Database tool is not available for this deployment."
-        if getattr(settings, "GOBII_PROPRIETARY_MODE", False):
+        if getattr(settings, "OPERARIO_PROPRIETARY_MODE", False):
             message = (
                 "Database tool is not available on your current plan. "
                 "Upgrade to a paid plan with max intelligence to access this feature."

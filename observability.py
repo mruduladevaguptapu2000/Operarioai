@@ -22,7 +22,7 @@ from typing import Optional
 from opentelemetry import trace, baggage, context
 from contextlib import contextmanager
 
-tracer = trace.get_tracer("gobii.utils")
+tracer = trace.get_tracer("operario.utils")
 
 # Global reference to the tracer provider for cleanup
 _tracer_provider: Optional[TracerProvider] = None
@@ -66,16 +66,16 @@ class DaemonBatchSpanProcessor(BatchSpanProcessor):
         else:
             logger.warning("Could not find BatchSpanProcessor worker thread to set as daemon")
 
-class GobiiService(str, Enum):
+class Operario AIService(str, Enum):
     """
-    Enum representing the different Gobii services.
+    Enum representing the different Operario AI services.
     Used for identifying service names in tracing and observability.
     """
-    WEB = "gobii-web"
-    WORKER = "gobii-worker"
+    WEB = "operario-web"
+    WORKER = "operario-worker"
 
 @lru_cache(maxsize=1)                    # make sure we initialize only once
-def init_tracing(service_name: GobiiService) -> None:
+def init_tracing(service_name: Operario AIService) -> None:
     """
     Initialize the OTEL tracer provider exactly once per process.
     Pass a `service_name` that distinguishes web vs. workers.
@@ -92,16 +92,16 @@ def init_tracing(service_name: GobiiService) -> None:
     logger.debug(f"OpenTelemetry: Initializing OTEL tracer for {service_name.value}")
 
     # ────────── Decide whether to enable tracing ──────────
-    release_env = os.getenv("GOBII_RELEASE_ENV", "local").lower()
+    release_env = os.getenv("OPERARIO_RELEASE_ENV", "local").lower()
 
     truthy  = ("1", "true", "yes", "on")
     falsy   = ("0", "false", "no", "off")
 
-    user_flag = os.getenv("GOBII_ENABLE_TRACING", "").lower()
+    user_flag = os.getenv("OPERARIO_ENABLE_TRACING", "").lower()
 
     # 1.  If the developer explicitly set a falsy flag, always disable.
     if user_flag in falsy:
-        logger.debug("OpenTelemetry: Tracing explicitly disabled via GOBII_ENABLE_TRACING env var – skipping initialization")
+        logger.debug("OpenTelemetry: Tracing explicitly disabled via OPERARIO_ENABLE_TRACING env var – skipping initialization")
         return
 
     # 2.  If we are in a *local* environment (default during dev/tests) or a
@@ -120,8 +120,8 @@ def init_tracing(service_name: GobiiService) -> None:
     res = Resource.create(
         {
             "service.name": service_name.value,
-            "service.version": os.getenv("GOBII_VERSION", "dev"),
-            "deployment.environment.name": os.getenv("GOBII_RELEASE_ENV", "local"),
+            "service.version": os.getenv("OPERARIO_VERSION", "dev"),
+            "deployment.environment.name": os.getenv("OPERARIO_RELEASE_ENV", "local"),
         }
     )
 
@@ -290,7 +290,7 @@ def mark_span_failed(span: Span, *, error_type: Optional[str] = None, message: O
     try:
         if span.is_recording():
             span.set_status(Status(StatusCode.ERROR, message))
-            span.set_attribute("gobii.error", True)
+            span.set_attribute("operario.error", True)
             if error_type:
                 span.set_attribute("error.type", error_type)
             if message:
@@ -312,7 +312,7 @@ def mark_span_failed_with_exception(span: Span, exc: Exception, message: Optiona
                 message = str(exc)
             span.record_exception(exc)
             span.set_status(Status(StatusCode.ERROR, message))
-            span.set_attribute("gobii.error", True)
+            span.set_attribute("operario.error", True)
             span.set_attribute("error.type", type(exc).__name__)
             span.set_attribute("error.message", message)
     except Exception:  # best-effort, never fail caller due to telemetry

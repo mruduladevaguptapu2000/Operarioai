@@ -34,7 +34,7 @@ from ..files.filespace_service import (
     dedupe_name,
 )
 
-tracer = trace.get_tracer("gobii.utils")
+tracer = trace.get_tracer("operario.utils")
 logger = logging.getLogger(__name__)
 
 

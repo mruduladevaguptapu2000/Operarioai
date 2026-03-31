@@ -1985,7 +1985,7 @@ const toggleOrganizationServer = useCallback((serverId: string) => {
       {initialData.allowlist.show && (
         <input type="hidden" name="whitelist_policy" value={initialData.agent.whitelistPolicy} />
       )}
-        <details className="gobii-card-base group" id="agent-identity" open>
+        <details className="operario-card-base group" id="agent-identity" open>
           <summary className="flex items-center justify-between gap-3 px-6 py-4 border-b border-gray-200/70 cursor-pointer list-none">
             <div>
               <h2 className="text-lg font-semibold text-gray-800">General Settings</h2>
@@ -2257,7 +2257,7 @@ const toggleOrganizationServer = useCallback((serverId: string) => {
         error={saveError}
       />
 
-      <details className="gobii-card-base group" id="agent-contact-controls">
+      <details className="operario-card-base group" id="agent-contact-controls">
         <summary className="flex items-center justify-between gap-3 px-6 py-4 border-b border-gray-200/70 cursor-pointer list-none">
           <div>
             <h2 className="text-lg font-semibold text-gray-800">Contacts &amp; Access</h2>
@@ -2803,7 +2803,7 @@ function IntegrationsSection({
   onConfirmAction,
 }: IntegrationsSectionProps) {
   return (
-    <details className="gobii-card-base group" id="agent-integrations">
+    <details className="operario-card-base group" id="agent-integrations">
       <summary className="flex items-center justify-between gap-3 px-6 py-4 border-b border-gray-200/70 cursor-pointer list-none">
         <div>
           <h2 className="text-lg font-semibold text-gray-800">Integrations</h2>
@@ -3423,7 +3423,7 @@ function WebhookModal({ mode, webhook, onSubmit, onClose }: WebhookModalProps) {
             value={url}
             onChange={(event) => setUrl(event.target.value)}
             className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:ring-blue-500"
-            placeholder="https://example.com/webhooks/gobii"
+            placeholder="https://example.com/webhooks/operario"
           />
         </div>
         <div className="flex items-center justify-end gap-3 pt-2">
@@ -3529,7 +3529,7 @@ function ActionsSection({
   deleteError,
 }: ActionsSectionProps) {
   return (
-    <details className="gobii-card-base group" id="agent-ownership">
+    <details className="operario-card-base group" id="agent-ownership">
       <summary className="flex items-center justify-between gap-3 px-6 py-4 border-b border-gray-200/70 cursor-pointer list-none">
         <div>
           <h2 className="text-lg font-semibold text-gray-800">Actions</h2>

@@ -108,16 +108,16 @@ class GoogleAnalyticsRenderingTests(TestCase):
         self.assertIn("enabled: false,", content)
         self.assertNotIn('analytics.load("segment-web-test");', content)
 
-    @override_settings(DEBUG=False, GA_MEASUREMENT_ID="G-TEST123", GOBII_PROPRIETARY_MODE=True)
+    @override_settings(DEBUG=False, GA_MEASUREMENT_ID="G-TEST123", OPERARIO_PROPRIETARY_MODE=True)
     def test_app_shell_includes_shared_tracking_helpers(self):
         response = self.client.get("/app")
         self.assertEqual(response.status_code, 200)
 
         content = response.content.decode("utf-8")
         self.assertIn('src="/static/js/segment_bootstrap.js"', content)
-        self.assertIn('src="/static/js/gobii_analytics.js"', content)
+        self.assertIn('src="/static/js/operario_analytics.js"', content)
         self.assertIn('src="/static/js/signup_tracking.js"', content)
-        self.assertIn("window.GobiiSignupTracking.fetchAndFire", content)
+        self.assertIn("window.Operario AISignupTracking.fetchAndFire", content)
         self.assertIn("source: 'app_shell'", content)
         self.assertIn("send_page_view: false", content)
 
@@ -165,13 +165,13 @@ class GoogleAnalyticsRenderingTests(TestCase):
             response = self.client.get(reverse("pages:home"))
         self.assertEqual(response.status_code, 200)
         content = response.content.decode("utf-8")
-        self.assertIn('/static/images/gobii_fish_favicon.ico?v=5', content)
-        self.assertIn('/static/images/gobii_fish_favicon_16.png?v=5', content)
-        self.assertIn('/static/images/gobii_fish_favicon_32.png?v=5', content)
-        self.assertIn('/static/images/gobii_fish_apple_touch_180.png?v=5', content)
+        self.assertIn('/static/images/operario_fish_favicon.ico?v=5', content)
+        self.assertIn('/static/images/operario_fish_favicon_16.png?v=5', content)
+        self.assertIn('/static/images/operario_fish_favicon_32.png?v=5', content)
+        self.assertIn('/static/images/operario_fish_apple_touch_180.png?v=5', content)
 
     @tag("batch_pages")
-    @override_settings(DEBUG=False, GA_MEASUREMENT_ID="G-TEST123", GOBII_PROPRIETARY_MODE=True)
+    @override_settings(DEBUG=False, GA_MEASUREMENT_ID="G-TEST123", OPERARIO_PROPRIETARY_MODE=True)
     def test_app_shell_uses_legacy_icon_when_switch_is_off(self):
         with override_switch("fish_collateral", active=False):
             response = self.client.get("/app")
@@ -181,13 +181,13 @@ class GoogleAnalyticsRenderingTests(TestCase):
         self.assertIn('data-fish-collateral-enabled="false"', content)
 
     @tag("batch_pages")
-    @override_settings(DEBUG=False, GA_MEASUREMENT_ID="G-TEST123", GOBII_PROPRIETARY_MODE=True)
+    @override_settings(DEBUG=False, GA_MEASUREMENT_ID="G-TEST123", OPERARIO_PROPRIETARY_MODE=True)
     def test_app_shell_uses_fish_icon_when_switch_is_on(self):
         with override_switch("fish_collateral", active=True):
             response = self.client.get("/app")
         self.assertEqual(response.status_code, 200)
         content = response.content.decode("utf-8")
-        self.assertIn('href="/static/images/gobii_fish.png"', content)
+        self.assertIn('href="/static/images/operario_fish.png"', content)
         self.assertIn('data-fish-collateral-enabled="true"', content)
 
 
@@ -202,7 +202,7 @@ class WebManifestRenderingTests(TestCase):
         self.assertEqual(payload["icons"][0]["src"], "/static/images/favicon-16x16.png")
         self.assertEqual(payload["icons"][1]["src"], "/static/images/favicon-32x32.png")
         self.assertEqual(payload["icons"][2]["src"], "/static/images/favicon-192x192.png")
-        self.assertEqual(payload["icons"][3]["src"], "/static/images/gobii_swoosh_white_on_blue_512.png")
+        self.assertEqual(payload["icons"][3]["src"], "/static/images/operario_swoosh_white_on_blue_512.png")
 
     def test_manifest_uses_fish_icons_when_switch_is_on(self):
         with override_switch("fish_collateral", active=True):
@@ -210,7 +210,7 @@ class WebManifestRenderingTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response["Content-Type"], "application/manifest+json")
         payload = response.json()
-        self.assertEqual(payload["icons"][0]["src"], "/static/images/gobii_fish_favicon_16.png")
-        self.assertEqual(payload["icons"][1]["src"], "/static/images/gobii_fish_favicon_32.png")
-        self.assertEqual(payload["icons"][2]["src"], "/static/images/gobii_fish_icon_192.png")
-        self.assertEqual(payload["icons"][3]["src"], "/static/images/gobii_fish_icon_512.png")
+        self.assertEqual(payload["icons"][0]["src"], "/static/images/operario_fish_favicon_16.png")
+        self.assertEqual(payload["icons"][1]["src"], "/static/images/operario_fish_favicon_32.png")
+        self.assertEqual(payload["icons"][2]["src"], "/static/images/operario_fish_icon_192.png")
+        self.assertEqual(payload["icons"][3]["src"], "/static/images/operario_fish_icon_512.png")

@@ -13,7 +13,7 @@ class ProprietaryDefaultHelperTests(SimpleTestCase):
         module = SimpleNamespace(DEFAULTS=defaults_map)
 
         with mock.patch.object(settings_module, "_proprietary_defaults_module", module), \
-                mock.patch.object(settings_module, "GOBII_PROPRIETARY_MODE", False):
+                mock.patch.object(settings_module, "OPERARIO_PROPRIETARY_MODE", False):
             result = settings_module._proprietary_default(
                 "brand",
                 "PUBLIC_SUPPORT_EMAIL",
@@ -27,7 +27,7 @@ class ProprietaryDefaultHelperTests(SimpleTestCase):
         module = SimpleNamespace(DEFAULTS=defaults_map)
 
         with mock.patch.object(settings_module, "_proprietary_defaults_module", module), \
-                mock.patch.object(settings_module, "GOBII_PROPRIETARY_MODE", True):
+                mock.patch.object(settings_module, "OPERARIO_PROPRIETARY_MODE", True):
             result = settings_module._proprietary_default(
                 "brand",
                 "PUBLIC_SUPPORT_EMAIL",
@@ -37,7 +37,7 @@ class ProprietaryDefaultHelperTests(SimpleTestCase):
         self.assertEqual(result, "support@example.com")
 
     def test_community_defaults_provide_links_when_oss(self) -> None:
-        with mock.patch.object(settings_module, "GOBII_PROPRIETARY_MODE", False):
+        with mock.patch.object(settings_module, "OPERARIO_PROPRIETARY_MODE", False):
             discord = settings_module._community_default(
                 "brand",
                 "PUBLIC_DISCORD_URL",
@@ -55,15 +55,15 @@ class ProprietaryDefaultHelperTests(SimpleTestCase):
             )
 
         self.assertEqual(discord, "https://discord.gg/yyDB8GwxtE")
-        self.assertEqual(x_url, "https://x.com/gobii_ai")
-        self.assertEqual(github, "https://github.com/gobii-ai")
+        self.assertEqual(x_url, "https://x.com/operario_ai")
+        self.assertEqual(github, "https://github.com/operario-ai")
 
     def test_returns_fallback_when_key_missing(self) -> None:
         defaults_map = {"brand": {}}
         module = SimpleNamespace(DEFAULTS=defaults_map)
 
         with mock.patch.object(settings_module, "_proprietary_defaults_module", module), \
-                mock.patch.object(settings_module, "GOBII_PROPRIETARY_MODE", True):
+                mock.patch.object(settings_module, "OPERARIO_PROPRIETARY_MODE", True):
             result = settings_module._proprietary_default(
                 "brand",
                 "UNKNOWN_KEY",

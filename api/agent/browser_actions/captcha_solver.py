@@ -19,7 +19,7 @@ from config import settings
 from util.analytics import Analytics, AnalyticsEvent, AnalyticsSource
 
 logger = logging.getLogger(__name__)
-tracer = trace.get_tracer("gobii.utils")
+tracer = trace.get_tracer("operario.utils")
 
 CAPSOLVER_CREATE_TASK_URL = "https://api.capsolver.com/createTask"
 CAPSOLVER_GET_TASK_URL = "https://api.capsolver.com/getTaskResult"

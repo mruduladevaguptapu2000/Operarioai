@@ -45,7 +45,7 @@ class ManualAllowlistEmailTests(TestCase):
             whitelist_policy=PersistentAgent.WhitelistPolicy.MANUAL,
         )
         self.agent_ep = PersistentAgentCommsEndpoint.objects.create(
-            owner_agent=self.agent, channel=CommsChannel.EMAIL, address="agent@test.gobii"
+            owner_agent=self.agent, channel=CommsChannel.EMAIL, address="agent@test.operario"
         )
 
     def _postmark_req(self, from_email: str):
@@ -133,7 +133,7 @@ class OrgDefaultAllowlistEmailTests(TestCase):
             whitelist_policy=PersistentAgent.WhitelistPolicy.DEFAULT,
         )
         self.agent_ep = PersistentAgentCommsEndpoint.objects.create(
-            owner_agent=self.agent, channel=CommsChannel.EMAIL, address="agent2@test.gobii"
+            owner_agent=self.agent, channel=CommsChannel.EMAIL, address="agent2@test.operario"
         )
 
     def _postmark_req(self, from_email: str):

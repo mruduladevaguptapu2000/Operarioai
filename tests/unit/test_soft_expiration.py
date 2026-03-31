@@ -23,8 +23,8 @@ class SoftExpirationTaskTests(TestCase):
             username='soft-expire@example.com', email='soft-expire@example.com', password='password'
         )
         # Ensure soft-expiration task runs by simulating production environment.
-        self._old_release_env = settings.GOBII_RELEASE_ENV
-        settings.GOBII_RELEASE_ENV = 'prod'
+        self._old_release_env = settings.OPERARIO_RELEASE_ENV
+        settings.OPERARIO_RELEASE_ENV = 'prod'
         self.addCleanup(self._restore_release_env)
 
         # Ensure user has a high agent limit if quota is enforced elsewhere
@@ -34,7 +34,7 @@ class SoftExpirationTaskTests(TestCase):
         quota.save()
 
     def _restore_release_env(self):
-        settings.GOBII_RELEASE_ENV = self._old_release_env
+        settings.OPERARIO_RELEASE_ENV = self._old_release_env
 
     def _create_org_owned_agent(self, *, name: str, subscription: str, org_plan: str = "free"):
         from api.models import Organization, PersistentAgent

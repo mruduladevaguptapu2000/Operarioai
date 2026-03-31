@@ -183,7 +183,7 @@ def get_send_email_tool() -> Dict[str, Any]:
                     "reply_to_message_id": {
                         "type": "string",
                         "description": (
-                            "Optional internal Gobii message id for replying in an existing email thread. "
+                            "Optional internal Operario AI message id for replying in an existing email thread. "
                             "Omit this to start a new thread. Pass the email message id from recent contacts "
                             "or unified history to reply in that thread."
                         ),

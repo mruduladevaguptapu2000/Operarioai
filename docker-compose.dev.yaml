@@ -9,7 +9,7 @@ services:
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
-      POSTGRES_DB: ${POSTGRES_DB:-gobii}
+      POSTGRES_DB: ${POSTGRES_DB:-operario}
     ports:
       - "127.0.0.1:${POSTGRES_PORT:-5432}:5432"
     volumes:
@@ -51,10 +51,10 @@ services:
       dockerfile: ./docker/Dockerfile
     environment:
       DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY:-dev-insecure}
-      GOBII_ENCRYPTION_KEY: ${GOBII_ENCRYPTION_KEY:-dev-insecure}
+      OPERARIO_ENCRYPTION_KEY: ${OPERARIO_ENCRYPTION_KEY:-dev-insecure}
       POSTGRES_HOST: db
       POSTGRES_PORT: ${POSTGRES_PORT:-5432}
-      POSTGRES_DB: ${POSTGRES_DB:-gobii}
+      POSTGRES_DB: ${POSTGRES_DB:-operario}
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
       GOOGLE_API_KEY: ${GOOGLE_API_KEY:-}
@@ -106,10 +106,10 @@ services:
     command: celery -A config worker -l info
     environment:
       DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY:-dev-insecure}
-      GOBII_ENCRYPTION_KEY: ${GOBII_ENCRYPTION_KEY:-dev-insecure}
+      OPERARIO_ENCRYPTION_KEY: ${OPERARIO_ENCRYPTION_KEY:-dev-insecure}
       POSTGRES_HOST: db
       POSTGRES_PORT: ${POSTGRES_PORT:-5432}
-      POSTGRES_DB: ${POSTGRES_DB:-gobii}
+      POSTGRES_DB: ${POSTGRES_DB:-operario}
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
       GOOGLE_API_KEY: ${GOOGLE_API_KEY:-}
@@ -147,10 +147,10 @@ services:
       bash -lc "python manage.py sync_schedules && celery -A config beat --loglevel=info --scheduler=redbeat.RedBeatScheduler"
     environment:
       DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY:-dev-insecure}
-      GOBII_ENCRYPTION_KEY: ${GOBII_ENCRYPTION_KEY:-dev-insecure}
+      OPERARIO_ENCRYPTION_KEY: ${OPERARIO_ENCRYPTION_KEY:-dev-insecure}
       POSTGRES_HOST: db
       POSTGRES_PORT: ${POSTGRES_PORT:-5432}
-      POSTGRES_DB: ${POSTGRES_DB:-gobii}
+      POSTGRES_DB: ${POSTGRES_DB:-operario}
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
       GOOGLE_API_KEY: ${GOOGLE_API_KEY:-}
@@ -188,10 +188,10 @@ services:
       bash -lc "python manage.py run_imap_idlers"
     environment:
       DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY:-dev-insecure}
-      GOBII_ENCRYPTION_KEY: ${GOBII_ENCRYPTION_KEY:-dev-insecure}
+      OPERARIO_ENCRYPTION_KEY: ${OPERARIO_ENCRYPTION_KEY:-dev-insecure}
       POSTGRES_HOST: db
       POSTGRES_PORT: ${POSTGRES_PORT:-5432}
-      POSTGRES_DB: ${POSTGRES_DB:-gobii}
+      POSTGRES_DB: ${POSTGRES_DB:-operario}
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
       GOOGLE_API_KEY: ${GOOGLE_API_KEY:-}
@@ -226,10 +226,10 @@ services:
     command: bash -lc "python manage.py migrate --noinput"
     environment:
       DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY:-dev-insecure}
-      GOBII_ENCRYPTION_KEY: ${GOBII_ENCRYPTION_KEY:-dev-insecure}
+      OPERARIO_ENCRYPTION_KEY: ${OPERARIO_ENCRYPTION_KEY:-dev-insecure}
       POSTGRES_HOST: db
       POSTGRES_PORT: ${POSTGRES_PORT:-5432}
-      POSTGRES_DB: ${POSTGRES_DB:-gobii}
+      POSTGRES_DB: ${POSTGRES_DB:-operario}
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
       REDIS_URL: redis://redis:6379/0

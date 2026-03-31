@@ -290,7 +290,7 @@ export function AgentEmailSettingsScreen({
   })
 
   const settings = settingsQuery.data
-  const defaultEmailDomainLabel = settings?.defaultEmailDomain ? `@${settings.defaultEmailDomain}` : 'default Gobii'
+  const defaultEmailDomainLabel = settings?.defaultEmailDomain ? `@${settings.defaultEmailDomain}` : 'default Operario AI'
 
   useEffect(() => {
     if (!settings) {
@@ -322,7 +322,7 @@ export function AgentEmailSettingsScreen({
 
   useEffect(() => {
     const handleStorage = (event: StorageEvent) => {
-      if (!event.key || !event.key.startsWith('gobii:email_oauth_complete')) {
+      if (!event.key || !event.key.startsWith('operario:email_oauth_complete')) {
         return
       }
       queryClient.invalidateQueries({ queryKey })
@@ -373,7 +373,7 @@ export function AgentEmailSettingsScreen({
       provider: 'gmail',
       scope: oauthScope,
       token_endpoint: gmailTokenEndpoint,
-      use_gobii_app: true,
+      use_operario_app: true,
       redirect_uri: callbackUrl,
       state,
       code_verifier: codeVerifier,
@@ -389,7 +389,7 @@ export function AgentEmailSettingsScreen({
 
     const stateKey = session.state || state
     localStorage.setItem(
-      `gobii:email_oauth_state:${stateKey}`,
+      `operario:email_oauth_state:${stateKey}`,
       JSON.stringify({
         sessionId: session.session_id,
         accountId: resolvedSettings.account.id,
@@ -513,7 +513,7 @@ export function AgentEmailSettingsScreen({
       return
     }
     const confirmed = window.confirm(
-      'Prepare revert to default Gobii email settings? This will uncheck inbound/outbound now. Click Save Settings to apply the revert.',
+      'Prepare revert to default Operario AI email settings? This will uncheck inbound/outbound now. Click Save Settings to apply the revert.',
     )
     if (!confirmed) {
       return
@@ -522,7 +522,7 @@ export function AgentEmailSettingsScreen({
     setErrorBanner(null)
     const defaultEndpointAddress = settings.defaultEndpoint.address
     if (!settings.defaultEndpoint.exists || !defaultEndpointAddress) {
-      setErrorBanner('Default Gobii email is not configured for this workspace.')
+      setErrorBanner('Default Operario AI email is not configured for this workspace.')
       return
     }
     setPendingOAuthSettings(null)
@@ -593,7 +593,7 @@ export function AgentEmailSettingsScreen({
       <div className="rounded-xl bg-white p-5 shadow-sm">
         <div className="space-y-4">
             <div className="rounded-lg border border-blue-200 bg-blue-50 px-4 py-3">
-              <p className="text-sm font-semibold text-slate-800">Regular Gobii Address</p>
+              <p className="text-sm font-semibold text-slate-800">Regular Operario AI Address</p>
               <p className="mt-1 text-sm text-slate-900">
                 {settings.defaultEndpoint.exists ? settings.defaultEndpoint.address : 'Not configured'}
               </p>
@@ -1095,7 +1095,7 @@ export function AgentEmailSettingsScreen({
             <div className="w-full max-w-2xl rounded-xl bg-white p-5 shadow-lg">
               <h2 className="text-xl font-semibold text-slate-900">Before you continue to Google</h2>
               <p className="mt-2 text-sm text-slate-700">
-                If Google shows an unverified-app warning, click <strong>Advanced</strong>, then <strong>Go to Gobii (unsafe)</strong>.
+                If Google shows an unverified-app warning, click <strong>Advanced</strong>, then <strong>Go to Operario AI (unsafe)</strong>.
               </p>
               <img
                 src="/static/images/email/google-oauth-advanced-warning.png"

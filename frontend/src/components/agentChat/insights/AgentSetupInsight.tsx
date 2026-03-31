@@ -772,7 +772,7 @@ export function AgentSetupInsight({ insight, onCollaborate }: AgentSetupInsightP
             <span className="collab-row__title">Create public link</span>
             <div className="collab-row__form">
               <div className="collab-row__input-wrap">
-                <span className="collab-row__input-prefix">gobii.ai/</span>
+                <span className="collab-row__input-prefix">operario.ai/</span>
                 <input
                   className="collab-row__input"
                   type="text"

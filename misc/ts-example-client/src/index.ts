@@ -12,19 +12,19 @@ import {
     PaginatedTaskListList,
     TaskList,
     CancelTaskResponse
-} from '@gobii-ai/client';
+} from '@operario-ai/client';
 
 // Load environment variables from .env file
 dotenv.config();
 
 // --- Configuration ---
-const GOBII_API_KEY = process.env.GOBII_API_KEY;
+const OPERARIO_API_KEY = process.env.OPERARIO_API_KEY;
 const DEFAULT_API_BASE_URL =
     process.env.API_BASE_URL ||
-    process.env.GOBII_API_BASE_URL ||
+    process.env.OPERARIO_API_BASE_URL ||
     process.env.PUBLIC_SITE_URL ||
-    (process.env.GOBII_PROPRIETARY_MODE === 'true'
-        ? 'https://gobii.ai'
+    (process.env.OPERARIO_PROPRIETARY_MODE === 'true'
+        ? 'https://operario.ai'
         : 'http://localhost:8000');
 
 function resolveBaseUrl(provided?: string): string {
@@ -92,7 +92,7 @@ let tasksApi: TasksApi;
 
 function initializeApiClient(apiKey: string, basePath?: string) {
     if (!apiKey) {
-        console.error(`Error: API Key not found. Set the ${process.env.GOBII_API_KEY_ENV_VAR || 'GOBII_API_KEY'} environment variable.`);
+        console.error(`Error: API Key not found. Set the ${process.env.OPERARIO_API_KEY_ENV_VAR || 'OPERARIO_API_KEY'} environment variable.`);
         process.exit(1);
     }
 
@@ -277,12 +277,12 @@ async function main() {
     const program = new Command();
 
     program
-        .name('gobii-ts-example-client')
-        .description('Example TypeScript client for the Gobii API')
+        .name('operario-ts-example-client')
+        .description('Example TypeScript client for the Operario AI API')
         .version('0.1.0');
 
     program
-        .option('-k, --api-key <key>', 'Gobii API Key', GOBII_API_KEY)
+        .option('-k, --api-key <key>', 'Operario AI API Key', OPERARIO_API_KEY)
         .option(
             '-b, --base-url <url>',
             `API Base URL (default: ${DEFAULT_API_BASE_URL})`,

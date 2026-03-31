@@ -1,10 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 820" width="1400" height="820" role="img" aria-label="Security posture comparison between OpenClaw and Gobii">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 820" width="1400" height="820" role="img" aria-label="Security posture comparison between OpenClaw and Operario AI">
   <defs>
     <linearGradient id="clawPanel" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#fff7ed"/>
       <stop offset="100%" stop-color="#ffedd5"/>
     </linearGradient>
-    <linearGradient id="gobiiPanel" x1="0" y1="0" x2="0" y2="1">
+    <linearGradient id="operarioPanel" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#ecfeff"/>
       <stop offset="100%" stop-color="#cffafe"/>
     </linearGradient>
@@ -12,7 +12,7 @@
       <stop offset="0%" stop-color="#ffffff"/>
       <stop offset="100%" stop-color="#fff5eb"/>
     </linearGradient>
-    <linearGradient id="gobiiCard" x1="0" y1="0" x2="1" y2="1">
+    <linearGradient id="operarioCard" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#ffffff"/>
       <stop offset="100%" stop-color="#ecfeff"/>
     </linearGradient>
@@ -55,25 +55,25 @@
   <rect x="158" y="700" width="434" height="46" rx="12" ry="12" fill="#ffedd5" stroke="#ea580c" stroke-width="2"/>
   <text class="tag" x="375" y="729" text-anchor="middle">Flexible posture, user-tuned hardening</text>
 
-  <rect class="lane" x="720" y="92" width="610" height="688" fill="url(#gobiiPanel)" stroke="#0891b2"/>
-  <text class="laneTitle" x="1025" y="138" text-anchor="middle">Gobii Cloud-Native Defaults</text>
+  <rect class="lane" x="720" y="92" width="610" height="688" fill="url(#operarioPanel)" stroke="#0891b2"/>
+  <text class="laneTitle" x="1025" y="138" text-anchor="middle">Operario AI Cloud-Native Defaults</text>
 
-  <rect class="card" x="795" y="152" width="460" height="70" fill="url(#gobiiCard)" stroke="#0891b2"/>
+  <rect class="card" x="795" y="152" width="460" height="70" fill="url(#operarioCard)" stroke="#0891b2"/>
   <text class="cardText" x="1025" y="196" text-anchor="middle">Kubernetes sandbox backend</text>
 
-  <rect class="card" x="795" y="252" width="460" height="70" fill="url(#gobiiCard)" stroke="#0891b2"/>
+  <rect class="card" x="795" y="252" width="460" height="70" fill="url(#operarioCard)" stroke="#0891b2"/>
   <text class="cardText" x="1025" y="296" text-anchor="middle">runtimeClassName: gvisor</text>
 
-  <rect class="card" x="795" y="352" width="460" height="70" fill="url(#gobiiCard)" stroke="#0891b2"/>
+  <rect class="card" x="795" y="352" width="460" height="70" fill="url(#operarioCard)" stroke="#0891b2"/>
   <text class="cardText" x="1025" y="396" text-anchor="middle">seccomp runtime/default</text>
 
-  <rect class="card" x="795" y="452" width="460" height="70" fill="url(#gobiiCard)" stroke="#0891b2"/>
+  <rect class="card" x="795" y="452" width="460" height="70" fill="url(#operarioCard)" stroke="#0891b2"/>
   <text class="cardText" x="1025" y="496" text-anchor="middle">egress NetworkPolicy guardrails</text>
 
-  <rect class="card" x="795" y="552" width="460" height="70" fill="url(#gobiiCard)" stroke="#0891b2"/>
+  <rect class="card" x="795" y="552" width="460" height="70" fill="url(#operarioCard)" stroke="#0891b2"/>
   <text class="cardText" x="1025" y="596" text-anchor="middle">proxy-routed internet egress</text>
 
-  <rect class="card" x="795" y="652" width="460" height="70" fill="url(#gobiiCard)" stroke="#0891b2"/>
+  <rect class="card" x="795" y="652" width="460" height="70" fill="url(#operarioCard)" stroke="#0891b2"/>
   <text class="cardText" x="1025" y="696" text-anchor="middle">headed browser sessions in pods</text>
 
   <path class="connector" d="M1025 222 L1025 252"/>

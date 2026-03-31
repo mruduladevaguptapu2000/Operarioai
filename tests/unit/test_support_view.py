@@ -18,11 +18,11 @@ BATCH_TAG = "batch_support_turnstile"
 
 @modify_settings(INSTALLED_APPS={"prepend": "proprietary", "append": "turnstile"})
 @override_settings(
-    GOBII_PROPRIETARY_MODE=True,
+    OPERARIO_PROPRIETARY_MODE=True,
     TURNSTILE_ENABLED=True,
     SUPPORT_EMAIL="support@example.com",
     PUBLIC_CONTACT_EMAIL="contact@example.com",
-    INTERCOM_SUPPORT_EMAIL="help@gobii.ai",
+    INTERCOM_SUPPORT_EMAIL="help@operario.ai",
 )
 class SupportViewTurnstileTests(TestCase):
     @staticmethod
@@ -115,7 +115,7 @@ class SupportViewTurnstileTests(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self._assert_single_email(
-            to=["help@gobii.ai"],
+            to=["help@operario.ai"],
             subject="Need help",
             from_email="Test User <user@example.com>",
             reply_to=["Test User <user@example.com>"],
@@ -140,7 +140,7 @@ class SupportViewTurnstileTests(TestCase):
         response = self.client.post(reverse("proprietary:support"), self._payload(include_turnstile=True))
 
         self.assertEqual(response.status_code, 200)
-        self._assert_single_email(to=["help@gobii.ai"], subject="Need help")
+        self._assert_single_email(to=["help@operario.ai"], subject="Need help")
 
     @tag(BATCH_TAG)
     @patch("turnstile.fields.TurnstileField.validate", return_value=None)
@@ -169,7 +169,7 @@ class SupportViewTurnstileTests(TestCase):
         self.assertIn("user@example.com", attempted_senders[0])
         self.assertEqual(attempted_senders[1], settings.DEFAULT_FROM_EMAIL)
         self._assert_single_email(
-            to=["help@gobii.ai"],
+            to=["help@operario.ai"],
             subject="Need help",
             from_email=settings.DEFAULT_FROM_EMAIL,
             reply_to=["Test User <user@example.com>"],

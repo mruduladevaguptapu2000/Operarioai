@@ -38,7 +38,7 @@ from urlextract import URLExtract
 from api.services.email_verification import require_verified_email, EmailVerificationError
 
 logger = logging.getLogger(__name__)
-tracer = trace.get_tracer('gobii.utils')
+tracer = trace.get_tracer('operario.utils')
 
 
 def _should_continue_work(params: Dict[str, Any]) -> bool:

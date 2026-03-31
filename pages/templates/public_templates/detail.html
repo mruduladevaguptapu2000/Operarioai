@@ -7,7 +7,7 @@
   <meta property="og:title" content="{{ template.display_name }} – Public Template">
   <meta property="og:description" content="{{ template.description|default:template.tagline|truncatechars:160 }}">
   <meta property="og:url" content="{{ template_url }}">
-  <meta property="og:site_name" content="Gobii">
+  <meta property="og:site_name" content="Operario AI">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="{{ template.display_name }} – Public Template">
   <meta name="twitter:description" content="{{ template.description|default:template.tagline|truncatechars:160 }}">
@@ -25,7 +25,7 @@
       "url": "{{ template_url|escapejs }}",
       "isPartOf": {
         "@type": "CollectionPage",
-        "name": "Gobii Library",
+        "name": "Operario AI Library",
         "url": "{{ request.scheme }}://{{ request.get_host }}{% url 'pages:library' %}"
       }
     }
@@ -97,7 +97,7 @@
         <form method="post" action="{% url 'pages:public_template_hire' public_profile_handle template.slug %}" class="mt-8">
           {% csrf_token %}
           <input type="hidden" name="source_page" value="public_template_detail" />
-          {% if settings.GOBII_PROPRIETARY_MODE %}
+          {% if settings.OPERARIO_PROPRIETARY_MODE %}
           <input type="hidden" name="trial_onboarding" value="1" />
           <input type="hidden" name="trial_onboarding_target" value="agent_ui" />
           {% endif %}

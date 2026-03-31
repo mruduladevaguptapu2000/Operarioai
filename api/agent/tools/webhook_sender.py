@@ -20,7 +20,7 @@ from api.services.email_verification import require_verified_email, EmailVerific
 logger = logging.getLogger(__name__)
 
 DEFAULT_TIMEOUT_SECONDS = 15
-USER_AGENT = "Gobii-AgentWebhook/1.0"
+USER_AGENT = "Operario AI-AgentWebhook/1.0"
 
 
 def get_send_webhook_tool() -> Dict[str, Any]:

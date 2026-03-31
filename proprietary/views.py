@@ -42,7 +42,7 @@ class ProprietaryModeRequiredMixin:
     """Raise 404 when proprietary mode is disabled."""
 
     def dispatch(self, request, *args, **kwargs):
-        if not settings.GOBII_PROPRIETARY_MODE:
+        if not settings.OPERARIO_PROPRIETARY_MODE:
             raise Http404()
         return super().dispatch(request, *args, **kwargs)
 
@@ -267,7 +267,7 @@ class PricingView(ProprietaryModeRequiredMixin, TemplateView):
         context["faqs"] = [
             (
                 "What is a task?",
-                "A task is a single automation job submitted to Gobii. Tasks can vary in length and complexity, but each submission counts as one task against your quota.",
+                "A task is a single automation job submitted to Operario AI. Tasks can vary in length and complexity, but each submission counts as one task against your quota.",
             ),
             (
                 "How does the pricing work?",
@@ -617,15 +617,15 @@ class BlogIndexView(ProprietaryModeRequiredMixin, TemplateView):
         posts = get_all_blog_posts()
         context["posts"] = posts
 
-        seo_title = "Gobii Blog"
+        seo_title = "Operario AI Blog"
         seo_description = (
-            "Updates from the Gobii team on pretrained workers, automation strategies, and product releases."
+            "Updates from the Operario AI team on pretrained workers, automation strategies, and product releases."
         )
 
         canonical_url = self.request.build_absolute_uri(self.request.path)
         if is_fish_collateral_enabled():
-            brand_logo_path = "images/gobii_fish.png"
-            default_image_path = "images/gobii_fish_social_1280x640.png"
+            brand_logo_path = "images/operario_fish.png"
+            default_image_path = "images/operario_fish_social_1280x640.png"
         else:
             brand_logo_path = "images/noBgBlue.png"
             default_image_path = "images/noBgBlue.png"
@@ -654,7 +654,7 @@ class BlogIndexView(ProprietaryModeRequiredMixin, TemplateView):
             "url": canonical_url,
             "publisher": {
                 "@type": "Organization",
-                "name": "Gobii",
+                "name": "Operario AI",
                 "logo": {
                     "@type": "ImageObject",
                     "url": brand_logo_url,
@@ -688,8 +688,8 @@ class BlogPostView(ProprietaryModeRequiredMixin, TemplateView):
         context = super().get_context_data(**kwargs)
         canonical_url = self.request.build_absolute_uri(self.request.path)
         if is_fish_collateral_enabled():
-            brand_logo_path = "images/gobii_fish.png"
-            default_image_path = "images/gobii_fish_social_1280x640.png"
+            brand_logo_path = "images/operario_fish.png"
+            default_image_path = "images/operario_fish_social_1280x640.png"
         else:
             brand_logo_path = "images/noBgBlue.png"
             default_image_path = "images/noBgBlue.png"
@@ -707,7 +707,7 @@ class BlogPostView(ProprietaryModeRequiredMixin, TemplateView):
             post["meta"].get("seo_description")
             or post["meta"].get("description")
             or post.get("summary")
-            or "Read the latest update from the Gobii team."
+            or "Read the latest update from the Operario AI team."
         )
 
         published_at = post.get("published_at")
@@ -717,9 +717,9 @@ class BlogPostView(ProprietaryModeRequiredMixin, TemplateView):
             author_type = post["meta"].get("author_type")
             if not author_type:
                 lowered = str(author_name).lower()
-                author_type = "Organization" if "team" in lowered or "gobii" in lowered else "Person"
+                author_type = "Organization" if "team" in lowered or "operario" in lowered else "Person"
         else:
-            author_name = "Gobii"
+            author_name = "Operario AI"
             author_type = "Organization"
 
         structured_data = {
@@ -733,7 +733,7 @@ class BlogPostView(ProprietaryModeRequiredMixin, TemplateView):
             },
             "publisher": {
                 "@type": "Organization",
-                "name": "Gobii",
+                "name": "Operario AI",
                 "logo": {
                     "@type": "ImageObject",
                     "url": brand_logo_url,

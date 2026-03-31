@@ -1,7 +1,7 @@
 Hi {{ owner_name }},
 
-{{ recipient_name }} has accepted ownership of your agent "{{ agent.name }}" on Gobii.
+{{ recipient_name }} has accepted ownership of your agent "{{ agent.name }}" on Operario AI.
 
 Thanks,
 
-The Gobii Team
+The Operario AI Team

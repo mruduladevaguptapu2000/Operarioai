@@ -61,7 +61,7 @@ FROM deps AS builder
 ARG VITE_BUILD_BASE_URL
 ARG SKIP_FRONTEND_BUILD=false
 ENV IN_DOCKER=1 \
-    GOBII_RELEASE_ENV=build \
+    OPERARIO_RELEASE_ENV=build \
     DEBUG=0 \
     VITE_BUILD_BASE_URL=${VITE_BUILD_BASE_URL}
 
@@ -88,7 +88,7 @@ ENV USE_EPHEMERAL_XVFB=true
 
 RUN DJANGO_SECRET_KEY=dummy-build-key \
     DEBUG=0 \
-    GOBII_RELEASE_ENV=build \
+    OPERARIO_RELEASE_ENV=build \
     POSTGRES_DB=dummy-db \
     POSTGRES_USER=dummy-user \
     POSTGRES_PASSWORD=dummy-pw \
@@ -124,7 +124,7 @@ ENV STATIC_ROOT=/app/staticfiles \
 
 # ── Granular COPY from builder ──────────────────
 # Copy only what's needed at runtime. Excludes: frontend/, node_modules/,
-# .npm, tests/, __pycache__/, gobii_platform.egg-info/, static/ (source),
+# .npm, tests/, __pycache__/, operario_platform.egg-info/, static/ (source),
 # docs/, scripts/, reports/, assets/, mediafiles/, .github/, .venv/,
 # prompts/, sandbox_compute_server/, src/ (empty / not tracked in git)
 

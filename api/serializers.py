@@ -1,4 +1,4 @@
-# gobii_platform/api/serializers.py
+# operario_platform/api/serializers.py
 import uuid
 from urllib.parse import urlparse
 

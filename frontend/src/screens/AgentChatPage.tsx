@@ -136,7 +136,7 @@ function buildFishSvgFaviconDataUrl(sourceSvg: string, colorHex: string): string
   const doc = parser.parseFromString(sourceSvg, 'image/svg+xml')
   const svg = doc.querySelector('svg')
   if (!svg) {
-    throw new Error('Invalid Gobii fish SVG favicon source')
+    throw new Error('Invalid Operario AI fish SVG favicon source')
   }
 
   // Tint the existing fish anatomy while preserving eye highlights and overall shape.
@@ -2124,7 +2124,7 @@ export function AgentChatPage({
       : isNewAgent
         ? 'New Agent'
         : (resolvedAgentName || 'Agent')
-    document.title = `${name} · Gobii`
+    document.title = `${name} · Operario AI`
   }, [isNewAgent, isSelectionView, resolvedAgentName])
 
   // Keep favicon synced to the active agent's color in live chat contexts.
@@ -2152,10 +2152,10 @@ export function AgentChatPage({
         return fishFaviconSvgRef.current
       }
       if (!fishFaviconSvgPromiseRef.current) {
-        fishFaviconSvgPromiseRef.current = fetch('/static/images/gobii-fish.svg', { credentials: 'same-origin' })
+        fishFaviconSvgPromiseRef.current = fetch('/static/images/operario-fish.svg', { credentials: 'same-origin' })
           .then(async (response) => {
             if (!response.ok) {
-              throw new Error(`Failed to load Gobii fish SVG favicon source (${response.status})`)
+              throw new Error(`Failed to load Operario AI fish SVG favicon source (${response.status})`)
             }
             return response.text()
           })

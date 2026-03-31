@@ -154,7 +154,7 @@ def _fetch_decodo_ip_data(
                 "https://ip.decodo.com/json",
                 proxies=proxies,
                 timeout=30,
-                headers={"User-Agent": "gobii-sync/1.0"}
+                headers={"User-Agent": "operario-sync/1.0"}
             )
             response.raise_for_status()
 
@@ -339,7 +339,7 @@ def _update_or_create_proxy_record(decodo_ip: DecodoIP, ip_block: DecodoIPBlock)
             return False
 
 
-@shared_task(bind=True, ignore_result=True, name="gobii_platform.api.tasks.sync_all_ip_blocks")
+@shared_task(bind=True, ignore_result=True, name="operario_platform.api.tasks.sync_all_ip_blocks")
 def sync_all_ip_blocks(self) -> None:
     """
     Sync all Decodo IP blocks.
@@ -396,7 +396,7 @@ def backfill_missing_proxy_records(self) -> None:
             logger.exception("Error during proxy record backfill: %s", str(e))
 
 
-@shared_task(bind=True, ignore_result=True, name="gobii_platform.api.tasks.proxy_health_check_nightly")
+@shared_task(bind=True, ignore_result=True, name="operario_platform.api.tasks.proxy_health_check_nightly")
 def proxy_health_check_nightly(self):
     """
     Nightly health check for a random subsample of proxy servers.
@@ -491,10 +491,10 @@ def proxy_health_check_single(self, proxy_id: str):
             logger.error(f"Error during on-demand health check for proxy {proxy_id}: {e}")
 
 
-@shared_task(bind=True, ignore_result=True, name="gobii_platform.api.tasks.decodo_low_inventory_reminder")
+@shared_task(bind=True, ignore_result=True, name="operario_platform.api.tasks.decodo_low_inventory_reminder")
 def decodo_low_inventory_reminder(self, *_args, **_kwargs):
     """Send daily low-inventory reminders for Decodo proxy capacity."""
-    env = settings.GOBII_RELEASE_ENV
+    env = settings.OPERARIO_RELEASE_ENV
     if env != "prod":
         logger.info("Decodo inventory reminder skipped; task runs only in production (env=%s)", env)
         return 0

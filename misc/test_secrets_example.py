@@ -9,7 +9,7 @@ import requests
 
 # Configuration
 BASE_URL = "http://127.0.0.1:8000/api/v1/"
-API_KEY = os.getenv("GOBII_API_KEY", "your-api-key-here")
+API_KEY = os.getenv("OPERARIO_API_KEY", "your-api-key-here")
 
 def test_secrets_api():
     """Test the secrets functionality with the local API."""
@@ -103,12 +103,12 @@ def test_secrets_api():
         print(f"❌ Failed: {response.json()}")
 
 if __name__ == "__main__":
-    print("Testing Gobii Secrets API")
+    print("Testing Operario AI Secrets API")
     print("=" * 50)
     
     if API_KEY == "your-api-key-here":
-        print("❌ Please set GOBII_API_KEY environment variable")
-        print("Example: export GOBII_API_KEY='your-actual-key'")
+        print("❌ Please set OPERARIO_API_KEY environment variable")
+        print("Example: export OPERARIO_API_KEY='your-actual-key'")
         exit(1)
     
     try:

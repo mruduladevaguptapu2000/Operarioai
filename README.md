@@ -1,15 +1,15 @@
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/logo/gobii-fish-readme-dark.png" />
-    <source media="(prefers-color-scheme: light)" srcset="assets/logo/gobii-fish-readme-light.png" />
-    <img src="assets/logo/gobii-fish-readme-light.png" alt="Gobii fish mascot" width="190" />
+    <source media="(prefers-color-scheme: dark)" srcset="assets/logo/operario-fish-readme-dark.png" />
+    <source media="(prefers-color-scheme: light)" srcset="assets/logo/operario-fish-readme-light.png" />
+    <img src="assets/logo/operario-fish-readme-light.png" alt="Operario AI fish mascot" width="190" />
   </picture>
 </p>
 
-<h1 align="center">Gobii Platform</h1>
+<h1 align="center">Operario AI Platform</h1>
 
 <p align="center">
-  <strong>Always-on AI employees for teams.</strong><br/>
+  <strong>Always-on AI workforce for teams.</strong><br/>
   Built on <a href="https://github.com/browser-use/browser-use">browser-use</a>. Designed for secure, cloud-native operations.
 </p>
 
@@ -20,21 +20,21 @@
 </p>
 
 <p align="center">
-  <a href="https://gobii.ai">Website</a>
+  <a href="https://operario.ai">Website</a>
   ·
-  <a href="https://docs.gobii.ai/">Docs</a>
+  <a href="https://docs.operario.ai/">Docs</a>
   ·
   <a href="https://discord.gg/yyDB8GwxtE">Discord</a>
   ·
-  <a href="https://gobii.ai/pricing">Cloud</a>
+  <a href="https://operario.ai/pricing">Cloud</a>
 </p>
 
-Gobii is the open-source platform for running durable autonomous agents in production.
+Operario AI is the open-source platform for running durable autonomous agents in production.
 Each agent can run continuously, wake from schedules and events, use real browsers, call external systems, and coordinate with other agents.
 Each agent can also be contacted like an AI coworker: assign it an identity, email or text it, and it keeps working 24/7.
 
 If you are optimizing for local-first personal assistant UX on a single device, there are excellent projects for that.
-Gobii is optimized for a different problem: reliable, secure, always-on agent operations for teams and businesses.
+Operario AI is optimized for a different problem: reliable, secure, always-on agent operations for teams and businesses.
 
 <div style="width: 100%; text-align: center">
   <video
@@ -49,15 +49,15 @@ Gobii is optimized for a different problem: reliable, secure, always-on agent op
   >
   </video>
   <br/>
-  <em>Gobii agent demo in action</em>
+  <em>Operario AI agent demo in action</em>
 </div>
 
 ## Table of Contents
 
-- [Why Teams Choose Gobii](#why-teams-choose-gobii)
-- [Gobii vs OpenClaw (Production Lens)](#gobii-vs-openclaw-production-lens)
+- [Why Teams Choose Operario AI](#why-teams-choose-operario)
+- [Operario AI vs OpenClaw (Production Lens)](#operario-vs-openclaw-production-lens)
 - [AI Coworker Interaction Model](#ai-coworker-interaction-model)
-- [How Gobii Works](#how-gobii-works)
+- [How Operario AI Works](#how-operario-works)
 - [Always-On Runtime: Schedule + Event Triggers](#always-on-runtime-schedule--event-triggers)
 - [Production Browser Runtime](#production-browser-runtime)
 - [Identity, Channels, and Agent-to-Agent](#identity-channels-and-agent-to-agent)
@@ -73,7 +73,7 @@ Gobii is optimized for a different problem: reliable, secure, always-on agent op
 - [Contributing](#contributing)
 - [License and Trademarks](#license-and-trademarks)
 
-## Why Teams Choose Gobii
+## Why Teams Choose Operario AI
 
 - **Always-on by default**: per-agent schedule state plus durable event processing.
 - **Identity-bearing agents**: each agent can have its own email address and SMS phone number, so teams can contact it directly.
@@ -84,12 +84,12 @@ Gobii is optimized for a different problem: reliable, secure, always-on agent op
 - **Real browser operations**: headed execution, persistent profile handling, and proxy-aware routing.
 - **Security-first controls**: encrypted-at-rest secrets, proxy-governed egress, and Kubernetes sandbox compute support.
 
-## Gobii vs OpenClaw (Production Lens)
+## Operario AI vs OpenClaw (Production Lens)
 
 OpenClaw is excellent software, especially for local-first personal assistant workflows and broad channel coverage.
-Gobii is optimized for a different target: cloud-native, secure, always-on agent operations for teams.
+Operario AI is optimized for a different target: cloud-native, secure, always-on agent operations for teams.
 
-| Dimension | Gobii | OpenClaw |
+| Dimension | Operario AI | OpenClaw |
 | --- | --- | --- |
 | Primary deployment model | Cloud-native autonomous agent runtime (self-hosted or managed) | Local-first gateway and personal assistant runtime |
 | Always-on behavior | Per-agent schedule + durable event queue continuity | Heartbeat and cron/wakeup session patterns |
@@ -103,11 +103,11 @@ Gobii is optimized for a different target: cloud-native, secure, always-on agent
 | Security defaults | Encrypted-at-rest secrets, proxy-governed egress, sandbox compute, Kubernetes/gVisor support | Local-first by design, sandboxing available but deployment-dependent |
 | Best fit | Production team automation with governed runtime controls | Personal/local assistant workflows and channel breadth |
 
-If your priority is secure, governed, always-on production execution in cloud or hybrid environments, Gobii is purpose-built for that.
+If your priority is secure, governed, always-on production execution in cloud or hybrid environments, Operario AI is purpose-built for that.
 
 ## AI Coworker Interaction Model
 
-Gobii agents are designed to behave like AI coworkers, not disposable one-off tasks.
+Operario AI agents are designed to behave like AI coworkers, not disposable one-off tasks.
 You can email or text them directly, they wake from those events, execute work, and reply with context-aware follow-through.
 
 ```mermaid
@@ -115,7 +115,7 @@ sequenceDiagram
     participant U as You / Team
     participant E as Agent Email/SMS Endpoint
     participant Q as Per-Agent Event Queue
-    participant A as Always-On Gobii Agent
+    participant A as Always-On Operario AI Agent
     participant T as Browser/Tools/APIs
 
     U->>E: Send message to the agent
@@ -127,7 +127,7 @@ sequenceDiagram
     A->>Q: Stay active for follow-up events
 ```
 
-## How Gobii Works
+## How Operario AI Works
 
 ```mermaid
 flowchart LR
@@ -143,9 +143,9 @@ flowchart LR
     D --> G[Files + Reports + Artifacts]
 ```
 
-### Gobii Focus vs Typical Personal Assistant Stacks
+### Operario AI Focus vs Typical Personal Assistant Stacks
 
-| Area | Gobii focus |
+| Area | Operario AI focus |
 | --- | --- |
 | Runtime model | Long-lived schedule + event lifecycle |
 | Primary operator | Teams and organizations |
@@ -156,7 +156,7 @@ flowchart LR
 
 ## Always-On Runtime: Schedule + Event Triggers
 
-Gobii agents are built to stay active over time, not just respond in isolated turns.
+Operario AI agents are built to stay active over time, not just respond in isolated turns.
 
 ```mermaid
 sequenceDiagram
@@ -179,7 +179,7 @@ This gives you continuity for real workflows: queued work, retries, deferred act
 
 ## Production Browser Runtime
 
-Gobii is based on browser-use and adds production runtime behavior around it.
+Operario AI is based on browser-use and adds production runtime behavior around it.
 
 - **Headed browser support** for realistic web workflows.
 - **Persistent browser profile handling** for long-running agents.
@@ -188,25 +188,25 @@ Gobii is based on browser-use and adds production runtime behavior around it.
 
 ## Identity, Channels, and Agent-to-Agent
 
-Gobii treats agents as operational entities, not just prompt sessions.
+Operario AI treats agents as operational entities, not just prompt sessions.
 When channels are enabled, each agent can be assigned identity endpoints and contacted directly like an AI coworker.
 
 - Agents can own communication endpoints (email, SMS, web).
-- Managed deployments support first-party agent identities like `first.last@my.gobii.ai`.
+- Managed deployments support first-party agent identities like `first.last@my.operario.ai`.
 - Inbound email/SMS/web events can wake agents and route into the same runtime lifecycle.
 - Agents can directly message linked peer agents for native coordination.
 
 ```mermaid
 flowchart LR
     U[Team member] --> E[Agent email or SMS endpoint]
-    E --> A[Assigned always-on Gobii agent]
-    A <--> P[Peer Gobii agent]
+    E --> A[Assigned always-on Operario AI agent]
+    A <--> P[Peer Operario AI agent]
     A --> R[Reply back to human channel]
 ```
 
 ## Security Posture
 
-Gobii's architecture is built for production guardrails.
+Operario AI's architecture is built for production guardrails.
 
 - **Encrypted secrets** integrated into agent tooling.
 - **Proxy-governed outbound access** with health-aware selection and dedicated proxy inventory support.
@@ -224,17 +224,17 @@ For sandbox compute design references:
 2. **Clone the repo**.
 
 ```bash
-git clone https://github.com/gobii-ai/gobii-platform.git
-cd gobii-platform
+git clone https://github.com/operario-ai/operario-platform.git
+cd operario-platform
 ```
 
-3. **Start Gobii**.
+3. **Start Operario AI**.
 
 ```bash
 docker compose up --build
 ```
 
-4. **Open Gobii** at [http://localhost:8000](http://localhost:8000) and complete setup.
+4. **Open Operario AI** at [http://localhost:8000](http://localhost:8000) and complete setup.
 
 - Create your admin account.
 - Choose model providers (OpenAI, OpenRouter, Anthropic, Fireworks, or custom endpoint).
@@ -252,7 +252,7 @@ Optional runtime profiles:
 
 ```bash
 curl --no-buffer \
-  -H "X-Api-Key: $GOBII_API_KEY" \
+  -H "X-Api-Key: $OPERARIO_API_KEY" \
   -H "Content-Type: application/json" \
   -X POST http://localhost:8000/api/v1/tasks/browser-use/ \
   -d '{
@@ -271,15 +271,15 @@ curl --no-buffer \
 
 ## Deployment Paths
 
-| Self-host (this repo) | Gobii Cloud (managed) |
+| Self-host (this repo) | Operario AI Cloud (managed) |
 | --- | --- |
-| MIT-licensed core on your own infrastructure | Managed Gobii deployment and operations |
+| MIT-licensed core on your own infrastructure | Managed Operario AI deployment and operations |
 | Full runtime/networking/integration control | Governed releases and managed scaling |
 | Best for source-level customization | Best for faster production rollout |
 
 ## Operational Profiles
 
-Gobii keeps the default boot path simple, then lets you add worker roles as needed.
+Operario AI keeps the default boot path simple, then lets you add worker roles as needed.
 
 | Profile | Command | What it adds |
 | --- | --- | --- |
@@ -297,17 +297,17 @@ Gobii keeps the default boot path simple, then lets you add worker roles as need
 
 ## FAQ
 
-### Is Gobii just a UI around browser-use?
+### Is Operario AI just a UI around browser-use?
 
-No. Gobii is based on browser-use, but adds persistent agent runtime behavior: schedule/event lifecycle, comms channels, webhooks, memory, orchestration, and operational controls.
+No. Operario AI is based on browser-use, but adds persistent agent runtime behavior: schedule/event lifecycle, comms channels, webhooks, memory, orchestration, and operational controls.
 
-### Is Gobii built for personal assistant usage?
+### Is Operario AI built for personal assistant usage?
 
-Gobii can power individual workflows, but the architecture is tuned for team and business operations where agents stay active and integrate into production systems.
+Operario AI can power individual workflows, but the architecture is tuned for team and business operations where agents stay active and integrate into production systems.
 
-### Does Gobii support headed browsers?
+### Does Operario AI support headed browsers?
 
-Yes. Gobii supports headed browser workflows and persistent profile handling for realistic web task execution.
+Yes. Operario AI supports headed browser workflows and persistent profile handling for realistic web task execution.
 
 ### Can each agent be contacted directly like a coworker?
 
@@ -319,7 +319,7 @@ Agents can wake from schedules and external events (email/SMS/webhooks/API), pro
 
 ### What is the security model?
 
-Gobii integrates encrypted-at-rest secrets, proxy-aware outbound controls, and sandbox compute support with Kubernetes/gVisor backend options for stronger isolation.
+Operario AI integrates encrypted-at-rest secrets, proxy-aware outbound controls, and sandbox compute support with Kubernetes/gVisor backend options for stronger isolation.
 
 ## Developer Workflow
 
@@ -340,16 +340,16 @@ uv run celery -A config worker -l info --pool=threads --concurrency=4
 
 ## Docs and Deep Dives
 
-- Getting started: [Introduction](https://docs.gobii.ai/getting-started/introduction)
-- Developer foundations: [Developer Basics](https://docs.gobii.ai/developers/developer-basics)
-- Agent API: [Agents](https://docs.gobii.ai/developers/developer-agents)
-- Browser task execution: [Tasks](https://docs.gobii.ai/developers/developer-tasks)
-- Structured outputs: [Structured Data](https://docs.gobii.ai/developers/structured-data)
-- Event ingress and automation: [Webhooks](https://docs.gobii.ai/developers/webhooks)
-- REST reference: [API Reference](https://docs.gobii.ai/api-reference)
-- Self-hosting: [Self-Hosted Deployment Overview](https://docs.gobii.ai/self-hosted/overview)
-- Concepts: [Agents](https://docs.gobii.ai/core-concepts/agents), [Dedicated IPs](https://docs.gobii.ai/core-concepts/dedicated-ips)
-- Advanced integrations: [MCP Servers](https://docs.gobii.ai/advanced-usage/mcp-servers)
+- Getting started: [Introduction](https://docs.operario.ai/getting-started/introduction)
+- Developer foundations: [Developer Basics](https://docs.operario.ai/developers/developer-basics)
+- Agent API: [Agents](https://docs.operario.ai/developers/developer-agents)
+- Browser task execution: [Tasks](https://docs.operario.ai/developers/developer-tasks)
+- Structured outputs: [Structured Data](https://docs.operario.ai/developers/structured-data)
+- Event ingress and automation: [Webhooks](https://docs.operario.ai/developers/webhooks)
+- REST reference: [API Reference](https://docs.operario.ai/api-reference)
+- Self-hosting: [Self-Hosted Deployment Overview](https://docs.operario.ai/self-hosted/overview)
+- Concepts: [Agents](https://docs.operario.ai/core-concepts/agents), [Dedicated IPs](https://docs.operario.ai/core-concepts/dedicated-ips)
+- Advanced integrations: [MCP Servers](https://docs.operario.ai/advanced-usage/mcp-servers)
 - Local sandbox design docs: [docs/design](docs/design)
 
 ## Contributing
@@ -361,5 +361,5 @@ uv run celery -A config worker -l info --pool=threads --concurrency=4
 ## License and Trademarks
 
 - Source code is licensed under [MIT](LICENSE).
-- Gobii name and logo are trademarks of Gobii, Inc. See [NOTICE](NOTICE).
-- Proprietary mode and non-MIT components require a commercial agreement with Gobii, Inc.
+- Operario AI name and logo are trademarks of Operario AI, Inc. See [NOTICE](NOTICE).
+- Proprietary mode and non-MIT components require a commercial agreement with Operario AI, Inc.

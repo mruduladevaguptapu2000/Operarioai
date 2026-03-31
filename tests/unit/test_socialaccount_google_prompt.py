@@ -14,7 +14,7 @@ from django.contrib.messages.storage.fallback import FallbackStorage
 from django.core import signing
 
 from config.socialaccount_adapter import (
-    GobiiSocialAccountAdapter,
+    Operario AISocialAccountAdapter,
     OAUTH_ATTRIBUTION_COOKIE,
     OAUTH_CHARTER_COOKIE,
 )
@@ -77,7 +77,7 @@ class GoogleSocialAccountTests(TestCase):
 
         sociallogin.lookup()
 
-        adapter = GobiiSocialAccountAdapter(request)
+        adapter = Operario AISocialAccountAdapter(request)
         with self.assertRaises(ImmediateHttpResponse) as exc:
             adapter.pre_social_login(request, sociallogin)
 
@@ -119,7 +119,7 @@ class GoogleSocialAccountTests(TestCase):
             account=SimpleNamespace(pk=True),
             user=SimpleNamespace(email="signed-in-oauth-user@example.com"),
         )
-        adapter = GobiiSocialAccountAdapter(request)
+        adapter = Operario AISocialAccountAdapter(request)
         adapter.pre_social_login(request, sociallogin)
 
         self.assertEqual(request.session.get("utm_first_touch"), stashed["utm_first_touch"])
@@ -154,7 +154,7 @@ class GoogleSocialAccountTests(TestCase):
             account=SimpleNamespace(pk=True),
             user=SimpleNamespace(email="signed-in-charter-oauth-user@example.com"),
         )
-        adapter = GobiiSocialAccountAdapter(request)
+        adapter = Operario AISocialAccountAdapter(request)
         adapter.pre_social_login(request, sociallogin)
 
         self.assertEqual(request.session.get("agent_charter"), "Cookie charter")
@@ -184,7 +184,7 @@ class GoogleSocialAccountTests(TestCase):
             account=SimpleNamespace(pk=True),
             user=SimpleNamespace(email="signed-in-existing-oauth-user@example.com"),
         )
-        adapter = GobiiSocialAccountAdapter(request)
+        adapter = Operario AISocialAccountAdapter(request)
         adapter.pre_social_login(request, sociallogin)
 
         self.assertEqual(request.session.get("utm_last_touch"), {"utm_source": "existing-source"})

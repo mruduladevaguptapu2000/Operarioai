@@ -1,5 +1,5 @@
 """
-Agent package for gobii_platform.
+Agent package for operario_platform.
 
 This package contains all the core agent code including:
 - Agent execution logic

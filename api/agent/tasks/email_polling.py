@@ -33,7 +33,7 @@ from api.agent.comms.message_service import ingest_inbound_message
 from config.redis_client import get_redis_client
 from pottery import Redlock
 
-tracer = trace.get_tracer("gobii.utils")
+tracer = trace.get_tracer("operario.utils")
 logger = logging.getLogger(__name__)
 
 
@@ -403,7 +403,7 @@ def _agent_env_matches(acct: AgentEmailAccount) -> bool:
         owner_agent = acct.endpoint.owner_agent
     except Exception:
         return False
-    return bool(owner_agent and owner_agent.execution_environment == settings.GOBII_RELEASE_ENV)
+    return bool(owner_agent and owner_agent.execution_environment == settings.OPERARIO_RELEASE_ENV)
 
 
 def _poll_account_locked(acct: AgentEmailAccount) -> None:
@@ -511,7 +511,7 @@ def poll_imap_inbox(self, account_id: str) -> None:
                 "IMAP poll skipped for account %s due to env mismatch (agent_env=%s, expected=%s)",
                 account_id,
                 getattr(owner_agent, "execution_environment", None),
-                settings.GOBII_RELEASE_ENV,
+                settings.OPERARIO_RELEASE_ENV,
             )
             return
         _poll_account_locked(acct)
@@ -536,7 +536,7 @@ def poll_imap_inboxes(self) -> None:
         # Only poll accounts whose owner agent matches the current release env.
         .filter(
             is_inbound_enabled=True,
-            endpoint__owner_agent__execution_environment=settings.GOBII_RELEASE_ENV,
+            endpoint__owner_agent__execution_environment=settings.OPERARIO_RELEASE_ENV,
         )
         .order_by("-updated_at")
     )

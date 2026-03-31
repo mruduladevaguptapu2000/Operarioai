@@ -226,7 +226,7 @@ class SetupWizardView(View):
 
         # Auto-login the operator if possible
         self._attempt_login(request, user, superuser_form.cleaned_data["password1"])
-        messages.success(request, "Setup complete! You're ready to start using Gobii.")
+        messages.success(request, "Setup complete! You're ready to start using Operario AI.")
         return redirect("/")
 
     # ------------------------------------------------------------------

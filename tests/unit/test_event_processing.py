@@ -1045,7 +1045,7 @@ class PromptContextBuilderTests(TestCase):
         system_message = next((m for m in context if m['role'] == 'system'), None)
         self.assertIsNotNone(system_message)
         content = system_message['content']
-        self.assertIn("A note from the Gobii team:", content)
+        self.assertIn("A note from the Operario AI team:", content)
         self.assertIn("Drop everything and update the quarterly results deck today.", content)
 
         sys_steps = PersistentAgentSystemStep.objects.filter(
@@ -2631,7 +2631,7 @@ class HttpRequestSecretPlaceholderTests(TestCase):
         self.assertEqual(headers["Authorization"], "whole-string-token-value")  # Whole string match
         self.assertEqual(headers["X-Token"], "Bearer whole-string-token-value")  # Placeholder match 
 
-    @override_settings(GOBII_PROPRIETARY_MODE=False)
+    @override_settings(OPERARIO_PROPRIETARY_MODE=False)
     @patch('requests.request')
     @patch('api.agent.tools.http_request.select_proxy_for_persistent_agent')
     def test_allows_direct_http_request_without_proxy_in_community_mode(self, mock_proxy, mock_request):
@@ -2658,7 +2658,7 @@ class HttpRequestSecretPlaceholderTests(TestCase):
         call_args = mock_request.call_args
         self.assertNotIn("proxies", call_args[1])
 
-    @override_settings(GOBII_PROPRIETARY_MODE=True)
+    @override_settings(OPERARIO_PROPRIETARY_MODE=True)
     @patch('requests.request')
     @patch('api.agent.tools.http_request.select_proxy_for_persistent_agent')
     def test_requires_proxy_in_proprietary_mode(self, mock_proxy, mock_request):

@@ -52,7 +52,7 @@ class SystemStatusAPITests(TestCase):
             name=name,
             charter=f"{name} charter",
             browser_use_agent=browser_agent,
-            execution_environment=execution_environment or settings.GOBII_RELEASE_ENV,
+            execution_environment=execution_environment or settings.OPERARIO_RELEASE_ENV,
         )
 
     @patch("console.system_status.get_redis_client")

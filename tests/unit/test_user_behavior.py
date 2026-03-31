@@ -19,7 +19,7 @@ from api.models import (
     build_web_user_address,
 )
 from util.user_behavior import (
-    count_messages_sent_to_gobii,
+    count_messages_sent_to_operario,
     get_custom_capi_event_delay_seconds,
     is_fast_cancel_user,
     is_user_currently_in_trial,
@@ -194,7 +194,7 @@ class UserBehaviorUtilsTests(TestCase):
 
         self.assertEqual(get_custom_capi_event_delay_seconds(self.user), 3600)
 
-    def test_count_messages_sent_to_gobii_counts_owner_addresses_across_channels(self):
+    def test_count_messages_sent_to_operario_counts_owner_addresses_across_channels(self):
         UserPhoneNumber.objects.create(
             user=self.user,
             phone_number="+15555550123",
@@ -255,4 +255,4 @@ class UserBehaviorUtilsTests(TestCase):
             body="agent outbound",
         )
 
-        self.assertEqual(count_messages_sent_to_gobii(self.user), 3)
+        self.assertEqual(count_messages_sent_to_operario(self.user), 3)

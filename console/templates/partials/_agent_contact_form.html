@@ -1,6 +1,6 @@
 {#{% load widget_tweaks %}#}
 <!-- Agent Contact Form Component (Step 2) -->
-<div class="gobii-card-base relative overflow-hidden">
+<div class="operario-card-base relative overflow-hidden">
   <div class="pointer-events-none absolute inset-0 bg-gradient-to-br from-indigo-50 via-white to-blue-50"></div>
   <div class="relative p-8 sm:p-10">
     <form method="post" id="create_agent_form">
@@ -256,13 +256,13 @@
         if (typeof window.writeConsoleContext === 'function') {
           window.writeConsoleContext(type, id, name);
         } else {
-          localStorage.setItem('gobii:console:context-type', type);
-          localStorage.setItem('gobii:console:context-id', id);
-          localStorage.setItem('gobii:console:context-name', name);
+          localStorage.setItem('operario:console:context-type', type);
+          localStorage.setItem('operario:console:context-id', id);
+          localStorage.setItem('operario:console:context-name', name);
           try {
-            sessionStorage.setItem('gobii:console:context-type', type);
-            sessionStorage.setItem('gobii:console:context-id', id);
-            sessionStorage.setItem('gobii:console:context-name', name);
+            sessionStorage.setItem('operario:console:context-type', type);
+            sessionStorage.setItem('operario:console:context-id', id);
+            sessionStorage.setItem('operario:console:context-name', name);
           } catch (error) {
             console.warn('Unable to update session console context storage.', error);
           }

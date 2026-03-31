@@ -108,7 +108,7 @@ def _send_sleep_notification(agent) -> None:
     subject = "I’m going to sleep for now 💤"
     upgrade_line = ""
     upgrade_sms = ""
-    if settings.GOBII_PROPRIETARY_MODE:
+    if settings.OPERARIO_PROPRIETARY_MODE:
         upgrade_line = (
             f"<p>Want agents that never expire or turn off? "
             f"<a href=\"{upgrade_link}\">Upgrade to Pro or Scale</a>.</p>"
@@ -168,11 +168,11 @@ def _send_sleep_notification(agent) -> None:
     agent.sent_expiration_email = True
     agent.save(update_fields=["sleep_email_sent_at", "sent_expiration_email"])
 
-@shared_task(name="gobii_platform.api.tasks.soft_expire_inactive_agents_task")
+@shared_task(name="operario_platform.api.tasks.soft_expire_inactive_agents_task")
 def soft_expire_inactive_agents_task() -> int:
     """Scan for eligible agents and soft-expire them. Returns count expired."""
 
-    if settings.GOBII_RELEASE_ENV != "prod":
+    if settings.OPERARIO_RELEASE_ENV != "prod":
         logger.info("Agent expiration skipped; disabled when not in production")
         return 0
 

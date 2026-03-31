@@ -401,7 +401,7 @@ class CustomToolsTests(TestCase):
         self.assertEqual(result["status"], "ok")
         self.assertEqual(result["result"], {"value": "from-secret"})
 
-    @override_settings(GOBII_PROPRIETARY_MODE=True)
+    @override_settings(OPERARIO_PROPRIETARY_MODE=True)
     @patch("api.agent.core.event_processing._ensure_credit_for_tool")
     def test_custom_tool_bridge_tracks_nested_tool_calls_like_normal_tools(self, mock_ensure_credit):
         now = timezone.now()

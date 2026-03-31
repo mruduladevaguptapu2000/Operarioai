@@ -2,8 +2,8 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 
 import { jsonRequest } from '../api/http'
 
-const STATE_KEY_PREFIX = 'gobii:mcp_oauth_state:'
-const SERVER_KEY_PREFIX = 'gobii:mcp_oauth_server:'
+const STATE_KEY_PREFIX = 'operario:mcp_oauth_state:'
+const SERVER_KEY_PREFIX = 'operario:mcp_oauth_server:'
 
 type OAuthStatus = 'idle' | 'loading' | 'pending' | 'connected' | 'disconnected'
 

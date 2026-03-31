@@ -1,4 +1,4 @@
-{% extends "emails/gobii_base.html" %}
+{% extends "emails/operario_base.html" %}
 
 {% block content %}
   <h1 style="margin: 0 0 12px; font-size: 20px; line-height: 1.4; color: #0f172a;">Daily task limit reached</h1>
@@ -31,6 +31,6 @@
     </div>
   {% endif %}
   <p style="margin: 16px 0 0; font-size: 12px; color: #64748b;">
-    You are receiving this because {{ agent.name }} is an agent on your Gobii account.
+    You are receiving this because {{ agent.name }} is an agent on your Operario AI account.
   </p>
 {% endblock %}

@@ -9,7 +9,7 @@ from typing import Any, Optional, Tuple
 import litellm
 from opentelemetry import trace
 
-tracer = trace.get_tracer("gobii.utils")
+tracer = trace.get_tracer("operario.utils")
 
 logger = logging.getLogger(__name__)
 
@@ -380,11 +380,11 @@ def extract_request_duration_ms(response: Any) -> Optional[int]:
     model_extra = None
 
     if isinstance(response, dict):
-        duration_ms = response.get("request_duration_ms") or response.get("_gobii_request_duration_ms")
+        duration_ms = response.get("request_duration_ms") or response.get("_operario_request_duration_ms")
         model_extra = response.get("model_extra")
     else:
         duration_ms = getattr(response, "request_duration_ms", None) or getattr(
-            response, "_gobii_request_duration_ms", None
+            response, "_operario_request_duration_ms", None
         )
         model_extra = getattr(response, "model_extra", None)
 

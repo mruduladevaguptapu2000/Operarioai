@@ -45,7 +45,7 @@ export function PipedreamAppsPanel({
 
   return (
     <>
-      <section className="gobii-card-base overflow-hidden">
+      <section className="operario-card-base overflow-hidden">
         <div className="flex flex-col gap-4 border-b border-gray-200/70 px-6 py-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="space-y-1">
             <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-blue-700">

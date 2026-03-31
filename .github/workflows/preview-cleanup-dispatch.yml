@@ -19,13 +19,13 @@ jobs:
           app_id: ${{ secrets.GH_APP_ID }}
           private_key: ${{ secrets.GH_APP_PRIVATE_KEY }}
           installation_retrieval_mode: repository
-          installation_retrieval_payload: gobii-ai/gobii
+          installation_retrieval_payload: operario-ai/operario
 
       - name: Notify infra repo for cleanup
         uses: peter-evans/repository-dispatch@v3
         with:
           token: ${{ steps.app-token.outputs.token }}
-          repository: gobii-ai/gobii
+          repository: operario-ai/operario
           event-type: preview-cleanup
           client-payload: |
             {

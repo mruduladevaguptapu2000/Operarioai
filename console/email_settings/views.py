@@ -523,7 +523,7 @@ def _serialize_agent_email_settings(
             "id": str(agent.pk),
             "name": agent.name,
             "backUrl": reverse("agent_detail", args=[agent.pk]),
-            "helpUrl": "https://docs.gobii.ai/advanced-usage/custom-email-settings",
+            "helpUrl": "https://docs.operario.ai/advanced-usage/custom-email-settings",
         },
         "providerDefaults": EMAIL_OAUTH_PROVIDER_DEFAULTS,
         "defaultEmailDomain": get_default_agent_email_domain(),

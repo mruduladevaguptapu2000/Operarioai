@@ -58,7 +58,7 @@ class ViteAssetResolutionTests(SimpleTestCase):
             with override_settings(
                 VITE_USE_DEV_SERVER=False,
                 VITE_MANIFEST_PATH=manifest_path,
-                VITE_ASSET_BASE_URL="https://static.gobii.ai/frontend/releases",
+                VITE_ASSET_BASE_URL="https://static.operario.ai/frontend/releases",
                 VITE_ASSET_RELEASE_ID="",
                 VITE_ASSET_RELEASE_ID_FILE=release_path,
             ):
@@ -67,11 +67,11 @@ class ViteAssetResolutionTests(SimpleTestCase):
 
         self.assertEqual(
             asset.scripts,
-            ("https://static.gobii.ai/frontend/releases/abc123def456/assets/main-abc123.js",),
+            ("https://static.operario.ai/frontend/releases/abc123def456/assets/main-abc123.js",),
         )
         self.assertEqual(
             asset.styles,
-            ("https://static.gobii.ai/frontend/releases/abc123def456/assets/main-def456.css",),
+            ("https://static.operario.ai/frontend/releases/abc123def456/assets/main-def456.css",),
         )
 
     def test_raises_when_shared_origin_is_configured_without_release_id(self):
@@ -82,7 +82,7 @@ class ViteAssetResolutionTests(SimpleTestCase):
                 DEBUG=False,
                 VITE_USE_DEV_SERVER=False,
                 VITE_MANIFEST_PATH=manifest_path,
-                VITE_ASSET_BASE_URL="https://static.gobii.ai/frontend/releases",
+                VITE_ASSET_BASE_URL="https://static.operario.ai/frontend/releases",
                 VITE_ASSET_RELEASE_ID="",
                 VITE_ASSET_RELEASE_ID_FILE=temp_root / ".git-commit",
             ):
@@ -100,7 +100,7 @@ class ViteAssetResolutionTests(SimpleTestCase):
                 DEBUG=False,
                 VITE_USE_DEV_SERVER=False,
                 VITE_MANIFEST_PATH=manifest_path,
-                VITE_ASSET_BASE_URL="https://static.gobii.ai/frontend/releases",
+                VITE_ASSET_BASE_URL="https://static.operario.ai/frontend/releases",
                 VITE_ASSET_RELEASE_ID="",
                 VITE_ASSET_RELEASE_ID_FILE=release_path,
             ):
@@ -160,7 +160,7 @@ class AppShellAuthenticationTests(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response["Cache-Control"], "no-cache, must-revalidate")
-        self.assertContains(response, 'id="gobii-frontend-root"')
+        self.assertContains(response, 'id="operario-frontend-root"')
 
     def test_authenticated_agents_detail_serves_shell(self):
         User = get_user_model()
@@ -175,4 +175,4 @@ class AppShellAuthenticationTests(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response["Cache-Control"], "no-cache, must-revalidate")
-        self.assertContains(response, 'id="gobii-frontend-root"')
+        self.assertContains(response, 'id="operario-frontend-root"')

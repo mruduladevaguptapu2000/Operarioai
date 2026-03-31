@@ -1,11 +1,11 @@
 {% extends "console/react_shell_base.html" %}
 {% load vite_tags %}
 
-{% block page_title %}Chat - {{ agent.name|default:'Agent' }} · Gobii{% endblock %}
+{% block page_title %}Chat - {{ agent.name|default:'Agent' }} · Operario AI{% endblock %}
 
 {% block react_shell_content %}
 <div class="{% if immersive %}min-h-screen{% else %}py-12 px-6{% endif %}">
-  <div id="gobii-frontend-root"
+  <div id="operario-frontend-root"
        class="{% if immersive %}w-full{% else %}mx-auto max-w-5xl{% endif %}"
        data-app="agent-chat"
        data-immersive="{% if immersive %}true{% else %}false{% endif %}"
@@ -27,7 +27,7 @@
        data-cta-pick-a-plan="{% if cta_pick_a_plan %}true{% else %}false{% endif %}"
        data-cta-continue-agent-btn="{% if cta_continue_agent_btn %}true{% else %}false{% endif %}"
        data-cta-no-charge-during-trial="{% if cta_no_charge_during_trial %}true{% else %}false{% endif %}"
-       data-is-proprietary-mode="{% if settings.GOBII_PROPRIETARY_MODE %}true{% else %}false{% endif %}"
+       data-is-proprietary-mode="{% if settings.OPERARIO_PROPRIETARY_MODE %}true{% else %}false{% endif %}"
        data-is-staff="{% if request.user.is_staff or request.user.is_superuser %}true{% else %}false{% endif %}"
        data-audit-url="{% if request.user.is_staff or request.user.is_superuser %}{% url 'console-agent-audit' agent_id=agent.id %}{% endif %}"
        data-audit-url-template="{% if request.user.is_staff or request.user.is_superuser %}{% url 'console-agent-audit' agent_id='00000000-0000-0000-0000-000000000000' %}{% endif %}"

@@ -73,7 +73,7 @@ serialising a :class:`~api.models.PersistentAgentToolCall`.  Earlier content is
 discarded to cap memory usage."""
 
 # Shared tracer namespace
-tracer = trace.get_tracer("gobii.utils")
+tracer = trace.get_tracer("operario.utils")
 
 logger = logging.getLogger(__name__)
 

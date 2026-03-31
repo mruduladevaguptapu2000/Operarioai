@@ -20,20 +20,20 @@ class SignedFilesDownloadUrlTests(SimpleTestCase):
     @override_settings(PUBLIC_SITE_URL="http://localhost:8000")
     @patch("api.agent.files.attachment_helpers.Site.objects.get_current")
     def test_public_site_domain_defaults_to_https_when_public_url_is_localhost(self, mock_get_current):
-        mock_get_current.return_value = SimpleNamespace(domain="preview.gobii.ai")
+        mock_get_current.return_value = SimpleNamespace(domain="preview.operario.ai")
 
         url = build_signed_filespace_download_url("agent-1", "node-1")
 
-        self.assertTrue(url.startswith("https://preview.gobii.ai/d/"), url)
+        self.assertTrue(url.startswith("https://preview.operario.ai/d/"), url)
 
-    @override_settings(PUBLIC_SITE_URL="https://app.gobii.ai")
+    @override_settings(PUBLIC_SITE_URL="https://app.operario.ai")
     @patch("api.agent.files.attachment_helpers.Site.objects.get_current")
     def test_public_site_url_scheme_is_respected(self, mock_get_current):
-        mock_get_current.return_value = SimpleNamespace(domain="staging.gobii.ai")
+        mock_get_current.return_value = SimpleNamespace(domain="staging.operario.ai")
 
         url = build_signed_filespace_download_url("agent-1", "node-1")
 
-        self.assertTrue(url.startswith("https://staging.gobii.ai/d/"), url)
+        self.assertTrue(url.startswith("https://staging.operario.ai/d/"), url)
 
     @override_settings(PUBLIC_SITE_URL="http://localhost:8000")
     @patch("api.agent.files.attachment_helpers.Site.objects.get_current")

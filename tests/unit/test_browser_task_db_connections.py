@@ -159,7 +159,7 @@ class BrowserTaskDbConnectionTests(TestCase):
 
 
 @tag("batch_browser_task_db")
-@override_settings(GOBII_PROPRIETARY_MODE=True)
+@override_settings(OPERARIO_PROPRIETARY_MODE=True)
 class BrowserTaskPremiumTierTests(TestCase):
     def setUp(self):
         User = get_user_model()

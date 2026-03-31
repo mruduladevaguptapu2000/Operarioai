@@ -40,20 +40,20 @@ from django.contrib.sitemaps.views import sitemap
 from django.views.generic.base import RedirectView, TemplateView
 
 app_name = "pages"
-EXTERNAL_DOCS_URL = "https://docs.gobii.ai/"
+EXTERNAL_DOCS_URL = "https://docs.operario.ai/"
 
 _docs_index_view = DocsIndexRedirectView.as_view()
 _markdown_page_view = MarkdownPageView.as_view()
 
 
 def docs_index_view(request, *args, **kwargs):
-    if settings.GOBII_PROPRIETARY_MODE:
+    if settings.OPERARIO_PROPRIETARY_MODE:
         return redirect(EXTERNAL_DOCS_URL)
     return _docs_index_view(request, *args, **kwargs)
 
 
 def markdown_page_view(request, *args, **kwargs):
-    if settings.GOBII_PROPRIETARY_MODE:
+    if settings.OPERARIO_PROPRIETARY_MODE:
         return redirect(EXTERNAL_DOCS_URL)
     return _markdown_page_view(request, *args, **kwargs)
 
@@ -61,7 +61,7 @@ sitemaps = {
     'static': StaticViewSitemap,
 }
 
-if settings.GOBII_PROPRIETARY_MODE:
+if settings.OPERARIO_PROPRIETARY_MODE:
     sitemaps['blog'] = BlogSitemap
 
 sitemaps['pretrained_workers'] = PretrainedWorkerTemplateSitemap
@@ -115,7 +115,7 @@ urlpatterns = [
 ]
 
 # Security.txt for vulnerability disclosure (RFC 9116) - proprietary mode only
-if settings.GOBII_PROPRIETARY_MODE:
+if settings.OPERARIO_PROPRIETARY_MODE:
     urlpatterns.append(
         path('.well-known/security.txt', lambda r: HttpResponse(
             f"Contact: mailto:{settings.SECURITY_TXT_EMAIL}\nExpires: {settings.SECURITY_TXT_EXPIRY}\n",

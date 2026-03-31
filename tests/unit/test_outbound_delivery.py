@@ -183,7 +183,7 @@ class EmailDeliveryTests(TestCase):
             deliver_agent_email(message)
             mock_logger.info.assert_called_once()
 
-    @override_settings(GOBII_RELEASE_ENV="test")
+    @override_settings(OPERARIO_RELEASE_ENV="test")
     @patch.dict(os.environ, {"POSTMARK_SERVER_TOKEN": ""}, clear=False)
     def test_simulated_email_delivery(self):
         """Test email delivery in test environment (simulation mode)."""
@@ -270,7 +270,7 @@ class EmailDeliveryTests(TestCase):
         self.assertIn("Task 1", table_result)
         self.assertIn("Complete", table_result)
 
-    @override_settings(GOBII_RELEASE_ENV="prod", POSTMARK_ENABLED=True)
+    @override_settings(OPERARIO_RELEASE_ENV="prod", POSTMARK_ENABLED=True)
     @patch.dict(os.environ, {"POSTMARK_SERVER_TOKEN": "test-token"}, clear=False)
     @patch('api.agent.comms.outbound_delivery.AnymailMessage')
     @patch('api.agent.comms.email_content.get_text')
@@ -326,7 +326,7 @@ class EmailDeliveryTests(TestCase):
             # Verify send was called
             mock_msg.send.assert_called_once_with(fail_silently=False)
 
-    @override_settings(GOBII_RELEASE_ENV="prod", POSTMARK_ENABLED=True)
+    @override_settings(OPERARIO_RELEASE_ENV="prod", POSTMARK_ENABLED=True)
     @patch.dict(os.environ, {"POSTMARK_SERVER_TOKEN": "test-token"}, clear=False)
     @patch("api.agent.comms.outbound_delivery._prepare_email_content", return_value=("<p>Hello</p>", "Hello"))
     @patch("api.agent.comms.outbound_delivery.AnymailMessage")
@@ -352,7 +352,7 @@ class EmailDeliveryTests(TestCase):
         self.assertEqual(call_kwargs["subject"], "Re: 🚨 Breaking update")
         mock_msg.send.assert_called_once_with(fail_silently=False)
 
-    @override_settings(GOBII_RELEASE_ENV="prod", POSTMARK_ENABLED=True)
+    @override_settings(OPERARIO_RELEASE_ENV="prod", POSTMARK_ENABLED=True)
     @patch.dict(os.environ, {"POSTMARK_SERVER_TOKEN": "test-token"}, clear=False)
     @patch("api.agent.comms.outbound_delivery._prepare_email_content", return_value=("<p>Hello</p>", "Hello"))
     @patch("api.agent.comms.outbound_delivery.AnymailMessage")
@@ -404,7 +404,7 @@ class EmailDeliveryTests(TestCase):
         self.assertEqual(message.raw_payload["message_id"], call_kwargs["headers"]["Message-ID"])
         self.assertEqual(message.raw_payload["references"], call_kwargs["headers"]["References"])
 
-    @override_settings(GOBII_RELEASE_ENV="prod", POSTMARK_ENABLED=True)
+    @override_settings(OPERARIO_RELEASE_ENV="prod", POSTMARK_ENABLED=True)
     @patch.dict(os.environ, {"POSTMARK_SERVER_TOKEN": "test-token"}, clear=False)
     @patch(
         "api.agent.comms.outbound_delivery._prepare_email_content",
@@ -480,7 +480,7 @@ class EmailDeliveryTests(TestCase):
         second_reply.refresh_from_db()
         self.assertEqual(second_reply.raw_payload["references"], second_headers["References"])
 
-    @override_settings(GOBII_RELEASE_ENV="prod", POSTMARK_ENABLED=True)
+    @override_settings(OPERARIO_RELEASE_ENV="prod", POSTMARK_ENABLED=True)
     @patch.dict(os.environ, {"POSTMARK_SERVER_TOKEN": "test-token"}, clear=False)
     @patch(
         "api.agent.comms.outbound_delivery._prepare_email_content",
@@ -527,7 +527,7 @@ class EmailDeliveryTests(TestCase):
         self.assertNotIn("cid:photo.png", rewritten_html)
         mock_msg.send.assert_called_once_with(fail_silently=False)
 
-    @override_settings(GOBII_RELEASE_ENV="prod", POSTMARK_ENABLED=True)
+    @override_settings(OPERARIO_RELEASE_ENV="prod", POSTMARK_ENABLED=True)
     @patch.dict(os.environ, {"POSTMARK_SERVER_TOKEN": "test-token"}, clear=False)
     @patch(
         "api.agent.comms.outbound_delivery._prepare_email_content",
@@ -578,7 +578,7 @@ class EmailDeliveryTests(TestCase):
         self.assertNotIn("cid:photo.png", rewritten_html)
         mock_msg.send.assert_called_once_with(fail_silently=False)
 
-    @override_settings(GOBII_RELEASE_ENV="prod", POSTMARK_ENABLED=True)
+    @override_settings(OPERARIO_RELEASE_ENV="prod", POSTMARK_ENABLED=True)
     @patch.dict(os.environ, {"POSTMARK_SERVER_TOKEN": "test-token"}, clear=False)
     @patch(
         "api.agent.comms.outbound_delivery._prepare_email_content",
@@ -632,7 +632,7 @@ class EmailDeliveryTests(TestCase):
         self.assertNotIn("cid:Screenshot 2026-02-25 at 19.51.54.png", rewritten_html)
         mock_msg.send.assert_called_once_with(fail_silently=False)
 
-    @override_settings(GOBII_RELEASE_ENV="prod", POSTMARK_ENABLED=True)
+    @override_settings(OPERARIO_RELEASE_ENV="prod", POSTMARK_ENABLED=True)
     @patch.dict(os.environ, {"POSTMARK_SERVER_TOKEN": "test-token"}, clear=False)
     @patch(
         "api.agent.comms.outbound_delivery._prepare_email_content",
@@ -687,7 +687,7 @@ class EmailDeliveryTests(TestCase):
         self.assertNotIn("cid:Screenshot%202026-02-25%20at%2019.51.54.png", rewritten_html)
         mock_msg.send.assert_called_once_with(fail_silently=False)
 
-    @override_settings(GOBII_RELEASE_ENV="prod", POSTMARK_ENABLED=True)
+    @override_settings(OPERARIO_RELEASE_ENV="prod", POSTMARK_ENABLED=True)
     @patch.dict(os.environ, {"POSTMARK_SERVER_TOKEN": "test-token"}, clear=False)
     @patch(
         "api.agent.comms.outbound_delivery._prepare_email_content",
@@ -751,7 +751,7 @@ class EmailDeliveryTests(TestCase):
         self.assertNotIn("cid:footer/logo.png", rewritten_html)
         mock_msg.send.assert_called_once_with(fail_silently=False)
 
-    @override_settings(GOBII_RELEASE_ENV="prod", POSTMARK_ENABLED=True)
+    @override_settings(OPERARIO_RELEASE_ENV="prod", POSTMARK_ENABLED=True)
     @patch.dict(os.environ, {"POSTMARK_SERVER_TOKEN": "test-token"}, clear=False)
     @patch(
         "api.agent.comms.outbound_delivery._prepare_email_content",
@@ -908,7 +908,7 @@ class SMSThrottleNoticeTests(TestCase):
             address="+15550002222",
         )
 
-    @override_settings(GOBII_PROPRIETARY_MODE=True)
+    @override_settings(OPERARIO_PROPRIETARY_MODE=True)
     @patch("api.agent.comms.outbound_delivery.switch_is_active", return_value=True)
     @patch("config.redis_client.get_redis_client")
     @patch("api.agent.comms.outbound_delivery.sms.send_sms", return_value="sms123")

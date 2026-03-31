@@ -328,8 +328,8 @@ class NormalizeLlmOutputTests(TestCase):
             "Here's what I found:\n\n"
             "| Source | Key Insight | URL |\n\n"
             "|---|---|---|\n\n"
-            "| Gobii.ai | Digital workers | https://gobii.ai/ |\n\n"
-            "| About | Empowering AI agents | https://gobii.ai/about/ |\n\n"
+            "| Operario AI.ai | Digital workers | https://operario.ai/ |\n\n"
+            "| About | Empowering AI agents | https://operario.ai/about/ |\n\n"
             "Next paragraph."
         )
         result = normalize_llm_output(text)
@@ -337,8 +337,8 @@ class NormalizeLlmOutputTests(TestCase):
             "Here's what I found:\n\n"
             "| Source | Key Insight | URL |\n"
             "|---|---|---|\n"
-            "| Gobii.ai | Digital workers | https://gobii.ai/ |\n"
-            "| About | Empowering AI agents | https://gobii.ai/about/ |\n\n"
+            "| Operario AI.ai | Digital workers | https://operario.ai/ |\n"
+            "| About | Empowering AI agents | https://operario.ai/about/ |\n\n"
             "Next paragraph."
         )
         self.assertEqual(result, expected)

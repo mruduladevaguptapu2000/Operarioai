@@ -198,7 +198,7 @@ export function McpServersScreen({
         onSuccess={handleSuccess}
         onError={handleError}
       />
-      <div className="gobii-card-base">
+      <div className="operario-card-base">
         <div className="px-6 py-4 border-b border-gray-200/70 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <h1 className="text-2xl font-semibold text-gray-800">MCP Servers</h1>

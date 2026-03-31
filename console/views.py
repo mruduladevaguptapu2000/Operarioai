@@ -342,7 +342,7 @@ def build_llm_intelligence_props(
     allowed_rank = tier_ranks.get(allowed_tier.value)
     if allowed_rank is None:
         allowed_rank = TIER_ORDER.get(allowed_tier, 0)
-    if settings.GOBII_PROPRIETARY_MODE:
+    if settings.OPERARIO_PROPRIETARY_MODE:
         can_edit = bool(
             owner is not None
             and (owner_type == 'organization' or allowed_tier != AgentLLMTier.STANDARD)
@@ -350,14 +350,14 @@ def build_llm_intelligence_props(
     else:
         can_edit = True
     disabled_reason = None
-    if not can_edit and settings.GOBII_PROPRIETARY_MODE:
+    if not can_edit and settings.OPERARIO_PROPRIETARY_MODE:
         disabled_reason = "Upgrade to a paid plan to adjust intelligence levels."
 
     tiers = list(IntelligenceTier.objects.order_by("credit_multiplier", "rank"))
     expected_keys = {tier.value for tier in AgentLLMTier}
     tier_keys = {tier.key for tier in tiers}
     use_db_tiers = bool(tiers) and (
-        settings.GOBII_PROPRIETARY_MODE or expected_keys.issubset(tier_keys)
+        settings.OPERARIO_PROPRIETARY_MODE or expected_keys.issubset(tier_keys)
     )
     if use_db_tiers:
         options = []
@@ -394,7 +394,7 @@ def build_llm_intelligence_props(
 
     max_allowed_rank = allowed_rank
     max_allowed_tier_key = allowed_tier.value
-    if not settings.GOBII_PROPRIETARY_MODE and options:
+    if not settings.OPERARIO_PROPRIETARY_MODE and options:
         ranked = [option for option in options if isinstance(option.get("rank"), int)]
         if ranked:
             top_option = max(ranked, key=lambda option: option["rank"])
@@ -493,11 +493,11 @@ from django.apps import apps
 User = get_user_model()
 logger = logging.getLogger(__name__)
 
-tracer = trace.get_tracer("gobii.utils")
+tracer = trace.get_tracer("operario.utils")
 
 BILLING_UPDATE_SUPPORT_DETAIL = (
     "An error occurred while updating billing. "
-    "Please contact support@gobii.ai for help."
+    "Please contact support@operario.ai for help."
 )
 
 
@@ -2150,7 +2150,7 @@ def get_user_plan_api(request):
         }
         return JsonResponse({
             'plan': plan_map.get(plan_id, 'free'),
-            'is_proprietary_mode': settings.GOBII_PROPRIETARY_MODE,
+            'is_proprietary_mode': settings.OPERARIO_PROPRIETARY_MODE,
             'startup_trial_days': startup_trial_days,
             'scale_trial_days': scale_trial_days,
             'trial_eligible': trial_eligible,
@@ -2164,7 +2164,7 @@ def get_user_plan_api(request):
     except Exception as e:
         return JsonResponse({
             'plan': 'free',
-            'is_proprietary_mode': settings.GOBII_PROPRIETARY_MODE,
+            'is_proprietary_mode': settings.OPERARIO_PROPRIETARY_MODE,
             'startup_trial_days': startup_trial_days,
             'scale_trial_days': scale_trial_days,
             'trial_eligible': trial_eligible,
@@ -2630,7 +2630,7 @@ class PersistentAgentsView(ConsoleViewMixin, TemplateView):
         spawn_url = f"{reverse('pages:home')}?spawn=1"
 
         upgrade_url = None
-        if settings.GOBII_PROPRIETARY_MODE:
+        if settings.OPERARIO_PROPRIETARY_MODE:
             try:
                 upgrade_url = reverse('proprietary:pricing')
             except NoReverseMatch:
@@ -2653,7 +2653,7 @@ class PersistentAgentsView(ConsoleViewMixin, TemplateView):
             'spawnAgentUrl': spawn_url,
             'upgradeUrl': upgrade_url,
             'canSpawnAgents': can_spawn_agents,
-            'showUpgradeCta': bool(upgrade_url) and settings.GOBII_PROPRIETARY_MODE and not can_spawn_agents,
+            'showUpgradeCta': bool(upgrade_url) and settings.OPERARIO_PROPRIETARY_MODE and not can_spawn_agents,
             'createFirstAgentEvent': AnalyticsCTAs.CTA_CREATE_FIRST_AGENT_CLICKED.value,
             'agentsAvailable': capacity['agents_available'],
             'agentsUnlimited': capacity['agents_unlimited'],
@@ -3888,7 +3888,7 @@ class AgentDetailView(AgentOwnerContextOverrideMixin, ConsoleViewMixin, DetailVi
         agent: PersistentAgent = context['agent']
         request = self.request
         upgrade_url = None
-        if settings.GOBII_PROPRIETARY_MODE:
+        if settings.OPERARIO_PROPRIETARY_MODE:
             try:
                 upgrade_url = reverse('proprietary:pricing')
             except NoReverseMatch:
@@ -4601,7 +4601,7 @@ class AgentDetailView(AgentOwnerContextOverrideMixin, ConsoleViewMixin, DetailVi
                     'reject_url': reject_url,
                     'invite': invite,
                 }
-                subject = f"You've been invited to collaborate with {agent.name} on Gobii"
+                subject = f"You've been invited to collaborate with {agent.name} on Operario AI"
                 text_body = render_to_string('emails/agent_collaborator_invite.txt', context)
                 html_body = render_to_string('emails/agent_collaborator_invite.html', context)
                 try:
@@ -4773,7 +4773,7 @@ class AgentDetailView(AgentOwnerContextOverrideMixin, ConsoleViewMixin, DetailVi
                 )
                 try:
                     dashboard_url = request.build_absolute_uri(reverse('console-home'))
-                    initiator_name = request.user.get_full_name() or request.user.email or "A Gobii user"
+                    initiator_name = request.user.get_full_name() or request.user.email or "A Operario AI user"
                     context = {
                         'agent': agent,
                         'invite': invite,
@@ -4950,7 +4950,7 @@ class AgentDetailView(AgentOwnerContextOverrideMixin, ConsoleViewMixin, DetailVi
 
         allowed_llm_tier = max_allowed_tier_for_plan(plan, is_organization=(owner_type == 'organization'))
         allowed_llm_tier = apply_user_quota_tier_override(owner, allowed_llm_tier)
-        if settings.GOBII_PROPRIETARY_MODE:
+        if settings.OPERARIO_PROPRIETARY_MODE:
             can_edit_intelligence = bool(
                 owner is not None
                 and (owner_type == 'organization' or allowed_llm_tier != AgentLLMTier.STANDARD)
@@ -4972,7 +4972,7 @@ class AgentDetailView(AgentOwnerContextOverrideMixin, ConsoleViewMixin, DetailVi
             return _general_error("Select a valid intelligence level.")
 
         preferred_tier_warning = None
-        if settings.GOBII_PROPRIETARY_MODE and TIER_ORDER[requested_preferred_tier] > TIER_ORDER[allowed_llm_tier]:
+        if settings.OPERARIO_PROPRIETARY_MODE and TIER_ORDER[requested_preferred_tier] > TIER_ORDER[allowed_llm_tier]:
             requested_label = get_llm_tier_label(requested_preferred_tier.value)
             allowed_label = get_llm_tier_label(allowed_llm_tier.value)
             preferred_tier_warning = (
@@ -5871,13 +5871,13 @@ class MCPServerManagementView(MCPServerOwnerMixin, ConsoleViewMixin, TemplateVie
 
 
 class MCPOAuthCallbackPageView(ConsoleViewMixin, TemplateView):
-    """Landing page shown after external OAuth redirects back to Gobii."""
+    """Landing page shown after external OAuth redirects back to Operario AI."""
 
     template_name = "console/mcp_oauth_callback.html"
 
 
 class AgentEmailOAuthCallbackPageView(ConsoleViewMixin, TemplateView):
-    """Landing page shown after email OAuth redirects back to Gobii."""
+    """Landing page shown after email OAuth redirects back to Operario AI."""
 
     template_name = "console/agent_email_oauth_callback.html"
 
@@ -7595,7 +7595,7 @@ class AgentContactRequestsView(LoginRequiredMixin, TemplateView):
                                                 'invite': invitation,
                                             }
                                             
-                                            subject = f"You're invited to communicate with {agent.name} on Gobii"
+                                            subject = f"You're invited to communicate with {agent.name} on Operario AI"
                                             text_body = render_to_string('emails/agent_allowlist_invite.txt', context)
                                             html_body = render_to_string('emails/agent_allowlist_invite.html', context)
                                             
@@ -8229,7 +8229,7 @@ class OrganizationDetailView(WaffleFlagMixin, ConsoleViewMixin, TemplateView):
                 }
                 html_body = render_to_string("emails/organization_invite.html", context)
                 text_body = render_to_string("emails/organization_invite.txt", context)
-                subject = f"You're invited to join {self.org.name} on Gobii"
+                subject = f"You're invited to join {self.org.name} on Operario AI"
                 send_mail(
                     subject=subject,
                     message=text_body,
@@ -9303,7 +9303,7 @@ class OrganizationInviteResendOrgView(_OrgPermissionMixin, WaffleFlagMixin, Logi
             }
             html_body = render_to_string("emails/organization_invite.html", context)
             text_body = render_to_string("emails/organization_invite.txt", context)
-            subject = f"You're invited to join {org.name} on Gobii"
+            subject = f"You're invited to join {org.name} on Operario AI"
             send_mail(
                 subject=subject,
                 message=text_body,
@@ -10338,7 +10338,7 @@ def add_dedicated_ip_quantity(request, owner, owner_type):
         owner_plan_id = getattr(billing, "subscription", PlanNamesChoices.FREE.value) if billing else PlanNamesChoices.FREE.value
 
     if owner_plan_id in (PlanNamesChoices.FREE.value, PlanNamesChoices.FREE):
-        if settings.GOBII_PROPRIETARY_MODE:
+        if settings.OPERARIO_PROPRIETARY_MODE:
             messages.error(request, "Upgrade to a paid plan to add dedicated IPs.")
         else:
             messages.error(request, "Dedicated IPs are not available in this deployment.")

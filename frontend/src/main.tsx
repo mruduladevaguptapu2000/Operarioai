@@ -34,10 +34,10 @@ const LoadingFallback = () => (
   </div>
 )
 
-const mountNode = document.getElementById('gobii-frontend-root')
+const mountNode = document.getElementById('operario-frontend-root')
 
 if (!mountNode) {
-  throw new Error('Gobii frontend mount element not found')
+  throw new Error('Operario AI frontend mount element not found')
 }
 
 const appName = mountNode.dataset.app ?? 'agent-chat'
@@ -106,7 +106,7 @@ const isEmbedded = new URLSearchParams(window.location.search).get('embed') === 
 const handleEmbeddedClose = isEmbedded
   ? () => {
       if (window.parent && window.parent !== window) {
-        window.parent.postMessage({ type: 'gobii-immersive-close' }, window.location.origin)
+        window.parent.postMessage({ type: 'operario-immersive-close' }, window.location.origin)
       }
     }
   : undefined

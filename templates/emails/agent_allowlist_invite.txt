@@ -2,7 +2,7 @@ You're invited to communicate with {{ agent.name }}!
 
 Hi there!
 
-{{ agent_owner.get_full_name|default:agent_owner.username }} has added you to the communication list for their AI agent "{{ agent.name }}" on Gobii.
+{{ agent_owner.get_full_name|default:agent_owner.username }} has added you to the communication list for their AI agent "{{ agent.name }}" on Operario AI.
 
 About {{ agent.name }}:
 {{ agent.charter|truncatewords:30 }}
@@ -17,4 +17,4 @@ Once you accept, you'll be able to email {{ agent.name }} directly at {{ agent_e
 Simply reply to emails from {{ agent.name }} or send new emails to start conversations about anything you need help with!
 
 ---
-This invitation was sent by {{ agent_owner.get_full_name|default:agent_owner.username }} via Gobii (https://gobii.ai)
+This invitation was sent by {{ agent_owner.get_full_name|default:agent_owner.username }} via Operario AI (https://operario.ai)

@@ -401,7 +401,7 @@ export function AgentFilesScreen({ initialData }: AgentFilesScreenProps) {
 
   return (
     <div className="space-y-6 pb-6">
-      <div className="gobii-card-base overflow-hidden">
+      <div className="operario-card-base overflow-hidden">
         <FileManagerHeader
           agentName={initialData.agent.name}
           backLink={initialData.backLink}

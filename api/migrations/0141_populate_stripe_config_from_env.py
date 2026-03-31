@@ -10,7 +10,7 @@ def populate_from_env(apps, _schema_editor):
     StripeConfig = apps.get_model('api', 'StripeConfig')
     StripeConfigEntry = apps.get_model('api', 'StripeConfigEntry')
 
-    release_env = getattr(settings, 'GOBII_RELEASE_ENV', 'local')
+    release_env = getattr(settings, 'OPERARIO_RELEASE_ENV', 'local')
     live_mode = bool(getattr(settings, 'STRIPE_LIVE_MODE', False))
 
     config, created = StripeConfig.objects.get_or_create(

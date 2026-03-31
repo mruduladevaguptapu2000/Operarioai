@@ -41,7 +41,7 @@ class _FakeRedis:
         self._store.pop(key, None)
 
 
-@override_settings(GOBII_RELEASE_ENV="prod")
+@override_settings(OPERARIO_RELEASE_ENV="prod")
 @tag("batch_api_persistent_agents", "batch_api_tasks")
 class ProactiveActivationServiceTests(TestCase):
     def setUp(self):
@@ -143,7 +143,7 @@ class ProactiveActivationServiceTests(TestCase):
         self.assertEqual(processed, 1)
         mock_delay.assert_called_once_with(str(self.agent_a.id))
 
-    @override_settings(GOBII_RELEASE_ENV="staging")
+    @override_settings(OPERARIO_RELEASE_ENV="staging")
     @patch("api.services.proactive_activation.ProactiveActivationService.trigger_agents")
     def test_schedule_task_skips_outside_production(self, mock_trigger):
         processed = schedule_proactive_agents_task(batch_size=3)

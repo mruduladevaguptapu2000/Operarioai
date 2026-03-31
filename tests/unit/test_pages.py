@@ -51,23 +51,23 @@ class HomePageTests(TestCase):
 
     @tag("batch_pages")
     def test_home_page_shows_fish_in_both_modes(self):
-        """The Gobii fish mascot should render in both proprietary and community modes."""
+        """The Operario AI fish mascot should render in both proprietary and community modes."""
         for proprietary_mode in (False, True):
             with self.subTest(proprietary_mode=proprietary_mode):
-                with override_settings(GOBII_PROPRIETARY_MODE=proprietary_mode):
+                with override_settings(OPERARIO_PROPRIETARY_MODE=proprietary_mode):
                     response = self.client.get("/")
                     self.assertEqual(response.status_code, 200)
-                    self.assertContains(response, 'data-gobii-fish-cursor')
+                    self.assertContains(response, 'data-operario-fish-cursor')
 
     @tag("batch_pages")
     def test_home_page_has_meta_description(self):
         response = self.client.get("/")
         self.assertContains(
             response,
-            '<meta name="description" content="Gobii agents are virtual coworkers with their own identity, memory, and tools. Email them, text them — they browse the web, collect data, and deliver reports 24/7.">',
+            '<meta name="description" content="Operario AI agents are virtual coworkers with their own identity, memory, and tools. Email them, text them — they browse the web, collect data, and deliver reports 24/7.">',
         )
 
-    @override_settings(GOBII_PROPRIETARY_MODE=True)
+    @override_settings(OPERARIO_PROPRIETARY_MODE=True)
     @tag("batch_pages")
     def test_home_page_uses_legacy_hero_illustration_when_fish_homepage_is_off(self):
         with override_flag("fish_homepage", active=False):
@@ -77,9 +77,9 @@ class HomePageTests(TestCase):
         soup = BeautifulSoup(response.content.decode("utf-8"), "html.parser")
         legacy_hero_image = soup.find("img", {"src": "/static/images/undraw/texting.svg"})
         self.assertIsNotNone(legacy_hero_image)
-        self.assertIsNone(soup.select_one("[data-gobii-fish-cursor]"))
+        self.assertIsNone(soup.select_one("[data-operario-fish-cursor]"))
 
-    @override_settings(GOBII_PROPRIETARY_MODE=True)
+    @override_settings(OPERARIO_PROPRIETARY_MODE=True)
     @tag("batch_pages")
     def test_home_page_uses_fish_hero_animation_when_fish_homepage_is_on(self):
         with override_flag("fish_homepage", active=True):
@@ -87,7 +87,7 @@ class HomePageTests(TestCase):
 
         self.assertEqual(response.status_code, 200)
         soup = BeautifulSoup(response.content.decode("utf-8"), "html.parser")
-        self.assertIsNotNone(soup.select_one("[data-gobii-fish-cursor]"))
+        self.assertIsNotNone(soup.select_one("[data-operario-fish-cursor]"))
         self.assertIsNone(soup.find("img", {"src": "/static/images/undraw/texting.svg"}))
 
     @tag("batch_pages")
@@ -970,7 +970,7 @@ class LandingPageLaunchTests(TestCase):
 @tag("batch_pages")
 class RobotsTxtTests(TestCase):
     @tag("batch_pages")
-    @override_settings(GOBII_RELEASE_ENV="prod")
+    @override_settings(OPERARIO_RELEASE_ENV="prod")
     def test_production_allows_indexing(self):
         response = self.client.get("/robots.txt")
         self.assertEqual(response.status_code, 200)
@@ -981,7 +981,7 @@ class RobotsTxtTests(TestCase):
         self.assertNotIn("Disallow: /", lines)
 
     @tag("batch_pages")
-    @override_settings(GOBII_RELEASE_ENV="staging")
+    @override_settings(OPERARIO_RELEASE_ENV="staging")
     def test_non_production_blocks_indexing(self):
         response = self.client.get("/robots.txt")
         self.assertEqual(response.status_code, 200)
@@ -993,19 +993,19 @@ class RobotsTxtTests(TestCase):
 @tag("batch_pages")
 class CanonicalLinkTests(TestCase):
     @tag("batch_pages")
-    @override_settings(GOBII_RELEASE_ENV="prod", GOBII_PROPRIETARY_MODE=True)
+    @override_settings(OPERARIO_RELEASE_ENV="prod", OPERARIO_PROPRIETARY_MODE=True)
     def test_canonical_present_in_production_proprietary(self):
         response = self.client.get("/")
         self.assertContains(response, '<link rel="canonical" href="http://testserver/">')
 
     @tag("batch_pages")
-    @override_settings(GOBII_RELEASE_ENV="prod", GOBII_PROPRIETARY_MODE=False)
+    @override_settings(OPERARIO_RELEASE_ENV="prod", OPERARIO_PROPRIETARY_MODE=False)
     def test_canonical_absent_when_not_proprietary(self):
         response = self.client.get("/")
         self.assertNotContains(response, 'rel="canonical"')
 
     @tag("batch_pages")
-    @override_settings(GOBII_RELEASE_ENV="staging", GOBII_PROPRIETARY_MODE=True)
+    @override_settings(OPERARIO_RELEASE_ENV="staging", OPERARIO_PROPRIETARY_MODE=True)
     def test_canonical_absent_when_not_production(self):
         response = self.client.get("/")
         self.assertNotContains(response, 'rel="canonical"')
@@ -1045,7 +1045,7 @@ class PretrainedWorkerDirectoryTests(TestCase):
         self.assertIn("foo=bar", location)
         self.assertTrue(location.endswith("#pretrained-workers"))
 
-    @override_settings(GOBII_PROPRIETARY_MODE=False)
+    @override_settings(OPERARIO_PROPRIETARY_MODE=False)
     @tag("batch_pages")
     def test_pretrained_worker_detail_omits_trial_onboarding_fields_in_community_mode(self):
         template = PretrainedWorkerTemplateService.get_active_templates()[0]
@@ -1061,7 +1061,7 @@ class PretrainedWorkerDirectoryTests(TestCase):
             f'name="trial_onboarding_target" value="{TRIAL_ONBOARDING_TARGET_AGENT_UI}"',
         )
 
-    @override_settings(GOBII_PROPRIETARY_MODE=True)
+    @override_settings(OPERARIO_PROPRIETARY_MODE=True)
     @tag("batch_pages")
     def test_pretrained_worker_detail_includes_trial_onboarding_fields_in_proprietary_mode(self):
         template = PretrainedWorkerTemplateService.get_active_templates()[0]
@@ -1221,7 +1221,7 @@ class SolutionCtaCopyTests(TestCase):
     @tag("batch_pages")
     def test_solution_header_uses_fish_logo_when_fish_upper_left_is_on(self):
         with override_flag("fish_upper_left", active=True):
-            self.assertEqual(self._mini_header_logo_src(), "/static/images/gobii_fish_with_text_purple_nav.png")
+            self.assertEqual(self._mini_header_logo_src(), "/static/images/operario_fish_with_text_purple_nav.png")
 
     @override_settings(PERSONAL_FREE_TRIAL_ENFORCEMENT_ENABLED=False)
     @tag("batch_pages")
@@ -1836,7 +1836,7 @@ class CheckoutRedirectTests(TestCase):
 
 
 @tag("batch_pages")
-@override_settings(GOBII_PROPRIETARY_MODE=True)
+@override_settings(OPERARIO_PROPRIETARY_MODE=True)
 class ProprietaryPricingTrialCopyTests(TestCase):
     def _get_pricing_context_for_user(self, user):
         from django.test.client import RequestFactory
@@ -1982,7 +1982,7 @@ class AuthLinkTests(TestCase):
 
     @tag("batch_pages")
     @override_settings(
-        GOBII_PROPRIETARY_MODE=True,
+        OPERARIO_PROPRIETARY_MODE=True,
         FINGERPRINT_JS_ENABLED=True,
         FINGERPRINT_JS_URL="https://fp.example/v3/loader.js",
         FINGERPRINT_JS_API_KEY="fp_test_key",
@@ -2001,7 +2001,7 @@ class AuthLinkTests(TestCase):
 
     @tag("batch_pages")
     @override_settings(
-        GOBII_PROPRIETARY_MODE=True,
+        OPERARIO_PROPRIETARY_MODE=True,
         FINGERPRINT_JS_ENABLED=True,
         FINGERPRINT_JS_URL="https://fp.example/v3/loader.js",
         FINGERPRINT_JS_API_KEY="fp_test_key",
@@ -2014,9 +2014,9 @@ class AuthLinkTests(TestCase):
         self.assertContains(response, "identitySignals.clearStagedFpjsCookies();")
         self.assertContains(response, "const fpjsTimeoutMs = 3000;")
         self.assertContains(response, "Promise.race([")
-        self.assertContains(response, "gobii_signup_fpjs_visitor_id")
-        self.assertContains(response, "gobii_signup_fpjs_request_id")
-        self.assertContains(response, "gobii_signup_ga_client_id")
+        self.assertContains(response, "operario_signup_fpjs_visitor_id")
+        self.assertContains(response, "operario_signup_fpjs_request_id")
+        self.assertContains(response, "operario_signup_ga_client_id")
 
 @tag("batch_pages")
 class MarketingMetaTests(TestCase):
@@ -2025,7 +2025,7 @@ class MarketingMetaTests(TestCase):
         response = self.client.get("/tos/")
         self.assertContains(
             response,
-            "<meta name=\"description\" content=\"Review Gobii's Terms of Service covering usage policies, billing, and compliance for our pretrained worker platform.\">",
+            "<meta name=\"description\" content=\"Review Operario AI's Terms of Service covering usage policies, billing, and compliance for our pretrained worker platform.\">",
         )
 
     @tag("batch_pages")
@@ -2033,7 +2033,7 @@ class MarketingMetaTests(TestCase):
         response = self.client.get("/privacy/")
         self.assertContains(
             response,
-            "<meta name=\"description\" content=\"Understand how Gobii collects, uses, and safeguards data across our pretrained worker platform.\">",
+            "<meta name=\"description\" content=\"Understand how Operario AI collects, uses, and safeguards data across our pretrained worker platform.\">",
         )
 
 
@@ -2043,7 +2043,7 @@ class MarketingMetaTests(TestCase):
         response = self.client.get("/careers/")
         self.assertContains(
             response,
-            "<meta name=\"description\" content=\"Join Gobii to build AI coworkers that browse, research, and automate the web for organizations worldwide.\">",
+            "<meta name=\"description\" content=\"Join Operario AI to build AI coworkers that browse, research, and automate the web for organizations worldwide.\">",
         )
 
 

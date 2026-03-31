@@ -3,7 +3,7 @@
 {% block title %}About • {{ settings.PUBLIC_BRAND_NAME }}{% endblock %}
 {% block head_extras %}
   {{ block.super }}
-  <meta name="description" content="Learn how Gobii automates web workflows for modern teams with AI-powered browser agents.">
+  <meta name="description" content="Learn how Operario AI automates web workflows for modern teams with AI-powered browser agents.">
 {% endblock %}
 
 {% block content %}
@@ -11,7 +11,7 @@
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
     <h1 class="text-4xl font-semibold mb-6">Empowering AI&nbsp;agents to browse&nbsp;the web for&nbsp;you.</h1>
     <p class="text-lg leading-relaxed mb-4">
-      Gobii envisions a future where intelligent agents collaborate seamlessly with humans to automate the
+      Operario AI envisions a future where intelligent agents collaborate seamlessly with humans to automate the
       countless web-based tasks that slow us down today. From gathering research to filling forms to orchestrating
       multi-step workflows, our cloud-hosted browser agents combine modern large-language models with resilient
       browser automation to act exactly where the APIs stop.
@@ -19,14 +19,14 @@
     <p class="text-lg leading-relaxed mb-4">
       We're starting by making <em>browser-use&nbsp;agents in the cloud</em> ridiculously easy: instant instances,
       built-in proxy rotation, live previews, and a single API call to spin up as many agents as your ideas demand.
-      As models grow more capable, Gobii will give them the infrastructure—and guardrails—to work safely alongside
+      As models grow more capable, Operario AI will give them the infrastructure—and guardrails—to work safely alongside
       users, turning clicks and keystrokes into pure leverage.
     </p>
     <p class="text-lg leading-relaxed mb-4">
       If you believe the browser should be as programmable as an API, we'd love to hear from you.
     </p>
     <p class="text-lg leading-relaxed">
-      {% if settings.GOBII_PROPRIETARY_MODE %}
+      {% if settings.OPERARIO_PROPRIETARY_MODE %}
       <a href="{% url 'proprietary:contact' %}" class="text-blue-600 hover:underline">Say hello ↗</a>
       {% else %}
       <a href="mailto:{{ settings.PUBLIC_SUPPORT_EMAIL }}" class="text-blue-600 hover:underline">Say hello ↗</a>

@@ -9,7 +9,7 @@ from django.core.exceptions import ValidationError
 from django.http import HttpRequest
 from django.test import SimpleTestCase, TestCase, override_settings, tag
 
-from config.allauth_adapter import GobiiAccountAdapter
+from config.allauth_adapter import Operario AIAccountAdapter
 from util.onboarding import (
     TRIAL_ONBOARDING_PENDING_SESSION_KEY,
     TRIAL_ONBOARDING_REQUIRES_PLAN_SELECTION_SESSION_KEY,
@@ -20,9 +20,9 @@ from util.onboarding import (
 @tag("batch_email_blocklist")
 class SignupEmailBlocklistTests(SimpleTestCase):
     @override_settings(
-        GOBII_EMAIL_DOMAIN_ALLOWLIST=set(),
-        GOBII_EMAIL_DOMAIN_BLOCKLIST=set(),
-        GOBII_EMAIL_BLOCK_DISPOSABLE=True,
+        OPERARIO_EMAIL_DOMAIN_ALLOWLIST=set(),
+        OPERARIO_EMAIL_DOMAIN_BLOCKLIST=set(),
+        OPERARIO_EMAIL_BLOCK_DISPOSABLE=True,
     )
     @patch("config.allauth_adapter.is_disposable_domain", return_value=True)
     def test_blocks_disposable_domain(self, is_disposable_mock) -> None:
@@ -38,9 +38,9 @@ class SignupEmailBlocklistTests(SimpleTestCase):
         is_disposable_mock.assert_called_once_with("disposable.test")
 
     @override_settings(
-        GOBII_EMAIL_DOMAIN_ALLOWLIST={"mailslurp.biz"},
-        GOBII_EMAIL_DOMAIN_BLOCKLIST={"mailslurp.biz"},
-        GOBII_EMAIL_BLOCK_DISPOSABLE=True,
+        OPERARIO_EMAIL_DOMAIN_ALLOWLIST={"mailslurp.biz"},
+        OPERARIO_EMAIL_DOMAIN_BLOCKLIST={"mailslurp.biz"},
+        OPERARIO_EMAIL_BLOCK_DISPOSABLE=True,
     )
     @patch("config.allauth_adapter.is_disposable_domain", return_value=True)
     def test_allowlist_overrides_disposable_detection(self, is_disposable_mock) -> None:
@@ -52,9 +52,9 @@ class SignupEmailBlocklistTests(SimpleTestCase):
         is_disposable_mock.assert_not_called()
 
     @override_settings(
-        GOBII_EMAIL_DOMAIN_ALLOWLIST=set(),
-        GOBII_EMAIL_DOMAIN_BLOCKLIST={"mailslurp.biz"},
-        GOBII_EMAIL_BLOCK_DISPOSABLE=True,
+        OPERARIO_EMAIL_DOMAIN_ALLOWLIST=set(),
+        OPERARIO_EMAIL_DOMAIN_BLOCKLIST={"mailslurp.biz"},
+        OPERARIO_EMAIL_BLOCK_DISPOSABLE=True,
     )
     @patch("config.allauth_adapter.is_disposable_domain", return_value=False)
     def test_blocklist_blocks_non_disposable_domain(self, is_disposable_mock) -> None:
@@ -70,9 +70,9 @@ class SignupEmailBlocklistTests(SimpleTestCase):
         is_disposable_mock.assert_not_called()
 
     @override_settings(
-        GOBII_EMAIL_DOMAIN_ALLOWLIST=set(),
-        GOBII_EMAIL_DOMAIN_BLOCKLIST={"mailslurp.biz"},
-        GOBII_EMAIL_BLOCK_DISPOSABLE=True,
+        OPERARIO_EMAIL_DOMAIN_ALLOWLIST=set(),
+        OPERARIO_EMAIL_DOMAIN_BLOCKLIST={"mailslurp.biz"},
+        OPERARIO_EMAIL_BLOCK_DISPOSABLE=True,
     )
     @patch("config.allauth_adapter.is_disposable_domain", return_value=False)
     @patch("config.allauth_adapter.logger.warning")
@@ -94,10 +94,10 @@ class SignupEmailBlocklistTests(SimpleTestCase):
         is_disposable_mock.assert_not_called()
 
     @override_settings(
-        GOBII_EMAIL_DOMAIN_ALLOWLIST=set(),
-        GOBII_EMAIL_DOMAIN_BLOCKLIST=set(),
+        OPERARIO_EMAIL_DOMAIN_ALLOWLIST=set(),
+        OPERARIO_EMAIL_DOMAIN_BLOCKLIST=set(),
         SIGNUP_BLOCKED_EMAIL_DOMAINS=["legacy-block.test"],
-        GOBII_EMAIL_BLOCK_DISPOSABLE=True,
+        OPERARIO_EMAIL_BLOCK_DISPOSABLE=True,
     )
     @patch("config.allauth_adapter.is_disposable_domain", return_value=False)
     def test_legacy_signup_blocked_domains_setting_still_blocks(self, is_disposable_mock) -> None:
@@ -113,9 +113,9 @@ class SignupEmailBlocklistTests(SimpleTestCase):
         is_disposable_mock.assert_not_called()
 
     @override_settings(
-        GOBII_EMAIL_DOMAIN_ALLOWLIST=set(),
-        GOBII_EMAIL_DOMAIN_BLOCKLIST=set(),
-        GOBII_EMAIL_BLOCK_DISPOSABLE=True,
+        OPERARIO_EMAIL_DOMAIN_ALLOWLIST=set(),
+        OPERARIO_EMAIL_DOMAIN_BLOCKLIST=set(),
+        OPERARIO_EMAIL_BLOCK_DISPOSABLE=True,
     )
     @patch("config.allauth_adapter.is_disposable_domain", return_value=False)
     def test_allows_normal_domain(self, is_disposable_mock) -> None:
@@ -127,9 +127,9 @@ class SignupEmailBlocklistTests(SimpleTestCase):
         is_disposable_mock.assert_called_once_with("example.com")
 
     @override_settings(
-        GOBII_EMAIL_DOMAIN_ALLOWLIST=set(),
-        GOBII_EMAIL_DOMAIN_BLOCKLIST={"mailslurp.biz"},
-        GOBII_EMAIL_BLOCK_DISPOSABLE=True,
+        OPERARIO_EMAIL_DOMAIN_ALLOWLIST=set(),
+        OPERARIO_EMAIL_DOMAIN_BLOCKLIST={"mailslurp.biz"},
+        OPERARIO_EMAIL_BLOCK_DISPOSABLE=True,
     )
     @patch("config.allauth_adapter.is_disposable_domain", return_value=False)
     @patch.object(
@@ -204,7 +204,7 @@ class TrialOnboardingAdapterTests(TestCase):
 
     @tag("batch_email_blocklist")
     def test_pre_login_marks_plan_selection_required_for_signup(self) -> None:
-        adapter = GobiiAccountAdapter()
+        adapter = Operario AIAccountAdapter()
         request = self._build_request()
         request.session[TRIAL_ONBOARDING_PENDING_SESSION_KEY] = True
         request.session[TRIAL_ONBOARDING_TARGET_SESSION_KEY] = TRIAL_ONBOARDING_TARGET_AGENT_UI
@@ -229,7 +229,7 @@ class TrialOnboardingAdapterTests(TestCase):
 
     @tag("batch_email_blocklist")
     def test_pre_login_keeps_plan_selection_false_for_existing_login(self) -> None:
-        adapter = GobiiAccountAdapter()
+        adapter = Operario AIAccountAdapter()
         request = self._build_request()
         request.session[TRIAL_ONBOARDING_PENDING_SESSION_KEY] = True
         request.session[TRIAL_ONBOARDING_TARGET_SESSION_KEY] = TRIAL_ONBOARDING_TARGET_AGENT_UI

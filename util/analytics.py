@@ -14,7 +14,7 @@ analytics.write_key = settings.SEGMENT_WRITE_KEY
 
 import logging
 logger = logging.getLogger(__name__)
-tracer = trace.get_tracer("gobii.utils")
+tracer = trace.get_tracer("operario.utils")
 
 GOOGLE_TRUSTED = [
     ipaddress.ip_network("35.184.0.0/13"),  # your existing (keep if you know you use it)

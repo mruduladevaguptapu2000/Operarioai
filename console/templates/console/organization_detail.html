@@ -2,7 +2,7 @@
 
 {% block console_content %}
 <div class="space-y-6 pb-6" x-data="{}">
-  <div class="gobii-card-base">
+  <div class="operario-card-base">
     <div class="px-6 py-5 border-b border-gray-200/70 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
       <div class="space-y-2">
         <h1 class="text-2xl font-semibold text-gray-800">{{ org.name }}</h1>
@@ -40,7 +40,7 @@
     {% endif %}
   </div>
 
-  <div class="gobii-card-base">
+  <div class="operario-card-base">
     <div class="px-6 py-4 border-b border-gray-200/70 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
       <div>
         <h2 class="text-lg font-semibold text-gray-800">Members</h2>
@@ -143,7 +143,7 @@
   </div>
 
   {% if solutions_partners %}
-    <div class="gobii-card-base">
+    <div class="operario-card-base">
       <div class="px-6 py-4 border-b border-gray-200/70 flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h2 class="text-lg font-semibold text-gray-800">Solutions Partners</h2>
@@ -215,7 +215,7 @@
   {% endif %}
 
   {% if pending_invites %}
-    <div class="gobii-card-base">
+    <div class="operario-card-base">
       <div class="px-6 py-4 border-b border-gray-200/70 flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h2 class="text-lg font-semibold text-gray-800">Pending Member Invitations</h2>
@@ -268,7 +268,7 @@
   {% endif %}
 
   {% if solutions_partner_invites %}
-    <div class="gobii-card-base">
+    <div class="operario-card-base">
       <div class="px-6 py-4 border-b border-gray-200/70 flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h2 class="text-lg font-semibold text-gray-800">Pending Solutions Partner Invitations</h2>

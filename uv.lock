@@ -1512,7 +1512,7 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/e1/71/fbd2f1ad9695c92ad756b91f5a570f809c4959d3bd82266788cf222e5c5c/genson-1.2.2.tar.gz", hash = "sha256:8caf69aa10af7aee0e1a1351d1d06801f4696e005f06cedef438635384346a16", size = 34387, upload-time = "2020-08-19T17:04:45.09Z" }
 
 [[package]]
-name = "gobii-platform"
+name = "operario-platform"
 version = "2.8.0"
 source = { editable = "." }
 dependencies = [
@@ -1686,7 +1686,7 @@ requires-dist = [
     { name = "inscriptis", specifier = "==2.6.0" },
     { name = "json-schema-to-pydantic", specifier = "~=0.4.1" },
     { name = "json5", specifier = ">=0.13.0" },
-    { name = "litellm", git = "https://github.com/gobii-ai/litellm?rev=7c5e2e83898105d565ef2f2032fb389b3523d77a" },
+    { name = "litellm", git = "https://github.com/operario-ai/litellm?rev=7c5e2e83898105d565ef2f2032fb389b3523d77a" },
     { name = "mail-parser", specifier = "==4.1.4" },
     { name = "mailchecker", specifier = "~=6.0.0" },
     { name = "markdown", specifier = "~=3.8" },
@@ -2540,7 +2540,7 @@ wheels = [
 [[package]]
 name = "litellm"
 version = "1.82.1"
-source = { git = "https://github.com/gobii-ai/litellm?rev=7c5e2e83898105d565ef2f2032fb389b3523d77a#7c5e2e83898105d565ef2f2032fb389b3523d77a" }
+source = { git = "https://github.com/operario-ai/litellm?rev=7c5e2e83898105d565ef2f2032fb389b3523d77a#7c5e2e83898105d565ef2f2032fb389b3523d77a" }
 dependencies = [
     { name = "aiohttp" },
     { name = "click" },

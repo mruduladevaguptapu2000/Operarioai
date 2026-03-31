@@ -100,7 +100,7 @@ except Exception:  # pragma: no cover - optional dependency
 # Helper to generate lexicographically sortable ULIDs as 26-char strings.
 # Placed before model declarations so it's available during class body evaluation.
 logger = logging.getLogger(__name__)
-tracer = trace.get_tracer('gobii.utils')
+tracer = trace.get_tracer('operario.utils')
 
 
 def generate_ulid() -> str:
@@ -327,8 +327,8 @@ def _hash(raw: str) -> str:
     return hashlib.sha256(raw.encode()).hexdigest()
 
 def get_default_execution_environment() -> str:
-    """Return the default execution environment from GOBII_RELEASE_ENV."""
-    return os.getenv("GOBII_RELEASE_ENV", "local")
+    """Return the default execution environment from OPERARIO_RELEASE_ENV."""
+    return os.getenv("OPERARIO_RELEASE_ENV", "local")
 
 
 class PersistentAgentQuerySet(models.QuerySet):
@@ -5764,7 +5764,7 @@ class PersistentAgent(models.Model):
     )
     proactive_opt_in = models.BooleanField(
         default=True,
-        help_text="Enable Gobii to proactively start conversations offering related help for this agent.",
+        help_text="Enable Operario AI to proactively start conversations offering related help for this agent.",
     )
     proactive_last_trigger_at = models.DateTimeField(
         null=True,
@@ -6457,7 +6457,7 @@ class PersistentAgent(models.Model):
         app = celery_app
 
         # Check if the agent's execution environment matches the current environment
-        current_env = os.getenv("GOBII_RELEASE_ENV", "local")
+        current_env = os.getenv("OPERARIO_RELEASE_ENV", "local")
         if self.execution_environment != current_env:
             logger.info(
                 "Skipping Celery Beat task registration for agent %s: "
@@ -7426,7 +7426,7 @@ class PersistentAgentSecret(models.Model):
         CREDENTIAL = "credential", "Credential"
         ENV_VAR = "env_var", "Environment Variable"
 
-    ENV_VAR_DOMAIN_SENTINEL = "__gobii_env_var__"
+    ENV_VAR_DOMAIN_SENTINEL = "__operario_env_var__"
     ENV_VAR_KEY_PATTERN = re.compile(r"^[A-Z_][A-Z0-9_]*$")
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)

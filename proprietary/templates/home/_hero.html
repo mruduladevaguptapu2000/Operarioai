@@ -1,7 +1,7 @@
 {% load static %}
 {% load waffle_tags %}
 
-{% if settings.GOBII_PROPRIETARY_MODE %}
+{% if settings.OPERARIO_PROPRIETARY_MODE %}
 <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3 md:gap-6 mb-6 lg:max-w-3xl mx-auto">
   <div class="text-center md:text-left">
     <h1 class="text-4xl sm:text-5xl lg:text-6xl tracking-tight font-light text-gray-900 leading-[1.08]">
@@ -16,9 +16,9 @@
   </div>
   <div class="flex justify-center md:block flex-shrink-0 order-first md:order-last">
     {% flag "fish_homepage" %}
-      <div class="gobii-hero-fish-cursor" data-gobii-fish-cursor>
-        <div class="gobii-hero-fish" role="img" aria-label="Gobii AI mascot, an animated fish, swimming on the homepage">
-          {% include "home/_gobii_fish.svg" %}
+      <div class="operario-hero-fish-cursor" data-operario-fish-cursor>
+        <div class="operario-hero-fish" role="img" aria-label="Operario AI AI mascot, an animated fish, swimming on the homepage">
+          {% include "home/_operario_fish.svg" %}
         </div>
       </div>
     {% else %}
@@ -36,6 +36,6 @@
       <span class="font-normal bg-gradient-to-r from-violet-700 to-purple-600 bg-clip-text text-transparent">always on</span>
     {% endif %}
   </h1>
-  <p class="mt-5 text-base sm:text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">Gobii agents are virtual coworkers with their own identity, memory, and&nbsp;tools. Email&nbsp;them <i data-lucide="mail" class="inline-block w-[0.9em] h-[0.9em] text-violet-500 -translate-y-[1px]"></i>. Text&nbsp;them <i data-lucide="message-square" class="inline-block w-[0.9em] h-[0.9em] text-violet-500 -translate-y-[1px]"></i>. They work <span class="font-medium text-violet-600">24/7</span>.</p>
+  <p class="mt-5 text-base sm:text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">Operario AI agents are virtual coworkers with their own identity, memory, and&nbsp;tools. Email&nbsp;them <i data-lucide="mail" class="inline-block w-[0.9em] h-[0.9em] text-violet-500 -translate-y-[1px]"></i>. Text&nbsp;them <i data-lucide="message-square" class="inline-block w-[0.9em] h-[0.9em] text-violet-500 -translate-y-[1px]"></i>. They work <span class="font-medium text-violet-600">24/7</span>.</p>
 </div>
 {% endif %}

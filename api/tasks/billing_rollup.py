@@ -465,7 +465,7 @@ def _rollup_for_organization(org) -> int:
         return 0
 
 
-@shared_task(bind=True, ignore_result=True, name="gobii_platform.api.tasks.rollup_and_meter_usage")
+@shared_task(bind=True, ignore_result=True, name="operario_platform.api.tasks.rollup_and_meter_usage")
 def rollup_and_meter_usage_task(self) -> int:
     """
     Aggregate unmetered fractional task usage for all paid users and report to Stripe.
@@ -550,7 +550,7 @@ def rollup_and_meter_usage_task(self) -> int:
     return processed_entities
 
 
-@shared_task(bind=True, ignore_result=True, name="gobii_platform.api.tasks.rollup_usage_for_user")
+@shared_task(bind=True, ignore_result=True, name="operario_platform.api.tasks.rollup_usage_for_user")
 def rollup_usage_for_user(self, user_id: int) -> int:
     """Run metering rollup for a single user id (admin/testing helper)."""
     User = get_user_model()

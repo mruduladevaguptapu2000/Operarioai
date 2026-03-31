@@ -4,20 +4,20 @@ order: 20
 icon: typescript
 ---
 
-**Gobii** makes it super easy to spin up `browser-use` agents in the cloud. Here's how:
+**Operario AI** makes it super easy to spin up `browser-use` agents in the cloud. Here's how:
 
 ## Install the Client Library
 
-Install the Gobii TypeScript client library:
+Install the Operario AI TypeScript client library:
 
 ```bash
-npm install @gobii-ai/client
+npm install @operario-ai/client
 ```
 
 ## Initialize the Client
 
 ```typescript
-import { Configuration, BrowserUseApi } from '@gobii-ai/client';
+import { Configuration, BrowserUseApi } from '@operario-ai/client';
 
 // Initialize with your API key
 const config = new Configuration({
@@ -105,7 +105,7 @@ const result = await getTaskResult(agent.id, task.id);
 Here's a complete example that ties everything together:
 
 ```typescript
-import { Configuration, BrowserUseApi } from '@gobii-ai/client';
+import { Configuration, BrowserUseApi } from '@operario-ai/client';
 
 async function main() {
   // Initialize client

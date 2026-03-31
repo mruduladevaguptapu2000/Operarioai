@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}AI Agents for Developers - Build on Gobii's Platform | Gobii{% endblock %}
+{% block title %}AI Agents for Developers - Build on Operario AI's Platform | Operario AI{% endblock %}
 
 {% block head_extras %}
 {{ block.super }}
-<meta name="description" content="Build powerful AI agents with Gobii's API. Create, deploy, and control always-on agents programmatically. Self-hosted or cloud. Get started in minutes.">
+<meta name="description" content="Build powerful AI agents with Operario AI's API. Create, deploy, and control always-on agents programmatically. Self-hosted or cloud. Get started in minutes.">
 <style>
   .engineering-panel {
     position: relative;
@@ -184,7 +184,7 @@
               </svg>
             </button>
           </form>
-          <a href="https://docs.gobii.ai/developers/developer-basics" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-white/70 backdrop-blur-sm hover:bg-white/90 text-gray-800 font-medium rounded-xl border border-white/60 hover:border-indigo-200 shadow-sm transition-all duration-200">
+          <a href="https://docs.operario.ai/developers/developer-basics" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-white/70 backdrop-blur-sm hover:bg-white/90 text-gray-800 font-medium rounded-xl border border-white/60 hover:border-indigo-200 shadow-sm transition-all duration-200">
             Read the docs
           </a>
         </div>
@@ -236,7 +236,7 @@
 
 <span class="comment"># Create an always-on agent</span>
 response = requests.<span class="function">post</span>(
-    <span class="string">"https://api.gobii.ai/v1/persistent-agents/"</span>,
+    <span class="string">"https://api.operario.ai/v1/persistent-agents/"</span>,
     headers={<span class="string">"Authorization"</span>: <span class="string">f"Bearer </span><span class="variable">{API_KEY}</span><span class="string">"</span>},
     json={
         <span class="string">"name"</span>: <span class="string">"Data Collector"</span>,
@@ -426,7 +426,7 @@ agent = response.<span class="function">json</span>()
               <span class="px-2.5 py-0.5 rounded-full bg-slate-700/50 text-slate-300 text-xs font-medium border border-slate-600/50">Open Source</span>
             </div>
             <p class="text-slate-400 leading-relaxed">
-              The open-source standard for AI browser automation. Gobii is browser-use ready for production — deploy, scale, and manage agents without building infrastructure.
+              The open-source standard for AI browser automation. Operario AI is browser-use ready for production — deploy, scale, and manage agents without building infrastructure.
             </p>
           </div>
           <div class="flex-shrink-0 flex flex-wrap md:flex-col gap-2">
@@ -548,13 +548,13 @@ agent = response.<span class="function">json</span>()
       </form>
 
       <!-- Docs -->
-      <a href="https://docs.gobii.ai/developers/developer-basics" class="group block p-8 rounded-2xl bg-gradient-to-br from-slate-50 to-gray-50 border border-slate-100 hover:border-slate-200 transition-all hover:shadow-lg hover:shadow-slate-100/50">
+      <a href="https://docs.operario.ai/developers/developer-basics" class="group block p-8 rounded-2xl bg-gradient-to-br from-slate-50 to-gray-50 border border-slate-100 hover:border-slate-200 transition-all hover:shadow-lg hover:shadow-slate-100/50">
         <div class="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center mb-5 group-hover:bg-slate-200 transition-colors">
           <i data-lucide="book-open" class="w-6 h-6 text-slate-600"></i>
         </div>
         <h3 class="text-lg font-medium text-gray-900 mb-2">Documentation</h3>
         <p class="text-gray-600 text-sm leading-relaxed mb-4">
-          API reference, guides, and tutorials to help you build with Gobii.
+          API reference, guides, and tutorials to help you build with Operario AI.
         </p>
         <span class="inline-flex items-center text-sm font-medium text-slate-600 group-hover:text-slate-700">
           Read the docs
@@ -565,13 +565,13 @@ agent = response.<span class="function">json</span>()
       </a>
 
       <!-- GitHub -->
-      <a href="https://github.com/gobii-ai/gobii-platform" target="_blank" rel="noopener" class="group block p-8 rounded-2xl bg-gradient-to-br from-slate-50 to-gray-50 border border-slate-100 hover:border-slate-200 transition-all hover:shadow-lg hover:shadow-slate-100/50">
+      <a href="https://github.com/operario-ai/operario-platform" target="_blank" rel="noopener" class="group block p-8 rounded-2xl bg-gradient-to-br from-slate-50 to-gray-50 border border-slate-100 hover:border-slate-200 transition-all hover:shadow-lg hover:shadow-slate-100/50">
         <div class="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center mb-5 group-hover:bg-slate-200 transition-colors">
           <i data-lucide="github" class="w-6 h-6 text-slate-700"></i>
         </div>
         <h3 class="text-lg font-medium text-gray-900 mb-2">Open Source</h3>
         <p class="text-gray-600 text-sm leading-relaxed mb-4">
-          Self-host Gobii with our open-source codebase. Full control, your infrastructure.
+          Self-host Operario AI with our open-source codebase. Full control, your infrastructure.
         </p>
         <span class="inline-flex items-center text-sm font-medium text-slate-700 group-hover:text-slate-900">
           View on GitHub
@@ -605,13 +605,13 @@ agent = response.<span class="function">json</span>()
           </svg>
         </summary>
         <p class="mt-4 text-gray-600 leading-relaxed">
-          <a href="https://github.com/browser-use/browser-use" target="_blank" rel="noopener" class="text-violet-600 hover:text-violet-700 underline">browser-use</a> is the open-source library for AI-powered browser automation. Gobii is browser-use ready for production — with cloud infrastructure, persistent agents, managed proxies, and everything else you need to deploy at scale.
+          <a href="https://github.com/browser-use/browser-use" target="_blank" rel="noopener" class="text-violet-600 hover:text-violet-700 underline">browser-use</a> is the open-source library for AI-powered browser automation. Operario AI is browser-use ready for production — with cloud infrastructure, persistent agents, managed proxies, and everything else you need to deploy at scale.
         </p>
       </details>
 
       <details class="group py-6">
         <summary class="flex items-center justify-between cursor-pointer list-none">
-          <span class="text-lg font-medium text-gray-900 pr-8">What can I build with the Gobii API?</span>
+          <span class="text-lg font-medium text-gray-900 pr-8">What can I build with the Operario AI API?</span>
           <svg class="w-5 h-5 text-gray-400 group-open:rotate-45 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v12m6-6H6"/>
           </svg>
@@ -629,19 +629,19 @@ agent = response.<span class="function">json</span>()
           </svg>
         </summary>
         <p class="mt-4 text-gray-600 leading-relaxed">
-          Sign up for a free account, generate an API key in the console, and start making requests. Check out our <a href="https://docs.gobii.ai/developers/developer-basics" class="text-violet-600 hover:text-violet-700 underline">developer documentation</a> for quickstart guides and API reference.
+          Sign up for a free account, generate an API key in the console, and start making requests. Check out our <a href="https://docs.operario.ai/developers/developer-basics" class="text-violet-600 hover:text-violet-700 underline">developer documentation</a> for quickstart guides and API reference.
         </p>
       </details>
 
       <details class="group py-6">
         <summary class="flex items-center justify-between cursor-pointer list-none">
-          <span class="text-lg font-medium text-gray-900 pr-8">Can I self-host Gobii?</span>
+          <span class="text-lg font-medium text-gray-900 pr-8">Can I self-host Operario AI?</span>
           <svg class="w-5 h-5 text-gray-400 group-open:rotate-45 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v12m6-6H6"/>
           </svg>
         </summary>
         <p class="mt-4 text-gray-600 leading-relaxed">
-          Yes. Gobii is open source and available on <a href="https://github.com/gobii-ai/gobii-platform" target="_blank" rel="noopener" class="text-violet-600 hover:text-violet-700 underline">GitHub</a>. You can deploy it on your own infrastructure for full control over data and compliance requirements.
+          Yes. Operario AI is open source and available on <a href="https://github.com/operario-ai/operario-platform" target="_blank" rel="noopener" class="text-violet-600 hover:text-violet-700 underline">GitHub</a>. You can deploy it on your own infrastructure for full control over data and compliance requirements.
         </p>
       </details>
 
@@ -699,14 +699,14 @@ agent = response.<span class="function">json</span>()
           </svg>
         </button>
       </form>
-      <a href="https://docs.gobii.ai/developers/developer-basics" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/80 backdrop-blur-sm hover:bg-white text-gray-700 font-medium rounded-xl border border-gray-200 hover:border-violet-200 shadow-sm hover:shadow transition-all duration-200">
+      <a href="https://docs.operario.ai/developers/developer-basics" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/80 backdrop-blur-sm hover:bg-white text-gray-700 font-medium rounded-xl border border-gray-200 hover:border-violet-200 shadow-sm hover:shadow transition-all duration-200">
         Read the docs
       </a>
     </div>
 
     <!-- Trust indicators -->
     <div class="mt-14 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-sm text-gray-500">
-      <a href="https://github.com/gobii-ai/gobii-platform" target="_blank" rel="noopener" class="flex items-center gap-2 hover:text-gray-700 transition-colors">
+      <a href="https://github.com/operario-ai/operario-platform" target="_blank" rel="noopener" class="flex items-center gap-2 hover:text-gray-700 transition-colors">
         <i data-lucide="github" class="w-5 h-5"></i>
         Open source
       </a>

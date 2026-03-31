@@ -95,7 +95,7 @@ class PipedreamTrelloManagerTests(TestCase):
     def setUp(self):
         Site.objects.update_or_create(id=1, defaults={"domain": "example.com", "name": "example"})
 
-    @override_settings(GOBII_PROPRIETARY_MODE=False)
+    @override_settings(OPERARIO_PROPRIETARY_MODE=False)
     @patch("api.integrations.pipedream_connect.create_connect_session")
     @patch("api.agent.tools.mcp_manager.MCPToolManager._ensure_event_loop")
     @patch("api.agent.tools.mcp_manager.MCPToolManager._execute_async", new_callable=MagicMock)
@@ -168,7 +168,7 @@ class PipedreamTrelloDiscoveryTests(TestCase):
     def setUp(self):
         Site.objects.update_or_create(id=1, defaults={"domain": "example.com", "name": "example"})
 
-    @override_settings(GOBII_PROPRIETARY_MODE=False)
+    @override_settings(OPERARIO_PROPRIETARY_MODE=False)
     @patch("api.agent.tools.mcp_manager.select_proxy", return_value=None)
     @patch("api.agent.tools.mcp_manager.MCPToolManager._ensure_event_loop")
     @patch("api.agent.tools.mcp_manager.Client")

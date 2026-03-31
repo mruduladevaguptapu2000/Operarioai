@@ -37,12 +37,12 @@ function applyConsoleContextHeaders(headers: Headers): boolean {
     return false
   }
   let applied = false
-  if (!headers.has('X-Gobii-Context-Type')) {
-    headers.set('X-Gobii-Context-Type', context.type)
+  if (!headers.has('X-Operario AI-Context-Type')) {
+    headers.set('X-Operario AI-Context-Type', context.type)
     applied = true
   }
-  if (!headers.has('X-Gobii-Context-Id')) {
-    headers.set('X-Gobii-Context-Id', context.id)
+  if (!headers.has('X-Operario AI-Context-Id')) {
+    headers.set('X-Operario AI-Context-Id', context.id)
     applied = true
   }
   return applied
@@ -104,10 +104,10 @@ async function jsonFetchInternal<T>(
   if (!headers.has('Accept')) {
     headers.set('Accept', 'application/json')
   }
-  if (!headers.has('X-Gobii-Timezone')) {
+  if (!headers.has('X-Operario AI-Timezone')) {
     const browserTimeZone = getBrowserTimeZone()
     if (browserTimeZone) {
-      headers.set('X-Gobii-Timezone', browserTimeZone)
+      headers.set('X-Operario AI-Timezone', browserTimeZone)
     }
   }
   const appliedContextHeaders = applyConsoleContextHeaders(headers)
@@ -139,8 +139,8 @@ async function jsonFetchInternal<T>(
     if (allowRetry && appliedContextHeaders && response.status === 403) {
       clearStoredConsoleContext()
       const retryHeaders = new Headers(initHeaders ?? undefined)
-      retryHeaders.delete('X-Gobii-Context-Type')
-      retryHeaders.delete('X-Gobii-Context-Id')
+      retryHeaders.delete('X-Operario AI-Context-Type')
+      retryHeaders.delete('X-Operario AI-Context-Id')
       return jsonFetchInternal<T>(
         input,
         {

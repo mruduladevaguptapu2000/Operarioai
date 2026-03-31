@@ -1,7 +1,7 @@
 {
   "name": "ts-example-client",
   "version": "0.0.1",
-  "description": "Example TypeScript client for the Gobii API",
+  "description": "Example TypeScript client for the Operario AI API",
   "main": "dist/index.js",
   "type": "module",
   "scripts": {
@@ -13,7 +13,7 @@
     "generate-client": "./generate-client.sh"
   },
   "keywords": [
-    "gobii",
+    "operario",
     "api",
     "client",
     "example",
@@ -22,7 +22,7 @@
   "author": "Your Name <you@example.com>",
   "license": "UNLICENSED",
   "dependencies": {
-    "@gobii-ai/client": "^0.0.11",
+    "@operario-ai/client": "^0.0.11",
     "commander": "^12.1.0",
     "dotenv": "^16.4.5",
     "uuid": "^10.0.0"

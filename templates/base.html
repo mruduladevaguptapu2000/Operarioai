@@ -11,7 +11,7 @@
 
   {% if default_charter and not agent_charter_saved %}
     {# a default charter has been specified, so change title #}
-    <title>{% if landing_title %}{{ landing_title }}{% else %}{{ default_charter|truncatechars:60 }}{% endif %} - Gobii</title>
+    <title>{% if landing_title %}{{ landing_title }}{% else %}{{ default_charter|truncatechars:60 }}{% endif %} - Operario AI</title>
 
     <meta property="og:type"        content="website">
 
@@ -19,9 +19,9 @@
     <meta property="og:url"         content="{{ request.scheme }}://{{ request.get_host }}{% url 'pages:landing_redirect' code=landing_code %}">
     {% endif %}
 
-    <meta property="og:title" content="{% if landing_title %}{{ landing_title }}{% else %}{{ default_charter|truncatechars:60 }}{% endif %} - Gobii">
+    <meta property="og:title" content="{% if landing_title %}{{ landing_title }}{% else %}{{ default_charter|truncatechars:60 }}{% endif %} - Operario AI">
     <meta property="og:description" content="{{ default_charter|truncatechars:160 }}">
-    <meta property="og:site_name" content="Gobii">
+    <meta property="og:site_name" content="Operario AI">
 
     {%  if landing_preview_image %}
     <meta property="og:image" content="{{ landing_preview_image }}">
@@ -29,14 +29,14 @@
 
     <meta name="twitter:card" content="summary">
 {% else %}
-  <title>{% block title %}Gobii{% endblock %}</title>
+  <title>{% block title %}Operario AI{% endblock %}</title>
 {% endif %}
   <!-- Favicon -->
   {% if fish_collateral_enabled %}
-    <link rel="icon" href="{% static 'images/gobii_fish_favicon.ico' %}?v=5" sizes="any">
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/gobii_fish_favicon_16.png' %}?v=5">
-    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/gobii_fish_favicon_32.png' %}?v=5">
-    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/gobii_fish_apple_touch_180.png' %}?v=5">
+    <link rel="icon" href="{% static 'images/operario_fish_favicon.ico' %}?v=5" sizes="any">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/operario_fish_favicon_16.png' %}?v=5">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/operario_fish_favicon_32.png' %}?v=5">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/operario_fish_apple_touch_180.png' %}?v=5">
   {% else %}
     <link rel="icon" href="{% static 'images/favicon.ico' %}?v=4" sizes="any">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon-16x16.png' %}?v=4">
@@ -44,7 +44,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/apple-touch-icon.png' %}?v=4">
   {% endif %}
 
-  <meta name="twitter:site"        content="@gobii_ai">
+  <meta name="twitter:site"        content="@operario_ai">
 
   <!-- Optional: for better Android support -->
   <link rel="manifest" href="{% url 'pages:web_manifest' %}">
@@ -64,7 +64,7 @@
     });
   </script>
 
-  {% if environment.is_production and settings.GOBII_PROPRIETARY_MODE and canonical_url %}
+  {% if environment.is_production and settings.OPERARIO_PROPRIETARY_MODE and canonical_url %}
   <link rel="canonical" href="{{ canonical_url }}">
   {% endif %}
 
@@ -119,7 +119,7 @@
   <!-- End Reddit Pixel -->
   {% endif %}
 
-  {% if environment.is_production and settings.GOBII_PROPRIETARY_MODE and settings.TIKTOK_PIXEL_ID %}
+  {% if environment.is_production and settings.OPERARIO_PROPRIETARY_MODE and settings.TIKTOK_PIXEL_ID %}
     <!-- TikTok Pixel Code Start -->
     <script>
     !function (w, d, t) {
@@ -147,7 +147,7 @@
   <script src="{% static 'js/segment_bootstrap.js' %}"></script>
   <script>
     (function () {
-      const segmentEnabled = window.GobiiSegmentBootstrap && window.GobiiSegmentBootstrap.init({
+      const segmentEnabled = window.Operario AISegmentBootstrap && window.Operario AISegmentBootstrap.init({
         enabled: {% if settings.SEGMENT_WEB_WRITE_KEY %}{% if not settings.DEBUG or settings.SEGMENT_WEB_ENABLE_IN_DEBUG %}true{% else %}false{% endif %}{% else %}false{% endif %},
         writeKey: "{{ settings.SEGMENT_WEB_WRITE_KEY|escapejs }}",
         defaultProperties: {
@@ -350,7 +350,7 @@
   
   <!-- Preload logo to prevent flicker -->
   {% if fish_collateral_enabled %}
-    <link rel="preload" as="image" href="{% static 'images/gobii_fish_with_text_purple_nav.png' %}" />
+    <link rel="preload" as="image" href="{% static 'images/operario_fish_with_text_purple_nav.png' %}" />
   {% else %}
     <link rel="preload" as="image" href="{% static 'images/noBgBlue.png' %}" />
   {% endif %}
@@ -448,7 +448,7 @@
     });
   </script>
 
-  <script src="{% static 'js/gobii_analytics.js' %}"></script>
+  <script src="{% static 'js/operario_analytics.js' %}"></script>
   <script src="{% static 'js/cta_tracking.js' %}"></script>
   <script src="{% static 'js/signup_tracking.js' %}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/libphonenumber-js/1.12.9/libphonenumber-js.min.js"></script>
@@ -495,7 +495,7 @@
   {% endif %}
 
 
-  {% if environment.is_production and settings.GOBII_PROPRIETARY_MODE and settings.REWARDFUL_ID %}
+  {% if environment.is_production and settings.OPERARIO_PROPRIETARY_MODE and settings.REWARDFUL_ID %}
   <script>(function(w,r){w._rwq=r;w[r]=w[r]||function(){(w[r].q=w[r].q||[]).push(arguments)}})(window,'rewardful');</script>
   <script async src='https://r.wdfl.co/rw.js' data-rewardful='{{ settings.REWARDFUL_ID }}'></script>
   {% endif %}
@@ -567,7 +567,7 @@
   b.type = "text/javascript";b.async = true;
   b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
   s.parentNode.insertBefore(b, s);})(window.lintrk);
-  {% if show_signup_tracking and environment.is_production and settings.GOBII_PROPRIETARY_MODE %}
+  {% if show_signup_tracking and environment.is_production and settings.OPERARIO_PROPRIETARY_MODE %}
       (function () {
         {% if settings.LINKEDIN_SIGNUP_CONVERSION_ID  %}
         if (typeof window.lintrk === 'function') {
@@ -582,7 +582,7 @@
   </noscript>
   {% endif %}
 
-  {% if environment.is_production and settings.GOBII_PROPRIETARY_MODE and settings.REWARDFUL_ID %}
+  {% if environment.is_production and settings.OPERARIO_PROPRIETARY_MODE and settings.REWARDFUL_ID %}
   <script>
 
     rewardful('ready', function() {

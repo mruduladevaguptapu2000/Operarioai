@@ -405,7 +405,7 @@ def build_agent_addons_payload(
     owner = owner or agent.organization or agent.user
     owner_type = "organization" if agent.organization_id else "user"
 
-    if is_free_plan and settings.GOBII_PROPRIETARY_MODE:
+    if is_free_plan and settings.OPERARIO_PROPRIETARY_MODE:
         try:
             upgrade_url = reverse("proprietary:pricing")
         except NoReverseMatch:

@@ -4,7 +4,7 @@ order: 40
 icon: json
 ---
 
-Sometimes a free-form answer isn't enough—you want the agent to give you a **well-defined JSON object** every time.  Gobii supports this via the `output_schema` field.
+Sometimes a free-form answer isn't enough—you want the agent to give you a **well-defined JSON object** every time.  Operario AI supports this via the `output_schema` field.
 
 ## Why use an output schema?
 
@@ -38,8 +38,8 @@ Sometimes a free-form answer isn't enough—you want the agent to give you a **w
 ```bash
 curl --no-buffer \
   -X POST \
-  https://gobii.ai/api/v1/tasks/browser-use/ \
-  -H "X-Api-Key: $GOBII_API_KEY" \
+  https://operario.ai/api/v1/tasks/browser-use/ \
+  -H "X-Api-Key: $OPERARIO_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
         "prompt": "Visit https://news.ycombinator.com and extract the top 3 stories",

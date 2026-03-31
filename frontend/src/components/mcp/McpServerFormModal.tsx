@@ -511,7 +511,7 @@ export function McpServerFormModal({
                     Use custom OAuth credentials
                   </label>
                   <p className="text-xs text-slate-500">
-                    Provide an OAuth client ID + secret from your own app. Leave unchecked to let Gobii register a temporary
+                    Provide an OAuth client ID + secret from your own app. Leave unchecked to let Operario AI register a temporary
                     client automatically.
                     {oauthStore.requiresManualClient && ' This server requires manual credentials.'}
                   </p>

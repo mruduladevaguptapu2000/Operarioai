@@ -2156,7 +2156,7 @@ class AgentChatRosterAPIView(LoginRequiredMixin, View):
         )
 
         upgrade_url = None
-        if settings.GOBII_PROPRIETARY_MODE:
+        if settings.OPERARIO_PROPRIETARY_MODE:
             try:
                 upgrade_url = reverse("proprietary:pricing")
             except NoReverseMatch:
@@ -2683,7 +2683,7 @@ class AgentTemplateCloneAPIView(ApiLoginRequiredMixin, View):
             transaction.on_commit(
                 lambda: emit_configured_custom_capi_event(
                     user=request.user,
-                    event_name=ConfiguredCustomEvent.CLONE_GOBII,
+                    event_name=ConfiguredCustomEvent.CLONE_OPERARIO,
                     plan_owner=agent.organization or request.user,
                     properties={
                         "agent_id": str(agent.id),
@@ -6059,7 +6059,7 @@ class MCPOAuthStartView(LoginRequiredMixin, View):
 
         redirect_uri = callback_url
         payload = {
-            "client_name": f"Gobii MCP - {config.display_name}",
+            "client_name": f"Operario AI MCP - {config.display_name}",
             "redirect_uris": [redirect_uri],
             "grant_types": ["authorization_code"],
             "response_types": ["code"],
@@ -6357,7 +6357,7 @@ class AgentEmailOAuthStartView(LoginRequiredMixin, View):
         provider = str(body.get("provider") or "").strip()
         if provider and "provider" not in metadata:
             metadata["provider"] = provider
-        if body.get("use_gobii_app"):
+        if body.get("use_operario_app"):
             metadata.setdefault("managed_app", True)
 
         scope_raw = body.get("scope") or ""
@@ -6375,18 +6375,18 @@ class AgentEmailOAuthStartView(LoginRequiredMixin, View):
 
         manual_client_id = str(body.get("client_id") or "")
         manual_client_secret = str(body.get("client_secret") or "")
-        use_gobii_app = bool(
-            body.get("use_gobii_app")
+        use_operario_app = bool(
+            body.get("use_operario_app")
             or (provider.lower() in MANAGED_EMAIL_PROVIDER_KEYS and not manual_client_id)
         )
         client_id = manual_client_id
         client_secret = manual_client_secret
 
-        if use_gobii_app:
+        if use_operario_app:
             managed_client_id, managed_client_secret = _resolve_managed_email_oauth_client(provider)
             if not managed_client_id:
                 return JsonResponse(
-                    {"error": "Gobii OAuth app is not configured for this provider."},
+                    {"error": "Operario AI OAuth app is not configured for this provider."},
                     status=400,
                 )
             client_id = managed_client_id
@@ -6460,7 +6460,7 @@ class AgentEmailOAuthStartView(LoginRequiredMixin, View):
         agent = getattr(account.endpoint, "owner_agent", None)
         redirect_uri = callback_url
         payload = {
-            "client_name": f"Gobii Email - {getattr(agent, 'name', 'Agent')}",
+            "client_name": f"Operario AI Email - {getattr(agent, 'name', 'Agent')}",
             "redirect_uris": [redirect_uri],
             "grant_types": ["authorization_code"],
             "response_types": ["code"],

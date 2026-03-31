@@ -42,7 +42,7 @@ logger = logging.getLogger(__name__)
 
 SUPPORT_DETAIL = (
     "An error occurred while updating billing. "
-    "Please contact support@gobii.ai for help."
+    "Please contact support@operario.ai for help."
 )
 
 

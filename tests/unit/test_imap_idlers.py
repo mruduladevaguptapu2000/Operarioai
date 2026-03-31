@@ -85,7 +85,7 @@ class ImapIdleRunnerEnvFilterTests(TestCase):
             poll_interval_sec=30,
         )
 
-    @override_settings(GOBII_RELEASE_ENV="local")
+    @override_settings(OPERARIO_RELEASE_ENV="local")
     def test_queryset_only_includes_current_env_accounts(self):
         eligible_ids = set(
             _eligible_idle_accounts_queryset().values_list("pk", flat=True)

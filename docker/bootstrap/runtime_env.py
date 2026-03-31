@@ -18,12 +18,12 @@ CONFIG_DIR.mkdir(parents=True, exist_ok=True)
 STATIC_DIR = Path(os.environ.get("BOOTSTRAP_STATIC_DIR", "/static"))
 MEDIA_DIR = Path(os.environ.get("BOOTSTRAP_MEDIA_DIR", "/media"))
 
-POSTGRES_USER = os.environ.get("POSTGRES_USER", "gobii")
-POSTGRES_DB = os.environ.get("POSTGRES_DB", "gobii")
+POSTGRES_USER = os.environ.get("POSTGRES_USER", "operario")
+POSTGRES_DB = os.environ.get("POSTGRES_DB", "operario")
 POSTGRES_PASSWORD_ENV = os.environ.get("POSTGRES_PASSWORD") or None
 DJANGO_SECRET_KEY_ENV = os.environ.get("DJANGO_SECRET_KEY") or None
-GOBII_ENCRYPTION_KEY_ENV = os.environ.get("GOBII_ENCRYPTION_KEY") or None
-MINIO_PREFIX = os.environ.get("MINIO_ROOT_USER_PREFIX", "gobii")
+OPERARIO_ENCRYPTION_KEY_ENV = os.environ.get("OPERARIO_ENCRYPTION_KEY") or None
+MINIO_PREFIX = os.environ.get("MINIO_ROOT_USER_PREFIX", "operario")
 MINIO_USER_ENV = os.environ.get("MINIO_ROOT_USER") or None
 MINIO_PASSWORD_ENV = os.environ.get("MINIO_ROOT_PASSWORD") or None
 APP_UID = int(os.environ.get("APP_UID", "101"))
@@ -100,11 +100,11 @@ current_env = _load_env(django_env_path)
 
 defaults = {
     "DJANGO_SETTINGS_MODULE": "config.settings",
-    "GOBII_RELEASE_ENV": "oss",
+    "OPERARIO_RELEASE_ENV": "oss",
     "DEBUG": "0",
-    "GOBII_ENABLE_TRACING": current_env.get("GOBII_ENABLE_TRACING", "0"),
+    "OPERARIO_ENABLE_TRACING": current_env.get("OPERARIO_ENABLE_TRACING", "0"),
     "DJANGO_SECRET_KEY": current_env.get("DJANGO_SECRET_KEY", DJANGO_SECRET_KEY_ENV or _random_token(64)),
-    "GOBII_ENCRYPTION_KEY": current_env.get("GOBII_ENCRYPTION_KEY", GOBII_ENCRYPTION_KEY_ENV or _random_token(64)),
+    "OPERARIO_ENCRYPTION_KEY": current_env.get("OPERARIO_ENCRYPTION_KEY", OPERARIO_ENCRYPTION_KEY_ENV or _random_token(64)),
     "HOME": current_env.get("HOME", "/tmp"),
     "XDG_DATA_HOME": current_env.get("XDG_DATA_HOME", "/tmp/.chrome"),
     "XDG_CONFIG_HOME": current_env.get("XDG_CONFIG_HOME", "/tmp/.chrome"),

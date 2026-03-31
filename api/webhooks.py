@@ -32,7 +32,7 @@ from util.analytics import Analytics, AnalyticsEvent, AnalyticsSource
 from api.services.email_verification import has_verified_email
 
 logger = logging.getLogger(__name__)
-tracer = trace.get_tracer("gobii.utils")
+tracer = trace.get_tracer("operario.utils")
 
 @csrf_exempt
 @require_POST
@@ -858,13 +858,13 @@ def open_and_link_webhook(request):
     Handles open events and link click webhooks from email services.
     """
 
-    # Get the header X-Gobii-Postmark-Key to do our security check with the Postmark token we created. Note that the
+    # Get the header X-Operario AI-Postmark-Key to do our security check with the Postmark token we created. Note that the
     # Postmark api does not support adding headers to the inbound email hook, but it does for this one. Hence the
     # different security check.
-    api_key = request.headers.get('x-gobii-postmark-key', '').strip()
+    api_key = request.headers.get('x-operario-postmark-key', '').strip()
 
     if not api_key:
-        logger.warning("Open/link click webhook called without 'X-Gobii-Postmark-Key' header; rejecting request.")
+        logger.warning("Open/link click webhook called without 'X-Operario AI-Postmark-Key' header; rejecting request.")
         return HttpResponse(status=400)
 
     # Validate it matches env var

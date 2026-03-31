@@ -5,9 +5,9 @@ type StoredConsoleContext = {
 }
 
 const STORAGE_KEYS = {
-  type: 'gobii:console:context-type',
-  id: 'gobii:console:context-id',
-  name: 'gobii:console:context-name',
+  type: 'operario:console:context-type',
+  id: 'operario:console:context-id',
+  name: 'operario:console:context-name',
 }
 
 const LEGACY_LOCAL_STORAGE_KEYS = {

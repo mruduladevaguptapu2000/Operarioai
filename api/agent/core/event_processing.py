@@ -188,7 +188,7 @@ from .gemini_cache import (
 from .web_streaming import WebStreamBroadcaster, resolve_web_stream_target
 
 logger = logging.getLogger(__name__)
-tracer = trace.get_tracer("gobii.utils")
+tracer = trace.get_tracer("operario.utils")
 
 MAX_AGENT_LOOP_ITERATIONS = 100
 MAX_NO_TOOL_STREAK = 1  # Stop on first no-tool response unless continuation signal present
@@ -3003,7 +3003,7 @@ def _ensure_credit_for_tool(
         else f"user {getattr(owner_user, 'id', 'unknown')}"
     )
 
-    if not settings.GOBII_PROPRIETARY_MODE or owner is None:
+    if not settings.OPERARIO_PROPRIETARY_MODE or owner is None:
         return {"cost": None, "credit": None}
 
     cost: Decimal | None = None
@@ -3808,7 +3808,7 @@ def _process_agent_events_locked(
                 persistent_agent_id,
             )
 
-        if settings.GOBII_PROPRIETARY_MODE:
+        if settings.OPERARIO_PROPRIETARY_MODE:
             owner_user = getattr(agent, "user", None)
             owner_is_org = TaskCreditService._is_organization_owner(owner) if owner is not None else False
             if owner is not None:

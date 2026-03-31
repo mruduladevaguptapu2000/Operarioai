@@ -34,7 +34,7 @@ def resolve_agent_email_sender_endpoint(
     Self-send fallback:
     - If there are no CC/BCC recipients, and the normalized `to_address` equals
       the selected sender address, switch sender to the agent's default-domain
-      email endpoint (e.g. @my.gobii.ai) when available.
+      email endpoint (e.g. @my.operario.ai) when available.
     """
     primary_endpoint = get_agent_primary_endpoint(agent, CommsChannel.EMAIL)
     if primary_endpoint is None:

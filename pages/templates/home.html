@@ -2,11 +2,11 @@
 {% load static %}
 {% load vite_tags %}
 {% load waffle_tags %}
-{% block title %}Gobii | Your AI Team, Always On — Virtual Coworkers That Automate Web Work 24/7{% endblock %}
+{% block title %}Operario AI | Your AI Team, Always On — Virtual Coworkers That Automate Web Work 24/7{% endblock %}
 {% block head_extras %}
   {{ block.super }}
   <link rel="stylesheet" href="{% static 'css/home_hero_fish.css' %}">
-  <meta name="description" content="Gobii agents are virtual coworkers with their own identity, memory, and tools. Email them, text them — they browse the web, collect data, and deliver reports 24/7.">
+  <meta name="description" content="Operario AI agents are virtual coworkers with their own identity, memory, and tools. Email them, text them — they browse the web, collect data, and deliver reports 24/7.">
   {% if immersive_app_assets %}
     {% for href in immersive_app_assets.styles %}
       <link rel="preload" as="style" href="{{ href }}">
@@ -229,7 +229,7 @@
                 <!-- Typing prompt overlay -->
                 <div id="charter-ghost" class="pointer-events-none absolute inset-0 flex px-5 py-4 text-base leading-relaxed text-slate-500 transition-opacity duration-200">
                   <div>
-                    <span>I want my Gobii to</span>
+                    <span>I want my Operario AI to</span>
                     <span id="charter-ghost-text"> find 200 ideal customers and their emails.</span>
                   </div>
                 </div>
@@ -519,7 +519,7 @@
 
           <!-- Description -->
           <p class="text-gray-600 mb-6 max-w-2xl mx-auto">
-            {% if settings.GOBII_PROPRIETARY_MODE %}
+            {% if settings.OPERARIO_PROPRIETARY_MODE %}
               You've reached your agent limit for your current plan. Upgrade to unlock more agents and take advantage of advanced features to boost your productivity.
             {% else %}
               You've reached your agent limit for this deployment. Adjust deployment settings to allow more agents.
@@ -538,7 +538,7 @@
           </div>
 
           <!-- CTA Button -->
-          {% if settings.GOBII_PROPRIETARY_MODE %}
+          {% if settings.OPERARIO_PROPRIETARY_MODE %}
           <a href="{% url "proprietary:startup_checkout" %}" class="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
@@ -547,7 +547,7 @@
           </a>
           {% endif %}
 
-          {% if settings.GOBII_PROPRIETARY_MODE %}
+          {% if settings.OPERARIO_PROPRIETARY_MODE %}
           <!-- Benefits Preview -->
           <div class="mt-8 pt-6 border-t border-blue-200">
             <h4 class="text-lg font-semibold text-gray-900 mb-4">What you'll get with an upgrade:</h4>
@@ -592,7 +592,7 @@
   </section>
 
   <!-- Value proposition sections (proprietary only) -->
-  {% if settings.GOBII_PROPRIETARY_MODE %}
+  {% if settings.OPERARIO_PROPRIETARY_MODE %}
     {% include "home/_flow_strip.html" %}
     {% include "home/_value_sections.html" %}
     {% include "home/_vision_and_trust.html" %}
@@ -611,7 +611,7 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      const fish = document.querySelector('[data-gobii-fish-cursor]');
+      const fish = document.querySelector('[data-operario-fish-cursor]');
       if (!fish) return;
 
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {

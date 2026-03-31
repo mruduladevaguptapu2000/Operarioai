@@ -266,7 +266,7 @@ class MCPServerConfigForm(forms.Form):
     auth_method = forms.ChoiceField(
         choices=MCPServerConfig.AuthMethod.choices,
         initial=MCPServerConfig.AuthMethod.NONE,
-        help_text="Select how Gobii should authenticate requests to this MCP server.",
+        help_text="Select how Operario AI should authenticate requests to this MCP server.",
     )
     command_args = forms.JSONField(required=False, initial=list, empty_value=list, help_text="JSON array of command arguments, e.g. ['-y', '@pkg@1.0.0'].")
     metadata = forms.JSONField(required=False, initial=dict, empty_value=dict, help_text="Additional JSON metadata (optional).")
@@ -340,7 +340,7 @@ class MCPServerConfigForm(forms.Form):
         if not self.allow_commands:
             errors: dict[str, str] = {}
             if command:
-                errors['command'] = "Command-based MCP servers are managed by Gobii. Provide a URL instead."
+                errors['command'] = "Command-based MCP servers are managed by Operario AI. Provide a URL instead."
             if cleaned.get('command_args'):
                 errors['command_args'] = "Command arguments are not supported for user-managed MCP servers."
             if not url:
@@ -360,7 +360,7 @@ class MCPServerConfigForm(forms.Form):
         if not cleaned.get('name'):
             raise forms.ValidationError("Unable to generate an identifier. Add a display name with letters or numbers.")
         if cleaned['name'].lower() in reserved and self.allow_commands is False:
-            raise forms.ValidationError("This MCP server identifier is reserved for Gobii-managed integrations.")
+            raise forms.ValidationError("This MCP server identifier is reserved for Operario AI-managed integrations.")
         return cleaned
 
     def clean_command_args(self):

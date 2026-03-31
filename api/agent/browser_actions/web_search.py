@@ -13,7 +13,7 @@ from ..core.web_search_formatter import format_search_results, format_search_err
 from ..tools.mcp_manager import execute_platform_mcp_tool
 
 logger = logging.getLogger(__name__)
-tracer = trace.get_tracer("gobii.utils")
+tracer = trace.get_tracer("operario.utils")
 
 
 class _SearchResult:

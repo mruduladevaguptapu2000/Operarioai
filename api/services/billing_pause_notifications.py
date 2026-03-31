@@ -274,7 +274,7 @@ def _build_billing_url(agent) -> str:
 
 def _build_logo_url() -> str:
     try:
-        return _build_site_url(static("images/gobii_fish_with_text_purple.png"))
+        return _build_site_url(static("images/operario_fish_with_text_purple.png"))
     except (
         Site.DoesNotExist,
         MultipleObjectsReturned,

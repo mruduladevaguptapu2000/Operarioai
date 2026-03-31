@@ -1,4 +1,4 @@
-name: Release Gobii Platform
+name: Release Operario AI Platform
 
 on:
   workflow_dispatch:
@@ -21,7 +21,7 @@ on:
         required: false
 
 concurrency:
-  group: gobii-platform-release
+  group: operario-platform-release
   cancel-in-progress: false
 
 permissions:
@@ -29,7 +29,7 @@ permissions:
 
 jobs:
   release:
-    name: Release Gobii Platform
+    name: Release Operario AI Platform
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo

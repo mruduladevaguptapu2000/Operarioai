@@ -167,7 +167,7 @@ class ProxySelectionTests(TestCase):
         self.assertIsNone(result)
     
     @patch('api.models.BrowserUseAgent.select_random_proxy')
-    @override_settings(GOBII_PROPRIETARY_MODE=True, DEBUG=False)
+    @override_settings(OPERARIO_PROPRIETARY_MODE=True, DEBUG=False)
     @tag("batch_proxy_selection")
     def test_select_proxy_no_proxy_production_mode(
         self,
@@ -183,7 +183,7 @@ class ProxySelectionTests(TestCase):
         self.assertIn("proprietary mode", str(context.exception))
 
     @patch('api.models.BrowserUseAgent.select_random_proxy')
-    @override_settings(GOBII_PROPRIETARY_MODE=False, DEBUG=False)
+    @override_settings(OPERARIO_PROPRIETARY_MODE=False, DEBUG=False)
     def test_select_proxy_no_proxy_community_mode(
         self,
         mock_select_random,
@@ -196,7 +196,7 @@ class ProxySelectionTests(TestCase):
         self.assertIsNone(result)
     
     @patch('api.models.BrowserUseAgent.select_random_proxy')
-    @override_settings(DEBUG=True, GOBII_PROPRIETARY_MODE=True)
+    @override_settings(DEBUG=True, OPERARIO_PROPRIETARY_MODE=True)
     def test_select_proxy_no_proxy_debug_mode_disabled(self, mock_select_random):
         """Test proxy selection raises error even in debug mode when allow_no_proxy_in_debug=False."""
         mock_select_random.return_value = None

@@ -1,28 +1,28 @@
 {% extends "base.html" %}
 {% load vite_tags %}
 
-{% block title %}Gobii Agent Discovery{% endblock %}
+{% block title %}Operario AI Agent Discovery{% endblock %}
 {% block head_extras %}
   {{ block.super }}
-  <meta name="description" content="Discover public Gobii agent templates by category, then deploy and customize them for your workflows.">
+  <meta name="description" content="Discover public Operario AI agent templates by category, then deploy and customize them for your workflows.">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Gobii Agent Discovery">
-  <meta property="og:description" content="Discover public Gobii agent templates by category, then deploy and customize them for your workflows.">
+  <meta property="og:title" content="Operario AI Agent Discovery">
+  <meta property="og:description" content="Discover public Operario AI agent templates by category, then deploy and customize them for your workflows.">
   <meta property="og:url" content="{{ canonical_url }}">
-  <meta property="og:site_name" content="Gobii">
+  <meta property="og:site_name" content="Operario AI">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Gobii Agent Discovery">
-  <meta name="twitter:description" content="Discover public Gobii agent templates by category, then deploy and customize them for your workflows.">
+  <meta name="twitter:title" content="Operario AI Agent Discovery">
+  <meta name="twitter:description" content="Discover public Operario AI agent templates by category, then deploy and customize them for your workflows.">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "CollectionPage",
-      "name": "Gobii Agent Discovery",
-      "description": "Discover public Gobii agent templates by category, then deploy and customize them for your workflows.",
+      "name": "Operario AI Agent Discovery",
+      "description": "Discover public Operario AI agent templates by category, then deploy and customize them for your workflows.",
       "url": "{{ canonical_url|escapejs }}",
       "isPartOf": {
         "@type": "WebSite",
-        "name": "Gobii",
+        "name": "Operario AI",
         "url": "{{ request.scheme }}://{{ request.get_host }}"
       }
     }
@@ -53,7 +53,7 @@
 <div class="bg-gradient-to-b from-white via-indigo-50/40 to-white">
   <section class="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
     <div
-      id="gobii-frontend-root"
+      id="operario-frontend-root"
       data-app="library"
       data-library-list-url="{% url 'pages:library_agents_api' %}"
       data-library-like-url="{% url 'pages:library_agent_like_api' %}"

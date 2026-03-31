@@ -2,7 +2,7 @@
 """Django's command-line utility for administrative tasks."""
 import sys, os, pathlib
 
-from observability import GobiiService
+from observability import Operario AIService
 
 
 def main() -> None:

@@ -14,7 +14,7 @@
     "declaration": true,
     "sourceMap": true,
     "paths": {
-      "@gobii-ai/client": ["node_modules/@gobii-ai/client"] // Ensure TS can find the client types
+      "@operario-ai/client": ["node_modules/@operario-ai/client"] // Ensure TS can find the client types
     }
   },
   "include": ["src/**/*.ts"],

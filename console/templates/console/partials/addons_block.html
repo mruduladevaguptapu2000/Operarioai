@@ -2,7 +2,7 @@
 {% if task_pack.options or contact_pack.options or browser_task_limit.options or advanced_captcha.options %}
 <form method="post" action="{% url 'update_addons' %}">
   {% csrf_token %}
-  <div class="{{ card_class|default:'gobii-card-base p-6' }}">
+  <div class="{{ card_class|default:'operario-card-base p-6' }}">
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
       <div>
         <h2 class="text-lg font-semibold text-slate-900">{{ heading|default:"Add-ons" }}</h2>

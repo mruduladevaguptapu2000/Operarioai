@@ -16,7 +16,7 @@ class StripeConfigHelperTests(TestCase):
 
     def test_get_stripe_settings_prefers_env_secrets(self):
         config = StripeConfig.objects.create(
-            release_env=settings.GOBII_RELEASE_ENV,
+            release_env=settings.OPERARIO_RELEASE_ENV,
             live_mode=True,
         )
         config.startup_price_id = "price_startup_test"
@@ -123,7 +123,7 @@ class StripeConfigHelperTests(TestCase):
 
     def test_webhook_secret_persists_entries(self):
         config = StripeConfig.objects.create(
-            release_env=settings.GOBII_RELEASE_ENV,
+            release_env=settings.OPERARIO_RELEASE_ENV,
             live_mode=False,
         )
         config.startup_product_id = "prod_123"
@@ -140,12 +140,12 @@ class StripeConfigHelperTests(TestCase):
 
     def test_stripe_config_form_saves_dedicated_ip_fields(self):
         config = StripeConfig.objects.create(
-            release_env=settings.GOBII_RELEASE_ENV,
+            release_env=settings.OPERARIO_RELEASE_ENV,
             live_mode=False,
         )
 
         form_data = {
-            "release_env": settings.GOBII_RELEASE_ENV,
+            "release_env": settings.OPERARIO_RELEASE_ENV,
             "live_mode": "on",
             "webhook_secret": "",
             "clear_webhook_secret": "",
@@ -171,12 +171,12 @@ class StripeConfigHelperTests(TestCase):
 
     def test_stripe_config_form_saves_task_pack_fields(self):
         config = StripeConfig.objects.create(
-            release_env=settings.GOBII_RELEASE_ENV,
+            release_env=settings.OPERARIO_RELEASE_ENV,
             live_mode=False,
         )
 
         form_data = {
-            "release_env": settings.GOBII_RELEASE_ENV,
+            "release_env": settings.OPERARIO_RELEASE_ENV,
             "live_mode": "on",
             "webhook_secret": "",
             "clear_webhook_secret": "",

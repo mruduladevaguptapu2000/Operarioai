@@ -38,7 +38,7 @@ class LinkedInSchemaTests(SimpleTestCase):
             'result': [
                 {
                     'name': 'Andrew Christianson',
-                    'subtitle': 'Founder @ Gobii AI',
+                    'subtitle': 'Founder @ Operario AI AI',
                     'url': 'https://www.linkedin.com/in/andrew-christianson',
                 },
                 {
@@ -70,7 +70,7 @@ class LinkedInSchemaTests(SimpleTestCase):
             'location': 'San Francisco Bay Area',
             'connections_count': 500,
             'experience': [
-                {'company': 'Gobii AI', 'title': 'Founder & CEO'},
+                {'company': 'Operario AI AI', 'title': 'Founder & CEO'},
             ],
         }
         hint = extract_context_hint('mcp_brightdata_web_data_linkedin_person_profile', payload)
@@ -84,7 +84,7 @@ class LinkedInSchemaTests(SimpleTestCase):
     def test_linkedin_company_profile(self):
         """LinkedIn company profile: single object with name, industry, size."""
         payload = {
-            'name': 'Gobii AI',
+            'name': 'Operario AI AI',
             'industry': 'Software Development',
             'company_size': '11-50 employees',
             'followers_count': 1500,
@@ -93,7 +93,7 @@ class LinkedInSchemaTests(SimpleTestCase):
         hint = extract_context_hint('mcp_brightdata_web_data_linkedin_company_profile', payload)
 
         self.assertIsNotNone(hint)
-        self.assertIn('Gobii AI', hint)
+        self.assertIn('Operario AI AI', hint)
         # Should show metrics
         self.assertIn('1.5K', hint)
 
@@ -105,8 +105,8 @@ class SocialMediaSchemaTests(SimpleTestCase):
     def test_instagram_profile(self):
         """Instagram profile with followers, posts, bio."""
         payload = {
-            'username': 'gobii_ai',
-            'full_name': 'Gobii AI',
+            'username': 'operario_ai',
+            'full_name': 'Operario AI AI',
             'followers_count': 50000,
             'posts_count': 150,
             'biography': 'Building the future of browser AI agents',
@@ -115,7 +115,7 @@ class SocialMediaSchemaTests(SimpleTestCase):
 
         self.assertIsNotNone(hint)
         # Should show username or full_name
-        self.assertTrue('Gobii AI' in hint or 'gobii_ai' in hint)
+        self.assertTrue('Operario AI AI' in hint or 'operario_ai' in hint)
         self.assertIn('50K', hint)
 
     def test_tiktok_profile(self):
@@ -977,7 +977,7 @@ class ExtendedTypeDetectionTests(SimpleTestCase):
 
     def test_detect_profile_from_linkedin_followers(self):
         """Detect profile from linkedin_followers field."""
-        item = {'name': 'Gobii AI', 'linkedin_followers': 1557451, 'linkedin_employees': 25254}
+        item = {'name': 'Operario AI AI', 'linkedin_followers': 1557451, 'linkedin_employees': 25254}
         self.assertEqual(_detect_item_type(item), 'profile')
 
     def test_detect_post_from_engagement(self):

@@ -181,7 +181,7 @@ def is_user_currently_in_trial(user) -> bool:
     return is_owner_currently_in_trial(user)
 
 
-def count_messages_sent_to_gobii(user) -> int:
+def count_messages_sent_to_operario(user) -> int:
     if user is None or getattr(user, "id", None) is None:
         return 0
 

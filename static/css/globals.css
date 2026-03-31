@@ -1,12 +1,12 @@
 
-.gobii-card-base {
+.operario-card-base {
   background-color: rgba(255, 255, 255, 0.97);
   backdrop-filter: blur(6px);
   border-radius: 1rem;
   box-shadow: 0 8px 16px rgba(15, 23, 42, 0.08);
 }
 
-.gobii-card-hoverable {
+.operario-card-hoverable {
     overflow: hidden;
     border-radius: 0.75rem;
     border: 1px solid rgb(226 232 240 / 1);
@@ -20,7 +20,7 @@
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.gobii-card-hoverable:hover {
+.operario-card-hoverable:hover {
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
     transform: translateY(-0.125rem);
 }

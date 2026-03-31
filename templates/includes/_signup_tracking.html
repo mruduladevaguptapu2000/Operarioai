@@ -1,11 +1,11 @@
 {# Shared signup tracking trigger; heavy lifting lives in static/js/signup_tracking.js #}
-{% if show_signup_tracking and environment.is_production and settings.GOBII_PROPRIETARY_MODE %}
+{% if show_signup_tracking and environment.is_production and settings.OPERARIO_PROPRIETARY_MODE %}
 <script>
 (function() {
-  if (!window.GobiiSignupTracking || typeof window.GobiiSignupTracking.fetchAndFire !== 'function') {
+  if (!window.Operario AISignupTracking || typeof window.Operario AISignupTracking.fetchAndFire !== 'function') {
     return;
   }
-  window.GobiiSignupTracking.fetchAndFire({
+  window.Operario AISignupTracking.fetchAndFire({
     endpoint: '{% url "pages:clear_signup_tracking" %}',
     source: '{{ signup_tracking_source|default:"unknown" }}'
   });

@@ -21,7 +21,7 @@ function getCsrfToken() {
 }
 
 function getPendingSession(state) {
-  const raw = localStorage.getItem(`gobii:mcp_oauth_state:${state}`);
+  const raw = localStorage.getItem(`operario:mcp_oauth_state:${state}`);
   if (!raw) {
     return null;
   }
@@ -89,9 +89,9 @@ async function completeOAuth() {
 }
 
 function clearPendingKeys(serverId, state) {
-  localStorage.removeItem(`gobii:mcp_oauth_state:${state}`);
+  localStorage.removeItem(`operario:mcp_oauth_state:${state}`);
   if (serverId) {
-    localStorage.removeItem(`gobii:mcp_oauth_server:${serverId}`);
+    localStorage.removeItem(`operario:mcp_oauth_server:${serverId}`);
   }
 }
 

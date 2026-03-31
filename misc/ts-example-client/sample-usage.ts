@@ -4,7 +4,7 @@ import { BrowserUseAgentsApi, Configuration } from './src/generated';
 
 // Create client with API key
 const api = new BrowserUseAgentsApi({
-  // The base URL defaults to https://gobii.ai/api/v1
+  // The base URL defaults to https://operario.ai/api/v1
   // Override only if needed:
   // basePath: 'https://dev.example.com/api/v1',
   headers: { 

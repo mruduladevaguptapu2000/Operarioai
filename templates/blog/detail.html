@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}{{ seo_title }} - Gobii{% endblock %}
+{% block title %}{{ seo_title }} - Operario AI{% endblock %}
 
 {% block head_extras %}
   <link rel="canonical" href="{{ canonical_url }}">
@@ -9,7 +9,7 @@
   <meta property="og:title" content="{{ seo_title }}">
   <meta property="og:description" content="{{ seo_description }}">
   <meta property="og:url" content="{{ canonical_url }}">
-  <meta property="og:site_name" content="Gobii">
+  <meta property="og:site_name" content="Operario AI">
   <meta property="og:image" content="{{ og_image_url }}">
   {% if post.published_at %}
     <meta property="article:published_time" content="{{ post.published_at|date:'c' }}">
@@ -58,7 +58,7 @@
 {% if recent_posts %}
 <section class="bg-slate-50 py-16">
   <div class="mx-auto max-w-5xl px-6">
-    <h2 class="text-xl text-slate-900">More from the Gobii blog</h2>
+    <h2 class="text-xl text-slate-900">More from the Operario AI blog</h2>
     <div class="mt-6 grid gap-6 md:grid-cols-3">
       {% for recent in recent_posts %}
         <article class="flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-md">

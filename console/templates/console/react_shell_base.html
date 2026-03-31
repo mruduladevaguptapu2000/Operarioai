@@ -7,11 +7,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content">
   <meta name="csrf-cookie-name" content="{{ settings.CSRF_COOKIE_NAME|default:'csrftoken' }}">
   {% include "partials/_csrf_helpers.html" %}
-  <title>{% block page_title %}Gobii Console{% endblock %}</title>
+  <title>{% block page_title %}Operario AI Console{% endblock %}</title>
   {% if fish_collateral_enabled %}
-    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/gobii_fish_favicon_32.png' %}" />
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/gobii_fish_favicon_16.png' %}" />
-    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/gobii_fish_apple_touch_180.png' %}" />
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/operario_fish_favicon_32.png' %}" />
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/operario_fish_favicon_16.png' %}" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/operario_fish_apple_touch_180.png' %}" />
   {% else %}
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicon-32x32.png' %}" />
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon-16x16.png' %}" />
@@ -19,7 +19,7 @@
   {% endif %}
   <script src="https://cdn.tailwindcss.com?plugins=typography,forms,aspect-ratio,container-queries"></script>
   {% if fish_collateral_enabled %}
-    <link rel="preload" as="image" href="{% static 'images/gobii_fish.png' %}" />
+    <link rel="preload" as="image" href="{% static 'images/operario_fish.png' %}" />
   {% else %}
     <link rel="preload" as="image" href="{% static 'images/noBgBlue.png' %}" />
   {% endif %}
@@ -55,7 +55,7 @@
   {% endif %}
 
   {# TikTok Pixel #}
-  {% if environment.is_production and settings.GOBII_PROPRIETARY_MODE and settings.TIKTOK_PIXEL_ID %}
+  {% if environment.is_production and settings.OPERARIO_PROPRIETARY_MODE and settings.TIKTOK_PIXEL_ID %}
   <script>
   !function (w, d, t) {
     w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
@@ -70,7 +70,7 @@
   {% endif %}
 
   {# Meta Pixel #}
-  {% if environment.is_production and settings.GOBII_PROPRIETARY_MODE and settings.META_PIXEL_ID %}
+  {% if environment.is_production and settings.OPERARIO_PROPRIETARY_MODE and settings.META_PIXEL_ID %}
   <script>
   !function(f,b,e,v,n,t,s)
   {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -89,7 +89,7 @@
   </script>
   {% endif %}
 
-  <script src="{% static 'js/gobii_analytics.js' %}"></script>
+  <script src="{% static 'js/operario_analytics.js' %}"></script>
   <script src="{% static 'js/signup_tracking.js' %}"></script>
 
   {# Signup tracking events - uses shared include with fetch-based retry #}

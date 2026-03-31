@@ -95,8 +95,8 @@ class KubernetesSandboxBackend(SandboxComputeBackend):
         self._pod_image = get_sandbox_compute_pod_image()
         self._pod_service_account = getattr(settings, "SANDBOX_COMPUTE_POD_SERVICE_ACCOUNT", "") or ""
         self._pod_runtime_class = getattr(settings, "SANDBOX_COMPUTE_POD_RUNTIME_CLASS", "gvisor")
-        self._pod_configmap = getattr(settings, "SANDBOX_COMPUTE_POD_CONFIGMAP_NAME", "gobii-sandbox-common-env")
-        self._pod_secret = getattr(settings, "SANDBOX_COMPUTE_POD_SECRET_NAME", "gobii-sandbox-env")
+        self._pod_configmap = getattr(settings, "SANDBOX_COMPUTE_POD_CONFIGMAP_NAME", "operario-sandbox-common-env")
+        self._pod_secret = getattr(settings, "SANDBOX_COMPUTE_POD_SECRET_NAME", "operario-sandbox-env")
         self._egress_proxy_image = get_sandbox_egress_proxy_pod_image()
         self._egress_proxy_port = int(
             getattr(settings, "SANDBOX_EGRESS_PROXY_POD_PORT", _DEFAULT_EGRESS_PROXY_HTTP_PORT)

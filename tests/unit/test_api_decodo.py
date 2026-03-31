@@ -404,7 +404,7 @@ class DecodoSyncTaskTests(TestCase):
         self.assertTrue(proxy.is_dedicated)
         self.assertEqual(proxy.proxy_type, ProxyServer.ProxyType.SOCKS5)
 
-    @override_settings(GOBII_RELEASE_ENV="staging")
+    @override_settings(OPERARIO_RELEASE_ENV="staging")
     @patch("api.tasks.proxy_tasks.maybe_send_decodo_low_inventory_alert")
     @patch("api.tasks.proxy_tasks.logger")
     def test_inventory_reminder_skips_outside_prod(self, mock_logger, mock_alert):

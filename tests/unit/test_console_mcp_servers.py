@@ -938,7 +938,7 @@ class MCPServerConfigFormTests(TestCase):
         )
 
         self.assertFalse(form.is_valid())
-        self.assertIn("Command-based MCP servers are managed by Gobii", form.errors["command"][0])
+        self.assertIn("Command-based MCP servers are managed by Operario AI", form.errors["command"][0])
         self.assertIn("Provide a URL for the MCP server.", form.errors["url"][0])
         self.assertIn("Command arguments are not supported", form.errors["command_args"][0])
 
@@ -1029,4 +1029,4 @@ class MCPServerConfigFormTests(TestCase):
         )
 
         self.assertFalse(form.is_valid())
-        self.assertIn("reserved for Gobii-managed integrations", form.non_field_errors()[0])
+        self.assertIn("reserved for Operario AI-managed integrations", form.non_field_errors()[0])

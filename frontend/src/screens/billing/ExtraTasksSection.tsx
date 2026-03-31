@@ -71,7 +71,7 @@ export function ExtraTasksSection({ initialData }: ExtraTasksSectionProps) {
       // eslint-disable-next-line no-console
       console.error('Extra tasks update error:', err)
       if (mountedRef.current) {
-        setError('An error occurred while updating billing. Please contact support@gobii.ai for help.')
+        setError('An error occurred while updating billing. Please contact support@operario.ai for help.')
       }
     } finally {
       if (mountedRef.current) {

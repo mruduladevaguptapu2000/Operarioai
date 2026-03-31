@@ -39,9 +39,9 @@ except Exception:  # pragma: no cover - optional dependency
     DjstripeSubscription = None  # type: ignore
 
 
-SIGNUP_FPJS_VISITOR_COOKIE_NAME = "gobii_signup_fpjs_visitor_id"
-SIGNUP_FPJS_REQUEST_COOKIE_NAME = "gobii_signup_fpjs_request_id"
-SIGNUP_GA_CLIENT_COOKIE_NAME = "gobii_signup_ga_client_id"
+SIGNUP_FPJS_VISITOR_COOKIE_NAME = "operario_signup_fpjs_visitor_id"
+SIGNUP_FPJS_REQUEST_COOKIE_NAME = "operario_signup_fpjs_request_id"
+SIGNUP_GA_CLIENT_COOKIE_NAME = "operario_signup_ga_client_id"
 
 SIGNAL_SOURCE_SIGNUP = "signup"
 SIGNAL_SOURCE_LOGIN = "login"

@@ -199,7 +199,7 @@ class AgentCollaboratorLeaveTests(TestCase):
 
 
 @tag("batch_agent_collaborators")
-@override_settings(GOBII_PROPRIETARY_MODE=True)
+@override_settings(OPERARIO_PROPRIETARY_MODE=True)
 class AgentCollaboratorContactLimitTests(TestCase):
     def setUp(self):
         self.owner = User.objects.create_user(
@@ -246,7 +246,7 @@ class AgentCollaboratorContactLimitTests(TestCase):
 
 
 @tag("batch_agent_collaborators")
-@override_settings(GOBII_PROPRIETARY_MODE=True)
+@override_settings(OPERARIO_PROPRIETARY_MODE=True)
 class AgentCollaboratorInviteLimitTests(TestCase):
     def setUp(self):
         self.owner = User.objects.create_user(
@@ -291,7 +291,7 @@ class AgentCollaboratorInviteLimitTests(TestCase):
 
 
 @tag("batch_agent_collaborators")
-@override_settings(GOBII_PROPRIETARY_MODE=True)
+@override_settings(OPERARIO_PROPRIETARY_MODE=True)
 class AgentCollaboratorInviteExpiryTests(TestCase):
     def setUp(self):
         self.owner = User.objects.create_user(
@@ -336,7 +336,7 @@ class AgentCollaboratorInviteExpiryTests(TestCase):
 
 
 @tag("batch_agent_collaborators")
-@override_settings(GOBII_PROPRIETARY_MODE=True)
+@override_settings(OPERARIO_PROPRIETARY_MODE=True)
 class AgentCollaboratorReinviteTests(TestCase):
     def setUp(self):
         self.client = Client()

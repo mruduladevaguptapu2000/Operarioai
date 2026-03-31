@@ -244,20 +244,20 @@ from console.context_views import SwitchContextView
 from pages.views import PaidPlanLanding
 from api.views import LinkShortenerRedirectView, PersistentAgentViewSet, PipedreamConnectRedirectView
 
-API_REFERENCE_DOCS_URL = "https://docs.gobii.ai/api-reference"
+API_REFERENCE_DOCS_URL = "https://docs.operario.ai/api-reference"
 
 _schema_swagger_view = SpectacularSwaggerView.as_view(url_name="schema")
 _schema_redoc_view = SpectacularRedocView.as_view(url_name="schema")
 
 
 def schema_swagger_view(request, *args, **kwargs):
-    if settings.GOBII_PROPRIETARY_MODE:
+    if settings.OPERARIO_PROPRIETARY_MODE:
         return redirect(API_REFERENCE_DOCS_URL)
     return _schema_swagger_view(request, *args, **kwargs)
 
 
 def schema_redoc_view(request, *args, **kwargs):
-    if settings.GOBII_PROPRIETARY_MODE:
+    if settings.OPERARIO_PROPRIETARY_MODE:
         return redirect(API_REFERENCE_DOCS_URL)
     return _schema_redoc_view(request, *args, **kwargs)
 

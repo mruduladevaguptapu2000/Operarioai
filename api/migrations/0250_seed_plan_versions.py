@@ -163,7 +163,7 @@ def _get_entries_by_name(apps) -> dict[str, Any]:
     StripeConfig = apps.get_model("api", "StripeConfig")
     StripeConfigEntry = apps.get_model("api", "StripeConfigEntry")
 
-    release_env = getattr(settings, "GOBII_RELEASE_ENV", None)
+    release_env = getattr(settings, "OPERARIO_RELEASE_ENV", None)
     config = None
     if release_env:
         config = StripeConfig.objects.filter(release_env=release_env).first()

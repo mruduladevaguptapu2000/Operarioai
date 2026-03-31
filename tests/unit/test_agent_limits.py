@@ -352,7 +352,7 @@ class AgentLimitTests(TestCase):
         self.assertLess(free_limit, MAX_AGENT_LIMIT)
         self.assertEqual(free_limit, 5)  # Explicit check for current value
 
-    @override_settings(GOBII_PROPRIETARY_MODE=False, GOBII_ENABLE_COMMUNITY_UNLIMITED=True)
+    @override_settings(OPERARIO_PROPRIETARY_MODE=False, OPERARIO_ENABLE_COMMUNITY_UNLIMITED=True)
     def test_community_unlimited_mode_ignores_quota(self):
         """Community Edition unlimited mode should bypass per-user quota caps."""
         quota = UserQuota.objects.get(user=self.free_user)

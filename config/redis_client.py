@@ -1,5 +1,5 @@
 """
-Redis connection management for Gobii platform.
+Redis connection management for Operario AI platform.
 
 Provides a centralized, production-ready Redis client for all use cases:
 - Distributed locking (Redlock)

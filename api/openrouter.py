@@ -7,7 +7,7 @@ from observability import trace
 
 DEFAULT_API_BASE = "https://openrouter.ai/api/v1"
 logger = logging.getLogger(__name__)
-tracer = trace.get_tracer('gobii.utils')
+tracer = trace.get_tracer('operario.utils')
 
 
 def get_attribution_headers() -> Dict[str, str]:

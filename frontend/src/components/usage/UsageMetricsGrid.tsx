@@ -195,7 +195,7 @@ export function UsageMetricsGrid({ queryInput, agentIds }: UsageMetricsGridProps
         <article
           key={card.id}
           data-usage-metric={card.id}
-          className="gobii-card-base flex h-full flex-col justify-between gap-3 p-5"
+          className="operario-card-base flex h-full flex-col justify-between gap-3 p-5"
         >
           <div>
             <span className="text-xs font-semibold uppercase tracking-wide text-slate-500">

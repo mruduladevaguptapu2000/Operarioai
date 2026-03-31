@@ -117,7 +117,7 @@ from .message_results import MessageSQLiteRecord, store_messages_for_prompt
 from api.services.email_verification import has_verified_email
 
 logger = logging.getLogger(__name__)
-tracer = trace.get_tracer("gobii.utils")
+tracer = trace.get_tracer("operario.utils")
 
 DEFAULT_MAX_AGENT_LOOP_ITERATIONS = 100
 INTERNAL_REASONING_PREFIX = "Internal reasoning:"
@@ -352,7 +352,7 @@ do not invent columns; only use those listed above
 
 # __messages (special table)
 __messages.columns = {message_id, seq, timestamp, channel, is_outbound, direction, from_address, to_address, conversation_id, conversation_address, is_peer_dm, peer_agent_id, subject, body, body_bytes, body_is_truncated, body_truncated_bytes, attachment_paths_json, attachment_count, rejected_attachments_json, latest_status, latest_sent_at, latest_delivered_at, latest_error_code, latest_error_message, is_hidden_in_chat}
-message_id → internal Gobii message id; pass this exact value to send_email.reply_to_message_id
+message_id → internal Operario AI message id; pass this exact value to send_email.reply_to_message_id
 attachments → SELECT message_id, value AS path FROM __messages, json_each(attachment_paths_json)
 rejected_attachments_json → JSON array of inbound attachments that were attempted but rejected before storage
 freshness_check → do NOT query __messages for "anything new"; new inbound messages are already injected into this run's unified history
@@ -1807,13 +1807,13 @@ def _build_agent_capabilities_sections(agent: PersistentAgent) -> dict[str, str]
     billing_url = _build_console_url("billing")
     pricing_url = _build_console_url("pricing")
     has_paid_plan = bool(plan_id) and plan_id != "free"
-    is_proprietary = bool(getattr(settings, "GOBII_PROPRIETARY_MODE", False)) or has_paid_plan
+    is_proprietary = bool(getattr(settings, "OPERARIO_PROPRIETARY_MODE", False)) or has_paid_plan
     if is_proprietary:
         capabilities_note = (
             "DO NOT ANSWER USER QUESTIONS ABOUT BILLING."
             f"Users can go to {billing_url} to view billing information."
-            "If they have questions, direct them to Gobii support."
-            "This section shows the plan/subscription info for the user's Gobii account and the agent settings available to the user."
+            "If they have questions, direct them to Operario AI support."
+            "This section shows the plan/subscription info for the user's Operario AI account and the agent settings available to the user."
         )
         lines: list[str] = [f"Plan: {plan_name}. Available plans: {available_plans}."]
         if plan_id and plan_id != "free":
@@ -2245,7 +2245,7 @@ def build_prompt_context(
     sqlite_note = (
         "SQLite is always available. The built-in __tool_results table stores recent tool outputs and "
         "__messages stores a newest-first communication snapshot (full bodies up to ~5MB total). "
-        "__messages.message_id is the internal Gobii message id accepted by send_email.reply_to_message_id. "
+        "__messages.message_id is the internal Operario AI message id accepted by send_email.reply_to_message_id. "
         f"{FILES_TABLE} stores a recent file index (metadata only; never file contents). "
         "All are per-cycle snapshots dropped before persistence. "
         "Query __tool_results and __files with sqlite_batch (not read_file). "
@@ -3734,7 +3734,7 @@ def _consume_system_prompt_messages(agent: PersistentAgent) -> str:
         return ""
 
     header = (
-        "A note from the Gobii team:\n"
+        "A note from the Operario AI team:\n"
         "Please address these directive(s) before continuing with your regular work:"
     )
     footer = "Acknowledge in your reasoning and act on these promptly."

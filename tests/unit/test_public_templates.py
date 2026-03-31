@@ -28,7 +28,7 @@ class PublicProfileHandleTests(TestCase):
         with self.assertRaises(ValidationError):
             validate_public_handle("system")
         with self.assertRaises(ValidationError):
-            validate_public_handle("gobii")
+            validate_public_handle("operario")
 
 
 class PublicTemplateViewsTests(TestCase):
@@ -60,7 +60,7 @@ class PublicTemplateViewsTests(TestCase):
         self.assertContains(response, '<script type="application/ld+json">')
         self.assertContains(response, '"@type": "SoftwareApplication"')
 
-    @override_settings(GOBII_PROPRIETARY_MODE=False)
+    @override_settings(OPERARIO_PROPRIETARY_MODE=False)
     @tag("batch_public_templates")
     def test_public_template_detail_omits_trial_onboarding_fields_in_community_mode(self):
         user = get_user_model().objects.create_user(username="owner-community", email="owner-community@example.com", password="pw")
@@ -89,7 +89,7 @@ class PublicTemplateViewsTests(TestCase):
             f'name="trial_onboarding_target" value="{TRIAL_ONBOARDING_TARGET_AGENT_UI}"',
         )
 
-    @override_settings(GOBII_PROPRIETARY_MODE=True)
+    @override_settings(OPERARIO_PROPRIETARY_MODE=True)
     @tag("batch_public_templates")
     def test_public_template_detail_includes_trial_onboarding_fields_in_proprietary_mode(self):
         user = get_user_model().objects.create_user(username="owner-pro", email="owner-pro@example.com", password="pw")
@@ -243,7 +243,7 @@ class LibraryViewsTests(TestCase):
     def test_library_page_renders_react_mount(self):
         response = self.client.get(reverse("pages:library"))
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, 'id="gobii-frontend-root"')
+        self.assertContains(response, 'id="operario-frontend-root"')
         self.assertContains(response, 'data-app="library"')
         self.assertContains(response, '<meta name="description"')
         self.assertContains(response, '<meta property="og:url"')

@@ -379,7 +379,7 @@ class TestLLMFailover(TestCase):
         self.assertNotIn("temperature", params)
         self.assertFalse(params.get("supports_temperature"))
 
-    @override_settings(GOBII_PROPRIETARY_MODE=True)
+    @override_settings(OPERARIO_PROPRIETARY_MODE=True)
     def test_max_tier_configs_take_priority(self):
         clear_llm_db()
         LLMProvider = apps.get_model('api', 'LLMProvider')
@@ -444,7 +444,7 @@ class TestLLMFailover(TestCase):
         endpoint_order = [cfg[0] for cfg in configs]
         self.assertEqual(endpoint_order, ["openai_max", "openai_premium", "openai_standard"])
 
-    @override_settings(GOBII_PROPRIETARY_MODE=True)
+    @override_settings(OPERARIO_PROPRIETARY_MODE=True)
     def test_premium_tiers_preferred_for_paid_plan(self):
         clear_llm_db()
         seeded = self._seed_premium_setup(include_premium=True)
@@ -460,7 +460,7 @@ class TestLLMFailover(TestCase):
         self.assertTrue(configs)
         self.assertEqual(configs[0][0], seeded["premium_endpoint"].key)
 
-    @override_settings(GOBII_PROPRIETARY_MODE=True)
+    @override_settings(OPERARIO_PROPRIETARY_MODE=True)
     def test_premium_plan_falls_back_without_premium_tier(self):
         clear_llm_db()
         seeded = self._seed_premium_setup(include_premium=False)
@@ -476,7 +476,7 @@ class TestLLMFailover(TestCase):
         self.assertTrue(configs)
         self.assertEqual(configs[0][0], seeded["standard_endpoint"].key)
 
-    @override_settings(GOBII_PROPRIETARY_MODE=True)
+    @override_settings(OPERARIO_PROPRIETARY_MODE=True)
     def test_new_account_prefers_premium_tier(self):
         clear_llm_db()
         seeded = self._seed_premium_setup(include_premium=True)
@@ -492,7 +492,7 @@ class TestLLMFailover(TestCase):
         self.assertTrue(configs)
         self.assertEqual(configs[0][0], seeded["premium_endpoint"].key)
 
-    @override_settings(GOBII_PROPRIETARY_MODE=True)
+    @override_settings(OPERARIO_PROPRIETARY_MODE=True)
     def test_first_loop_prefers_premium(self):
         clear_llm_db()
         seeded = self._seed_premium_setup(include_premium=True)
@@ -557,7 +557,7 @@ class TestLLMFailover(TestCase):
         self.assertTrue(configs_after)
         self.assertEqual(configs_after[0][0], seeded["standard_endpoint"].key)
 
-    @override_settings(GOBII_PROPRIETARY_MODE=True)
+    @override_settings(OPERARIO_PROPRIETARY_MODE=True)
     def test_summarization_prefers_premium_tier(self):
         clear_llm_db()
         seeded = self._seed_premium_setup(include_premium=True)

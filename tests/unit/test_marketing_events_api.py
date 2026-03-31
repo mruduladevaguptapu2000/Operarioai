@@ -15,7 +15,7 @@ from api.models import BrowserUseAgent, Organization, PersistentAgent
 
 @tag("batch_marketing_events")
 class MarketingEventsApiTests(SimpleTestCase):
-    @override_settings(GOBII_PROPRIETARY_MODE=True, CAPI_START_TRIAL_DELAY_MINUTES=60)
+    @override_settings(OPERARIO_PROPRIETARY_MODE=True, CAPI_START_TRIAL_DELAY_MINUTES=60)
     @patch("marketing_events.api.time.time", return_value=1_700_000_000)
     @patch("marketing_events.api.enqueue_start_trial_marketing_event.apply_async")
     def test_capi_start_trial_delays_with_original_event_time(
@@ -42,7 +42,7 @@ class MarketingEventsApiTests(SimpleTestCase):
         self.assertEqual(payload["properties"]["subscription_id"], "sub_123")
         self.assertEqual(payload["properties"]["event_time"], 1_700_000_000)
 
-    @override_settings(GOBII_PROPRIETARY_MODE=True, CAPI_START_TRIAL_DELAY_MINUTES=60)
+    @override_settings(OPERARIO_PROPRIETARY_MODE=True, CAPI_START_TRIAL_DELAY_MINUTES=60)
     @patch("marketing_events.api.enqueue_marketing_event.delay")
     @patch("marketing_events.api.enqueue_start_trial_marketing_event.apply_async")
     def test_capi_non_start_trial_uses_existing_enqueue_path(
@@ -63,7 +63,7 @@ class MarketingEventsApiTests(SimpleTestCase):
         mock_start_trial_apply_async.assert_not_called()
         mock_enqueue_delay.assert_called_once()
 
-    @override_settings(GOBII_PROPRIETARY_MODE=True)
+    @override_settings(OPERARIO_PROPRIETARY_MODE=True)
     @patch("marketing_events.api.time.time", return_value=1_700_000_000)
     @patch("marketing_events.api.enqueue_delayed_subscription_guarded_marketing_event.apply_async")
     def test_capi_delay_subscription_guarded_preserves_event_time_and_subscription_guard(
@@ -96,7 +96,7 @@ class MarketingEventsApiTests(SimpleTestCase):
         self.assertEqual(payload["provider_targets"], ["meta"])
 
     @override_settings(
-        GOBII_PROPRIETARY_MODE=True,
+        OPERARIO_PROPRIETARY_MODE=True,
         CAPI_CUSTOM_EVENT_CURRENCY="USD",
         CAPI_CUSTOM_EVENT_VALUES_BY_PLAN={
             "pro": {"AgentCreated": 12.5},
@@ -146,7 +146,7 @@ class MarketingEventsApiTests(SimpleTestCase):
         )
 
     @override_settings(
-        GOBII_PROPRIETARY_MODE=True,
+        OPERARIO_PROPRIETARY_MODE=True,
         CAPI_CUSTOM_EVENT_CURRENCY="USD",
         CAPI_CUSTOM_EVENT_VALUES_BY_PLAN={
             "pro": {"AgentCreated": 12.5},
@@ -234,7 +234,7 @@ class MarketingEventsApiTests(SimpleTestCase):
         mock_capi_delay_subscription_guarded.assert_not_called()
 
     @override_settings(
-        GOBII_PROPRIETARY_MODE=True,
+        OPERARIO_PROPRIETARY_MODE=True,
         CAPI_CUSTOM_EVENT_CURRENCY="USD",
         CAPI_CUSTOM_EVENT_VALUES_BY_PLAN={
             "pro": {"InboundMessage": {1: 2.1, 5: 4.2, 20: 8.4}},
@@ -245,7 +245,7 @@ class MarketingEventsApiTests(SimpleTestCase):
     @patch("marketing_events.custom_events.capi_delay_subscription_guarded")
     @patch("marketing_events.custom_events.get_active_subscription", return_value=SimpleNamespace(id="sub_123"))
     @patch("marketing_events.custom_events.get_custom_capi_event_delay_seconds", return_value=3600)
-    @patch("marketing_events.custom_events.count_messages_sent_to_gobii", return_value=1)
+    @patch("marketing_events.custom_events.count_messages_sent_to_operario", return_value=1)
     @patch("marketing_events.custom_events.is_fast_cancel_owner", return_value=False)
     @patch("marketing_events.custom_events.is_owner_currently_in_trial", return_value=True)
     @patch("marketing_events.custom_events.get_owner_plan", return_value={"id": "startup"})
@@ -254,7 +254,7 @@ class MarketingEventsApiTests(SimpleTestCase):
         _mock_get_owner_plan,
         _mock_is_owner_currently_in_trial,
         _mock_is_fast_cancel_owner,
-        _mock_count_messages_sent_to_gobii,
+        _mock_count_messages_sent_to_operario,
         _mock_get_custom_capi_event_delay_seconds,
         _mock_get_active_subscription,
         mock_capi_delay_subscription_guarded,
@@ -285,7 +285,7 @@ class MarketingEventsApiTests(SimpleTestCase):
         )
 
     @override_settings(
-        GOBII_PROPRIETARY_MODE=True,
+        OPERARIO_PROPRIETARY_MODE=True,
         CAPI_CUSTOM_EVENT_CURRENCY="USD",
         CAPI_CUSTOM_EVENT_VALUES_BY_PLAN={
             "pro": {"InboundMessage": {1: 2.1, 5: 4.2, 20: 8.4}},
@@ -296,7 +296,7 @@ class MarketingEventsApiTests(SimpleTestCase):
     @patch("marketing_events.custom_events.capi_delay_subscription_guarded")
     @patch("marketing_events.custom_events.get_active_subscription", return_value=SimpleNamespace(id="sub_123"))
     @patch("marketing_events.custom_events.get_custom_capi_event_delay_seconds", return_value=3600)
-    @patch("marketing_events.custom_events.count_messages_sent_to_gobii", return_value=1)
+    @patch("marketing_events.custom_events.count_messages_sent_to_operario", return_value=1)
     @patch("marketing_events.custom_events.is_fast_cancel_owner", return_value=False)
     @patch("marketing_events.custom_events.is_owner_currently_in_trial", return_value=True)
     @patch("marketing_events.custom_events.get_owner_plan", return_value={"id": "startup"})
@@ -305,7 +305,7 @@ class MarketingEventsApiTests(SimpleTestCase):
         _mock_get_owner_plan,
         _mock_is_owner_currently_in_trial,
         _mock_is_fast_cancel_owner,
-        mock_count_messages_sent_to_gobii,
+        mock_count_messages_sent_to_operario,
         _mock_get_custom_capi_event_delay_seconds,
         _mock_get_active_subscription,
         _mock_capi_delay_subscription_guarded,
@@ -319,17 +319,17 @@ class MarketingEventsApiTests(SimpleTestCase):
             properties={"agent_id": "agent-1"},
         )
 
-        mock_count_messages_sent_to_gobii.assert_called_once_with(user)
+        mock_count_messages_sent_to_operario.assert_called_once_with(user)
 
     @patch("marketing_events.custom_events.capi_delay_subscription_guarded")
-    @patch("marketing_events.custom_events.count_messages_sent_to_gobii", return_value=2)
+    @patch("marketing_events.custom_events.count_messages_sent_to_operario", return_value=2)
     @patch("marketing_events.custom_events.is_fast_cancel_owner", return_value=False)
     @patch("marketing_events.custom_events.is_owner_currently_in_trial", return_value=True)
     def test_emit_configured_custom_capi_event_skips_inbound_message_outside_thresholds(
         self,
         _mock_is_owner_currently_in_trial,
         _mock_is_fast_cancel_owner,
-        _mock_count_messages_sent_to_gobii,
+        _mock_count_messages_sent_to_operario,
         mock_capi_delay_subscription_guarded,
     ):
         user = SimpleNamespace(id=42, email="test@example.com", phone="+15555550123")
@@ -366,7 +366,7 @@ class MarketingEventsApiTests(SimpleTestCase):
         mock_capi_delay_subscription_guarded.assert_not_called()
 
     @override_settings(
-        GOBII_PROPRIETARY_MODE=True,
+        OPERARIO_PROPRIETARY_MODE=True,
         CAPI_CUSTOM_EVENT_CURRENCY="USD",
         CAPI_CUSTOM_EVENT_VALUES_BY_PLAN={
             "pro": {"IntegrationAdded": 9.45},

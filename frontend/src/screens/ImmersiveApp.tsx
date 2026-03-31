@@ -7,7 +7,7 @@ import { AgentChatPage } from './AgentChatPage'
 import '../styles/immersiveApp.css'
 
 const APP_BASE = '/app'
-const RETURN_TO_STORAGE_KEY = 'gobii:immersive:return_to'
+const RETURN_TO_STORAGE_KEY = 'operario:immersive:return_to'
 const DEFAULT_CLOSE_PATH = '/console/agents/'
 
 type AppRoute =
@@ -117,15 +117,15 @@ function getAnalyticsPath(route: AppRoute, pathname: string): string {
 
 function getAnalyticsTitle(route: AppRoute): string {
   if (route.kind === 'command-center') {
-    return 'Command Center · Gobii'
+    return 'Command Center · Operario AI'
   }
   if (route.kind === 'agent-select') {
-    return 'Select a conversation · Gobii'
+    return 'Select a conversation · Operario AI'
   }
   if (route.kind === 'agent-chat') {
-    return route.agentId ? 'Agent · Gobii' : 'New Agent · Gobii'
+    return route.agentId ? 'Agent · Operario AI' : 'New Agent · Operario AI'
   }
-  return 'Not found · Gobii'
+  return 'Not found · Operario AI'
 }
 
 function cleanQueryForTracking(search: string): string {
@@ -224,7 +224,7 @@ function CommandCenter({ hasAgents, isLoading, onCreateAgent }: CommandCenterPro
   if (isLoading) {
     return (
       <section className="immersive-command">
-        <p className="immersive-command__eyebrow">Gobii Command Center</p>
+        <p className="immersive-command__eyebrow">Operario AI Command Center</p>
         <h1 className="immersive-command__title">Loading...</h1>
       </section>
     )
@@ -236,7 +236,7 @@ function CommandCenter({ hasAgents, isLoading, onCreateAgent }: CommandCenterPro
         <div className="mb-8 flex size-20 items-center justify-center rounded-full bg-gradient-to-br from-blue-600 to-indigo-600 text-white shadow-xl">
           <Zap className="size-8" aria-hidden="true" />
         </div>
-        <p className="immersive-command__eyebrow">Gobii Command Center</p>
+        <p className="immersive-command__eyebrow">Operario AI Command Center</p>
         <h1 className="immersive-command__title">No agents yet</h1>
         <p className="immersive-command__subtitle">
           Create your first AI agent to get started. Agents can automate tasks, monitor changes, send notifications, and much more.
@@ -255,7 +255,7 @@ function CommandCenter({ hasAgents, isLoading, onCreateAgent }: CommandCenterPro
 
   return (
     <section className="immersive-command">
-      <p className="immersive-command__eyebrow">Gobii Command Center</p>
+      <p className="immersive-command__eyebrow">Operario AI Command Center</p>
       <h1 className="immersive-command__title">Your agents run here.</h1>
       <p className="immersive-command__subtitle">
         Jump into an agent chat to get started. We will expand this space with switching and ops controls next.
@@ -317,7 +317,7 @@ export function ImmersiveApp({ maxChatUploadSizeBytes = null }: ImmersiveAppProp
     const cleanedPath = buildCleanPath(location.pathname, location.search)
     window.parent.postMessage(
       {
-        type: 'gobii-immersive-path',
+        type: 'operario-immersive-path',
         path: cleanedPath,
       },
       window.location.origin,
@@ -388,7 +388,7 @@ export function ImmersiveApp({ maxChatUploadSizeBytes = null }: ImmersiveAppProp
 
   const handleEmbeddedClose = useCallback(() => {
     if (window.parent && window.parent !== window) {
-      window.parent.postMessage({ type: 'gobii-immersive-close' }, window.location.origin)
+      window.parent.postMessage({ type: 'operario-immersive-close' }, window.location.origin)
       return
     }
     handleClose()

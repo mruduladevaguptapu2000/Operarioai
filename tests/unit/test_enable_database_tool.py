@@ -15,7 +15,7 @@ from tests.utils.llm_seed import get_intelligence_tier
 
 
 @tag("enable_database")
-@override_settings(GOBII_PROPRIETARY_MODE=True)
+@override_settings(OPERARIO_PROPRIETARY_MODE=True)
 class EnableDatabaseToolTests(TestCase):
     """Tests for enable_database tool with always-on sqlite."""
 
@@ -76,7 +76,7 @@ class EnableDatabaseToolTests(TestCase):
 
 
 @tag("enable_database")
-@override_settings(GOBII_PROPRIETARY_MODE=True)
+@override_settings(OPERARIO_PROPRIETARY_MODE=True)
 class SqliteToolAvailabilityTests(TestCase):
     """SQLite is always available for all agents."""
 

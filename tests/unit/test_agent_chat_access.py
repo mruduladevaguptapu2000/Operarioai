@@ -319,8 +319,8 @@ class AgentChatAccessTests(TestCase):
         url = reverse("console_agent_roster")
         response = self.client.get(
             url,
-            HTTP_X_GOBII_CONTEXT_TYPE="organization",
-            HTTP_X_GOBII_CONTEXT_ID=str(self.org.id),
+            HTTP_X_OPERARIO_CONTEXT_TYPE="organization",
+            HTTP_X_OPERARIO_CONTEXT_ID=str(self.org.id),
         )
         self.assertEqual(response.status_code, 200)
         payload = response.json()
@@ -347,8 +347,8 @@ class AgentChatAccessTests(TestCase):
 
         response = self.client.get(
             reverse("console_agent_roster"),
-            HTTP_X_GOBII_CONTEXT_TYPE="organization",
-            HTTP_X_GOBII_CONTEXT_ID=str(self.org.id),
+            HTTP_X_OPERARIO_CONTEXT_TYPE="organization",
+            HTTP_X_OPERARIO_CONTEXT_ID=str(self.org.id),
         )
         self.assertEqual(response.status_code, 200)
         payload = response.json()
@@ -364,8 +364,8 @@ class AgentChatAccessTests(TestCase):
 
         response = self.client.get(
             reverse("console_agent_roster"),
-            HTTP_X_GOBII_CONTEXT_TYPE="organization",
-            HTTP_X_GOBII_CONTEXT_ID=str(self.org.id),
+            HTTP_X_OPERARIO_CONTEXT_TYPE="organization",
+            HTTP_X_OPERARIO_CONTEXT_ID=str(self.org.id),
         )
         self.assertEqual(response.status_code, 200)
         payload = response.json()
@@ -378,8 +378,8 @@ class AgentChatAccessTests(TestCase):
 
         response = self.client.get(
             reverse("console_agent_roster"),
-            HTTP_X_GOBII_CONTEXT_TYPE="organization",
-            HTTP_X_GOBII_CONTEXT_ID=str(self.org.id),
+            HTTP_X_OPERARIO_CONTEXT_TYPE="organization",
+            HTTP_X_OPERARIO_CONTEXT_ID=str(self.org.id),
         )
         self.assertEqual(response.status_code, 200)
 
@@ -414,8 +414,8 @@ class AgentChatAccessTests(TestCase):
         try:
             response = self.client.get(
                 reverse("console_agent_roster"),
-                HTTP_X_GOBII_CONTEXT_TYPE="organization",
-                HTTP_X_GOBII_CONTEXT_ID=str(self.org.id),
+                HTTP_X_OPERARIO_CONTEXT_TYPE="organization",
+                HTTP_X_OPERARIO_CONTEXT_ID=str(self.org.id),
             )
             self.assertEqual(response.status_code, 200)
 
@@ -447,8 +447,8 @@ class AgentChatAccessTests(TestCase):
 
         response = staff_client.get(
             reverse("console_agent_roster"),
-            HTTP_X_GOBII_CONTEXT_TYPE="personal",
-            HTTP_X_GOBII_CONTEXT_ID=str(staff_user.id),
+            HTTP_X_OPERARIO_CONTEXT_TYPE="personal",
+            HTTP_X_OPERARIO_CONTEXT_ID=str(staff_user.id),
         )
         self.assertEqual(response.status_code, 200)
         payload = response.json()

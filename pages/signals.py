@@ -91,7 +91,7 @@ from util.subscription_helper import (
 )
 
 logger = logging.getLogger(__name__)
-tracer = trace.get_tracer("gobii.utils")
+tracer = trace.get_tracer("operario.utils")
 
 UTM_MAPPING = {
     'source': 'utm_source',
@@ -702,8 +702,8 @@ def _build_invoice_properties(
         properties["finalized_at"] = finalized_at
 
     metadata = _coerce_metadata_dict(payload.get("metadata"))
-    if metadata.get("gobii_event_id"):
-        properties["gobii_event_id"] = metadata.get("gobii_event_id")
+    if metadata.get("operario_event_id"):
+        properties["operario_event_id"] = metadata.get("operario_event_id")
 
     price_ids = []
     for line in lines:
@@ -1415,8 +1415,8 @@ def _build_setup_intent_failure_properties(
     )
 
     metadata = _coerce_metadata_dict(payload.get("metadata"))
-    if metadata.get("gobii_event_id"):
-        properties["gobii_event_id"] = metadata.get("gobii_event_id")
+    if metadata.get("operario_event_id"):
+        properties["operario_event_id"] = metadata.get("operario_event_id")
 
     properties = {key: value for key, value in properties.items() if value not in (None, "")}
     return properties, payment_method_data, customer_id
@@ -1901,7 +1901,7 @@ def handle_user_signed_up(sender, request, user, **kwargs):
             timestamp=event_timestamp
         )
 
-        if not getattr(settings, 'GOBII_PROPRIETARY_MODE', False):
+        if not getattr(settings, 'OPERARIO_PROPRIETARY_MODE', False):
             logger.debug("Skipping conversion API enqueue because proprietary mode is disabled.")
             logger.info("Analytics tracking successful for signup.")
             return
@@ -2538,7 +2538,7 @@ def handle_invoice_payment_succeeded(event, **kwargs):
                     if renewal_event_id:
                         marketing_properties["event_id"] = str(renewal_event_id).strip()
                 else:
-                    event_id_override = metadata.get("gobii_event_id")
+                    event_id_override = metadata.get("operario_event_id")
                     if isinstance(event_id_override, str) and event_id_override.strip():
                         marketing_properties["event_id"] = event_id_override.strip()
 
@@ -3273,7 +3273,7 @@ def handle_subscription_event(event, **kwargs):
                         "subscription_id": subscription_id,
                     }
                     if analytics_event == AnalyticsEvent.SUBSCRIPTION_CREATED:
-                        event_id_override = subscription_metadata.get("gobii_event_id")
+                        event_id_override = subscription_metadata.get("operario_event_id")
                         if isinstance(event_id_override, str) and event_id_override.strip():
                             marketing_properties["event_id"] = event_id_override.strip()
 

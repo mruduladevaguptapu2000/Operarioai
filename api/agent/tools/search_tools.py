@@ -41,7 +41,7 @@ from .tool_manager import (
 from .autotool_heuristics import find_matching_tools
 
 logger = logging.getLogger(__name__)
-tracer = trace.get_tracer("gobii.utils")
+tracer = trace.get_tracer("operario.utils")
 
 ToolSearchResult = Dict[str, Any]
 

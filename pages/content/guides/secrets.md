@@ -4,7 +4,7 @@ order: 50
 icon: lock
 ---
 
-Keep sensitive data secure when automating tasks that require passwords, API keys, or other confidential information. Gobii encrypts your secrets at rest and ensures the AI model never sees the actual values.
+Keep sensitive data secure when automating tasks that require passwords, API keys, or other confidential information. Operario AI encrypts your secrets at rest and ensures the AI model never sees the actual values.
 
 ## How Secrets Work
 
@@ -39,8 +39,8 @@ This ensures your secrets are only available when the browser is on the appropri
 ## Basic Example
 
 ```bash
-curl -X POST https://gobii.ai/api/v1/tasks/browser-use/ \
-  -H "X-Api-Key: $GOBII_API_KEY" \
+curl -X POST https://operario.ai/api/v1/tasks/browser-use/ \
+  -H "X-Api-Key: $OPERARIO_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
     "prompt": "Login to example.com using x_username and x_password, then navigate to the dashboard",
@@ -72,8 +72,8 @@ Secret keys must follow these rules:
 You can provide multiple secrets for the same domain or across different domains:
 
 ```bash
-curl -X POST https://gobii.ai/api/v1/tasks/browser-use/ \
-  -H "X-Api-Key: $GOBII_API_KEY" \
+curl -X POST https://operario.ai/api/v1/tasks/browser-use/ \
+  -H "X-Api-Key: $OPERARIO_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
     "prompt": "Login to admin panel using x_username and x_password, then configure the API with x_api_key",
@@ -90,8 +90,8 @@ curl -X POST https://gobii.ai/api/v1/tasks/browser-use/ \
 Or across multiple domains:
 
 ```bash
-curl -X POST https://gobii.ai/api/v1/tasks/browser-use/ \
-  -H "X-Api-Key: $GOBII_API_KEY" \
+curl -X POST https://operario.ai/api/v1/tasks/browser-use/ \
+  -H "X-Api-Key: $OPERARIO_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
     "prompt": "Login to site1.com using x_username and x_password, then call the API at api.service.com using x_api_key",
@@ -112,8 +112,8 @@ curl -X POST https://gobii.ai/api/v1/tasks/browser-use/ \
 Secrets work seamlessly with output schemas:
 
 ```bash
-curl -X POST https://gobii.ai/api/v1/tasks/browser-use/ \
-  -H "X-Api-Key: $GOBII_API_KEY" \
+curl -X POST https://operario.ai/api/v1/tasks/browser-use/ \
+  -H "X-Api-Key: $OPERARIO_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
     "prompt": "Login to dashboard using x_username and x_password, then extract the account balance and return it as JSON",
@@ -139,8 +139,8 @@ curl -X POST https://gobii.ai/api/v1/tasks/browser-use/ \
 Use the `wait` parameter for immediate results:
 
 ```bash
-curl -X POST https://gobii.ai/api/v1/tasks/browser-use/ \
-  -H "X-Api-Key: $GOBII_API_KEY" \
+curl -X POST https://operario.ai/api/v1/tasks/browser-use/ \
+  -H "X-Api-Key: $OPERARIO_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
     "prompt": "Login to my account using x_email and x_password and check if there are any new notifications",
@@ -206,8 +206,8 @@ ADMIN_PASSWORD="secure-password-123"
 API_KEY="sk-1234567890abcdef"
 
 # In your script
-curl -X POST https://gobii.ai/api/v1/tasks/browser-use/ \
-  -H "X-Api-Key: $GOBII_API_KEY" \
+curl -X POST https://operario.ai/api/v1/tasks/browser-use/ \
+  -H "X-Api-Key: $OPERARIO_API_KEY" \
   -H "Content-Type: application/json" \
   -d "{
     \"prompt\": \"Login using x_username and x_password\",

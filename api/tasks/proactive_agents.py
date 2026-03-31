@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 @shared_task(name="api.tasks.schedule_proactive_agents")
 def schedule_proactive_agents_task(batch_size: int = 10) -> int:
     """Periodic task to trigger proactive agent outreach."""
-    if getattr(settings, "GOBII_RELEASE_ENV", "local") != "prod":
+    if getattr(settings, "OPERARIO_RELEASE_ENV", "local") != "prod":
         logger.info("Proactive agent scheduling skipped; task runs only in production.")
         return 0
 

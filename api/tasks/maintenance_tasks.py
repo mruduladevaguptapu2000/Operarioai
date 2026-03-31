@@ -39,7 +39,7 @@ def cleanup_temp_files(self) -> None:
                 try:
                     if os.path.isfile(file_path) and os.path.getmtime(file_path) < cutoff_time:
                         # Only clean up files that look like they might be from our app
-                        if any(pattern in filename.lower() for pattern in ['gobii', 'tmp', 'temp']):
+                        if any(pattern in filename.lower() for pattern in ['operario', 'tmp', 'temp']):
                             os.remove(file_path)
                             cleaned_count += 1
                 except (OSError, PermissionError):

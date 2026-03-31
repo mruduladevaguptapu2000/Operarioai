@@ -15,7 +15,7 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings")
 READINESS_FILE = Path('/tmp/celery_ready')
 
 
-app = Celery('gobii_platform')
+app = Celery('operario_platform')
 
 # Using a string here means the worker doesn't have to serialize
 # the configuration object to child processes.
@@ -44,11 +44,11 @@ def worker_process_init_handler(**_):
     """
     print(f"Worker process init signal received, initializing OpenTelemetry for PID {os.getpid()}")
     
-    from observability import init_tracing, GobiiService
+    from observability import init_tracing, Operario AIService
     from opentelemetry.instrumentation.celery import CeleryInstrumentor
     from opentelemetry.instrumentation.logging import LoggingInstrumentor
 
-    init_tracing(GobiiService.WORKER)
+    init_tracing(Operario AIService.WORKER)
     CeleryInstrumentor().instrument()
     LoggingInstrumentor().instrument(set_logging_format=True)
     

@@ -4,11 +4,11 @@
 <div x-data="{}">
   <div id="api-key-result"></div>
 
-  <div class="gobii-card-base">
+  <div class="operario-card-base">
     <div class="px-6 py-4 border-b border-gray-200/70 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
       <div class="space-y-2">
         <h1 class="text-2xl font-semibold text-gray-800">API Keys</h1>
-        <p class="text-sm text-gray-500">API keys provide access to the Gobii API. Keep them secure.</p>
+        <p class="text-sm text-gray-500">API keys provide access to the Operario AI API. Keep them secure.</p>
         {% if api_key_context.type == 'organization' %}
           <p class="text-xs text-gray-500">These keys authenticate requests on behalf of {{ api_key_context.organization.name }}.</p>
           {% if not can_manage_api_keys %}

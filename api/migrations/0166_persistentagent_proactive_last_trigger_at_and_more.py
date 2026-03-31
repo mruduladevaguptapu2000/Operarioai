@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='persistentagent',
             name='proactive_opt_in',
-            field=models.BooleanField(default=True, help_text='Enable Gobii to proactively start conversations offering related help for this agent.'),
+            field=models.BooleanField(default=True, help_text='Enable Operario AI to proactively start conversations offering related help for this agent.'),
         ),
         migrations.AlterField(
             model_name='persistentagentsystemstep',

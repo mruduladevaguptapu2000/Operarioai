@@ -137,11 +137,11 @@ export const ChatSidebar = memo(function ChatSidebar({
     if (typeof document === 'undefined') {
       return true
     }
-    const mountNode = document.getElementById('gobii-frontend-root')
+    const mountNode = document.getElementById('operario-frontend-root')
     return mountNode?.dataset.fishCollateralEnabled !== 'false'
   }, [])
-  const sidebarLogoSrc = fishCollateralEnabled ? '/static/images/gobii_fish.png' : '/static/images/noBgWhite.png'
-  const sidebarLogoAlt = fishCollateralEnabled ? 'Gobii Fish' : 'Gobii'
+  const sidebarLogoSrc = fishCollateralEnabled ? '/static/images/operario_fish.png' : '/static/images/noBgWhite.png'
+  const sidebarLogoAlt = fishCollateralEnabled ? 'Operario AI Fish' : 'Operario AI'
 
   const activeAgent = useMemo(
     () => agents.find((a) => a.id === activeAgentId) ?? null,

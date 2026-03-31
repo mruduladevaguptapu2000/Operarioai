@@ -2,7 +2,7 @@
 
 ## Settings
 - SANDBOX_COMPUTE_BACKEND: set to "kubernetes" to enable per-agent pods.
-- SANDBOX_COMPUTE_POD_IMAGE: sandbox supervisor image (default ghcr.io/gobii-ai/gobii-sandbox-compute:main).
+- SANDBOX_COMPUTE_POD_IMAGE: sandbox supervisor image (default ghcr.io/operario-ai/operario-sandbox-compute:main).
 - SANDBOX_COMPUTE_K8S_NAMESPACE: namespace for per-agent pods (default in-cluster namespace).
 - SANDBOX_COMPUTE_PVC_SIZE: workspace PVC size (default 1Gi).
 - SANDBOX_COMPUTE_PVC_STORAGE_CLASS / SANDBOX_COMPUTE_SNAPSHOT_CLASS: storage/snapshot class names.

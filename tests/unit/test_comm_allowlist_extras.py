@@ -46,7 +46,7 @@ class ManualEmailDisplayNameAndCaseTests(TestCase):
             whitelist_policy=PersistentAgent.WhitelistPolicy.MANUAL,
         )
         self.agent_ep = PersistentAgentCommsEndpoint.objects.create(
-            owner_agent=self.agent, channel=CommsChannel.EMAIL, address="agentx@test.gobii"
+            owner_agent=self.agent, channel=CommsChannel.EMAIL, address="agentx@test.operario"
         )
 
         CommsAllowlistEntry.objects.create(

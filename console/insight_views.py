@@ -176,7 +176,7 @@ def _build_agent_setup_metadata(
     always_on_note = None
     pro_price_label = None
     scale_price_label = None
-    if settings.GOBII_PROPRIETARY_MODE:
+    if settings.OPERARIO_PROPRIETARY_MODE:
         pro_price_label, scale_price_label = _get_plan_price_labels()
         show_pro_scale = plan_id == PlanNamesChoices.FREE.value
         show_scale = plan_id in (PlanNamesChoices.FREE.value, PlanNamesChoices.STARTUP.value)
@@ -214,7 +214,7 @@ def _build_agent_setup_metadata(
             always_on_note = "Free plan: 30-day always-on."
 
     checkout = {}
-    if settings.GOBII_PROPRIETARY_MODE:
+    if settings.OPERARIO_PROPRIETARY_MODE:
         checkout = {
             "proUrl": reverse("proprietary:pro_checkout"),
             "scaleUrl": reverse("proprietary:scale_checkout"),

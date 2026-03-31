@@ -95,7 +95,7 @@ from marketing_events.telemetry import record_fbc_synthesized
 from marketing_events.value_utils import calculate_start_trial_values
 import logging
 logger = logging.getLogger(__name__)
-tracer = trace.get_tracer("gobii.utils")
+tracer = trace.get_tracer("operario.utils")
 PREFERRED_LLM_TIER_SESSION_KEY = "agent_preferred_llm_tier"
 HOMEPAGE_INLINE_INTEGRATION_SLUGS = (
     "linkedin",
@@ -612,7 +612,7 @@ class HomePage(TemplateView):
             )
 
         intelligence_upgrade_url = None
-        if settings.GOBII_PROPRIETARY_MODE:
+        if settings.OPERARIO_PROPRIETARY_MODE:
             try:
                 intelligence_upgrade_url = reverse('proprietary:pricing')
             except NoReverseMatch:
@@ -1523,7 +1523,7 @@ class AboutView(TemplateView):
 
 
 class TeamView(TemplateView):
-    """Team page showcasing the people behind Gobii."""
+    """Team page showcasing the people behind Operario AI."""
 
     template_name = "team.html"
 
@@ -1650,7 +1650,7 @@ class StartupCheckoutView(LoginRequiredMixin, View):
             line_items.append({"price": additional_price_id})
 
         metadata = {
-            "gobii_event_id": event_id,
+            "operario_event_id": event_id,
             "plan": PlanNames.STARTUP,
             "checkout_source_url": urlsplit(request.META.get("HTTP_REFERER") or settings.PUBLIC_SITE_URL)._replace(query="", fragment="").geturl()[:500],
         }
@@ -1809,7 +1809,7 @@ class ScaleCheckoutView(LoginRequiredMixin, View):
             line_items.append({"price": additional_price_id})
 
         metadata = {
-            "gobii_event_id": event_id,
+            "operario_event_id": event_id,
             "plan": PlanNames.SCALE,
             "checkout_source_url": urlsplit(request.META.get("HTTP_REFERER") or settings.PUBLIC_SITE_URL)._replace(query="", fragment="").geturl()[:500],
         }
@@ -1922,7 +1922,7 @@ class StaticViewSitemap(sitemaps.Sitemap):
         ]
         # Include pricing only when proprietary mode is enabled
         try:
-            if settings.GOBII_PROPRIETARY_MODE:
+            if settings.OPERARIO_PROPRIETARY_MODE:
                 items.insert(1, 'proprietary:pricing')
                 items.insert(2, 'proprietary:tos')
                 items.insert(3, 'proprietary:privacy')

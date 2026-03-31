@@ -2,7 +2,7 @@
 title: "Turning DeepSeek 3.2 into Real Work, Not a New Attack Surface"
 date: 2025-12-10
 description: "Security, open weights, and what actually matters when you put DeepSeek 3.2 to work in production."
-author: "Andrew I. Christianson, Founder of Gobii"
+author: "Andrew I. Christianson, Founder of Operario AI"
 seo_title: "Turning DeepSeek 3.2 into Real Work, Not a New Attack Surface"
 seo_description: "How to use DeepSeek 3.2 in production without relying on blind trust—security, open weights, and practical deployment strategies for enterprise AI."
 tags:
@@ -18,7 +18,7 @@ DeepSeek 3.2 and 3.2 Speciale are in a very particular place in the AI landscape
 
 - On public benchmarks and third-party writeups, V3.2 is consistently described as **frontier-tier for math, code, and reasoning**—competitive with GPT-5-class models at a fraction of the cost.
 - Both DeepSeek-V3.2 and DeepSeek-V3.2-Speciale are released as **open weights under the MIT License**, with full model files on [Hugging Face](https://huggingface.co/deepseek-ai/DeepSeek-V3.2) that organizations can download and run themselves.
-- First-party pricing puts V3.2 on the **Pareto frontier for intelligence vs. cost**, with input around $0.28 per million tokens and output around $0.42 per million tokens—far lower than typical GPT or Claude pricing. (For how to turn that cost advantage into real output, see [How to Get 20–60x More Work Per Dollar](/blog/how-to-get-more-work-per-dollar-securely-gobii-deepseek).)
+- First-party pricing puts V3.2 on the **Pareto frontier for intelligence vs. cost**, with input around $0.28 per million tokens and output around $0.42 per million tokens—far lower than typical GPT or Claude pricing. (For how to turn that cost advantage into real output, see [How to Get 20–60x More Work Per Dollar](/blog/how-to-get-more-work-per-dollar-securely-operario-deepseek).)
 
 <figure>
   <img src="/static/images/blog/deepseek-v3.2-benchmarks.jpg" alt="DeepSeek V3.2 benchmark comparison showing competitive performance against GPT-5-High, Claude-4.5-Sonnet, and Gemini-3.0-Pro across reasoning and agentic tasks" style="max-width: 100%; border-radius: 8px;">
@@ -241,9 +241,9 @@ DeepSeek 3.2 just happens to hit a spot on the cost/performance curve where doin
 
 ---
 
-## 6. Where Gobii Fits In
+## 6. Where Operario AI Fits In
 
-Gobii is an open-core AI workforce platform. Our job is to take models like DeepSeek 3.2 and turn them into **browser-native workers** that:
+Operario AI is an open-core AI workforce platform. Our job is to take models like DeepSeek 3.2 and turn them into **browser-native workers** that:
 
 - Log into CRMs, ATSs, and SaaS tools.
 - Scrape, enrich, and update records.
@@ -253,19 +253,19 @@ How we use DeepSeek 3.2 reflects everything above:
 
 - It's a **first-class option** for high-volume, cost-sensitive work where the data profile fits.
 - GPT- and Claude-class models remain available for higher-risk decisions or customers with specific regional or vendor preferences.
-- Each worker in Gobii can have its own **model policy**, so you can mix and match: "cheap and strong" (DeepSeek 3.2) for most steps, "premium and conservative" (GPT/Claude) for others, or "fully self-hosted" for specific tenants or workflows.
+- Each worker in Operario AI can have its own **model policy**, so you can mix and match: "cheap and strong" (DeepSeek 3.2) for most steps, "premium and conservative" (GPT/Claude) for others, or "fully self-hosted" for specific tenants or workflows.
 
 The agent layer is **open-core and self-hostable**, so you're not relying solely on our infra or anyone else's. You can:
 
-- Run the Gobii stack in your own environment.
+- Run the Operario AI stack in your own environment.
 - Connect it to your own DeepSeek deployment (or other models).
 - Integrate your own logging, policy, and compliance workflows.
 
-This isn't hypothetical. When DeepSeek V3.2 launched, Gobii integrated it immediately—and within days became the #1 application by usage on OpenRouter for that model ([we wrote about it here](/blog/gobii-number-one-on-deepseek)). Teams that care about turning DeepSeek into real work are already running it through Gobii.
+This isn't hypothetical. When DeepSeek V3.2 launched, Operario AI integrated it immediately—and within days became the #1 application by usage on OpenRouter for that model ([we wrote about it here](/blog/operario-number-one-on-deepseek)). Teams that care about turning DeepSeek into real work are already running it through Operario AI.
 
 <figure>
-  <img src="/static/images/blog/gobii-openrouter-deepseek-v3.2-leaderboard.png" alt="OpenRouter Apps leaderboard showing Gobii at #1 for DeepSeek V3.2 usage with 18.9B tokens" style="max-width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-  <figcaption style="font-size: 0.85em; color: #666; margin-top: 0.5em; text-align: center;">Gobii leads OpenRouter's DeepSeek V3.2 usage—evidence that production workloads are already flowing through this architecture.</figcaption>
+  <img src="/static/images/blog/operario-openrouter-deepseek-v3.2-leaderboard.png" alt="OpenRouter Apps leaderboard showing Operario AI at #1 for DeepSeek V3.2 usage with 18.9B tokens" style="max-width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+  <figcaption style="font-size: 0.85em; color: #666; margin-top: 0.5em; text-align: center;">Operario AI leads OpenRouter's DeepSeek V3.2 usage—evidence that production workloads are already flowing through this architecture.</figcaption>
 </figure>
 
 On the security side, we treat LLMs like any other exposed system:
@@ -274,7 +274,7 @@ On the security side, we treat LLMs like any other exposed system:
 - Add **application-layer guardrails** around actions (not just text).
 - Reserve **human review** for steps where your risk model says "don't fully automate this yet."
 
-DeepSeek 3.2 is a very strong model. Gobii is the layer that makes sure strength shows up as **useful work**, not unmanaged risk.
+DeepSeek 3.2 is a very strong model. Operario AI is the layer that makes sure strength shows up as **useful work**, not unmanaged risk.
 
 ---
 

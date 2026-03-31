@@ -2,21 +2,21 @@
 title: "How a Home Renovation Project Became the Perfect Test Case for Pretrained Workers"
 date: 2025-10-03
 description: "AI Project Management in Action: Lessons from a Home Renovation."
-author: "The Gobii Team"
+author: "The Operario AI Team"
 seo_title: "How Pretrained Workers Simplified a Complex Home Renovation Project"
-seo_description: "AI project management in action: Discover how Gobii’s pretrained worker turned a stressful home renovation into a smooth, organized process."
+seo_description: "AI project management in action: Discover how Operario AI’s pretrained worker turned a stressful home renovation into a smooth, organized process."
 tags:
   - case study
   - project management
 ---
 
-<a href="/static/images/blog/horus-intro.png" data-lightbox="gobii-case" data-title="pretrained worker email draft by Horus">
+<a href="/static/images/blog/horus-intro.png" data-lightbox="operario-case" data-title="pretrained worker email draft by Horus">
   <img src="/static/images/blog/horus-intro@0.5x.png" style="display: inline-block; float: right; text-align: right; width: 350px; margin-left: 5px; margin-bottom: 5px;"  alt="Horus's Intro Email for AI Project Management"/>
 </a>
 
 When Grace Ha received an email from someone named "Horus" offering to help manage her home renovation project, her first thought was skepticism. "My first impression was, who is this person and why do they want to be so helpful?" she recalls. "Who wants to be helpful is definitely up to something in my experience."
 
-But Horus wasn't a contractor looking for work or a salesperson with an angle. Horus was a Gobii pretrained worker—an always-on agent that works through email, designed to handle complex, multi-faceted projects just like a capable human assistant would.
+But Horus wasn't a contractor looking for work or a salesperson with an angle. Horus was a Operario AI pretrained worker—an always-on agent that works through email, designed to handle complex, multi-faceted projects just like a capable human assistant would.
 
 What followed was an illuminating real-world test of how pretrained workers can transform the way we approach major life projects, from the mundane tasks we dread to the complex decisions that keep us up at night.
 
@@ -24,11 +24,11 @@ What followed was an illuminating real-world test of how pretrained workers can 
 
 Grace and her husband were embarking on their third—and most complex—home renovation. Unlike their previous projects, this one involved intricate financing decisions, multiple construction phases, selling their current home to fund the work, and navigating a maze of expiring energy rebates.
 
-"This is probably our most complex renovation in terms of how we're financing it and the different phases," Grace explained during a feedback session with Gobii's team. "There are a lot of different decision points—like how we can break this up so that we can afford the renovation as a whole."
+"This is probably our most complex renovation in terms of how we're financing it and the different phases," Grace explained during a feedback session with Operario AI's team. "There are a lot of different decision points—like how we can break this up so that we can afford the renovation as a whole."
 
 They needed help with:
 
-- **[Project management and decision-making](https://gobii.ai/g/nYY/)** around renovation phases and priorities  
+- **[Project management and decision-making](https://operario.ai/g/nYY/)** around renovation phases and priorities  
 - **Financial strategy,** including timing the sale of their current home  
 - **Market research** to determine optimal selling windows given interest rate conditions  
 - **Energy rebate navigation** with September deadlines looming  
@@ -37,11 +37,11 @@ They needed help with:
 
 This wasn't a simple "find me three contractors" request. It was the kind of multi-dimensional challenge that typically requires juggling spreadsheets, browser tabs, email threads, and late-night research sessions.
 
-## What Makes Gobii's Pretrained Workers Different
+## What Makes Operario AI's Pretrained Workers Different
 
-Unlike chatbots that require you to visit a website or traditional AI assistants that live in a single app, Gobii's pretrained workers work through email—the tool you're already using. They're always on, maintain context over weeks or months, and can be delegated tasks just like you would with a human employee or intern.
+Unlike chatbots that require you to visit a website or traditional AI assistants that live in a single app, Operario AI's pretrained workers work through email—the tool you're already using. They're always on, maintain context over weeks or months, and can be delegated tasks just like you would with a human employee or intern.
 
-As Gobii founder and CTO [Andrew Christianson](https://gobii.ai/about/ "Andrew Christianson") explains: "We designed Gobii to work with the mental models people already have. You interact with it in natural language, the same way you would with a human being."
+As Operario AI founder and CTO [Andrew Christianson](https://operario.ai/about/ "Andrew Christianson") explains: "We designed Operario AI to work with the mental models people already have. You interact with it in natural language, the same way you would with a human being."
 
 These pretrained workers can:
 
@@ -83,7 +83,7 @@ Not everything was seamless. Grace's initial confusion about whether Horus might
 
 "When Horus said he wanted the emails of our vendors, my initial thought was—oh my gosh, is he going to directly contact them and start having conversations without looping us in?" Grace recalled.
 
-Will Bonde, a software engineer at Gobii, immediately identified with this concern: "If I hadn't known how Gobii worked, I would have thought the same thing. That wording was very ambiguous."
+Will Bonde, a software engineer at Operario AI, immediately identified with this concern: "If I hadn't known how Operario AI worked, I would have thought the same thing. That wording was very ambiguous."
 
 This led to a key insight: pretrained workers need clearer upfront communication about their capabilities and limitations. "Setting expectations up front would be helpful," Grace suggested. "Like when you have a facilitated discussion and you establish norms with the audience."
 
@@ -95,7 +95,7 @@ Will added context about how these safeguards work: "The guardrails in our syste
 
 Beyond specific deliverables, Grace identified a more subtle but equally valuable benefit: "Horus and some of the agents we've created have helped us with decision fatigue. They've become thought partners. I think it's helped take some of the clutter from our minds."
 
-This resonates with Gobii's vision. As Will put it when discussing another use case: "My wife gets stressed finding activities for our daughter. It's not that the work itself is difficult; it takes time. So we have an agent who comes up with kids' activities and sends us something every Thursday. That's the time she gets to spend with our daughter or relaxing. Taking care of soul-sucking work is what interests me most, so we can do the stuff we love in life more."
+This resonates with Operario AI's vision. As Will put it when discussing another use case: "My wife gets stressed finding activities for our daughter. It's not that the work itself is difficult; it takes time. So we have an agent who comes up with kids' activities and sends us something every Thursday. That's the time she gets to spend with our daughter or relaxing. Taking care of soul-sucking work is what interests me most, so we can do the stuff we love in life more."
 
 ## The Bigger Picture
 
@@ -120,7 +120,7 @@ Home renovations, like many major life projects, involve:
 - Research across different domains  
 - Document management and organization
 
-These are exactly the kinds of projects where Gobii pretrained workers shine—not because any single task is impossibly difficult, but because the cumulative mental load is exhausting. And they can [get started right away](https://gobii.ai/g/nYY/ "Spin up own AI Project Manager").
+These are exactly the kinds of projects where Operario AI pretrained workers shine—not because any single task is impossibly difficult, but because the cumulative mental load is exhausting. And they can [get started right away](https://operario.ai/g/nYY/ "Spin up own AI Project Manager").
 
 For Grace, the assessment was straightforward: "It's been neat engaging with you as developers and the people who conceived of this idea. This was fun."
 
@@ -128,4 +128,4 @@ But more importantly, it worked. And for a complex renovation project with hard 
 
 ---
 
-*Gobii's [pretrained workers](https://gobii.ai/pretrained-workers/) work through email, handling research, coordination, and communication for complex projects. They maintain context over time, work autonomously within guardrails, and can be delegated tasks just like a human assistant or intern—but they're always available and never overwhelmed by detail work.*  
+*Operario AI's [pretrained workers](https://operario.ai/pretrained-workers/) work through email, handling research, coordination, and communication for complex projects. They maintain context over time, work autonomously within guardrails, and can be delegated tasks just like a human assistant or intern—but they're always available and never overwhelmed by detail work.*  

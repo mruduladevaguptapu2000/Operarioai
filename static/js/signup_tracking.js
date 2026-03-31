@@ -105,7 +105,7 @@
     fetchWithRetry(1);
   }
 
-  window.GobiiSignupTracking = {
+  window.Operario AISignupTracking = {
     fetchAndFire: fetchAndFire,
   };
 })();

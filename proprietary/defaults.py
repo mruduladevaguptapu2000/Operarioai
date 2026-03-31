@@ -10,19 +10,19 @@ from typing import Dict, Mapping
 
 DEFAULTS: Dict[str, Dict[str, str]] = {
     "brand": {
-        "PUBLIC_BRAND_NAME": "Gobii",
-        "PUBLIC_SITE_URL": "https://gobii.ai",
-        "PUBLIC_CONTACT_EMAIL": "hello@gobii.ai",
-        "PUBLIC_SUPPORT_EMAIL": "support@gobii.ai",
-        "PUBLIC_GITHUB_URL": "https://github.com/gobii-ai",
+        "PUBLIC_BRAND_NAME": "Operario AI",
+        "PUBLIC_SITE_URL": "https://operario.ai",
+        "PUBLIC_CONTACT_EMAIL": "hello@operario.ai",
+        "PUBLIC_SUPPORT_EMAIL": "support@operario.ai",
+        "PUBLIC_GITHUB_URL": "https://github.com/operario-ai",
         "PUBLIC_DISCORD_URL": "https://discord.gg/yyDB8GwxtE",
-        "PUBLIC_X_URL": "https://x.com/gobii_ai",
+        "PUBLIC_X_URL": "https://x.com/operario_ai",
     },
     "support": {
-        "DEFAULT_FROM_EMAIL": "Gobii <noreply@mg.getgobii.com>",
-        "MAILGUN_SENDER_DOMAIN": "mg.getgobii.com",
-        "SUPPORT_EMAIL": "support@gobii.ai",
-        "INTERCOM_SUPPORT_EMAIL": "help@gobii.ai",
+        "DEFAULT_FROM_EMAIL": "Operario AI <noreply@mg.getoperario.com>",
+        "MAILGUN_SENDER_DOMAIN": "mg.getoperario.com",
+        "SUPPORT_EMAIL": "support@operario.ai",
+        "INTERCOM_SUPPORT_EMAIL": "help@operario.ai",
     },
     "analytics": {
         # Real keys are injected via environment in production deployments.

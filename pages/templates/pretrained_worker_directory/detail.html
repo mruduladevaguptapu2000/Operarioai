@@ -82,7 +82,7 @@
               <form method="post" action="{% url 'pages:pretrained_worker_hire' pretrained_worker.code %}" class="mt-6">
                 {% csrf_token %}
                 <input type="hidden" name="source_page" value="pretrained_worker_detail" />
-                {% if settings.GOBII_PROPRIETARY_MODE %}
+                {% if settings.OPERARIO_PROPRIETARY_MODE %}
                 <input type="hidden" name="trial_onboarding" value="1" />
                 <input type="hidden" name="trial_onboarding_target" value="agent_ui" />
                 {% endif %}

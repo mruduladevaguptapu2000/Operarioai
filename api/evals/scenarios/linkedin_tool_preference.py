@@ -52,7 +52,7 @@ class LinkedInToolPreferenceScenario(EvalScenario, ScenarioExecutionTools):
         mock_config = self._build_mock_config()
         with self.wait_for_agent_idle(agent_id, timeout=120):
             prompt = (
-                "I need the LinkedIn profile for Will Bonde, working on AI at Gobii. Pull his headline, job title, and location."
+                "I need the LinkedIn profile for Will Bonde, working on AI at Operario AI. Pull his headline, job title, and location."
             )
             inbound = self.inject_message(
                 agent_id,
@@ -199,7 +199,7 @@ class LinkedInToolPreferenceScenario(EvalScenario, ScenarioExecutionTools):
         body_text = (response.body or "") if response else ""
         required_bits = [
             "will",
-            "gobii",
+            "operario",
             "cancer survivor",
             "germantown",
         ]
@@ -237,7 +237,7 @@ class LinkedInToolPreferenceScenario(EvalScenario, ScenarioExecutionTools):
                 "results": [
                     {
                         "name": "Will Bonde",
-                        "headline": "AI @ Gobii. Cancer survivor. Hoping to make the world better w/software.",
+                        "headline": "AI @ Operario AI. Cancer survivor. Hoping to make the world better w/software.",
                         "location": "Germantown, Maryland, United States",
                         "url": "https://www.linkedin.com/in/willbonde",
                     }
@@ -246,13 +246,13 @@ class LinkedInToolPreferenceScenario(EvalScenario, ScenarioExecutionTools):
             "mcp_brightdata_web_data_linkedin_person_profile": {
                 "status": "ok",
                 "name": "Will Bonde",
-                "headline": "AI @ Gobii. Cancer survivor. Hoping to make the world better w/software.",
+                "headline": "AI @ Operario AI. Cancer survivor. Hoping to make the world better w/software.",
                 "location": "Germantown, Maryland, United States",
-                "summary": "Senior Software Engineer at Gobii, passionate about leveraging AI to solve real-world problems.",
+                "summary": "Senior Software Engineer at Operario AI, passionate about leveraging AI to solve real-world problems.",
             },
             "mcp_brightdata_web_data_linkedin_company_profile": {
                 "status": "ok",
-                "name": "Gobii",
+                "name": "Operario AI",
                 "industry": "Software",
                 "location": "San Francisco, CA",
             },
@@ -261,7 +261,7 @@ class LinkedInToolPreferenceScenario(EvalScenario, ScenarioExecutionTools):
                 "jobs": [
                     {
                         "title": "Senior Software Engineer",
-                        "company": "Gobii",
+                        "company": "Operario AI",
                         "location": "Remote",
                     }
                 ],
@@ -271,7 +271,7 @@ class LinkedInToolPreferenceScenario(EvalScenario, ScenarioExecutionTools):
                 "posts": [
                     {
                         "author": "Will Bonde",
-                        "text": "Senior Software Engineer at Gobii, passionate about leveraging AI to solve real-world problems.",
+                        "text": "Senior Software Engineer at Operario AI, passionate about leveraging AI to solve real-world problems.",
                     }
                 ],
             },

@@ -304,7 +304,7 @@ def execute_http_request(agent: PersistentAgent, params: Dict[str, Any]) -> Dict
     )
 
     # Select proxy server - enforced in proprietary mode, optional in community
-    proxy_required = getattr(settings, "GOBII_PROPRIETARY_MODE", False)
+    proxy_required = getattr(settings, "OPERARIO_PROPRIETARY_MODE", False)
     proxy_server = None
     try:
         proxy_server = select_proxy_for_persistent_agent(

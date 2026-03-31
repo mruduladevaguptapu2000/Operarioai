@@ -1,5 +1,5 @@
 """
-Gobii settings – dev profile
+Operario AI settings – dev profile
 """
 
 from pathlib import Path
@@ -34,7 +34,7 @@ for env_path in env_paths_to_check:
 # Ensure local dev has a sensible default release environment identifier.
 # setdefault means staging/prod/preview, which explicitly pass this variable
 # will not be overridden.
-os.environ.setdefault("GOBII_RELEASE_ENV", "local")
+os.environ.setdefault("OPERARIO_RELEASE_ENV", "local")
 
 # browser_use auto-configures root logging on import and defaults to stderr, which
 # makes routine browser-task logs look like errors in downstream log viewers.
@@ -46,18 +46,18 @@ os.environ.setdefault("BROWSER_USE_SETUP_LOGGING", "false")
 # sensible defaults for DB/Redis/Celery and dev keys. Compose and prod provide
 # explicit values so these setdefault calls won't override them.
 IN_DOCKER = os.path.exists("/.dockerenv") or env.bool("IN_DOCKER", default=False)
-RELEASE_ENV = os.getenv("GOBII_RELEASE_ENV", "local")
+RELEASE_ENV = os.getenv("OPERARIO_RELEASE_ENV", "local")
 
 if RELEASE_ENV == "local" and not IN_DOCKER:
     # Core toggles and keys (non-secret dev defaults)
     os.environ.setdefault("DEBUG", "1")
     os.environ.setdefault("DJANGO_SECRET_KEY", "dev-insecure")
-    os.environ.setdefault("GOBII_ENCRYPTION_KEY", "dev-insecure")
+    os.environ.setdefault("OPERARIO_ENCRYPTION_KEY", "dev-insecure")
 
     # Postgres (local compose defaults)
     os.environ.setdefault("POSTGRES_HOST", "localhost")
     os.environ.setdefault("POSTGRES_PORT", "5432")
-    os.environ.setdefault("POSTGRES_DB", "gobii")
+    os.environ.setdefault("POSTGRES_DB", "operario")
     os.environ.setdefault("POSTGRES_USER", "postgres")
     os.environ.setdefault("POSTGRES_PASSWORD", "postgres")
 
@@ -71,15 +71,15 @@ if RELEASE_ENV == "local" and not IN_DOCKER:
 # - Proprietary/Prod: enable Turnstile, real email delivery, and email verification
 #
 # Licensing notice (important): Proprietary Mode is available only to customers
-# who hold a current, valid proprietary software license from Gobii, Inc.
-# Enabling or using GOBII_PROPRIETARY_MODE without such a license is not
-# permitted and may violate Gobii, Inc.’s intellectual property rights and/or
+# who hold a current, valid proprietary software license from Operario AI, Inc.
+# Enabling or using OPERARIO_PROPRIETARY_MODE without such a license is not
+# permitted and may violate Operario AI, Inc.’s intellectual property rights and/or
 # applicable license terms. By setting this flag you represent and warrant that
-# you are authorized to do so under a written license agreement with Gobii, Inc.
-GOBII_PROPRIETARY_MODE = env.bool("GOBII_PROPRIETARY_MODE", default=False)
+# you are authorized to do so under a written license agreement with Operario AI, Inc.
+OPERARIO_PROPRIETARY_MODE = env.bool("OPERARIO_PROPRIETARY_MODE", default=False)
 # In Community Edition, we optionally override limits to be effectively unlimited
 # for agents/tasks. Can be disabled (e.g., in tests) via env.
-GOBII_ENABLE_COMMUNITY_UNLIMITED = env.bool("GOBII_ENABLE_COMMUNITY_UNLIMITED", default=True)
+OPERARIO_ENABLE_COMMUNITY_UNLIMITED = env.bool("OPERARIO_ENABLE_COMMUNITY_UNLIMITED", default=True)
 # Referral credits: if True, credits are granted after referred user completes first task.
 # If False, credits are granted immediately at signup. Default True for fraud prevention.
 REFERRAL_DEFERRED_GRANT = env.bool("REFERRAL_DEFERRED_GRANT", default=True)
@@ -129,7 +129,7 @@ PROXY_CONSECUTIVE_FAILURE_THRESHOLD = env.int("PROXY_CONSECUTIVE_FAILURE_THRESHO
 DECODO_LOW_INVENTORY_THRESHOLD = env.int("DECODO_LOW_INVENTORY_THRESHOLD", default=30)
 DECODO_LOW_INVENTORY_EMAIL = env(
     "DECODO_LOW_INVENTORY_EMAIL",
-    default="support@gobii.ai",
+    default="support@operario.ai",
 )
 
 try:
@@ -141,8 +141,8 @@ except ImportError:  # Community builds may not package proprietary defaults
 _COMMUNITY_DEFAULTS = {
     "brand": {
         "PUBLIC_DISCORD_URL": "https://discord.gg/yyDB8GwxtE",
-        "PUBLIC_X_URL": "https://x.com/gobii_ai",
-        "PUBLIC_GITHUB_URL": "https://github.com/gobii-ai",
+        "PUBLIC_X_URL": "https://x.com/operario_ai",
+        "PUBLIC_GITHUB_URL": "https://github.com/operario-ai",
     }
 }
 
@@ -150,7 +150,7 @@ _COMMUNITY_DEFAULTS = {
 def _proprietary_default(section: str, key: str, *, fallback: str = "") -> str:
     """Fetch a proprietary default without leaking values into community builds."""
 
-    if not GOBII_PROPRIETARY_MODE or _proprietary_defaults_module is None:
+    if not OPERARIO_PROPRIETARY_MODE or _proprietary_defaults_module is None:
         return fallback
 
     defaults_map = getattr(_proprietary_defaults_module, "DEFAULTS", {})
@@ -161,7 +161,7 @@ def _proprietary_default(section: str, key: str, *, fallback: str = "") -> str:
 def _community_default(section: str, key: str, *, fallback: str = "") -> str:
     """Provide OSS-friendly defaults for select public links."""
 
-    if GOBII_PROPRIETARY_MODE:
+    if OPERARIO_PROPRIETARY_MODE:
         return fallback
 
     section_defaults = _COMMUNITY_DEFAULTS.get(section, {})
@@ -182,19 +182,19 @@ _COMMUNITY_DEFAULT_TRUSTED_ORIGINS = [
     "https://127.0.0.1",
 ]
 _PROPRIETARY_DEFAULT_TRUSTED_ORIGINS = [
-    "https://gobii.ai",
-    "https://gobii.ai:443",
-    "https://www.gobii.ai",
-    "https://www.gobii.ai:443",
-    "https://getgobii.com",
-    "https://getgobii.com:443",
-    "https://www.getgobii.com",
-    "https://www.getgobii.com:443",
+    "https://operario.ai",
+    "https://operario.ai:443",
+    "https://www.operario.ai",
+    "https://www.operario.ai:443",
+    "https://getoperario.com",
+    "https://getoperario.com:443",
+    "https://www.getoperario.com",
+    "https://www.getoperario.com:443",
 ]
 CSRF_TRUSTED_ORIGINS = env.list(
     "CSRF_TRUSTED_ORIGINS",
     default=_PROPRIETARY_DEFAULT_TRUSTED_ORIGINS
-    if GOBII_PROPRIETARY_MODE
+    if OPERARIO_PROPRIETARY_MODE
     else _COMMUNITY_DEFAULT_TRUSTED_ORIGINS,
 )
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
@@ -318,7 +318,7 @@ INSTALLED_APPS = [
 ]
 
 # Load proprietary overrides (templates, etc.) if enabled
-if GOBII_PROPRIETARY_MODE:
+if OPERARIO_PROPRIETARY_MODE:
     # Prepend so its templates override base/app templates cleanly
     INSTALLED_APPS = ["proprietary", *INSTALLED_APPS]
 
@@ -559,19 +559,19 @@ def _parse_domain_set(raw_value: str) -> set[str]:
 # Optional signup email-domain policy controls:
 # - allowlist wins over both hard blocklist and disposable detection
 # - blocklist supports exact domains and their subdomains in the adapter
-GOBII_EMAIL_DOMAIN_ALLOWLIST = _parse_domain_set(
-    env("GOBII_EMAIL_DOMAIN_ALLOWLIST", default="")
+OPERARIO_EMAIL_DOMAIN_ALLOWLIST = _parse_domain_set(
+    env("OPERARIO_EMAIL_DOMAIN_ALLOWLIST", default="")
 )
-GOBII_EMAIL_DOMAIN_BLOCKLIST = _parse_domain_set(
+OPERARIO_EMAIL_DOMAIN_BLOCKLIST = _parse_domain_set(
     env(
-        "GOBII_EMAIL_DOMAIN_BLOCKLIST",
+        "OPERARIO_EMAIL_DOMAIN_BLOCKLIST",
         default=env("SIGNUP_BLOCKED_EMAIL_DOMAINS", default="mailslurp.biz"),
     )
 )
-GOBII_EMAIL_BLOCK_DISPOSABLE = env.bool("GOBII_EMAIL_BLOCK_DISPOSABLE", default=True)
+OPERARIO_EMAIL_BLOCK_DISPOSABLE = env.bool("OPERARIO_EMAIL_BLOCK_DISPOSABLE", default=True)
 
 # Backward compatibility for older references to this setting.
-SIGNUP_BLOCKED_EMAIL_DOMAINS = sorted(GOBII_EMAIL_DOMAIN_BLOCKLIST)
+SIGNUP_BLOCKED_EMAIL_DOMAINS = sorted(OPERARIO_EMAIL_DOMAIN_BLOCKLIST)
 
 # Mailgun credentials only exist in hosted/prod environments; local proprietary
 # runs typically omit them. Use that to decide whether to enforce email
@@ -580,17 +580,17 @@ MAILGUN_API_KEY = env("MAILGUN_API_KEY", default="")
 MAILGUN_HAS_API_KEY = bool(MAILGUN_API_KEY)
 MAILGUN_ENABLED = env.bool(
     "MAILGUN_ENABLED",
-    default=GOBII_PROPRIETARY_MODE and MAILGUN_HAS_API_KEY,
+    default=OPERARIO_PROPRIETARY_MODE and MAILGUN_HAS_API_KEY,
 )
 
 # Community Edition disables email verification by default to avoid external email providers
 ACCOUNT_EMAIL_VERIFICATION = env(
     "ACCOUNT_EMAIL_VERIFICATION",
-    default="optional" if GOBII_PROPRIETARY_MODE and MAILGUN_API_KEY else "none",
+    default="optional" if OPERARIO_PROPRIETARY_MODE and MAILGUN_API_KEY else "none",
 )
 ACCOUNT_LOGOUT_ON_GET = True
-ACCOUNT_ADAPTER = "config.allauth_adapter.GobiiAccountAdapter"
-SOCIALACCOUNT_ADAPTER = "config.socialaccount_adapter.GobiiSocialAccountAdapter"
+ACCOUNT_ADAPTER = "config.allauth_adapter.Operario AIAccountAdapter"
+SOCIALACCOUNT_ADAPTER = "config.socialaccount_adapter.Operario AISocialAccountAdapter"
 
 # TODO: Test the removal of this; got deprecation warning
 #ACCOUNT_EMAIL_REQUIRED = True
@@ -613,7 +613,7 @@ LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
 
 # Integrate Cloudflare Turnstile with django-allauth ✨
-TURNSTILE_ENABLED = env.bool("TURNSTILE_ENABLED", default=GOBII_PROPRIETARY_MODE)
+TURNSTILE_ENABLED = env.bool("TURNSTILE_ENABLED", default=OPERARIO_PROPRIETARY_MODE)
 
 # Conditionally enable Cloudflare Turnstile app and forms
 if TURNSTILE_ENABLED:
@@ -650,9 +650,9 @@ REST_FRAMEWORK = {
     "EXCEPTION_HANDLER": "api.exceptions.json_exception_handler",
 }
 SPECTACULAR_SETTINGS = {
-    "TITLE": "Gobii API",
+    "TITLE": "Operario AI API",
     "VERSION": "0.1.0",
-    "DESCRIPTION": "API for Gobii AI browser agents platform",
+    "DESCRIPTION": "API for Operario AI AI browser agents platform",
     "SCHEMA_PATH_PREFIX": r"/api/v[0-9]",
     "SCHEMA_PATH_PREFIX_TRIM": True,
     "SERVE_INCLUDE_SCHEMA": False,
@@ -667,7 +667,7 @@ SPECTACULAR_SETTINGS = {
         "pattern": None  # Use just the operation name (get, list, etc.)
     },
     # Servers definition for default base URL in client
-    "SERVERS": [{"url": "https://gobii.ai/api/v1", "description": "Production server"}],
+    "SERVERS": [{"url": "https://operario.ai/api/v1", "description": "Production server"}],
     # Tags for API organization
     "TAGS": [
         {"name": "browser-use", "description": "Browser Use Agent operations and tasks"},
@@ -969,7 +969,7 @@ MAILGUN_SENDER_DOMAIN = env(
 POSTMARK_SERVER_TOKEN = env("POSTMARK_SERVER_TOKEN", default="")
 POSTMARK_ENABLED = env.bool(
     "POSTMARK_ENABLED",
-    default=GOBII_PROPRIETARY_MODE and bool(POSTMARK_SERVER_TOKEN),
+    default=OPERARIO_PROPRIETARY_MODE and bool(POSTMARK_SERVER_TOKEN),
 )
 
 ANYMAIL: dict[str, Any] = {}
@@ -1005,7 +1005,7 @@ STRIPE_LIVE_MODE = env.bool("STRIPE_LIVE_MODE", default=False)  # Set to True in
 STRIPE_KEYS_PRESENT = bool(STRIPE_LIVE_SECRET_KEY or STRIPE_TEST_SECRET_KEY)
 STRIPE_ENABLED = env.bool(
     "STRIPE_ENABLED",
-    default=GOBII_PROPRIETARY_MODE and STRIPE_KEYS_PRESENT,
+    default=OPERARIO_PROPRIETARY_MODE and STRIPE_KEYS_PRESENT,
 )
 if not STRIPE_ENABLED:
     STRIPE_DISABLED_REASON = (
@@ -1100,7 +1100,7 @@ REDDIT_ACCESS_TOKEN = env("REDDIT_ACCESS_TOKEN", default="")
 REDDIT_CLIENT_ID = env("REDDIT_CLIENT_ID", default="")
 REDDIT_CLIENT_SECRET = env("REDDIT_CLIENT_SECRET", default="")
 REDDIT_REFRESH_TOKEN = env("REDDIT_REFRESH_TOKEN", default="")
-REDDIT_USER_AGENT = env("REDDIT_USER_AGENT", default="gobii-platform/1.0")
+REDDIT_USER_AGENT = env("REDDIT_USER_AGENT", default="operario-platform/1.0")
 REDDIT_TEST_EVENT_CODE = env("REDDIT_TEST_EVENT_CODE", default="")
 REDDIT_CAPI_TEST_MODE = env.bool("REDDIT_CAPI_TEST_MODE", default=False)
 
@@ -1121,7 +1121,7 @@ CAPI_CUSTOM_EVENT_VALUES_BY_PLAN = {
         },
         "IntegrationAdded": env.float("CAPI_INTEGRATION_ADDED_PRO_VALUE", default=9.45),
         "SecretAdded": env.float("CAPI_SECRET_ADDED_PRO_VALUE", default=6.30),
-        "CloneGobii": env.float("CAPI_CLONE_GOBII_PRO_VALUE", default=8.40),
+        "CloneOperario AI": env.float("CAPI_CLONE_OPERARIO_PRO_VALUE", default=8.40),
         "TemplateLaunched": env.float("CAPI_TEMPLATE_LAUNCHED_PRO_VALUE", default=5.25),
     },
     "scale": {
@@ -1133,7 +1133,7 @@ CAPI_CUSTOM_EVENT_VALUES_BY_PLAN = {
         },
         "IntegrationAdded": env.float("CAPI_INTEGRATION_ADDED_SCALE_VALUE", default=47.25),
         "SecretAdded": env.float("CAPI_SECRET_ADDED_SCALE_VALUE", default=31.50),
-        "CloneGobii": env.float("CAPI_CLONE_GOBII_SCALE_VALUE", default=42.00),
+        "CloneOperario AI": env.float("CAPI_CLONE_OPERARIO_SCALE_VALUE", default=42.00),
         "TemplateLaunched": env.float("CAPI_TEMPLATE_LAUNCHED_SCALE_VALUE", default=26.25),
     },
     "org_team": None,
@@ -1188,7 +1188,7 @@ MAILGUN_INCOMING_WEBHOOK_TOKEN = env("MAILGUN_INCOMING_WEBHOOK_TOKEN", default="
 EXA_SEARCH_API_KEY = env("EXA_SEARCH_API_KEY", default="dummy-exa-search-api-key")
 CAPSOLVER_API_KEY = env("CAPSOLVER_API_KEY", default="")
 
-GOBII_RELEASE_ENV = env("GOBII_RELEASE_ENV", default="local")
+OPERARIO_RELEASE_ENV = env("OPERARIO_RELEASE_ENV", default="local")
 
 # ────────── Sandbox Compute ──────────
 SANDBOX_COMPUTE_ENABLED = env.bool("SANDBOX_COMPUTE_ENABLED", default=True)
@@ -1203,7 +1203,7 @@ SANDBOX_COMPUTE_K8S_NAMESPACE = env("SANDBOX_COMPUTE_K8S_NAMESPACE", default="")
 SANDBOX_COMPUTE_K8S_TIMEOUT_SECONDS = env.int("SANDBOX_COMPUTE_K8S_TIMEOUT_SECONDS", default=30)
 SANDBOX_COMPUTE_POD_IMAGE = env(
     "SANDBOX_COMPUTE_POD_IMAGE",
-    default="ghcr.io/gobii-ai/gobii-sandbox-compute:main",
+    default="ghcr.io/operario-ai/operario-sandbox-compute:main",
 )
 SANDBOX_COMPUTE_POD_SERVICE_ACCOUNT = env(
     "SANDBOX_COMPUTE_POD_SERVICE_ACCOUNT",
@@ -1215,15 +1215,15 @@ SANDBOX_COMPUTE_POD_RUNTIME_CLASS = env(
 )
 SANDBOX_COMPUTE_POD_CONFIGMAP_NAME = env(
     "SANDBOX_COMPUTE_POD_CONFIGMAP_NAME",
-    default="gobii-sandbox-common-env",
+    default="operario-sandbox-common-env",
 )
 SANDBOX_COMPUTE_POD_SECRET_NAME = env(
     "SANDBOX_COMPUTE_POD_SECRET_NAME",
-    default="gobii-sandbox-env",
+    default="operario-sandbox-env",
 )
 SANDBOX_EGRESS_PROXY_POD_IMAGE = env(
     "SANDBOX_EGRESS_PROXY_POD_IMAGE",
-    default="ghcr.io/gobii-ai/gobii-sandbox-egress-proxy:main",
+    default="ghcr.io/operario-ai/operario-sandbox-egress-proxy:main",
 )
 SANDBOX_EGRESS_PROXY_POD_PORT = env.int("SANDBOX_EGRESS_PROXY_POD_PORT", default=3128)
 SANDBOX_EGRESS_PROXY_SERVICE_PORT = env.int("SANDBOX_EGRESS_PROXY_SERVICE_PORT", default=3128)
@@ -1338,7 +1338,7 @@ SANDBOX_COMPUTE_SYNC_ON_RUN_COMMAND = env.bool(
 )
 SANDBOX_COMPUTE_REQUIRE_PROXY = env.bool(
     "SANDBOX_COMPUTE_REQUIRE_PROXY",
-    default=GOBII_PROPRIETARY_MODE,
+    default=OPERARIO_PROPRIETARY_MODE,
 )
 SANDBOX_COMPUTE_NO_PROXY = env("SANDBOX_COMPUTE_NO_PROXY", default="")
 
@@ -1346,7 +1346,7 @@ SANDBOX_COMPUTE_NO_PROXY = env("SANDBOX_COMPUTE_NO_PROXY", default="")
 # This avoids blocking first‑run UX. If SMTP is configured per agent or
 # POSTMARK_SERVER_TOKEN is set, real delivery is used instead.
 SIMULATE_EMAIL_DELIVERY = env.bool(
-    "SIMULATE_EMAIL_DELIVERY", default=(GOBII_RELEASE_ENV != "prod")
+    "SIMULATE_EMAIL_DELIVERY", default=(OPERARIO_RELEASE_ENV != "prod")
 )
 
 
@@ -1355,7 +1355,7 @@ TWILIO_ACCOUNT_SID = env("TWILIO_ACCOUNT_SID", default="")
 TWILIO_AUTH_TOKEN = env("TWILIO_AUTH_TOKEN", default="")
 TWILIO_VERIFY_SERVICE_SID = env("TWILIO_VERIFY_SERVICE_SID", default="")
 TWILIO_MESSAGING_SERVICE_SID = env("TWILIO_MESSAGING_SERVICE_SID", default="")
-_TWILIO_FEATURE_FLAG = env.bool("TWILIO_ENABLED", default=GOBII_PROPRIETARY_MODE)
+_TWILIO_FEATURE_FLAG = env.bool("TWILIO_ENABLED", default=OPERARIO_PROPRIETARY_MODE)
 TWILIO_VERIFY_CONFIGURED = bool(TWILIO_VERIFY_SERVICE_SID)
 TWILIO_CREDENTIALS_PRESENT = bool(
     TWILIO_ACCOUNT_SID
@@ -1389,15 +1389,15 @@ SMS_MAX_BODY_LENGTH = env.int("SMS_MAX_BODY_LENGTH", default=1450)  # Max length
 EMAIL_STRIP_REPLIES = env.bool("EMAIL_STRIP_REPLIES", default=False)
 
 # ────────── Pipedream MCP (Remote) ──────────
-# These are optional; when set, Gobii will enable the Pipedream MCP server.
+# These are optional; when set, Operario AI will enable the Pipedream MCP server.
 PIPEDREAM_CLIENT_ID = env("PIPEDREAM_CLIENT_ID", default="")
 PIPEDREAM_CLIENT_SECRET = env("PIPEDREAM_CLIENT_SECRET", default="")
 PIPEDREAM_PROJECT_ID = env("PIPEDREAM_PROJECT_ID", default="")
 
-# Map Gobii release env → Pipedream Connect environment.
+# Map Operario AI release env → Pipedream Connect environment.
 # Pipedream supports only two environments: "development" and "production".
 def _default_pipedream_environment() -> str:
-    rel = os.getenv("GOBII_RELEASE_ENV", "local").lower()
+    rel = os.getenv("OPERARIO_RELEASE_ENV", "local").lower()
     # Treat only prod/production as production; everything else uses development.
     return "production" if rel in ("prod", "production") else "development"
 
@@ -1451,11 +1451,11 @@ SIGNATURE_IMAGE_ATTACHMENT_EXTENSIONS = tuple(
 # Manual whitelist limits
 # Maximum number of manual allowlist entries per agent. Configurable via env.
 MANUAL_WHITELIST_MAX_PER_AGENT = env.int("MANUAL_WHITELIST_MAX_PER_AGENT", default=100)
-# Default domain used for auto-generated agent email endpoints in Gobii proprietary mode.
+# Default domain used for auto-generated agent email endpoints in Operario AI proprietary mode.
 # Community/OSS deployments typically leave this unused.
 DEFAULT_AGENT_EMAIL_DOMAIN = env(
     "DEFAULT_AGENT_EMAIL_DOMAIN",
-    default="my.gobii.ai" if GOBII_PROPRIETARY_MODE else "agents.localhost",
+    default="my.operario.ai" if OPERARIO_PROPRIETARY_MODE else "agents.localhost",
 )
 
 # Dedicated IP configuration
@@ -1465,10 +1465,10 @@ DEDICATED_IP_ALLOW_MULTI_ASSIGN = env.bool(
 )
 
 # Whether to auto-create agent-owned email endpoints during agent creation.
-# Defaults follow Gobii proprietary mode: enabled when proprietary, disabled in OSS.
+# Defaults follow Operario AI proprietary mode: enabled when proprietary, disabled in OSS.
 # Can be overridden explicitly via env if needed.
 ENABLE_DEFAULT_AGENT_EMAIL = env.bool(
-    "ENABLE_DEFAULT_AGENT_EMAIL", default=GOBII_PROPRIETARY_MODE
+    "ENABLE_DEFAULT_AGENT_EMAIL", default=OPERARIO_PROPRIETARY_MODE
 )
 # DB-backed LLM config is always enabled; system falls back to legacy
 # behavior only when DB has no usable tiers/endpoints.

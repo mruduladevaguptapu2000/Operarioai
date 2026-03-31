@@ -198,7 +198,7 @@ class TemplateCloneService:
         charter = payload.get("charter") or ""
 
         system_prompt = (
-            "You create public Gobii templates by generalizing an agent. "
+            "You create public Operario AI templates by generalizing an agent. "
             "Remove private details, PII, secrets, and identifiers. "
             "No spam, harassment, illegal, or harmful content. "
             "Do not include names, emails, phone numbers, addresses, or URLs with tokens. "

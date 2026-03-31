@@ -33,7 +33,7 @@ function getCsrfToken() {
 }
 
 function getPendingSession(state) {
-  const raw = localStorage.getItem(`gobii:email_oauth_state:${state}`);
+  const raw = localStorage.getItem(`operario:email_oauth_state:${state}`);
   if (!raw) {
     return null;
   }
@@ -47,7 +47,7 @@ function getPendingSession(state) {
 
 function notifyCompletion(sessionData) {
   const accountId = sessionData.accountId;
-  const completionKey = accountId ? `gobii:email_oauth_complete:${accountId}` : "gobii:email_oauth_complete";
+  const completionKey = accountId ? `operario:email_oauth_complete:${accountId}` : "operario:email_oauth_complete";
   const payload = {
     accountId,
     completedAt: new Date().toISOString(),
@@ -107,7 +107,7 @@ async function completeOAuth() {
       throw new Error(detail || "Callback failed");
     }
 
-    localStorage.removeItem(`gobii:email_oauth_state:${state}`);
+    localStorage.removeItem(`operario:email_oauth_state:${state}`);
     notifyCompletion(sessionData);
     setStatus("Connection complete! You can close this tab.");
     if (hasOpener()) {

@@ -1,5 +1,5 @@
-CONTEXT_TYPE_HEADER = "X-Gobii-Context-Type"
-CONTEXT_ID_HEADER = "X-Gobii-Context-Id"
+CONTEXT_TYPE_HEADER = "X-Operario AI-Context-Type"
+CONTEXT_ID_HEADER = "X-Operario AI-Context-Id"
 
 
 def get_context_override(request):

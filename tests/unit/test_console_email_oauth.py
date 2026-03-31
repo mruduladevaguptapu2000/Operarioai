@@ -117,7 +117,7 @@ class AgentEmailOAuthApiTests(TestCase):
                     "provider": "gmail",
                     "scope": "mail.read",
                     "token_endpoint": "https://oauth.example.com/token",
-                    "use_gobii_app": True,
+                    "use_operario_app": True,
                 }
             ),
             content_type="application/json",

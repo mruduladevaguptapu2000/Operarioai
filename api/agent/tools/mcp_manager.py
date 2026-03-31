@@ -77,7 +77,7 @@ from ...services.pipedream_apps import (
 )
 
 logger = logging.getLogger(__name__)
-tracer = trace.get_tracer("gobii.utils")
+tracer = trace.get_tracer("operario.utils")
 
 _proxy_url_var: contextvars.ContextVar[Optional[str]] = contextvars.ContextVar(
     "mcp_http_proxy_url", default=None
@@ -227,7 +227,7 @@ class SandboxToolCacheContext:
     agent_cache_key: str
 
 
-class GobiiStdioTransport(FastMCPStdioTransport):
+class Operario AIStdioTransport(FastMCPStdioTransport):
     """Custom stdio transport that guarantees an errlog with a real fileno."""
 
     def __init__(
@@ -1011,7 +1011,7 @@ class MCPToolManager:
                 httpx_client_factory=self._httpx_client_factory,
             )
         elif server.command:
-            transport = GobiiStdioTransport(
+            transport = Operario AIStdioTransport(
                 command=server.command,
                 args=server.args or [],
                 env=server.env or {},
@@ -1024,7 +1024,7 @@ class MCPToolManager:
     def _select_discovery_proxy_url(self, server: MCPServerRuntime) -> Optional[str]:
         if not server.url:
             return None
-        proxy_required = getattr(settings, "GOBII_PROPRIETARY_MODE", False)
+        proxy_required = getattr(settings, "OPERARIO_PROPRIETARY_MODE", False)
         try:
             proxy = select_proxy(
                 allow_no_proxy_in_debug=getattr(settings, "DEBUG", False) and not proxy_required,
@@ -1060,7 +1060,7 @@ class MCPToolManager:
             # Allow environments to opt out entirely (mainly for tests)
             return None, None
 
-        proxy_required = getattr(settings, "GOBII_PROPRIETARY_MODE", False)
+        proxy_required = getattr(settings, "OPERARIO_PROPRIETARY_MODE", False)
         try:
             proxy = select_proxy_for_persistent_agent(agent)
         except RuntimeError as exc:
@@ -1340,7 +1340,7 @@ class MCPToolManager:
                 headers = self._pd_build_headers(
                     mode="sub-agent",
                     app_slug=prefetch_csv,
-                    external_user_id="gobii-discovery",
+                    external_user_id="operario-discovery",
                     conversation_id="discovery",
                 )
                 logger.info(
@@ -1359,7 +1359,7 @@ class MCPToolManager:
                 httpx_client_factory=self._httpx_client_factory,
             )
         elif server.command:
-            transport = GobiiStdioTransport(
+            transport = Operario AIStdioTransport(
                 command=server.command,
                 args=server.args or [],
                 env=server.env or {},

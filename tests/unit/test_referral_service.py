@@ -125,7 +125,7 @@ class ReferralServiceTests(TestCase):
         """Test generating referral link."""
         link = ReferralService.get_referral_link(
             self.referrer,
-            base_url='https://gobii.ai',
+            base_url='https://operario.ai',
         )
         self.assertIn('?ref=', link)
         self.assertIn(self.referrer_referral.referral_code, link)

@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Gobii – First Run Setup</title>
+  <title>Operario AI – First Run Setup</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -55,13 +55,13 @@
       <div class="rounded-[2.5rem] border border-white/70 bg-white/95 p-8 shadow-panel ring-1 ring-brand-50/50 backdrop-blur-xl sm:p-12 lg:p-14">
         <header class="mb-12 space-y-6">
           {% if fish_collateral_enabled %}
-            <img src="{% static 'images/gobii_fish_with_text_purple_nav.png' %}" alt="Gobii Fish" class="h-9 w-auto">
+            <img src="{% static 'images/operario_fish_with_text_purple_nav.png' %}" alt="Operario AI Fish" class="h-9 w-auto">
           {% else %}
-            <img src="{% static 'images/noBgBlue.png' %}" alt="Gobii" class="h-9 w-auto">
+            <img src="{% static 'images/noBgBlue.png' %}" alt="Operario AI" class="h-9 w-auto">
           {% endif %}
           <div class="space-y-2">
             <p class="text-[11px] font-medium uppercase tracking-[0.32em] text-brand-400">First-run setup</p>
-            <h1 class="text-3xl font-medium tracking-tight text-slate-900/90 sm:text-[2.5rem]">Welcome to Gobii</h1>
+            <h1 class="text-3xl font-medium tracking-tight text-slate-900/90 sm:text-[2.5rem]">Welcome to Operario AI</h1>
             <p class="max-w-2xl text-[15px] leading-relaxed text-slate-600">Let’s get your self-hosted instance ready. Complete the admin login and choose an LLM provider for orchestrator and browser agents.</p>
           </div>
         </header>
@@ -345,7 +345,7 @@
             </ul>
             <div class="mt-6 rounded-2xl border border-dashed border-brand-200/70 p-4 text-xs text-brand-700">
               <p class="font-semibold">Need to use environment variables instead?</p>
-              <p class="mt-1 leading-relaxed">Skip keys here and set <code class="rounded bg-white/80 px-1 py-0.5 text-[11px] text-slate-700 shadow-sm">GOBII_LLM_* </code> values before restarting the app. <a href="https://docs.gobii.ai" target="_blank" rel="noreferrer" class="text-brand-600 underline decoration-brand-200 underline-offset-4 hover:text-brand-700">See docs</a></p>
+              <p class="mt-1 leading-relaxed">Skip keys here and set <code class="rounded bg-white/80 px-1 py-0.5 text-[11px] text-slate-700 shadow-sm">OPERARIO_LLM_* </code> values before restarting the app. <a href="https://docs.operario.ai" target="_blank" rel="noreferrer" class="text-brand-600 underline decoration-brand-200 underline-offset-4 hover:text-brand-700">See docs</a></p>
             </div>
           </aside>
         </div>
@@ -353,7 +353,7 @@
         <div class="mt-12 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <p class="text-sm text-slate-500">You can adjust any of these settings later from the admin console.</p>
           <button type="submit" form="setup-form" class="inline-flex items-center justify-center gap-2 rounded-2xl bg-brand-500 px-7 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-brand-600 focus:outline-none focus:ring-4 focus:ring-brand-200/70 focus:ring-offset-1">
-            Save &amp; Launch Gobii
+            Save &amp; Launch Operario AI
           </button>
         </div>
       </div>

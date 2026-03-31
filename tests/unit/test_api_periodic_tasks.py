@@ -26,12 +26,12 @@ class PeriodicTasksTest(TestCase):
         
         # Should add the single nightly sync schedule
         self.assertIn("decodo-ip-sync-daily", beat_schedule)
-        self.assertEqual(beat_schedule["decodo-ip-sync-daily"]["task"], "gobii_platform.api.tasks.sync_all_ip_blocks")
+        self.assertEqual(beat_schedule["decodo-ip-sync-daily"]["task"], "operario_platform.api.tasks.sync_all_ip_blocks")
         self.assertEqual(beat_schedule["decodo-ip-sync-daily"]["args"], [])
         
         # Should also add the nightly proxy health check schedule
         self.assertIn("proxy-health-check-nightly", beat_schedule)
-        self.assertEqual(beat_schedule["proxy-health-check-nightly"]["task"], "gobii_platform.api.tasks.proxy_health_check_nightly")
+        self.assertEqual(beat_schedule["proxy-health-check-nightly"]["task"], "operario_platform.api.tasks.proxy_health_check_nightly")
         self.assertEqual(beat_schedule["proxy-health-check-nightly"]["args"], [])
 
         # Should also add the monthly prune schedule

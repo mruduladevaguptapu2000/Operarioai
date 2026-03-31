@@ -36,7 +36,7 @@ export function AgentChatShellScreen({ agentId, agentName }: AgentChatShellScree
   return (
     <div className="app-shell" data-state={status}>
       <header className="app-header">
-        <div className="app-badge">Gobii</div>
+        <div className="app-badge">Operario AI</div>
         <div>
           <h1 className="app-title">Chat - {agentLabel}</h1>
           <p className="app-subtitle">

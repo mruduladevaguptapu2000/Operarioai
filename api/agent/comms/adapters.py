@@ -21,7 +21,7 @@ from config.settings import EMAIL_STRIP_REPLIES
 from api.services.system_settings import get_max_file_size
 
 logger = logging.getLogger(__name__)
-tracer = trace.get_tracer('gobii.utils')
+tracer = trace.get_tracer('operario.utils')
 
 EMAIL_BODY_HTML_PAYLOAD_KEY = "body_html"
 

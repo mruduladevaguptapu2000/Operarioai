@@ -224,7 +224,7 @@ class BuildJitConnectUrlTests(TestCase):
     """Tests for the _build_jit_connect_url helper function."""
 
     def setUp(self):
-        Site.objects.update_or_create(id=1, defaults={"domain": "test.gobii.ai", "name": "test"})
+        Site.objects.update_or_create(id=1, defaults={"domain": "test.operario.ai", "name": "test"})
 
     def test_builds_correct_url_format(self):
         """The helper should build a valid JIT connect URL."""
@@ -237,7 +237,7 @@ class BuildJitConnectUrlTests(TestCase):
 
         self.assertEqual(
             url,
-            f"https://test.gobii.ai/connect/pipedream/{agent_id}/{app_slug}/"
+            f"https://test.operario.ai/connect/pipedream/{agent_id}/{app_slug}/"
         )
 
     def test_handles_different_app_slugs(self):

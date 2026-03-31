@@ -32,11 +32,11 @@ def _is_eval_task(task) -> bool:
     Return True when the browser-use task is running in eval mode.
     Detection mirrors other parts of the codebase:
     - Prefer the agent execution_environment (set to "eval" by run_evals)
-    - Fall back to GOBII_RELEASE_ENV if explicitly set to "eval"
+    - Fall back to OPERARIO_RELEASE_ENV if explicitly set to "eval"
     """
     try:
         # Global override based on release env
-        if os.getenv("GOBII_RELEASE_ENV", "").lower() == "eval":
+        if os.getenv("OPERARIO_RELEASE_ENV", "").lower() == "eval":
             return True
 
         req = getattr(task, "request", None)
@@ -216,7 +216,7 @@ def _task_postrun_handler(task_id=None, task=None, hostname=None, **_):  # noqa:
     # We specifically care about the Browser-Use task that orchestrates the agent.
     if task is None:
         return
-    if task.name != "gobii_platform.api.tasks.process_browser_use_task":
+    if task.name != "operario_platform.api.tasks.process_browser_use_task":
         return
 
     try:

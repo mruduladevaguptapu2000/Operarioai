@@ -168,7 +168,7 @@
     });
   }
 
-  window.gobiiTrackCta = function (payload) {
+  window.operarioTrackCta = function (payload) {
     if (!payload || !payload.cta_id) {
       return;
     }

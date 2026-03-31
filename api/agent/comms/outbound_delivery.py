@@ -236,7 +236,7 @@ def _convert_sms_body_to_plaintext(body: str) -> str:
     logger.info("=== SMS PLAINTEXT CONVERSION COMPLETE ===")
     return fallback
 
-tracer = trace.get_tracer("gobii.utils")
+tracer = trace.get_tracer("operario.utils")
 logger = logging.getLogger(__name__)
 
 
@@ -794,7 +794,7 @@ def deliver_agent_email(message: PersistentAgentMessage):
     # Check environment and token once up front (Postmark or simulation)
     postmark_state = postmark_status()
     postmark_token = os.getenv("POSTMARK_SERVER_TOKEN")
-    release_env = getattr(settings, "GOBII_RELEASE_ENV", os.getenv("GOBII_RELEASE_ENV", "local"))
+    release_env = getattr(settings, "OPERARIO_RELEASE_ENV", os.getenv("OPERARIO_RELEASE_ENV", "local"))
     missing_token = (not postmark_token) or not postmark_state.enabled
     simulation_flag = getattr(settings, "SIMULATE_EMAIL_DELIVERY", False)
 

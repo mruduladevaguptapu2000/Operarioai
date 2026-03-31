@@ -9,7 +9,7 @@ type UsagePeriodHeaderProps = {
 
 export function UsagePeriodHeader({ periodInfo, agentSelectorProps, ...rangeProps }: UsagePeriodHeaderProps) {
   return (
-    <div className="gobii-card-base flex flex-wrap items-center gap-4 px-5 py-4">
+    <div className="operario-card-base flex flex-wrap items-center gap-4 px-5 py-4">
       <div className="flex flex-col">
         <span className="text-xs font-semibold uppercase tracking-wide text-slate-500">
           {periodInfo.label}

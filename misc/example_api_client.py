@@ -1,5 +1,5 @@
 """
-Example Python client for the Gobii API.
+Example Python client for the Operario AI API.
 
 This script demonstrates how to:
 1. Retrieve an API key from an environment variable.
@@ -27,7 +27,7 @@ import sys
 
 # Configuration
 DEFAULT_BASE_URL = "http://127.0.0.1:8000/api/v1/" # Ensure trailing slash
-GOBII_API_KEY_ENV_VAR = "GOBII_API_KEY"
+OPERARIO_API_KEY_ENV_VAR = "OPERARIO_API_KEY"
 
 def generate_random_string(prefix: str) -> str:
     """Generates a random string with a given prefix and a UUID suffix."""
@@ -569,15 +569,15 @@ def delete_task_cli(api_key: str, base_url: str, agent_id: str, task_id: str) ->
 
 
 if __name__ == "__main__":
-    api_key = os.environ.get(GOBII_API_KEY_ENV_VAR)
+    api_key = os.environ.get(OPERARIO_API_KEY_ENV_VAR)
     if not api_key:
-        print(f"Error: API key environment variable '{GOBII_API_KEY_ENV_VAR}' not found.", file=sys.stderr)
-        print(f"Please set the {GOBII_API_KEY_ENV_VAR} environment variable.", file=sys.stderr)
+        print(f"Error: API key environment variable '{OPERARIO_API_KEY_ENV_VAR}' not found.", file=sys.stderr)
+        print(f"Please set the {OPERARIO_API_KEY_ENV_VAR} environment variable.", file=sys.stderr)
         sys.exit(1)
 
-    parser = argparse.ArgumentParser(description="Gobii API Client CLI")
+    parser = argparse.ArgumentParser(description="Operario AI API Client CLI")
     parser.add_argument('--base-url', default=DEFAULT_BASE_URL,
-                        help=f"Base URL for the Gobii API (default: {DEFAULT_BASE_URL})")
+                        help=f"Base URL for the Operario AI API (default: {DEFAULT_BASE_URL})")
 
     resource_subparsers = parser.add_subparsers(dest='resource', title='Resources',
                                                 help='Specify the resource type to manage', required=True)

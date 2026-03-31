@@ -1099,7 +1099,7 @@ class MCPToolManagerTests(TestCase):
         
         self.assertEqual(result["status"], "success")
 
-    @override_settings(GOBII_PROPRIETARY_MODE=False)
+    @override_settings(OPERARIO_PROPRIETARY_MODE=False)
     def test_execute_http_tool_uses_proxy(self):
         """Ensure HTTP-based MCP tools route through agent-selected proxy."""
         agent = self._setup_http_tool()
@@ -1134,7 +1134,7 @@ class MCPToolManagerTests(TestCase):
         row = PersistentAgentEnabledTool.objects.get(agent=agent, tool_full_name="http_tool")
         self.assertIsNotNone(row.last_used_at)
 
-    @override_settings(GOBII_PROPRIETARY_MODE=False)
+    @override_settings(OPERARIO_PROPRIETARY_MODE=False)
     @patch('api.agent.tools.mcp_manager.select_proxy_for_persistent_agent')
     def test_execute_http_tool_without_proxy_logs_warning(self, mock_select_proxy):
         """Ensure HTTP tools continue without proxy when none available."""
@@ -1161,7 +1161,7 @@ class MCPToolManagerTests(TestCase):
         )
         mock_select_proxy.assert_called_once()
 
-    @override_settings(GOBII_PROPRIETARY_MODE=True)
+    @override_settings(OPERARIO_PROPRIETARY_MODE=True)
     @patch('api.agent.tools.mcp_manager.select_proxy_for_persistent_agent')
     def test_execute_http_tool_errors_when_proxy_required(self, mock_select_proxy):
         """Ensure HTTP tools fail gracefully when proxy required but unavailable."""
@@ -1550,7 +1550,7 @@ class MCPToolFunctionsTests(TestCase):
         self.assertEqual([tool_def["function"]["name"] for tool_def in tool_defs], ["enable_tools", "enable_apps"])
         mock_enable_tools.assert_not_called()
 
-    @override_settings(PUBLIC_SITE_URL="https://gobii.ai")
+    @override_settings(PUBLIC_SITE_URL="https://operario.ai")
     @patch('api.agent.tools.search_tools.enable_tools')
     @patch('api.agent.tools.search_tools.run_completion')
     @patch('api.agent.tools.search_tools.get_mcp_manager')
@@ -1596,8 +1596,8 @@ class MCPToolFunctionsTests(TestCase):
         user_message = mock_run_completion.call_args.kwargs["messages"][1]["content"]
         self.assertIn("Do not call enable_apps", system_message)
         self.assertIn("Automatic Pipedream app enablement is disabled.", system_message)
-        self.assertIn('go to "Add Apps" here: https://gobii.ai/console/advanced/mcp-servers/', system_message)
-        self.assertIn('https://gobii.ai/console/advanced/mcp-servers/', user_message)
+        self.assertIn('go to "Add Apps" here: https://operario.ai/console/advanced/mcp-servers/', system_message)
+        self.assertIn('https://operario.ai/console/advanced/mcp-servers/', user_message)
         tool_defs = mock_run_completion.call_args.kwargs["tools"]
         self.assertEqual([tool_def["function"]["name"] for tool_def in tool_defs], ["enable_tools"])
         mock_enable_tools.assert_not_called()
@@ -2431,7 +2431,7 @@ class MCPToolIntegrationTests(TestCase):
         agent.refresh_from_db()
         self.assertEqual(PersistentAgentEnabledTool.objects.filter(agent=agent).count(), 40)
 
-    @override_settings(GOBII_PROPRIETARY_MODE=False)
+    @override_settings(OPERARIO_PROPRIETARY_MODE=False)
     @patch('api.agent.tools.mcp_manager._mcp_manager.get_tools_for_agent')
     @patch('api.agent.tools.mcp_manager._mcp_manager.initialize')
     def test_enable_tools_uses_prompt_config_limit(self, mock_init, mock_get_tools):

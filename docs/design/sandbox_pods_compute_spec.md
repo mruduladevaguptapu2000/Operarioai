@@ -30,7 +30,7 @@ Owner: Platform
 ## Architecture Overview
 
 ### Control Plane (in GKE)
-- Compute API service used by Gobii agents and tools.
+- Compute API service used by Operario AI agents and tools.
 - Metadata store for session state and snapshots.
 - Scheduler that creates, resumes, or stops per-agent pods.
 - Egress proxy controller that creates per-agent egress proxy pods and services.

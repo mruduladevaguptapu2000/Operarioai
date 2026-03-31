@@ -9,8 +9,8 @@ Four bite-sized `curl` recipes that cover the most common use-cases:
 ## 1 · Synchronous call (wait for result)
 
 ```bash
-curl -X POST https://gobii.ai/api/v1/tasks/browser-use/ \
-  -H "X-Api-Key: $GOBII_API_KEY" \
+curl -X POST https://operario.ai/api/v1/tasks/browser-use/ \
+  -H "X-Api-Key: $OPERARIO_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
         "prompt": "Open https://quotes.toscrape.com/ and return the text and author of the first quote on the page",
@@ -35,8 +35,8 @@ If the 30-second window is exceeded you'll get `"status": "in_progress"` instead
 ## 2 · Structured JSON output
 
 ```bash
-curl -X POST https://gobii.ai/api/v1/tasks/browser-use/ \
-  -H "X-Api-Key: $GOBII_API_KEY" \
+curl -X POST https://operario.ai/api/v1/tasks/browser-use/ \
+  -H "X-Api-Key: $OPERARIO_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
         "prompt": "Go to https://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html and return the book title and price as JSON",
@@ -72,8 +72,8 @@ If the agent's answer doesn't validate against your schema the task will return 
 ## 3 · Using secrets securely
 
 ```bash
-curl -X POST https://gobii.ai/api/v1/tasks/browser-use/ \
-  -H "X-Api-Key: $GOBII_API_KEY" \
+curl -X POST https://operario.ai/api/v1/tasks/browser-use/ \
+  -H "X-Api-Key: $OPERARIO_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
         "prompt": "Login to https://example.com using x_username and x_password, then navigate to the dashboard and check for notifications",
@@ -105,8 +105,8 @@ Sample response:
 Start the task (no `wait`):
 
 ```bash
-RESP=$(curl -s -X POST https://gobii.ai/api/v1/tasks/browser-use/ \
-          -H "X-Api-Key: $GOBII_API_KEY" \
+RESP=$(curl -s -X POST https://operario.ai/api/v1/tasks/browser-use/ \
+          -H "X-Api-Key: $OPERARIO_API_KEY" \
           -H "Content-Type: application/json" \
           -d '{ "prompt": "Visit https://quotes.toscrape.com/tag/inspirational/ and list the first 5 inspirational quotes with their authors" }')
 TASK_ID=$(echo "$RESP" | jq -r .id)
@@ -115,6 +115,6 @@ TASK_ID=$(echo "$RESP" | jq -r .id)
 Check on it later:
 
 ```bash
-curl -X GET https://gobii.ai/api/v1/tasks/browser-use/$TASK_ID/result/ \
-     -H "X-Api-Key: $GOBII_API_KEY"
+curl -X GET https://operario.ai/api/v1/tasks/browser-use/$TASK_ID/result/ \
+     -H "X-Api-Key: $OPERARIO_API_KEY"
 ```
