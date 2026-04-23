@@ -227,7 +227,7 @@ class SandboxToolCacheContext:
     agent_cache_key: str
 
 
-class Operario AIStdioTransport(FastMCPStdioTransport):
+class OperarioAIStdioTransport(FastMCPStdioTransport):
     """Custom stdio transport that guarantees an errlog with a real fileno."""
 
     def __init__(
@@ -1011,7 +1011,7 @@ class MCPToolManager:
                 httpx_client_factory=self._httpx_client_factory,
             )
         elif server.command:
-            transport = Operario AIStdioTransport(
+            transport = OperarioAIStdioTransport(
                 command=server.command,
                 args=server.args or [],
                 env=server.env or {},
@@ -1359,7 +1359,7 @@ class MCPToolManager:
                 httpx_client_factory=self._httpx_client_factory,
             )
         elif server.command:
-            transport = Operario AIStdioTransport(
+            transport = OperarioAIStdioTransport(
                 command=server.command,
                 args=server.args or [],
                 env=server.env or {},

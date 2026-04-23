@@ -49,7 +49,7 @@ def is_disposable_domain(domain: str) -> bool:
     return bool(checker_fn(f"u@{domain}"))
 
 
-class Operario AIAccountAdapter(DefaultAccountAdapter):
+class OperarioAIAccountAdapter(DefaultAccountAdapter):
     """Signup and login policy hooks for django-allauth."""
 
     GENERIC_EMAIL_BLOCK_ERROR = "We are unable to create an account with this email address. Please use a different one."

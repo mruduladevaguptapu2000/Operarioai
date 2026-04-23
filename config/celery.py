@@ -44,11 +44,11 @@ def worker_process_init_handler(**_):
     """
     print(f"Worker process init signal received, initializing OpenTelemetry for PID {os.getpid()}")
     
-    from observability import init_tracing, Operario AIService
+    from observability import init_tracing, OperarioAIService
     from opentelemetry.instrumentation.celery import CeleryInstrumentor
     from opentelemetry.instrumentation.logging import LoggingInstrumentor
 
-    init_tracing(Operario AIService.WORKER)
+    init_tracing(OperarioAIService.WORKER)
     CeleryInstrumentor().instrument()
     LoggingInstrumentor().instrument(set_logging_format=True)
     

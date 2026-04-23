@@ -589,8 +589,8 @@ ACCOUNT_EMAIL_VERIFICATION = env(
     default="optional" if OPERARIO_PROPRIETARY_MODE and MAILGUN_API_KEY else "none",
 )
 ACCOUNT_LOGOUT_ON_GET = True
-ACCOUNT_ADAPTER = "config.allauth_adapter.Operario AIAccountAdapter"
-SOCIALACCOUNT_ADAPTER = "config.socialaccount_adapter.Operario AISocialAccountAdapter"
+ACCOUNT_ADAPTER = "config.allauth_adapter.OperarioAIAccountAdapter"
+SOCIALACCOUNT_ADAPTER = "config.socialaccount_adapter.OperarioAISocialAccountAdapter"
 
 # TODO: Test the removal of this; got deprecation warning
 #ACCOUNT_EMAIL_REQUIRED = True

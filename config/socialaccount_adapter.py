@@ -172,7 +172,7 @@ def restore_oauth_session_state(
     return charter_restored or attribution_restored
 
 
-class Operario AISocialAccountAdapter(DefaultSocialAccountAdapter):
+class OperarioAISocialAccountAdapter(DefaultSocialAccountAdapter):
     """Tighten the social login flow for existing email/password users."""
 
     def is_open_for_signup(self, request: HttpRequest, sociallogin: SocialLogin) -> bool:

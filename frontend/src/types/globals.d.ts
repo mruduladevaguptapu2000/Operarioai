@@ -10,36 +10,49 @@
 interface SegmentAnalytics {
   /**
    * Track an event with optional properties.
-   * @param event - The name of the event (e.g., 'Button Clicked')
+   * @param event - The name of the event (e.g. Button Clicked)
    * @param properties - Optional properties associated with the event
    */
   track(event: string, properties?: Record<string, unknown>): void
 
   /**
    * Identify a user with optional traits.
-   * Note: User identification is handled in base.html via Django context.
-   * @param userId - The unique identifier for the user
-   * @param traits - Optional traits associated with the user
+   * @param userId - Unique identifier for the user
+   * @param traits - Optional user traits
    */
   identify(userId: string, traits?: Record<string, unknown>): void
 
   /**
    * Record a page view with optional category, name, and properties.
-   * Note: Page tracking is handled in base.html via Django context.
    */
-  page(category?: string, name?: string, properties?: Record<string, unknown>): void
+  page(
+    category?: string,
+    name?: string,
+    properties?: Record<string, unknown>
+  ): void
 
   /**
-   * Register a callback to be called when analytics is ready.
-   * @param callback - Function to call when ready
+   * Run callback when analytics library is ready.
    */
   ready(callback: () => void): void
 }
 
 type GtagParams = Record<string, string | number | boolean | undefined>
-type GtagCommand = 'config' | 'event' | 'js' | 'set' | 'consent'
-type Gtag = (command: GtagCommand, targetOrValue: string | Date, params?: GtagParams) => void
-type Operario AITrackCtaPayload = {
+
+type GtagCommand =
+  | 'config'
+  | 'event'
+  | 'js'
+  | 'set'
+  | 'consent'
+
+type Gtag = (
+  command: GtagCommand,
+  targetOrValue: string | Date,
+  params?: GtagParams
+) => void
+
+type OperarioAITrackCtaPayload = {
   cta_id: string
   intent?: string
   destination?: string
@@ -49,13 +62,16 @@ type Operario AITrackCtaPayload = {
   placement?: string
   cta_type?: string
 }
-type Operario AITrackCta = (payload: Operario AITrackCtaPayload) => void
+
+type OperarioAITrackCta = (
+  payload: OperarioAITrackCtaPayload
+) => void
 
 declare global {
   interface Window {
     analytics?: SegmentAnalytics
     gtag?: Gtag
-    operarioTrackCta?: Operario AITrackCta
+    operarioTrackCta?: OperarioAITrackCta
   }
 }
 

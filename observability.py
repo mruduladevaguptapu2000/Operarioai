@@ -66,7 +66,7 @@ class DaemonBatchSpanProcessor(BatchSpanProcessor):
         else:
             logger.warning("Could not find BatchSpanProcessor worker thread to set as daemon")
 
-class Operario AIService(str, Enum):
+class OperarioAIService(str, Enum):
     """
     Enum representing the different Operario AI services.
     Used for identifying service names in tracing and observability.
@@ -75,7 +75,7 @@ class Operario AIService(str, Enum):
     WORKER = "operario-worker"
 
 @lru_cache(maxsize=1)                    # make sure we initialize only once
-def init_tracing(service_name: Operario AIService) -> None:
+def init_tracing(service_name: OperarioAIService) -> None:
     """
     Initialize the OTEL tracer provider exactly once per process.
     Pass a `service_name` that distinguishes web vs. workers.
